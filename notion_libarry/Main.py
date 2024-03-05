@@ -44,10 +44,6 @@ if response.status_code == 200:
 else:
     print(f"Failed to fetch page details. Status Code: {response.status_code}")
 
-# def main():
-#     page_detail = 5
-
-
 if __name__ == "__main__":
     load_dotenv()  # This loads the variables from .env
     # main()
