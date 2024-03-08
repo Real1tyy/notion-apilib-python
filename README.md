@@ -1,5 +1,9 @@
 # NotionLibrary
-more information can be found here: [Notion-Project-Notebook](https://www.notion.so/NotionLibrary-6338b0ae6eab4327b58e509540f68e2e?pvs=4)
+More information about the project can be found here: [Notion-Project-Notebook](https://www.notion.so/NotionLibrary-6338b0ae6eab4327b58e509540f68e2e?pvs=4).
+##### Usefull Links:
+1. [Notion API Documentation](https://developers.notion.com/reference/intro)
+2. [Developers Notion](https://developers.notion.com/)
+3. [Notion Integration](https://notionintegrations.com/)
 
 ## Outline
 NotionLibrary serves as an API library, wrapping the REST API calls that utilize requests to Notion calling ("https://api.notion.com/v1/"...).
