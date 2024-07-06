@@ -4,7 +4,7 @@ from block.BlockDTO import BlockDTO
 from client.NotionAPIClient import NotionAPIClient
 
 
-class NotionBlocksProvider:
+class NotionBlockProvider:
 
     def __init__(self, notion_api_client: NotionAPIClient):
         self.notion_client = notion_api_client

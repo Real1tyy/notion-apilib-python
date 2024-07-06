@@ -4,7 +4,7 @@ from client.NotionAPIClient import NotionAPIClient
 from page.PageDTO import PageDTO
 
 
-class NotionPagesProvider:
+class NotionPageProvider:
 
     def __init__(self, notion_api_client: NotionAPIClient):
         self.notion_client = notion_api_client

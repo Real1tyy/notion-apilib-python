@@ -3,15 +3,6 @@
 # # The ID of your "Books" database (for reference or manual triggers)
 # BOOKS_DB_ID = 'your_books_database_id_here'
 #
-#
-#
-# headers = {
-#         "Authorization": f"Bearer {NOTION_INTEGRATION_KEY}",
-#         "Notion-Version": "2022-06-28",  # Ensure this is set to the latest version supported
-#         "Content-Type": "application/json",
-# }
-#
-#
 # # Function to retrieve entries from the "Books" database
 # # This can be adapted based on specific triggers or conditions
 # def get_books_entries():

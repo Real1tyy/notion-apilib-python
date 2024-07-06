@@ -3,7 +3,7 @@ from typing import Optional
 from client.RequestsProvider import RequestsProvider
 
 
-class NotionClient:
+class NotionAPIClient:
 
     def __init__(self, requests_provider: RequestsProvider):
         self.requests_provider = requests_provider
