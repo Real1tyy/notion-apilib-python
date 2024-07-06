@@ -1,7 +1,7 @@
-from Properties import *
+from PropertiesDTO import *
 
 
-class PageProperties(BaseModel):
+class PagePropertiesDTO(BaseModel):
     # Quality: RelationProperty
     # Tasks: RelationProperty
     # Tags: RelationProperty
