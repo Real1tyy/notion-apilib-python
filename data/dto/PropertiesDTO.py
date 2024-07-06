@@ -2,12 +2,11 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from Object import Object
+from general.ObjectDTO import ObjectDTO
 
 
-class Properties(Object):
-    class Config:
-        from_attributes = True
+class Properties(ObjectDTO):
+    pass
 
 
 class UniqueID(BaseModel):

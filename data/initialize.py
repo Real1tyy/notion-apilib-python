@@ -1,6 +1,4 @@
-from Database import Database
-from Page import Page
-from PropertyTypes import PropertyTypes
-
-pages = [Page("name", "title", "content", [PropertyTypes.URL, PropertyTypes.ID])]
-database = Database()
+# pages = [Page("name", "title", "content", [PropertyTypes.URL, PropertyTypes.ID])]
+# database = Database("name", "id", "creatdTime", )
+#
+# print(database)
