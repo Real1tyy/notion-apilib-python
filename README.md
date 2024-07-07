@@ -5,8 +5,6 @@ library to notion and transforming the calls into classes.
 
 Also this is going to contain operations on these classes to achieve the functionality specified inside requirements
 specification.
-More information about the project can be found
-here: [Notion-Project-Notebook](https://www.notion.so/NotionLibrary-6338b0ae6eab4327b58e509540f68e2e?pvs=4).
 
 ##### Usefull Links:
 
