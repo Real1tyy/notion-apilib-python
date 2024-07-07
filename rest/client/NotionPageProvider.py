@@ -1,13 +1,13 @@
+from dataclasses import dataclass
 from typing import Optional
 
-from client.NotionAPIClient import NotionAPIClient
+from client.requests.api.NotionAPIClient import NotionAPIClient
 from page.PageDTO import PageDTO
 
 
+@dataclass
 class NotionPageProvider:
-
-    def __init__(self, notion_api_client: NotionAPIClient):
-        self.notion_client = notion_api_client
+    notion_client: NotionAPIClient
 
     def get_page(self, page_id: str) -> Optional[PageDTO]:
         response = self.notion_client.get_database(page_id)

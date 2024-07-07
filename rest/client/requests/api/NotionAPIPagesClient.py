@@ -1,26 +1,24 @@
+from dataclasses import dataclass
 from typing import Optional
 
 from client.requests.RequestsProvider import RequestsProvider
 from client.requests.types import json_
 
 
-class NotionAPIBlocksClient:
+@dataclass
+class NotionAPIPagesClient:
+    requests_provider: RequestsProvider
 
-    def __init__(self, requests_provider: RequestsProvider):
-        self.requests_provider = requests_provider
+    def create_page(self, data: json_) -> Optional[json_]:
+        return self.requests_provider.perform_post_request("pages", data)
 
-    def append_block_children(self, block_id: str, data: json_) -> Optional[json_]:
-        return self.requests_provider.perform_patch_request("blocks/" + block_id + "/children", data)
-
-    def retrieve_block(self, block_id: str) -> Optional[json_]:
-        return self.requests_provider.perform_get_request("blocks/" + block_id)
-
-    def retrieve_block_children(self, block_id: str, query_params: Optional[str] = None) -> Optional[json_]:
-        url = f"blocks/{block_id}/children{query_params if query_params else ''}"
+    def retrieve_page(self, page_id: str, query_params: str) -> Optional[json_]:
+        url = f"pages/{page_id}{query_params if query_params else ''}"
         return self.requests_provider.perform_get_request(url)
 
-    def update_block(self, block_id: str, data: json_) -> Optional[json_]:
-        return self.requests_provider.perform_patch_request("blocks/" + block_id, data)
+    def retrieve_page_property_item(self, page_id: str, property_id: str, query_params: str) -> Optional[json_]:
+        url = f"pages/{page_id}/properties/{property_id}{query_params if query_params else ''}"
+        return self.requests_provider.perform_get_request(url)
 
-    def delete_block(self, block_id: str) -> Optional[json_]:
-        return self.requests_provider.perform_delete_request("blocks/" + block_id)
+    def update_page_properties(self, page_id: str, data: json_) -> Optional[json_]:
+        return self.requests_provider.perform_patch_request(f"pages/{page_id}", data)

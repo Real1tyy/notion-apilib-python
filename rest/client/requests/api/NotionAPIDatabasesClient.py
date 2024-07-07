@@ -1,26 +1,23 @@
+from dataclasses import dataclass
 from typing import Optional
 
 from client.requests.RequestsProvider import RequestsProvider
 from client.requests.types import json_
 
 
-class NotionAPIBlocksClient:
+@dataclass
+class NotionAPIDatabasesClient:
+    requests_provider: RequestsProvider
 
-    def __init__(self, requests_provider: RequestsProvider):
-        self.requests_provider = requests_provider
+    def create_database(self, data: json_) -> Optional[json_]:
+        return self.requests_provider.perform_post_request("databases", data)
 
-    def append_block_children(self, block_id: str, data: json_) -> Optional[json_]:
-        return self.requests_provider.perform_patch_request("blocks/" + block_id + "/children", data)
+    def query_database(self, database_id: str, query_params: str, data: json_) -> Optional[json_]:
+        url = f"databases/{database_id}/query{query_params if query_params else ''}"
+        return self.requests_provider.perform_post_request(url, data)
 
-    def retrieve_block(self, block_id: str) -> Optional[json_]:
-        return self.requests_provider.perform_get_request("blocks/" + block_id)
+    def retrieve_database(self, database_id: str) -> Optional[json_]:
+        return self.requests_provider.perform_get_request(f"databases/{database_id}")
 
-    def retrieve_block_children(self, block_id: str, query_params: Optional[str] = None) -> Optional[json_]:
-        url = f"blocks/{block_id}/children{query_params if query_params else ''}"
-        return self.requests_provider.perform_get_request(url)
-
-    def update_block(self, block_id: str, data: json_) -> Optional[json_]:
-        return self.requests_provider.perform_patch_request("blocks/" + block_id, data)
-
-    def delete_block(self, block_id: str) -> Optional[json_]:
-        return self.requests_provider.perform_delete_request("blocks/" + block_id)
+    def update_database(self, database_id: str, data: json_) -> Optional[json_]:
+        return self.requests_provider.perform_patch_request(f"databases/{database_id}", data)

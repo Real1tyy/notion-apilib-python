@@ -1,13 +1,13 @@
+from dataclasses import dataclass
 from typing import Optional
 
 from block.BlockDTO import BlockDTO
-from client.NotionAPIClient import NotionAPIClient
+from client.requests.api.NotionAPIClient import NotionAPIClient
 
 
+@dataclass
 class NotionBlockProvider:
-
-    def __init__(self, notion_api_client: NotionAPIClient):
-        self.notion_client = notion_api_client
+    notion_client: NotionAPIClient
 
     def get_block(self, block_id: str) -> Optional[BlockDTO]:
         response = self.notion_client.get_database(block_id)
