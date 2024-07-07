@@ -2,6 +2,8 @@ from typing import Any, Callable
 
 from pydantic_core.core_schema import ValidationInfo
 
+from database.PropertyDTO import PropertyDTO
+
 
 def catch_exceptions(func: Callable[[Any, ValidationInfo], Any]) -> Callable[[Any, ValidationInfo], Any]:
     def wrapper(v: Any, info: ValidationInfo) -> Any:
@@ -40,5 +42,11 @@ def attributes_validator(v: list[dict[str, Any]], info: ValidationInfo) -> str:
 
 
 @catch_exceptions
-def properties_validator(v: dict[str, Any], info: ValidationInfo) -> Any:
-    for key, value in v.items():
+def properties_validator(v: dict[str, Any], info: ValidationInfo) -> list[PropertyDTO]:
+    properties = []
+    for value in v.values():
+        id_value = value["id"]
+        name = value["name"]
+        type_value = value["type"]
+        properties.append(PropertyDTO(id=id_value, name=name, type=type_value))
+    return properties

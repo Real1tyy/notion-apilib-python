@@ -1,8 +1,6 @@
-from typing import Optional, Any, Annotated
-from uuid import UUID
+from typing import Optional, Any
 
 from pydantic import BaseModel, ConfigDict
-from pydantic.types import UuidVersion
 
 from database.PropertyTypes import PropertyTypes
 
@@ -18,7 +16,7 @@ class RelationDetails(BaseModel):
 class PropertyDTO(BaseModel):
     model_config: ConfigDict = ConfigDict(from_attributes=True)
 
-    id: Annotated[UUID, UuidVersion(4)]
+    id: str
     name: str
     type: PropertyTypes
 

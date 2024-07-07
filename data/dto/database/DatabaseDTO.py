@@ -11,4 +11,4 @@ class DatabaseDTO(MajorObjectDTO):
     title: Annotated[str, BeforeValidator(attributes_validator)]
     description: Annotated[str, BeforeValidator(attributes_validator)]
     is_inline: bool
-    properties: Annotated[list[PropertyDTO], BeforeValidator(properties_validator)] = []
+    properties: Annotated[list[PropertyDTO], BeforeValidator(properties_validator)]
