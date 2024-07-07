@@ -6,22 +6,11 @@ from client.requests.types import json_
 
 @dataclass
 class NotionHeaderProvider:
+    api_key: str
 
-    def __init__(self, api_key: str):
-        self.api_key = api_key
-
-    def create_header(self) -> dict[str, str]:
+    def create_header(self) -> json_:
         return {
             "Authorization": f"Bearer {self.api_key}",
-            "Notion-Version": NotionHeaderProvider.NOTION_VERSION,
+            "Notion-Version": NOTION_VERSION,
             "Content-Type": "application/json"
         }
-
-
-def create_header(api_key) -> json_:
-    print(type(api_key))
-    return {
-        "Authorization": f"Bearer {api_key}",
-        "Notion-Version": NOTION_VERSION,
-        "Content-Type": "application/json"
-    }

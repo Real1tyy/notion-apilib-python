@@ -1,18 +1,24 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from client.requests.api.NotionAPIClient import NotionAPIClient
-from database.DatabaseDTO import DatabaseDTO
+from requests import Response
+
+from client.requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
+from client.requests.types import json_
 
 
 @dataclass
 class NotionDatabaseProvider:
-    notion_client: NotionAPIClient
+    notion_client: NotionAPIDatabasesClient
 
-    def get_database(self, database_id: str) -> Optional[DatabaseDTO]:
-        response = self.notion_client.notion_databases_client.retrieve_database(database_id)
-        return None if response is None else DatabaseDTO(**response)
+    def create_database(self, data: json_) -> Response:
+        return self.notion_client.create_database(data)
 
-    def query_database(self, database_id: str) -> Optional[DatabaseDTO]:
-        response = self.notion_client.notion_databases_client.query_database(database_id)
-        return None if response is None else DatabaseDTO(**response)
+    def query_database(self, database_id: str, data: json_, query_params: Optional[str] = None) -> Response:
+        return self.notion_client.query_database(database_id, data, query_params)
+
+    def retrieve_database(self, database_id: str) -> Response:
+        return self.notion_client.retrieve_database(database_id)
+
+    def update_database(self, database_id: str, data: json_) -> Response:
+        return self.notion_client.update_database(database_id, data)
