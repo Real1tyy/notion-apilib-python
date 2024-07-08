@@ -7,12 +7,18 @@ if __name__ == "__main__":
     container = Container()
     container.config.api_key.from_env("NOTION_INTEGRATION_KEY")
 
+    notion_database_client = container.notion_api_databases_client()
+
+    file_path = "links"
+    with open(file_path, "r") as file:
+        lines = file.readlines()
+
+    for line in lines:
+        print(notion_database_client.retrieve_database(line.strip()).json())
+
     # page = notion_page_provider.get_page("c8e3505e2341488e9462542023f599cd")
     #
     # print(repr(page))
-    notion_database_client = container.notion_api_databases_client()
-
-    print(notion_database_client.retrieve_database("1a91e289d5d9470d9e30ff1dfde63c60"))
 
     # response = notion_client.query_database("1a91e289d5d9470d9e30ff1dfde63c60")
     # print(len(response["results"]))

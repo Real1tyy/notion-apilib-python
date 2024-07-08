@@ -23,3 +23,9 @@ class NotionPageProvider:
 
     def update_page_properties(self, page_id: str, data: json_) -> Response:
         return self.notion_client.update_page_properties(page_id, data)
+
+# how to retrieve the latest results from a Notion database
+# {
+#  "timestamp": "last_edited_time",
+#  "direction": "descending"
+# }
