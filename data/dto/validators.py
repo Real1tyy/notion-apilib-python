@@ -2,7 +2,8 @@ from typing import Any, Callable
 
 from pydantic_core.core_schema import ValidationInfo
 
-from database.PropertyDTO import PropertyDTO
+from database.properties.DatabasePropertyFactory import DatabasePropertyFactory
+from database.properties.PropertyDTO import PropertyDTO
 
 
 def catch_exceptions(func: Callable[[Any, ValidationInfo], Any]) -> Callable[[Any, ValidationInfo], Any]:
@@ -38,15 +39,17 @@ def icon_validator(v: dict[str, Any], info: ValidationInfo) -> str:
 
 @catch_exceptions
 def attributes_validator(v: list[dict[str, Any]], info: ValidationInfo) -> str:
+    if len(v) == 0:
+        return ""
     return v[0]["plain_text"]
 
 
 @catch_exceptions
 def properties_validator(v: dict[str, Any], info: ValidationInfo) -> list[PropertyDTO]:
     properties = []
+
     for value in v.values():
-        id_value = value["id"]
-        name = value["name"]
-        type_value = value["type"]
-        properties.append(PropertyDTO(id=id_value, name=name, type=type_value))
+        print(value)
+        properties.append(DatabasePropertyFactory.create_concrete_property_dto(value))
+        # properties.append(PropertyDTO(id=id_value, name=name, type=type_value))
     return properties

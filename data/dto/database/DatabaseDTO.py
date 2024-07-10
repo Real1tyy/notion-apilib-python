@@ -2,7 +2,7 @@ from typing import Annotated
 
 from pydantic import BeforeValidator
 
-from database.PropertyDTO import PropertyDTO
+from database.properties.PropertyDTO import PropertyDTO
 from general.MajorObjectDTO import MajorObjectDTO
 from validators import attributes_validator, properties_validator
 
