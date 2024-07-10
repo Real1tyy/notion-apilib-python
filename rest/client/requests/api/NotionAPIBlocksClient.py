@@ -3,8 +3,8 @@ from typing import Optional
 
 from requests import Response
 
-from client.requests.RequestsClient import RequestsClient
 from client.requests.types import json_
+from client.requests.utils.RequestsClient import RequestsClient
 
 
 @dataclass

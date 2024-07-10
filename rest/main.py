@@ -4,17 +4,23 @@ from Container import Container
 
 if __name__ == "__main__":
     load_dotenv()
-    container = Container()
+    container: Container = Container()
     container.config.api_key.from_env("NOTION_INTEGRATION_KEY")
 
-    notion_database_client = container.notion_api_databases_client()
+    database_provider = container.notion_database_provider()
 
     file_path = "links"
     with open(file_path, "r") as file:
         lines = file.readlines()
 
     for line in lines:
-        print(notion_database_client.retrieve_database(line.strip()).json())
+        # if line != lines[5]:
+        #     continue
+        result = database_provider.retrieve_database(line.strip())
+        # if isinstance(result, Success):
+        #     print(result.unwrap())
+        # if isinstance(result, Failure):
+        #     print(result.unwrap())
 
     # page = notion_page_provider.get_page("c8e3505e2341488e9462542023f599cd")
     #
