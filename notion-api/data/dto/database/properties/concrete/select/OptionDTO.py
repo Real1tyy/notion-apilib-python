@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from OptionColor import OptionColor
 
 
-class SelectOptionDTO(BaseModel):
+class OptionDTO(BaseModel):
     id: str
     name: str
     color: OptionColor

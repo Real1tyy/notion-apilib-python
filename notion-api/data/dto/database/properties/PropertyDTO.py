@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
-from NotionLibrary.data.dto.database.properties.PropertyTypes import PropertyTypes
+from database.properties.PropertyTypes import PropertyTypes
 
 
-class PropertyDTO(BaseModel, from_attributes=True):
+class PropertyDTO(BaseModel, from_attributes=True, use_enum_values=True):
     id: str
     name: str
     type: PropertyTypes

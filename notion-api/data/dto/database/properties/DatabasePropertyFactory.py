@@ -1,29 +1,29 @@
-from client.requests.types import json_
+from client.api_requests.custom_types import json_
 from database.properties.PropertyTypes import PropertyTypes
-from database.properties.concrete.CheckboxPropertyDTO import CheckboxPropertyDTO
-from database.properties.concrete.DatePropertyDTO import DatePropertyDTO
-from database.properties.concrete.EmailPropertyDTO import EmailPropertyDTO
-from database.properties.concrete.FilesPropertyDTO import FilesPropertyDTO
-from database.properties.concrete.FormulaPropertyDTO import FormulaPropertyDTO
-from database.properties.concrete.NumberPropertyDTO import NumberPropertyDTO
-from database.properties.concrete.PeoplePropertyDTO import PeoplePropertyDTO
-from database.properties.concrete.PhoneNumberPropertyDTO import PhoneNumberPropertyDTO
-from database.properties.concrete.StatusPropertyDTO import StatusPropertyDTO
-from database.properties.concrete.UniqueIDPropertyDTO import UniqueIDPropertyDTO
-from database.properties.concrete.UrlPropertyDTO import UrlPropertyDTO
-from database.properties.concrete.relations.RelationPropertyDTO import RelationPropertyDTO
-from database.properties.concrete.relations.RollupPropertyDTO import RollupPropertyDTO
-from database.properties.concrete.select.MultiSelectPropertyDTO import MultiSelectPropertyDTO
-from database.properties.concrete.select.SelectPropertyDTO import SelectPropertyDTO
-from database.properties.concrete.text.RichTextPropertyDTO import RichTextPropertyDTO
-from database.properties.concrete.text.TitlePropertyDTO import TitlePropertyDTO
-from database.properties.concrete.time.CreatedTimePropertyDTO import CreatedTimePropertyDTO
-from database.properties.concrete.time.LastEditedTimePropertyDTO import LastEditedTimePropertyDTO
-from database.properties.concrete.users.CreatedByPropertyDTO import CreatedByPropertyDTO
-from database.properties.concrete.users.LastEditedByPropertyDTO import LastEditedByPropertyDTO
 
 
 class DatabasePropertyFactory:
+    from database.properties.concrete.CheckboxPropertyDTO import CheckboxPropertyDTO
+    from values.DatePropertyDTO import DatePropertyDTO
+    from values.EmailPropertyDTO import EmailPropertyDTO
+    from values.FilesPropertyDTO import FilesPropertyDTO
+    from database.properties.concrete.FormulaPropertyDTO import FormulaPropertyDTO
+    from number.NumberPropertyDTO import NumberPropertyDTO
+    from PeoplePropertyDTO import PeoplePropertyDTO
+    from values.PhoneNumberPropertyDTO import PhoneNumberPropertyDTO
+    from StatusPropertyDTO import StatusPropertyDTO
+    from database.properties.concrete.UniqueIDPropertyDTO import UniqueIDPropertyDTO
+    from values.UrlPropertyDTO import UrlPropertyDTO
+    from database.properties.concrete.relations.RelationPropertyDTO import RelationPropertyDTO
+    from database.properties.concrete.relations.RollupPropertyDTO import RollupPropertyDTO
+    from database.properties.concrete.select.MultiSelectPropertyDTO import MultiSelectPropertyDTO
+    from database.properties.concrete.select.SelectPropertyDTO import SelectPropertyDTO
+    from database.properties.concrete.text.RichTextPropertyDTO import RichTextPropertyDTO
+    from database.properties.concrete.text.TitlePropertyDTO import TitlePropertyDTO
+    from database.properties.concrete.time.CreatedTimePropertyDTO import CreatedTimePropertyDTO
+    from database.properties.concrete.time.LastEditedTimePropertyDTO import LastEditedTimePropertyDTO
+    from database.properties.concrete.users.CreatedByPropertyDTO import CreatedByPropertyDTO
+    from database.properties.concrete.users.LastEditedByPropertyDTO import LastEditedByPropertyDTO
     PROPERTY_TYPE_MAP = {
         PropertyTypes.TITLE: TitlePropertyDTO,
         PropertyTypes.RICH_TEXT: RichTextPropertyDTO,

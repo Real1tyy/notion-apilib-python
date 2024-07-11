@@ -4,7 +4,7 @@ from pydantic import BeforeValidator
 
 from database.properties.PropertyDTO import PropertyDTO
 from general.MajorObjectDTO import MajorObjectDTO
-from validators import attributes_validator, properties_validator
+from validation.validators import attributes_validator, properties_validator
 
 
 class DatabaseDTO(MajorObjectDTO):
