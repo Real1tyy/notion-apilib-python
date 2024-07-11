@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from client.requests.custom_types import json_
-from client.requests.utils.RequestsClient import RequestsClient
 from requests import Response
+
+from client.api_requests.custom_types import json_
+from client.api_requests.utils.RequestsClient import RequestsClient
 
 
 @dataclass

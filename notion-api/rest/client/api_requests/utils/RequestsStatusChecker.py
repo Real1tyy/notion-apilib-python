@@ -1,8 +1,7 @@
-import time
-
 from requests import Response
 
-from client.requests.constants.status_codes import SUCCESS, RATE_LIMIT
+import time
+from client.api_requests.constants.status_codes import SUCCESS, RATE_LIMIT
 
 
 class RequestsStatusChecker:

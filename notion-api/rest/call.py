@@ -7,7 +7,7 @@
 # # This can be adapted based on specific triggers or conditions
 # def get_books_entries():
 #     retrieve_url = f"https://api.notion.com/v1/databases/{BOOKS_DB_ID}/query"
-#     response = requests.post(retrieve_url, headers=headers)
+#     response = api_requests.post(retrieve_url, headers=headers)
 #     if response.status_code == 200:
 #         return response.json()
 #     else:
@@ -36,7 +36,7 @@
 #             }
 #     }
 #
-#     response = requests.post(create_url, headers=headers, json=payload)
+#     response = api_requests.post(create_url, headers=headers, json=payload)
 #     return response.json()
 
 

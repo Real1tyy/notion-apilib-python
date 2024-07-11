@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+from returns.result import Success, Failure
 
 from Container import Container
 
@@ -14,13 +15,14 @@ if __name__ == "__main__":
         lines = file.readlines()
 
     for line in lines:
-        # if line != lines[5]:
-        #     continue
+        if line != lines[4]:
+            continue
         result = database_provider.retrieve_database(line.strip())
-        # if isinstance(result, Success):
-        #     print(result.unwrap())
-        # if isinstance(result, Failure):
-        #     print(result.unwrap())
+        if isinstance(result, Success):
+            x = result.unwrap()
+            print(x)
+        if isinstance(result, Failure):
+            print(result.unwrap())
 
     # page = notion_page_provider.get_page("c8e3505e2341488e9462542023f599cd")
     #

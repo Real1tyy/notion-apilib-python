@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from client.requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
-from client.requests.types import json_
+from client.api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
+from client.api_requests.custom_types import json_
 
 
 @dataclass

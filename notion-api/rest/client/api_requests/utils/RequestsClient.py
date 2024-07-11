@@ -2,9 +2,10 @@ from dataclasses import dataclass
 from typing import Optional, Callable
 
 import requests
-from client.requests.constants.notion import BASE_URL
-from client.requests.custom_types import json_
 from requests import Response
+
+from client.api_requests.constants.notion import BASE_URL
+from client.api_requests.custom_types import json_
 
 
 @dataclass

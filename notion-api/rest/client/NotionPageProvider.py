@@ -3,8 +3,8 @@ from typing import Optional
 
 from requests import Response
 
-from client.requests.api.NotionAPIPagesClient import NotionAPIPagesClient
-from client.requests.types import json_
+from client.api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
+from client.api_requests.custom_types import json_
 
 
 @dataclass

@@ -4,7 +4,7 @@ from pydantic_core.core_schema import ValidationInfo
 
 from database.properties.DatabasePropertyFactory import DatabasePropertyFactory
 from database.properties.PropertyDTO import PropertyDTO
-from utils import catch_exceptions
+from validation.exceptions import catch_exceptions
 
 
 @catch_exceptions
@@ -38,10 +38,5 @@ def properties_validator(v: dict[str, Any], info: ValidationInfo) -> list[Proper
     properties = []
 
     for value in v.values():
-        print(value)
-        try:
-            properties.append(DatabasePropertyFactory.create_concrete_property_dto(value))
-        except Exception as e:
-            print(value)
-            raise e
+        properties.append(DatabasePropertyFactory.create_concrete_property_dto(value))
     return properties
