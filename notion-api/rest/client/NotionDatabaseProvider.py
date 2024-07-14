@@ -15,7 +15,10 @@ class NotionDatabaseProvider:
     notion_client: NotionAPIDatabasesClient
 
     def create_database(self, data: DatabaseDTO) -> Result[CustomError, DatabaseDTO]:
-        return self.notion_client.create_database(data.json())
+        response = self.notion_client.create_database(data.model_dump(mode='json'))
+        if response.status_code == 200:
+            return Success(DatabaseDTO(**response.json()))
+        return Failure(CustomError(response.status_code, response.text))
 
     def query_database(self, database_id: str, data: json_, query_params: Optional[str] = None) -> Response:
         return self.notion_client.query_database(database_id, data, query_params)

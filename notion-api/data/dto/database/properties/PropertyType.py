@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class PropertyTypes(str, Enum):
+class PropertyType(str, Enum):
     TITLE = "title"
     RICH_TEXT = "rich_text"
     NUMBER = "number"

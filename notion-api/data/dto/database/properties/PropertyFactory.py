@@ -1,8 +1,8 @@
 from client.api_requests.custom_types import json_
-from database.properties.PropertyTypes import PropertyTypes
+from database.properties.PropertyType import PropertyType
 
 
-class DatabasePropertyFactory:
+class PropertyFactory:
     from database.properties.concrete.CheckboxPropertyDTO import CheckboxPropertyDTO
     from values.DatePropertyDTO import DatePropertyDTO
     from values.EmailPropertyDTO import EmailPropertyDTO
@@ -25,30 +25,30 @@ class DatabasePropertyFactory:
     from database.properties.concrete.users.CreatedByPropertyDTO import CreatedByPropertyDTO
     from database.properties.concrete.users.LastEditedByPropertyDTO import LastEditedByPropertyDTO
     PROPERTY_TYPE_MAP = {
-        PropertyTypes.TITLE: TitlePropertyDTO,
-        PropertyTypes.RICH_TEXT: RichTextPropertyDTO,
-        PropertyTypes.NUMBER: NumberPropertyDTO,
-        PropertyTypes.SELECT: SelectPropertyDTO,
-        PropertyTypes.MULTI_SELECT: MultiSelectPropertyDTO,
-        PropertyTypes.DATE: DatePropertyDTO,
-        PropertyTypes.PEOPLE: PeoplePropertyDTO,
-        PropertyTypes.FILES: FilesPropertyDTO,
-        PropertyTypes.CHECKBOX: CheckboxPropertyDTO,
-        PropertyTypes.URL: UrlPropertyDTO,
-        PropertyTypes.EMAIL: EmailPropertyDTO,
-        PropertyTypes.PHONE_NUMBER: PhoneNumberPropertyDTO,
-        PropertyTypes.FORMULA: FormulaPropertyDTO,
-        PropertyTypes.RELATION: RelationPropertyDTO,
-        PropertyTypes.ROLLUP: RollupPropertyDTO,
-        PropertyTypes.CREATED_TIME: CreatedTimePropertyDTO,
-        PropertyTypes.CREATED_BY: CreatedByPropertyDTO,
-        PropertyTypes.LAST_EDITED_TIME: LastEditedTimePropertyDTO,
-        PropertyTypes.LAST_EDITED_BY: LastEditedByPropertyDTO,
-        PropertyTypes.UNIQUE_ID: UniqueIDPropertyDTO,
-        PropertyTypes.STATUS: StatusPropertyDTO,
+        PropertyType.TITLE: TitlePropertyDTO,
+        PropertyType.RICH_TEXT: RichTextPropertyDTO,
+        PropertyType.NUMBER: NumberPropertyDTO,
+        PropertyType.SELECT: SelectPropertyDTO,
+        PropertyType.MULTI_SELECT: MultiSelectPropertyDTO,
+        PropertyType.DATE: DatePropertyDTO,
+        PropertyType.PEOPLE: PeoplePropertyDTO,
+        PropertyType.FILES: FilesPropertyDTO,
+        PropertyType.CHECKBOX: CheckboxPropertyDTO,
+        PropertyType.URL: UrlPropertyDTO,
+        PropertyType.EMAIL: EmailPropertyDTO,
+        PropertyType.PHONE_NUMBER: PhoneNumberPropertyDTO,
+        PropertyType.FORMULA: FormulaPropertyDTO,
+        PropertyType.RELATION: RelationPropertyDTO,
+        PropertyType.ROLLUP: RollupPropertyDTO,
+        PropertyType.CREATED_TIME: CreatedTimePropertyDTO,
+        PropertyType.CREATED_BY: CreatedByPropertyDTO,
+        PropertyType.LAST_EDITED_TIME: LastEditedTimePropertyDTO,
+        PropertyType.LAST_EDITED_BY: LastEditedByPropertyDTO,
+        PropertyType.UNIQUE_ID: UniqueIDPropertyDTO,
+        PropertyType.STATUS: StatusPropertyDTO,
     }
 
     @staticmethod
     def create_concrete_property_dto(data: json_):
-        property_type = PropertyTypes(data["type"])
-        return DatabasePropertyFactory.PROPERTY_TYPE_MAP[property_type](**data)
+        property_type = PropertyType(data["type"])
+        return PropertyFactory.PROPERTY_TYPE_MAP[property_type](**data)

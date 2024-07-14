@@ -1,71 +1,77 @@
-# class BlockFactory:
-#     from blocks.bookmark import BookmarkBlockDTO
-#     from blocks.breadcrumb import BreadcrumbBlockDTO
-#     from blocks.bulleted_list_item import BulletedListItemBlockDTO
-#     from blocks.callout import CalloutBlockDTO
-#     from blocks.child_database import ChildDatabaseBlockDTO
-#     from blocks.child_page import ChildPageBlockDTO
-#     from blocks.column import ColumnBlockDTO
-#     from blocks.column_list import ColumnListBlockDTO
-#     from blocks.divider import DividerBlockDTO
-#     from blocks.embed import EmbedBlockDTO
-#     from blocks.equation import EquationBlockDTO
-#     from blocks.file import FileBlockDTO
-#     from blocks.heading_1 import Heading1BlockDTO
-#     from blocks.heading_2 import Heading2BlockDTO
-#     from blocks.heading_3 import Heading3BlockDTO
-#     from blocks.image import ImageBlockDTO
-#     from blocks.link_preview import LinkPreviewBlockDTO
-#     from blocks.link_to_page import LinkToPageBlockDTO
-#     from blocks.numbered_list_item import NumberedListItemBlockDTO
-#     from blocks.paragraph import ParagraphBlockDTO
-#     from blocks.pdf import PdfBlockDTO
-#     from blocks.quote import QuoteBlockDTO
-#     from blocks.synced_block import SyncedBlockBlockDTO
-#     from blocks.table import TableBlockDTO
-#     from blocks.table_of_contents import TableOfContentsBlockDTO
-#     from blocks.table_row import TableRowBlockDTO
-#     from blocks.template import TemplateBlockDTO
-#     from blocks.to_do import ToDoBlockDTO
-#     from blocks.toggle import ToggleBlockDTO
-#     from blocks.unsupported import UnsupportedBlockDTO
-#     from blocks.video import VideoBlockDTO
-#     BLOCK_TYPE_MAP: Dict[str, Type[BaseModel]] = {
-#         "bookmark": BookmarkBlockDTO,
-#         "breadcrumb": BreadcrumbBlockDTO,
-#         "bulleted_list_item": BulletedListItemBlockDTO,
-#         "callout": CalloutBlockDTO,
-#         "child_database": ChildDatabaseBlockDTO,
-#         "child_page": ChildPageBlockDTO,
-#         "column": ColumnBlockDTO,
-#         "column_list": ColumnListBlockDTO,
-#         "divider": DividerBlockDTO,
-#         "embed": EmbedBlockDTO,
-#         "equation": EquationBlockDTO,
-#         "file": FileBlockDTO,
-#         "heading_1": Heading1BlockDTO,
-#         "heading_2": Heading2BlockDTO,
-#         "heading_3": Heading3BlockDTO,
-#         "image": ImageBlockDTO,
-#         "link_preview": LinkPreviewBlockDTO,
-#         "link_to_page": LinkToPageBlockDTO,
-#         "numbered_list_item": NumberedListItemBlockDTO,
-#         "paragraph": ParagraphBlockDTO,
-#         "pdf": PdfBlockDTO,
-#         "quote": QuoteBlockDTO,
-#         "synced_block": SyncedBlockBlockDTO,
-#         "table": TableBlockDTO,
-#         "table_of_contents": TableOfContentsBlockDTO,
-#         "table_row": TableRowBlockDTO,
-#         "template": TemplateBlockDTO,
-#         "to_do": ToDoBlockDTO,
-#         "toggle": ToggleBlockDTO,
-#         "unsupported": UnsupportedBlockDTO,
-#         "video": VideoBlockDTO,
-#     }
-#
-#     @staticmethod
-#     def create_concrete_type_dto(data: json_) -> BaseModel:
-#         block_type = data["type"]
-#         dto_class = BlockFactory.BLOCK_TYPE_MAP[(block_type)
-#         return dto_class(**data)
+from custom_types import json_
+
+
+class BlockTypeFactory:
+    from block_types.concrete.BookmarkBlockDTO import BookmarkBlockDTO
+    from block_types.concrete.BreadcrumbDTO import BreadcrumbDTO
+    from block_types.concrete.CodeDTO import CodeDTO
+    from block_types.concrete.ColumnListDTO import ColumnListDTO
+    from block_types.concrete.DividerDTO import DividerDTO
+    from block_types.concrete.EmbedDTO import EmbedDTO
+    from block_types.concrete.EquationDTO import EquationDTO
+    from block_types.concrete.FileDTO import FileDTO
+    from block_types.concrete.ImageDTO import ImageDTO
+    from block_types.concrete.LinkPreviewDTO import LinkPreviewDTO
+    from block_types.concrete.PdfDTO import PdfDTO
+    from block_types.concrete.UnsupportedDTO import UnsupportedDTO
+    from block_types.concrete.VideoDTO import VideoDTO
+    from block_types.concrete.mention.MentionDTO import MentionDTO
+    from block_types.concrete.nestable.BulletedListItemDTO import BulletedListItemDTO
+    from block_types.concrete.nestable.CalloutDTO import CalloutDTO
+    from block_types.concrete.nestable.ChildDatabaseDTO import ChildDatabaseDTO
+    from block_types.concrete.nestable.ChildPageDTO import ChildPageDTO
+    from block_types.concrete.nestable.ColumnDTO import ColumnDTO
+    from block_types.concrete.nestable.NumberedListItemDTO import NumberedListItemDTO
+    from block_types.concrete.nestable.ParagraphDTO import ParagraphDTO
+    from block_types.concrete.nestable.QuoteDTO import QuoteDTO
+    from block_types.concrete.nestable.SyncedBlockDTO import SyncedBlockDTO
+    from block_types.concrete.nestable.TemplateDTO import TemplateDTO
+    from block_types.concrete.nestable.ToDoDTO import ToDoDTO
+    from block_types.concrete.nestable.ToggleDTO import ToggleDTO
+    from block_types.concrete.nestable.headings.Heading1DTO import Heading1DTO
+    from block_types.concrete.nestable.headings.Heading2DTO import Heading2DTO
+    from block_types.concrete.nestable.headings.Heading3DTO import Heading3DTO
+    from block_types.concrete.nestable.tables.TableDTO import TableDTO
+    from block_types.concrete.nestable.tables.TableOfContentsDTO import TableOfContentsDTO
+    from block_types.concrete.nestable.tables.TableRowDTO import TableRowDTO
+    BLOCK_TYPE_MAP = {
+        "bookmark": BookmarkBlockDTO,
+        "breadcrumb": BreadcrumbDTO,
+        "code": CodeDTO,
+        "column_list": ColumnListDTO,
+        "divider": DividerDTO,
+        "embed": EmbedDTO,
+        "equation": EquationDTO,
+        "file": FileDTO,
+        "image": ImageDTO,
+        "link_preview": LinkPreviewDTO,
+        "pdf": PdfDTO,
+        "unsupported": UnsupportedDTO,
+        "video": VideoDTO,
+        "bulleted_list_item": BulletedListItemDTO,
+        "callout": CalloutDTO,
+        "child_database": ChildDatabaseDTO,
+        "child_page": ChildPageDTO,
+        "column": ColumnDTO,
+        "numbered_list_item": NumberedListItemDTO,
+        "paragraph": ParagraphDTO,
+        "quote": QuoteDTO,
+        "synced_block": SyncedBlockDTO,
+        "template": TemplateDTO,
+        "to_do": ToDoDTO,
+        "toggle": ToggleDTO,
+        "heading_1": Heading1DTO,
+        "heading_2": Heading2DTO,
+        "heading_3": Heading3DTO,
+        "table": TableDTO,
+        "table_of_contents": TableOfContentsDTO,
+        "table_row": TableRowDTO,
+        "mention": MentionDTO
+    }
+
+    @staticmethod
+    def create_concrete_type_dto(data: json_):
+        block_type = data["type"]
+        res = BlockTypeFactory.BLOCK_TYPE_MAP[block_type](**data)
+        print(type(res))
+        return res

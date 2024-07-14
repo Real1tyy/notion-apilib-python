@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class BlockType(Enum):
+class BlockType(str, Enum):
     BOOKMARK = "bookmark"
     BREADCRUMB = "breadcrumb"
     BULLETED_LIST_ITEM = "bulleted_list_item"
