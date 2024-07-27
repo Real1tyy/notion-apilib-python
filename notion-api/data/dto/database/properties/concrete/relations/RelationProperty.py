@@ -1,4 +1,3 @@
-from enum import Enum
 from typing import Annotated, Optional
 from uuid import UUID
 
@@ -6,18 +5,13 @@ from pydantic import model_validator
 from pydantic.types import UuidVersion
 
 from client.api_requests.custom_types import json_
-from database.properties.PropertyDTO import PropertyDTO
+from database.properties.Property import Property
 from validation.exceptions import catch_exceptions
 
 
-class RelationType(str, Enum):
-    DUAL_PROPERTY = "dual_property"
-    SINGLE_PROPERTY = "single_property"
-
-
-class RelationPropertyDTO(PropertyDTO):
+class RelationProperty(Property):
     database_id: Annotated[UUID, UuidVersion(4)]
-    type: RelationType
+    type: str
 
     synced_property_name: Optional[str] = None
     synced_property_id: Optional[str] = None

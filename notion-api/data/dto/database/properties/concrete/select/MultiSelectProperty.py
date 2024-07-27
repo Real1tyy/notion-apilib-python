@@ -1,13 +1,13 @@
 from pydantic import model_validator
 
-from OptionDTO import OptionDTO
+from Option import Option
 from custom_types import json_
-from database.properties.PropertyDTO import PropertyDTO
+from database.properties.Property import Property
 from validation.exceptions import catch_exceptions
 
 
-class MultiSelectPropertyDTO(PropertyDTO):
-    options: list[OptionDTO]
+class MultiSelectProperty(Property):
+    options: list[Option]
 
     @model_validator(mode='before')
     @classmethod

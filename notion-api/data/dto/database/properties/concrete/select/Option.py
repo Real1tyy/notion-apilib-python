@@ -2,11 +2,9 @@ from typing import Optional
 
 from pydantic import BaseModel
 
-from OptionColor import OptionColor
 
-
-class OptionDTO(BaseModel):
+class Option(BaseModel):
     id: str
     name: str
-    color: OptionColor
+    color: str
     description: Optional[str] = None

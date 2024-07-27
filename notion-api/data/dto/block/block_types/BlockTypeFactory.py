@@ -10,17 +10,17 @@ class BlockTypeFactory:
     from block_types.concrete.Divider import Divider
     from block_types.concrete.Embed import Embed
     from block_types.concrete.Equation import Equation
-    from block_types.concrete.File import File
-    from block_types.concrete.Image import Image
+    from block_types.concrete.resources.File import File
+    from block_types.concrete.resources.Image import Image
     from block_types.concrete.LinkPreview import LinkPreview
-    from block_types.concrete.Pdf import Pdf
+    from block_types.concrete.resources.Pdf import Pdf
     from block_types.concrete.Unsupported import Unsupported
-    from block_types.concrete.Video import Video
+    from block_types.concrete.resources.Video import Video
     from block_types.concrete.Mention import Mention
     from block_types.concrete.nestable.BulletedListItem import BulletedListItem
     from block_types.concrete.nestable.Callout import Callout
-    from block_types.concrete.nestable.ChildDatabase import ChildDatabase
-    from block_types.concrete.nestable.ChildPage import ChildPage
+    from block_types.concrete.nestable.child.ChildDatabase import ChildDatabase
+    from block_types.concrete.nestable.child.ChildPage import ChildPage
     from block_types.concrete.nestable.Column import Column
     from block_types.concrete.nestable.NumberedListItem import NumberedListItem
     from block_types.concrete.nestable.Paragraph import Paragraph

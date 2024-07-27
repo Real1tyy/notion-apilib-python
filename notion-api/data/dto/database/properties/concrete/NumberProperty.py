@@ -1,13 +1,12 @@
 from pydantic import model_validator
 
 from custom_types import json_
-from database.properties.PropertyDTO import PropertyDTO
-from number.NumberFormat import NumberFormat
+from database.properties.Property import Property
 from validation.exceptions import catch_exceptions
 
 
-class NumberPropertyDTO(PropertyDTO):
-    format: NumberFormat
+class NumberProperty(Property):
+    format: str
 
     @model_validator(mode='before')
     @classmethod

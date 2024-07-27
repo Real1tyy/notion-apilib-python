@@ -2,7 +2,7 @@ from typing import Any
 
 from pydantic_core.core_schema import ValidationInfo
 
-from database.properties.PropertyDTO import PropertyDTO
+from database.properties.Property import Property
 from database.properties.PropertyFactory import PropertyFactory
 from validation.exceptions import catch_exceptions
 
@@ -34,7 +34,7 @@ def attributes_validator(v: list[dict[str, Any]], info: ValidationInfo) -> str:
 
 
 @catch_exceptions
-def properties_validator(v: dict[str, Any], info: ValidationInfo) -> list[PropertyDTO]:
+def properties_validator(v: dict[str, Any], info: ValidationInfo) -> list[Property]:
     properties = []
 
     for value in v.values():

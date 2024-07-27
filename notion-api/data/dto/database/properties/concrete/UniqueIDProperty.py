@@ -1,18 +1,17 @@
 from pydantic import model_validator
 
-from OptionDTO import OptionDTO
 from custom_types import json_
-from database.properties.PropertyDTO import PropertyDTO
+from database.properties.Property import Property
 from validation.exceptions import catch_exceptions
 
 
-class SelectPropertyDTO(PropertyDTO):
-    options: list[OptionDTO]
+class UniqueIDProperty(Property):
+    prefix: str
 
     @model_validator(mode='before')
     @classmethod
     @catch_exceptions
     def extract_relation_attributes(cls, v: json_):
-        select = v.pop('select')
-        v.update(select)
+        unique_id = v.pop('unique_id')
+        v.update(unique_id)
         return v

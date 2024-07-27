@@ -1,18 +1,16 @@
-from pydantic import model_validator, Field
+from pydantic import model_validator
 
-from RollupFunction import RollupFunction
 from custom_types import json_
-from database.properties.PropertyDTO import PropertyDTO
+from database.properties.Property import Property
 from validation.exceptions import catch_exceptions
 
 
-class RollupPropertyDTO(PropertyDTO):
-    function: RollupFunction = Field(
-        ..., description="The function that computes the rollup value from the related pages.")
-    relation_property_id: str = Field(..., description="The id of the related database property that is rolled up.")
-    relation_property_name: str = Field(..., description="The name of the related database property that is rolled up.")
-    rollup_property_id: str = Field(..., description="The id of the rollup property.")
-    rollup_property_name: str = Field(..., description="The name of the rollup property.")
+class RollupProperty(Property):
+    function: str
+    relation_property_id: str
+    relation_property_name: str
+    rollup_property_id: str
+    rollup_property_name: str
 
     @model_validator(mode='before')
     @classmethod
