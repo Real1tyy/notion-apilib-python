@@ -73,5 +73,7 @@ class BlockTypeFactory:
     @staticmethod
     def create_concrete_type_dto(data: json_) -> Block:
         block_type = data["type"]
+        block_type_data = data.pop(block_type)
+        data.update(block_type_data)
         res = BlockTypeFactory.BLOCK_TYPE_MAP[block_type](**data)
         return res

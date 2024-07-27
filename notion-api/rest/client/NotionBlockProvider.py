@@ -19,27 +19,23 @@ class NotionBlockProvider:
 
     def retrieve_block(self, block_id: str) -> Result[CustomError, Block]:
         response = self.notion_client.retrieve_block(block_id)
-        print(response.json())
         if response.status_code == 200:
-            return Success(BlockTypeFactory.create_concrete_type_dto(response.json()))
+            block = BlockTypeFactory.create_concrete_type_dto(response.json())
+            if block.has_children:
+                return self.retrieve_block_children(block)
+            return Success(block)
         return Failure(CustomError(response.status_code, response.text))
 
-    def retrieve_block_children(self, block_id: str, query_params: Optional[str] = None) -> Optional[json_]:
-        response = self.notion_client.retrieve_block_children(block_id, query_params)
-        result = []
-        for block in response.json()['results']:
-            print(block)
-            real_block = self.retrieve_block(block['id'])
-            print(real_block)
-            result.append(BlockTypeFactory.create_concrete_type_dto(block))
-            print(result)
-            break
+    def retrieve_block_children(self, block: Block) -> Result[CustomError, Block]:
+        response = self.notion_client.retrieve_block_children(block.id.hex)
+        for block_child in response.json()['results']:
+            child = self.retrieve_block(block_child['id'])
+            if isinstance(child, Success):
+                block.children.append(child.unwrap())
+            else:
+                return child
 
-        return response.json()
-
-    def retrieve_block_children_of_dto(self, block: Block, query_params: Optional[str] = None) -> Optional[json_]:
-        result = self.retrieve_block_children(str(block.id), query_params)
-        return result
+        return Success(block)
 
     def update_block(self, block_id: str, data: json_) -> Optional[json_]:
         response = self.notion_client.update_block(block_id, data)
