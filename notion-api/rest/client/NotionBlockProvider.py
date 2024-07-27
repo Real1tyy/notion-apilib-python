@@ -3,7 +3,7 @@ from typing import Optional
 
 from returns.result import Result, Success, Failure
 
-from BlockDTO import BlockDTO
+from Block import Block
 from CustomError import CustomError
 from block_types.BlockTypeFactory import BlockTypeFactory
 from client.api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
@@ -17,7 +17,7 @@ class NotionBlockProvider:
     def append_block_children(self, block_id: str, data: json_) -> Optional[json_]:
         response = self.notion_client.append_block_children(block_id, data)
 
-    def retrieve_block(self, block_id: str) -> Result[CustomError, BlockDTO]:
+    def retrieve_block(self, block_id: str) -> Result[CustomError, Block]:
         response = self.notion_client.retrieve_block(block_id)
         print(response.json())
         if response.status_code == 200:
@@ -37,7 +37,7 @@ class NotionBlockProvider:
 
         return response.json()
 
-    def retrieve_block_children_of_dto(self, block: BlockDTO, query_params: Optional[str] = None) -> Optional[json_]:
+    def retrieve_block_children_of_dto(self, block: Block, query_params: Optional[str] = None) -> Optional[json_]:
         result = self.retrieve_block_children(str(block.id), query_params)
         return result
 
