@@ -8,7 +8,7 @@ from pydantic.types import UuidVersion
 from validation.validators import parent_validator
 
 
-class ObjectDTO(BaseModel, use_enum_values=True, from_attributes=True):
+class Object(BaseModel, use_enum_values=True, from_attributes=True):
     id: Annotated[UUID, UuidVersion(4)]
     object: str
 

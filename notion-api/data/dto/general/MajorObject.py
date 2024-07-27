@@ -2,11 +2,11 @@ from typing import Optional, Annotated
 
 from pydantic import AnyUrl, BeforeValidator
 
-from general.ObjectDTO import ObjectDTO
+from general.Object import Object
 from validation.validators import icon_validator
 
 
-class MajorObjectDTO(ObjectDTO):
+class MajorObject(Object):
     icon: Annotated[str, BeforeValidator(icon_validator)]
     cover: Optional[str] = None
     url: Optional[AnyUrl] = None
