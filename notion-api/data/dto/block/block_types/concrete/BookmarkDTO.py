@@ -3,6 +3,6 @@ from pydantic import HttpUrl
 from block_types.BlockTypeDTO import BlockTypeDTO
 
 
-class BookmarkBlockDTO(BlockTypeDTO):
+class BookmarkDTO(BlockTypeDTO):
     url: HttpUrl
     caption: str

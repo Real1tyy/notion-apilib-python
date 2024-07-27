@@ -2,7 +2,7 @@ from custom_types import json_
 
 
 class BlockTypeFactory:
-    from block_types.concrete.BookmarkBlockDTO import BookmarkBlockDTO
+    from block_types.concrete.BookmarkDTO import BookmarkDTO
     from block_types.concrete.BreadcrumbDTO import BreadcrumbDTO
     from block_types.concrete.CodeDTO import CodeDTO
     from block_types.concrete.ColumnListDTO import ColumnListDTO
@@ -15,7 +15,7 @@ class BlockTypeFactory:
     from block_types.concrete.PdfDTO import PdfDTO
     from block_types.concrete.UnsupportedDTO import UnsupportedDTO
     from block_types.concrete.VideoDTO import VideoDTO
-    from block_types.concrete.mention.MentionDTO import MentionDTO
+    from block_types.concrete.MentionDTO import MentionDTO
     from block_types.concrete.nestable.BulletedListItemDTO import BulletedListItemDTO
     from block_types.concrete.nestable.CalloutDTO import CalloutDTO
     from block_types.concrete.nestable.ChildDatabaseDTO import ChildDatabaseDTO
@@ -35,7 +35,7 @@ class BlockTypeFactory:
     from block_types.concrete.nestable.tables.TableOfContentsDTO import TableOfContentsDTO
     from block_types.concrete.nestable.tables.TableRowDTO import TableRowDTO
     BLOCK_TYPE_MAP = {
-        "bookmark": BookmarkBlockDTO,
+        "bookmark": BookmarkDTO,
         "breadcrumb": BreadcrumbDTO,
         "code": CodeDTO,
         "column_list": ColumnListDTO,

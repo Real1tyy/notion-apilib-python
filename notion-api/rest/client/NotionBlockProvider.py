@@ -18,7 +18,7 @@ class NotionBlockProvider:
 
     def retrieve_block(self, block_id: str) -> Result[CustomError, BlockDTO]:
         response = self.notion_client.retrieve_block(block_id)
-        # print(response.json())
+        print(response.json())
         if response.status_code == 200:
             return Success(BlockDTO(**response.json()))
         return Failure(CustomError(response.status_code, response.text))

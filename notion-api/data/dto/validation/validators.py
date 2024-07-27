@@ -45,6 +45,4 @@ def properties_validator(v: dict[str, Any], info: ValidationInfo) -> list[Proper
 
 @catch_exceptions
 def block_type_validator(v: dict[str, Any], info: ValidationInfo) -> list[PropertyDTO]:
-    res = BlockTypeFactory.create_concrete_type_dto(v)
-    print(type(res))
-    return res
+    return BlockTypeFactory.create_concrete_type_dto(v)
