@@ -1,5 +1,5 @@
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class UnsupportedDTO(BlockTypeDTO):
+class UnsupportedDTO(BlockDTO):
     pass  # No custom attributes for unsupported block

@@ -1,6 +1,6 @@
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class CalloutDTO(BlockTypeDTO):
+class CalloutDTO(BlockDTO):
     text: str
     icon: str  # Adjust as needed, could be an object or URL

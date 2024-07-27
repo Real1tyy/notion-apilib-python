@@ -1,5 +1,5 @@
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class QuoteDTO(BlockTypeDTO):
+class QuoteDTO(BlockDTO):
     text: str

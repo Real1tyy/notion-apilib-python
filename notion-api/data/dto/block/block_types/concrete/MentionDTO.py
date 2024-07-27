@@ -1,8 +1,8 @@
 from pydantic import UUID4
 
-from block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class MentionDTO(BlockTypeDTO):
+class MentionDTO(BlockDTO):
     type: str
     id: UUID4

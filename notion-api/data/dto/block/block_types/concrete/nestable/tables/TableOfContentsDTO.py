@@ -1,5 +1,5 @@
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class TableOfContentsDTO(BlockTypeDTO):
+class TableOfContentsDTO(BlockDTO):
     pass  # No custom attributes for table of contents block

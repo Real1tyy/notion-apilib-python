@@ -1,5 +1,5 @@
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class BreadcrumbDTO(BlockTypeDTO):
+class BreadcrumbDTO(BlockDTO):
     pass  # No custom attributes for breadcrumb block

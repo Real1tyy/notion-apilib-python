@@ -2,7 +2,6 @@ from typing import Any
 
 from pydantic_core.core_schema import ValidationInfo
 
-from block.block_types.BlockTypeFactory import BlockTypeFactory
 from database.properties.PropertyDTO import PropertyDTO
 from database.properties.PropertyFactory import PropertyFactory
 from validation.exceptions import catch_exceptions
@@ -42,7 +41,7 @@ def properties_validator(v: dict[str, Any], info: ValidationInfo) -> list[Proper
         properties.append(PropertyFactory.create_concrete_property_dto(value))
     return properties
 
-
-@catch_exceptions
-def block_type_validator(v: dict[str, Any], info: ValidationInfo) -> list[PropertyDTO]:
-    return BlockTypeFactory.create_concrete_type_dto(v)
+#
+# @catch_exceptions
+# def block_type_validator(v: dict[str, Any], info: ValidationInfo) -> list[PropertyDTO]:
+#     return BlockTypeFactory.create_concrete_type_dto(v)

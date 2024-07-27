@@ -1,12 +1,12 @@
 from pydantic import model_validator
 
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 from block_types.concrete.nestable.headings.HeadingColor import HeadingColor
 from custom_types import json_
 from validation.exceptions import catch_exceptions
 
 
-class HeadingDTO(BlockTypeDTO):
+class HeadingDTO(BlockDTO):
     text: str
     color: HeadingColor
     is_toggleable: bool

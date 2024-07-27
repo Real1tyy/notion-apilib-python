@@ -1,6 +1,6 @@
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class ToDoDTO(BlockTypeDTO):
+class ToDoDTO(BlockDTO):
     text: str
     checked: bool

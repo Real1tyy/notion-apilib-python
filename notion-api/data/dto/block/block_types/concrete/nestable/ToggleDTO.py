@@ -1,5 +1,5 @@
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class ToggleDTO(BlockTypeDTO):
+class ToggleDTO(BlockDTO):
     text: str

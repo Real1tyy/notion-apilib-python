@@ -1,5 +1,5 @@
-from block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class TableRowDTO(BlockTypeDTO):
+class TableRowDTO(BlockDTO):
     cells: list

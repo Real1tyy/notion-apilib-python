@@ -1,5 +1,5 @@
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class BulletedListItemDTO(BlockTypeDTO):
+class BulletedListItemDTO(BlockDTO):
     text: str

@@ -1,8 +1,8 @@
 from pydantic import HttpUrl
 
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class PdfDTO(BlockTypeDTO):
+class PdfDTO(BlockDTO):
     url: HttpUrl
     caption: str

@@ -20,6 +20,11 @@ if __name__ == "__main__":
         result = result.unwrap()
         print(type(result))
         print(result)
+    # result2 = blocks_provider.retrieve_block_children("4903d265d7984914a674863467f83745")
+    # # if isinstance(result2, Success):
+    #     result = result2.unwrap()
+    #     print(type(result2))
+    #     print(result2)
     # result2 = blocks_provider.retrieve_block_children("8c22d4e710dc4b68b52cdc39f92f2355")
     # print(result2)
 

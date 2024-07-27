@@ -1,19 +1,22 @@
 from pydantic import model_validator
 
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 from custom_types import json_
 from validation.exceptions import catch_exceptions
 
 
-class CodeDTO(BlockTypeDTO):
-    text: str
+class CodeDTO(BlockDTO):
+    plain_text: str
     language: str
+    caption: list[str]
 
     @model_validator(mode='before')
     @classmethod
     @catch_exceptions
     def extract_block_type(cls, v: json_):
+        code = v.pop('code')
+        v.update(code)
         rich_text = v.pop('rich_text')
-        print(rich_text)
-        v['text'] = rich_text[0]['text']['content']
+        rich_text[0].pop('type')
+        v.update(rich_text[0])
         return v

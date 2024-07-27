@@ -1,4 +1,5 @@
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
-class DividerDTO(BlockTypeDTO):
+
+class DividerDTO(BlockDTO):
     pass  # No custom attributes for divider block

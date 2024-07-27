@@ -1,7 +1,7 @@
 from pydantic import UUID4
 
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class ChildPageDTO(BlockTypeDTO):
+class ChildPageDTO(BlockDTO):
     page_id: UUID4

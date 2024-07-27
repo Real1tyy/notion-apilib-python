@@ -1,7 +1,7 @@
 from pydantic import UUID4
 
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class SyncedBlockDTO(BlockTypeDTO):
+class SyncedBlockDTO(BlockDTO):
     synced_from: UUID4

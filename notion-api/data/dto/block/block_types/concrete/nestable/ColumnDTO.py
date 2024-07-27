@@ -1,5 +1,5 @@
-from block.block_types.BlockTypeDTO import BlockTypeDTO
+from BlockDTO import BlockDTO
 
 
-class ColumnDTO(BlockTypeDTO):
+class ColumnDTO(BlockDTO):
     pass  # No custom attributes for column block
