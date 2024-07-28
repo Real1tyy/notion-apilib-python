@@ -1,3 +1,5 @@
+import json
+
 from dotenv import load_dotenv
 from returns.result import Success
 
@@ -15,13 +17,13 @@ if __name__ == "__main__":
     with open(file_path, "r") as file:
         lines = file.readlines()
 
-    json_response = blocks_provider.retrieve_block("2b12d5fb458944219f34c81f30ec0bb1")
+    json_response = blocks_provider.retrieve_block("c9fd96b14f7d438eabcaa414b5ee5386")
 
-    print(json_response)
     if isinstance(json_response, Success):
         json_response = json_response.unwrap()
-    json = json_response.model_dump(mode='json')
-    print(json)
+    data = json_response.model_dump(mode='json', exclude_none=True)
+    print(json.dumps(data, indent=4))
+    print(blocks_provider.update_block(json_response))
 
     # print(blocks_provider.update_block(json))
 

@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 from typing import Optional
 
@@ -20,7 +21,7 @@ class NotionBlockProvider:
     def retrieve_block(self, block_id: str) -> Result[CustomError, Block]:
         response = self.notion_client.retrieve_block(block_id)
         if response.status_code == 200:
-            print(response.json())
+            print(json.dumps(response.json(), indent=4))
             block = BlockTypeFactory.create_concrete_type_dto(response.json())
             if block.has_children:
                 return self.retrieve_block_children(block)
@@ -39,10 +40,9 @@ class NotionBlockProvider:
         return Success(block)
 
     def update_block(self, block: Block) -> bool:
-        json = block.model_dump(mode='json')
-        print(json)
-        response = self.notion_client.update_block(block.id.hex, json)
-        print(response.json())
+        data = block.model_dump(mode='json', exclude_none=True)
+        response = self.notion_client.update_block(block.id.hex, data)
+        print(json.dumps(response.json(), indent=4))
         return True if response.status_code == 200 else False
 
     def delete_block_with_id(self, block_id: str) -> bool:

@@ -2,8 +2,8 @@ from typing import Annotated
 
 from pydantic import BeforeValidator
 
+from Object import MajorObject
 from database.properties.Property import Property
-from general.MajorObject import MajorObject
 from validation.validators import attributes_validator, properties_validator
 
 

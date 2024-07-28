@@ -1,7 +1,11 @@
-from pydantic import HttpUrl
+from pydantic import BaseModel
 
 from Block import Block
 
 
+class LinkPreviewAttributes(BaseModel):
+    url: str
+
+
 class LinkPreview(Block):
-    url: HttpUrl
+    link_preview: LinkPreviewAttributes

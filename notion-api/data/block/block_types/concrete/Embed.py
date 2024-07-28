@@ -1,7 +1,11 @@
-from pydantic import HttpUrl
+from pydantic import BaseModel
 
 from Block import Block
 
 
+class EmbedAttributes(BaseModel):
+    url: str
+
+
 class Embed(Block):
-    url: HttpUrl
+    embed: EmbedAttributes

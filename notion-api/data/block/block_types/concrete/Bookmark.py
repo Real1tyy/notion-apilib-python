@@ -1,8 +1,12 @@
-from pydantic import HttpUrl
+from pydantic import BaseModel
 
 from Block import Block
 
 
-class Bookmark(Block):
-    url: HttpUrl
+class BookmarkAttributes(BaseModel):
+    url: str
     caption: list[str]
+
+
+class Bookmark(Block):
+    bookmark: BookmarkAttributes
