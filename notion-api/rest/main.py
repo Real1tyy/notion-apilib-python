@@ -15,14 +15,28 @@ if __name__ == "__main__":
     with open(file_path, "r") as file:
         lines = file.readlines()
 
+    json_response = blocks_provider.retrieve_block("2b12d5fb458944219f34c81f30ec0bb1")
+
+    print(json_response)
+    if isinstance(json_response, Success):
+        json_response = json_response.unwrap()
+    json = json_response.model_dump(mode='json')
+    print(json)
+
+    # print(blocks_provider.update_block(json))
+
     # result = blocks_provider.retrieve_block("4b81ffd2ec3a4132a5835385f3b560de")
     # if isinstance(result, Success):
     #     result = result.unwrap()
     #     print(result)
-    result2 = blocks_provider.retrieve_block("a0a0b919e15646ba833809c1dd555c6e")
-    if isinstance(result2, Success):
-        result = result2.unwrap()
-        print(result2)
+    # result2 = blocks_provider.retrieve_block("a0a0b919e15646ba833809c1dd555c6e")
+    # result2 = blocks_provider.retrieve_block("fb9f31bb7ec2433bb0967d8b3b6fb18e")
+    # if isinstance(result2, Success):
+    #     result = result2.unwrap()
+    #     last = result.children[-1]
+    #     print(last)
+    #     last.plain_text = "Hello World"
+    #     print(blocks_provider.update_block(last))
     # result2 = blocks_provider.retrieve_block_children("8c22d4e710dc4b68b52cdc39f92f2355")
     # print(result2)
 

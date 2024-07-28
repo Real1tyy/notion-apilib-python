@@ -7,7 +7,7 @@ from general.Object import Object
 from validation.validators import icon_validator
 
 
-class MajorObject(ABC, Object):
+class MajorObject(Object, ABC):
     icon: Annotated[str, BeforeValidator(icon_validator)]
     cover: Optional[str] = None
     url: Optional[AnyUrl] = None

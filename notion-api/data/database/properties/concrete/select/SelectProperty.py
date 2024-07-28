@@ -13,6 +13,6 @@ class SelectProperty(Property):
     @classmethod
     @catch_exceptions
     def extract_relation_attributes(cls, v: json_):
-        select = v.pop('select')
+        select = v.pop('data/database/properties/concrete/select')
         v.update(select)
         return v

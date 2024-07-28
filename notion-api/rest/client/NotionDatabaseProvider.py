@@ -7,7 +7,7 @@ from returns.result import Result, Success, Failure
 from client.api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
 from client.api_requests.custom_types import json_
 from client.api_requests.errors.CustomError import CustomError
-from database.Database import Database
+from Database import Database
 
 
 @dataclass

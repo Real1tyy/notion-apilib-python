@@ -8,7 +8,7 @@ from custom_types import json_
 from validation.exceptions import catch_exceptions
 
 
-class Heading(ABC, Block):
+class Heading(Block, ABC):
     text: str
     color: HeadingColor
     is_toggleable: bool
