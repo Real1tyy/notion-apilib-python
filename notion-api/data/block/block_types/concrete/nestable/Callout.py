@@ -1,6 +1,9 @@
 from Block import Block
+from Emoji import Emoji
+from RichText import RichText
 
 
 class Callout(Block):
-    text: str
-    icon: str  # Adjust as needed, could be an object or URL
+    rich_text: list[RichText]
+    icon: Emoji
+    color: str
