@@ -1,4 +1,5 @@
 import datetime
+from abc import ABC
 from typing import Annotated
 from uuid import UUID
 
@@ -8,7 +9,7 @@ from pydantic.types import UuidVersion
 from validation.validators import parent_validator
 
 
-class Object(BaseModel, use_enum_values=True, from_attributes=True):
+class Object(ABC, BaseModel, use_enum_values=True, from_attributes=True):
     id: Annotated[UUID, UuidVersion(4)]
     object: str
 

@@ -1,3 +1,5 @@
+from abc import ABC
+
 from pydantic import model_validator
 
 from Block import Block
@@ -6,7 +8,7 @@ from custom_types import json_
 from validation.exceptions import catch_exceptions
 
 
-class Heading(Block):
+class Heading(ABC, Block):
     text: str
     color: HeadingColor
     is_toggleable: bool
