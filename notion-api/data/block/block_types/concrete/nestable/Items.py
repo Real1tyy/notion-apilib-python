@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from Block import Block
 from RichText import RichText
@@ -8,7 +8,7 @@ from RichText import RichText
 
 class Items(BaseModel):
     color: str
-    children: list[Block] = None
+    children: list[Block] = Field(default_factory=list, exclude=True)
     rich_text: list[RichText]
 
 

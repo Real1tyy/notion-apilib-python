@@ -1,5 +1,6 @@
 from abc import ABC
-from typing import Any
+
+from pydantic import Field
 
 from Object import Object
 from block_types.BlockType import BlockType
@@ -8,4 +9,4 @@ from block_types.BlockType import BlockType
 class Block(Object, ABC):
     type: BlockType
     has_children: bool
-    children: list[Any] = None
+    children: list['Block'] = Field(default=[], exclude=True)

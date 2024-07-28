@@ -17,13 +17,14 @@ if __name__ == "__main__":
     with open(file_path, "r") as file:
         lines = file.readlines()
 
-    json_response = blocks_provider.retrieve_block("c9fd96b14f7d438eabcaa414b5ee5386")
+    json_response = blocks_provider.retrieve_block("2d8d1ed0991545d0a344658ec5df1bd7")
 
     if isinstance(json_response, Success):
         json_response = json_response.unwrap()
+        print(json_response.children)
     data = json_response.model_dump(mode='json', exclude_none=True)
+    print(data)
     print(json.dumps(data, indent=4))
-    print(blocks_provider.update_block(json_response))
 
     # print(blocks_provider.update_block(json))
 
