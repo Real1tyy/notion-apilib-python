@@ -1,6 +1,6 @@
-from general.MajorObject import MajorObject
-from page.PageProperties import PagePropertiesDTO
+from Object import MajorObject
 
 
 class Page(MajorObject):
-    properties: PagePropertiesDTO
+    pass
+    # properties: PagePropertyType

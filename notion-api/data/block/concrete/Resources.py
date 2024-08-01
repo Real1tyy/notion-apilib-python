@@ -1,85 +1,28 @@
-from typing import Optional, Literal
-
-from pydantic import BaseModel
+from typing import Optional, Type, TypeVar
 
 from Block import Block, _create_block_object
 from BlockType import BlockType
 from FileObject import External, FileObject
 from Parent import Parent
-from RichText import RichText
+from ResourcesAttributes import FileAttributes, determine_file_type, ResourcesAttributes
 
-file_type = Literal['external', 'file']
-
-
-def determine_file_type(external: Optional[External], file: Optional[FileObject]) -> file_type:
-    if external is None and file is None:
-        raise ValueError("Either external or file should be provided")
-    if external is not None:
-        return "external"
-    else:
-        return "file"
+T = TypeVar('T', bound='Block')
 
 
-class ResourcesAttributes(BaseModel):
-    type: file_type
-    external: Optional[External] = None
-    file: Optional[FileObject] = None
-
-
-class FileAttributes(ResourcesAttributes):
-    caption: list[RichText]
-    name: str
-
-
-class File(Block):
-    file: FileAttributes
-
-
-def create_file_object(
-        parent: Parent, caption: list[RichText], name: str, external: Optional[External] = None,
-        file: Optional[FileObject] = None) -> File:
+def _create_resources_object(
+        resource: Type[T], parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> T:
     """
-    Factory method to create File object
+    Factory method to create Resources object
+    :param resource: the class of the resource to create
     :param parent: parent object
-    :param caption: caption for the file
-    :param name: name of the file
-    :param external: external file details (optional)
+    :param external: external details (optional)
     :param file: internal file details (optional)
-    :return: newly created File Object
+    :return: newly created Resources Object
     """
     _type = determine_file_type(external, file)
 
     return _create_block_object(
-        File,
-        parent=parent,
-        block_type=BlockType.FILE,
-        file=FileAttributes(
-            type=_type,
-            external=external,
-            file=file,
-            caption=caption,
-            name=name
-        )
-    )
-
-
-class Image(Block):
-    image: ResourcesAttributes
-
-
-def create_image_object(
-        parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> Image:
-    """
-    Factory method to create Image object
-    :param parent: parent object
-    :param external: external image details (optional)
-    :param file: internal image details (optional)
-    :return: newly created Image Object
-    """
-    _type = determine_file_type(external, file)
-
-    return _create_block_object(
-        Image,
+        resource,
         parent=parent,
         block_type=BlockType.IMAGE,
         image=ResourcesAttributes(
@@ -90,52 +33,67 @@ def create_image_object(
     )
 
 
+class File(Block):
+    file: FileAttributes
+
+
+class Image(Block):
+    image: ResourcesAttributes
+
+
 class Pdf(Block):
     pdf: ResourcesAttributes
-
-
-def create_pdf_object(parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> Pdf:
-    """
-    Factory method to create Pdf object
-    :param parent: parent object
-    :param external: external pdf details (optional)
-    :param file: internal pdf details (optional)
-    :return: newly created Pdf Object
-    """
-    _type = determine_file_type(external, file)
-    return _create_block_object(
-        Pdf,
-        parent=parent,
-        block_type=BlockType.PDF,
-        pdf=ResourcesAttributes(
-            type=_type,
-            external=external,
-            file=file
-        )
-    )
 
 
 class Video(Block):
     video: ResourcesAttributes
 
 
+def create_file_object(parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> File:
+    """
+    Factory method to create a File object.
+
+    :param parent: The parent object to which this file belongs.
+    :param external: Optional external details for the file.
+    :param file: Optional internal file details.
+    :return: A newly created File object.
+    """
+    return _create_resources_object(File, parent, external, file)
+
+
+def create_image_object(
+        parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> Image:
+    """
+    Factory method to create an Image object.
+
+    :param parent: The parent object to which this image belongs.
+    :param external: Optional external details for the image.
+    :param file: Optional internal file details.
+    :return: A newly created Image object.
+    """
+    return _create_resources_object(Image, parent, external, file)
+
+
+def create_pdf_object(parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> Pdf:
+    """
+    Factory method to create a Pdf object.
+
+    :param parent: The parent object to which this PDF belongs.
+    :param external: Optional external details for the PDF.
+    :param file: Optional internal file details.
+    :return: A newly created Pdf object.
+    """
+    return _create_resources_object(Pdf, parent, external, file)
+
+
 def create_video_object(
         parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> Video:
     """
-    Factory method to create Video object
-    :param parent: parent object
-    :param external: external video details (optional)
-    :param file: internal video details (optional)
-    :return: newly created Video Object
+    Factory method to create a Video object.
+
+    :param parent: The parent object to which this video belongs.
+    :param external: Optional external details for the video.
+    :param file: Optional internal file details.
+    :return: A newly created Video object.
     """
-    _type = determine_file_type(external, file)
-    return _create_block_object(
-        Video,
-        parent=parent,
-        block_type=BlockType.VIDEO,
-        video=ResourcesAttributes(
-            type=_type,
-            external=external,
-            file=file
-        )
-    )
+    return _create_resources_object(Video, parent, external, file)
