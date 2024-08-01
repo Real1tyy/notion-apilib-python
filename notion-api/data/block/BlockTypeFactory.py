@@ -1,22 +1,22 @@
 from pipes import Template
 
 from Block import Block
+from Bookmark import Bookmark
+from Callout import Callout
 from Child import ChildDatabase, ChildPage
+from Code import Code
+from Embed import Embed
+from Equation import Equation
 from Heading import Heading1, Heading2, Heading3
 from Items import BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle
 from LinkPreview import LinkPreview
+from Mention import Mention
+from Other import Divider, Breadcrumb, ColumnList, Unsupported
 from Resources import FileObject
 from Resources import Image, Pdf, Video
 from SyncedBlock import SyncedBlock
 from Tables import Table
 from Tables import TableOfContents, TableRow, Column
-from block_types.concrete.Bookmark import Bookmark
-from block_types.concrete.Code import Code
-from block_types.concrete.Embed import Embed
-from block_types.concrete.Equation import Equation
-from block_types.concrete.Mention import Mention
-from block_types.concrete.Other import Divider, Breadcrumb, ColumnList, Unsupported
-from block_types.concrete.nestable.Callout import Callout
 from custom_types import json_
 
 

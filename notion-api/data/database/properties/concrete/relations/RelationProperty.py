@@ -4,7 +4,7 @@ from uuid import UUID
 from pydantic import model_validator
 from pydantic.types import UuidVersion
 
-from client.api_requests.custom_types import json_
+from custom_types import json_
 from database.properties.Property import Property
 from validation.exceptions import catch_exceptions
 

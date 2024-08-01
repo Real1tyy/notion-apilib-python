@@ -8,3 +8,7 @@ class Annotations(BaseModel):
     underline: bool
     code: bool
     color: str
+
+
+def create_basic_annotations_object() -> Annotations:
+    return Annotations(bold=False, italic=False, strikethrough=False, underline=False, code=False, color='default')

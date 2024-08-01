@@ -2,10 +2,10 @@ from typing import Optional
 
 from pydantic import BaseModel
 
-from Annotations import Annotations
+from Annotations import Annotations, create_basic_annotations_object
 from Equation import Equation
 from Mention import Mention
-from Text import Text
+from Text import Text, create_text_object
 
 
 class RichText(BaseModel):
@@ -16,3 +16,13 @@ class RichText(BaseModel):
     annotations: Annotations
     plain_text: str
     href: Optional[str]
+
+
+def create_basic_rich_text_object(text: str) -> RichText:
+    return RichText(
+        type='text',
+        text=create_text_object(text),
+        annotations=create_basic_annotations_object(),
+        plain_text=text,
+        href=None
+    )

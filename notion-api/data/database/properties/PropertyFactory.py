@@ -1,4 +1,4 @@
-from client.api_requests.custom_types import json_
+from custom_types import json_
 from database.properties.PropertyType import PropertyType
 
 
