@@ -1,9 +1,7 @@
-import json
-
 from dotenv import load_dotenv
+from returns.result import Success
 
 from Container import Container
-from Page import Page
 
 if __name__ == "__main__":
     load_dotenv()
@@ -14,23 +12,20 @@ if __name__ == "__main__":
     blocks_provider = container.notion_block_provider()
     page_provider = container.notion_page_provider()
 
-    # file_path = "links"
-    # with open(file_path, "r") as file:
-    #     lines = file.readlines()
-    # for line in lines:
-    #     if line != lines[4]:
-    #         continue
-    #     result = database_provider.retrieve_database(line.strip())
-    #     if isinstance(result, Success):
-    #         x = result.unwrap()
-    #         print(type(x))
-    #         print(x)
-    #     if isinstance(result, Failure):
-    #         print(result.unwrap())
+    file_path = "links"
+    with open(file_path, "r") as file:
+        lines = file.readlines()
+    for line in lines:
+        if line != lines[4]:
+            continue
+        result = database_provider.retrieve_database(line.strip())
+        if isinstance(result, Success):
+            x = result.unwrap()
+            print(x)
     response = page_provider.retrieve_page("c8607ddadf004e28b9c0bec69e41ffe1")
-    print(json.dumps(response.json(), indent=4))
-
-    print(Page(**(response.json())))
+    # print(json.dumps(response.json(), indent=4))
+    #
+    # print(Page(**(response.json())))
 
     # response = notion_client.query_database("1a91e289d5d9470d9e30ff1dfde63c60")
     # print(len(response["results"]))

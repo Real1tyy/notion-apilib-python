@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 from typing import Optional
 
@@ -26,8 +27,15 @@ class NotionDatabaseProvider:
     def retrieve_database(self, database_id: str) -> Result[CustomError, Database]:
         response = self.notion_client.retrieve_database(database_id)
         if response.status_code == 200:
+            print(json.dumps(response.json(), indent=4))
             return Success(Database(**response.json()))
         return Failure(CustomError(response.status_code, response.text))
 
     def update_database(self, database_id: str, data: json_) -> Response:
         return self.notion_client.update_database(database_id, data)
+
+# how to retrieve the latest results from a Notion database
+# {
+#  "timestamp": "last_edited_time",
+#  "direction": "descending"
+# }

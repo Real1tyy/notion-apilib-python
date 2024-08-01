@@ -5,7 +5,7 @@ from requests import Response
 from returns.result import Result, Success, Failure
 
 from Block import Block
-from BlockTypeFactory import BlockTypeFactory
+from BlockTypeFactory import create_concrete_block_type
 from CustomError import CustomError
 from client.api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
 from custom_types import json_
@@ -145,7 +145,7 @@ class NotionBlockProvider:
         if response.status_code != SUCCESS:
             return Failure(CustomError(response.status_code, response.text))
 
-        block = BlockTypeFactory.create_concrete_type_dto(response.json())
+        block = create_concrete_block_type(response.json())
         if block.has_children and retrieve_children:
             result = self.retrieve_block_children(block)
             if isinstance(result, Failure):

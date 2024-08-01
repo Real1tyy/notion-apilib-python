@@ -2,7 +2,10 @@ from dataclasses import dataclass
 from typing import Optional
 
 from requests import Response
+from returns.result import Result, Success, Failure
 
+from CustomError import CustomError
+from Page import Page
 from client.api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
 from custom_types import json_
 
@@ -11,8 +14,11 @@ from custom_types import json_
 class NotionPageProvider:
     notion_client: NotionAPIPagesClient
 
-    def create_page(self, data: json_) -> Response:
-        return self.notion_client.create_page(data)
+    def create_page(self, page: Page) -> Result[CustomError, bool]:
+        data = page.model_dump(mode='json', exclude_none=True, exclude={'id', 'archived', 'in_trash'})
+        result = self.notion_client.create_page(data)
+        return Success(True) if result.status_code == 200 \
+            else Failure(CustomError(message=result.text, status_code=result.status_code))
 
     def retrieve_page(self, page_id: str, query_params: Optional[str] = None) -> Response:
         return self.notion_client.retrieve_page(page_id, query_params)
@@ -23,9 +29,3 @@ class NotionPageProvider:
 
     def update_page_properties(self, page_id: str, data: json_) -> Response:
         return self.notion_client.update_page_properties(page_id, data)
-
-# how to retrieve the latest results from a Notion database
-# {
-#  "timestamp": "last_edited_time",
-#  "direction": "descending"
-# }
