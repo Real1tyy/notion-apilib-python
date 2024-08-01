@@ -1,34 +1,156 @@
+from typing import Optional
+
 from pydantic import BaseModel
 
-from Block import Block
+from Block import Block, _create_block_object
+from BlockType import BlockType
+from Parent import Parent
 from RichText import RichText
 
 
 class TableAttributes(BaseModel):
+    """
+    Attributes for table blocks.
+
+    :param has_column_header: Whether the table has a column header.
+    :param has_row_header: Whether the table has a row header.
+    :param table_width: The width of the table.
+    """
     has_column_header: bool
     has_row_header: bool
     table_width: int
 
 
 class Table(Block):
+    """
+    Table block.
+
+    :param table: Attributes for the table block.
+    """
     table: TableAttributes
 
 
 class TableRowAttributes(BaseModel):
+    """
+    Attributes for table row blocks.
+
+    :param cells: List of rich text elements representing the cells.
+    """
     cells: list[RichText]
 
 
 class TableRow(Block):
+    """
+    Table row block.
+
+    :param table_row: Attributes for the table row block.
+    """
     table_row: TableRowAttributes
 
 
 class TableOfContentsAttributes(BaseModel):
+    """
+    Attributes for table of contents blocks.
+
+    :param color: Color of the table of contents text.
+    """
     color: str
 
 
 class TableOfContents(Block):
+    """
+    Table of contents block.
+
+    :param table_of_contents: Attributes for the table of contents block.
+    """
     table_of_contents: TableOfContentsAttributes
 
 
 class Column(Block):
+    """
+    Column block.
+    """
     pass
+
+
+def create_table_object(
+        parent: Parent, has_column_header: bool, has_row_header: bool, table_width: int,
+        children: Optional[list[Block]] = None) -> Table:
+    """
+    Factory method to create a Table object.
+
+    :param parent: The parent object.
+    :param has_column_header: Whether the table has a column header.
+    :param has_row_header: Whether the table has a row header.
+    :param table_width: The width of the table.
+    :param children: List of child blocks (optional).
+    :return: A new Table object.
+    """
+    return _create_block_object(
+        Table,
+        parent=parent,
+        block_type=BlockType.TABLE,
+        table=TableAttributes(
+            has_column_header=has_column_header,
+            has_row_header=has_row_header,
+            table_width=table_width
+        ),
+        children=children
+    )
+
+
+def create_table_row_object(parent: Parent, cells: list[RichText], children: Optional[list[Block]] = None) -> TableRow:
+    """
+    Factory method to create a TableRow object.
+
+    :param parent: The parent object.
+    :param cells: The rich text content of the cells.
+    :param children: List of child blocks (optional).
+    :return: A new TableRow object.
+    """
+    return _create_block_object(
+        TableRow,
+        parent=parent,
+        block_type=BlockType.TABLE_ROW,
+        table_row=TableRowAttributes(
+            cells=cells
+        ),
+        children=children
+    )
+
+
+def create_table_of_contents_object(
+        parent: Parent, color: str, children: Optional[list[Block]] = None) -> TableOfContents:
+    """
+    Factory method to create a TableOfContents object.
+
+    :param parent: The parent object.
+    :param color: The color of the table of contents text.
+    :param children: List of child blocks (optional).
+    :return: A new TableOfContents object.
+    """
+    return _create_block_object(
+        TableOfContents,
+        parent=parent,
+        block_type=BlockType.TABLE_OF_CONTENTS,
+        table_of_contents=TableOfContentsAttributes(
+            color=color
+        ),
+        children=children
+    )
+
+
+def create_column_object(parent: Parent, children: Optional[list[Block]] = None) -> Column:
+    """
+    Factory method to create a Column object.
+
+    :param parent: The parent object.
+    :param children: List of child blocks (optional).
+    :return: A new Column object.
+    """
+    return _create_block_object(
+        Column,
+        parent=parent,
+        block_type=BlockType.COLUMN,
+        children=children
+    )

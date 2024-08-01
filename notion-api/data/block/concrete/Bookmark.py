@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
-from Block import Block
+from Block import Block, _create_block_object
+from BlockType import BlockType
 from Parent import Parent
 from RichText import RichText
 
@@ -14,7 +15,7 @@ class Bookmark(Block):
     bookmark: BookmarkAttributes
 
 
-def create_bookmark_object(parent: Parent, url: str, caption: list[str]) -> Bookmark:
+def create_bookmark_object(parent: Parent, url: str, caption: list[RichText]) -> Bookmark:
     """
     Factory method to create Bookmark object
     :param parent: parent object
@@ -22,6 +23,9 @@ def create_bookmark_object(parent: Parent, url: str, caption: list[str]) -> Book
     :param url: url
     :return: newly created Code Object
     """
-    return Bookmark(
-        object="block", archived=False, in_trash=False, parent=parent, type=BlockType.CODE, has_children=False,
-        children=[], code=CodeAttributes(caption=caption, rich_text=rich_text, language=language))
+    return _create_block_object(
+        Bookmark,
+        parent=parent,
+        block_type=BlockType.CODE,
+        bookmark=BookmarkAttributes(caption=caption, url=url)
+    )
