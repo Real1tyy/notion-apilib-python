@@ -4,10 +4,10 @@ from typing import Optional
 from requests import Response
 from returns.result import Result, Success, Failure
 
-from client.api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
-from client.api_requests.custom_types import json_
-from client.api_requests.errors.CustomError import CustomError
 from Database import Database
+from client.api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
+from client.api_requests.errors.CustomError import CustomError
+from custom_types import json_
 
 
 @dataclass

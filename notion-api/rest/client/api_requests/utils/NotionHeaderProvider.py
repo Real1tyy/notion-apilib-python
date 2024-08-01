@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from client.api_requests.constants.notion import NOTION_VERSION
-from client.api_requests.custom_types import json_
+from custom_types import json_
 
 
 @dataclass

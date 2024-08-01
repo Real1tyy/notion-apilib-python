@@ -4,7 +4,7 @@ from typing import Optional
 from requests import Response
 
 from client.api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
-from client.api_requests.custom_types import json_
+from custom_types import json_
 
 
 @dataclass

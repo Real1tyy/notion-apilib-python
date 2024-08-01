@@ -1,18 +1,17 @@
-from typing import Optional, Annotated, Literal
+from typing import Optional, Literal
 from uuid import UUID
 
 from pydantic import BaseModel
-from pydantic.types import UuidVersion
 
-parents_types = Literal['database', 'page', 'block', 'workspace']
+parents_types = Literal['database_id', 'page_id', 'block_id', 'workspace']
 
 
 class Parent(BaseModel):
     type: parents_types
-    database_id: Optional[Annotated[UUID, UuidVersion(4)]] = None
-    page_id: Optional[Annotated[UUID, UuidVersion(4)]] = None
+    database_id: Optional[UUID] = None
+    page_id: Optional[UUID] = None
     workspace: Optional[Literal[True]] = None
-    block_id: Optional[Annotated[UUID, UuidVersion(4)]] = None
+    block_id: Optional[UUID] = None
 
     def get_parent_id(self) -> str:
         """
@@ -35,14 +34,14 @@ def create_parent_from_object(parent: parents_types) -> Parent:
     """
     Set the parent of the object, parent parameter should be subtype of Object class
     """
-    if parent.object == "block":
-        return Parent(type="block", block_id=parent.id)
+    if parent.object == "block_id":
+        return Parent(type="block_id", block_id=parent.id)
 
-    if parent.object == "page":
-        return Parent(type="page", page_id=parent.id)
+    if parent.object == "page_id":
+        return Parent(type="page_id", page_id=parent.id)
 
-    if parent.object == "database":
-        return Parent(type="database", database_id=parent.id)
+    if parent.object == "database_id":
+        return Parent(type="database_id", database_id=parent.id)
 
     if parent.object == "workspace":
         return Parent(type="workspace")
@@ -53,14 +52,14 @@ def create_parent(parent_type: parents_types, parent_id: str = None) -> Parent:
     Set the parent of the object, parent parameter should be subtype of Object class
     """
     result_id = UUID(parent_id)
-    if parent_type == "block":
-        return Parent(type="block", block_id=result_id)
+    if parent_type == "block_id":
+        return Parent(type="block_id", block_id=result_id)
 
-    if parent_type == "page":
-        return Parent(type="page", page_id=result_id)
+    if parent_type == "page_id":
+        return Parent(type="page_id", page_id=result_id)
 
-    if parent_type == "database":
-        return Parent(type="database", database_id=result_id)
+    if parent_type == "database_id":
+        return Parent(type="database_id", database_id=result_id)
 
     if parent_type == "workspace":
         return Parent(type="workspace")
