@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 from typing import Optional
 
@@ -8,6 +9,7 @@ from CustomError import CustomError
 from Page import Page
 from client.api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
 from custom_types import json_
+from status_codes import SUCCESS
 
 
 @dataclass
@@ -21,7 +23,14 @@ class NotionPageProvider:
             else Failure(CustomError(message=result.text, status_code=result.status_code))
 
     def retrieve_page(self, page_id: str, query_params: Optional[str] = None) -> Response:
-        return self.notion_client.retrieve_page(page_id, query_params)
+        response = self.notion_client.retrieve_page(page_id, query_params)
+        if response.status_code != SUCCESS:
+            return Failure(CustomError(response.status_code, response.text))
+
+        print(json.dumps(response.json(), indent=4))
+
+        page = Page(**response.json())
+        return Success(page)
 
     def retrieve_page_property_item(self, page_id: str, property_id: str, query_params: Optional[str] = None) \
             -> Response:

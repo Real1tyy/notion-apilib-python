@@ -18,9 +18,17 @@ class FilesDatabase(DatabaseProperty):
     pass
 
 
-class UrlPageProperty(PageProperty):
+class PhoneNumberPage(PageProperty):
+    phone_number: str
+
+
+class PhoneNumberDatabase(DatabaseProperty):
     pass
 
 
-class PhoneNumberPageProperty(PageProperty):
+class UrlPage(PageProperty):
+    url: str
+
+
+class UrlDatabase(DatabaseProperty):
     pass

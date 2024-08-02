@@ -1,17 +1,22 @@
-from pydantic import model_validator
+from datetime import datetime
+from typing import Literal, Optional
 
-from custom_types import json_
-from database.properties.Property import Property
-from validation.exceptions import catch_exceptions
+from pydantic import BaseModel
+
+from Property import PageProperty, DatabaseProperty
 
 
-class FormulaProperty(Property):
+class FormulaStructure(BaseModel):
+    type: Literal['boolean', 'date', 'number', 'string']
+    number: Optional[float] = None
+    boolean: Optional[bool] = None
+    date: Optional[datetime] = None
+    string: Optional[str] = None
+
+
+class FormulaPage(PageProperty):
+    formula: FormulaStructure
+
+
+class FormulaDatabase(DatabaseProperty):
     expression: str
-
-    @model_validator(mode='before')
-    @classmethod
-    @catch_exceptions
-    def extract_relation_attributes(cls, v: json_):
-        formula = v.pop('formula')
-        v.update(formula)
-        return v

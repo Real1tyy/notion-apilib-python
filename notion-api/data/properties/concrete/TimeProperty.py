@@ -12,7 +12,7 @@ class CreatedTimeDatabase(DatabaseProperty):
 
 
 class LastEditedTimePage(PageProperty):
-    pass
+    last_edited_time: datetime
 
 
 class LastEditedTimeDatabase(DatabaseProperty):

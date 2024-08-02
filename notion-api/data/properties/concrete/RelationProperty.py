@@ -29,7 +29,7 @@ class RelationDatabase(DatabaseProperty):
 class RollupStructure(BaseModel):
     type: Literal['array', 'date', 'number', 'incomplete', 'unsupported']
     function: str
-    array: Optional[Any] = None
+    array: Optional[list[Any]] = None
     date: Optional[datetime] = None
     number: Optional[float] = None
     incomplete: Optional[Any] = None

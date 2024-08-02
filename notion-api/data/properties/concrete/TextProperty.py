@@ -11,4 +11,8 @@ class RichTextDatabase(DatabaseProperty):
 
 
 class TitlePage(PageProperty):
+    title: list[RichText]
+
+
+class TitleDatabase(DatabaseProperty):
     pass

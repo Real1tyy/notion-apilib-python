@@ -1,17 +1,30 @@
-from pydantic import model_validator
+from typing import Optional
 
-from custom_types import json_
-from database.properties.Property import Property
-from validation.exceptions import catch_exceptions
+from pydantic import BaseModel
+
+from Property import PageProperty, DatabaseProperty
 
 
-class NumberProperty(Property):
+class NumberPage(PageProperty):
+    number: float
+
+
+class NumberStructure(BaseModel):
     format: str
 
-    @model_validator(mode='before')
-    @classmethod
-    @catch_exceptions
-    def extract_relation_attributes(cls, v: json_):
-        number = v.pop('number')
-        v.update(number)
-        return v
+
+class NumberDatabase(DatabaseProperty):
+    number: NumberStructure
+
+
+class UniqueIdStructure(BaseModel):
+    number: float
+    prefix: Optional[str] = None
+
+
+class UniqueIdPage(PageProperty):
+    unique_id: UniqueIdStructure
+
+
+class UniqueIdDatabase(DatabaseProperty):
+    pass

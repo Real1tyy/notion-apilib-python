@@ -1,46 +1,48 @@
-from CheckboxProperty import CheckboxProperty
-from Date import Date
-from FormulaProperty import FormulaProperty
-from MultiSelectProperty import MultiSelectProperty
-from NumberProperty import NumberProperty
+from DateProperty import DatePage, DateDatabase
+from FormulaProperty import FormulaPage, FormulaDatabase
+from NumberProperty import NumberPage, NumberDatabase, UniqueIdDatabase, UniqueIdPage
 from PropertyType import PropertyType
-from RelationProperty import RelationProperty
-from ResourcesProperties import PhoneNumberProperty, UrlProperty, EmailProperty, FilesProperty
-from RichTextProperty import RichTextProperty
-from RollupProperty import RollupProperty
-from SelectProperty import SelectProperty
-from StatusProperty import StatusProperty
-from TimeProperties import CreatedTimeProperty, LastEditedTimeProperty
-from TitleProperty import TitleProperty
-from UniqueIDProperty import UniqueIDProperty
-from UsersProperties import LastEditedByProperty, CreatedByProperty, PeopleProperty
+from RelationProperty import RelationPage, RelationDatabase, RollupDatabase, RollupPage
+from ResourcesProperty import EmailPage, FilesPage, PhoneNumberPage, FilesDatabase, EmailDatabase, \
+    PhoneNumberDatabase, UrlDatabase, UrlPage
+from SelectProperty import CheckboxPage, MultiSelectPage, CheckboxDatabase, MultiSelectDatabase, StatusDatabase, \
+    StatusPage, SelectDatabase, SelectPage
+from TextProperty import TitleDatabase, TitlePage, RichTextDatabase, RichTextPage
+from TimeProperty import CreatedTimePage, LastEditedTimePage, CreatedTimeDatabase, LastEditedTimeDatabase
+from UsersProperty import CreatedByPage, LastEditedByPage, PeoplePage, CreatedByDatabase, LastEditedByDatabase, \
+    PeopleDatabase
 from custom_types import json_
 
 PROPERTY_TYPE_MAP = {
-    "title": TitleProperty,
-    "rich_text": RichTextProperty,
-    "number": NumberProperty,
-    "select": SelectProperty,
-    "multi_select": MultiSelectProperty,
-    "date": Date,
-    "people": PeopleProperty,
-    "files": FilesProperty,
-    "checkbox": CheckboxProperty,
-    "url": UrlProperty,
-    "email": EmailProperty,
-    "phone_number": PhoneNumberProperty,
-    "formula": FormulaProperty,
-    "relation": RelationProperty,
-    "rollup": RollupProperty,
-    "created_time": CreatedTimeProperty,
-    "created_by": CreatedByProperty,
-    "last_edited_time": LastEditedTimeProperty,
-    "last_edited_by": LastEditedByProperty,
-    "unique_id": UniqueIDProperty,
-    "status": StatusProperty,
+    "checkbox": (CheckboxPage, CheckboxDatabase),
+    "created_by": (CreatedByPage, CreatedByDatabase),
+    "created_time": (CreatedTimePage, CreatedTimeDatabase),
+    "date": (DatePage, DateDatabase),
+    "email": (EmailPage, EmailDatabase),
+    "files": (FilesPage, FilesDatabase),
+    "formula": (FormulaPage, FormulaDatabase),
+    "last_edited_by": (LastEditedByPage, LastEditedByDatabase),
+    "last_edited_time": (LastEditedTimePage, LastEditedTimeDatabase),
+    "multi_select": (MultiSelectPage, MultiSelectDatabase),
+    "number": (NumberPage, NumberDatabase),
+    "people": (PeoplePage, PeopleDatabase),
+    "phone_number": (PhoneNumberPage, PhoneNumberDatabase),
+    "relation": (RelationPage, RelationDatabase),
+    "rollup": (RollupPage, RollupDatabase),
+    "status": (StatusPage, StatusDatabase),
+    "unique_id": (UniqueIdPage, UniqueIdDatabase),
+    "url": (UrlPage, UrlDatabase),
+    "select": (SelectPage, SelectDatabase),
+    "title": (TitlePage, TitleDatabase),
+    "rich_text": (RichTextPage, RichTextDatabase)
 }
 
 
-def create_concrete_property_type(data: json_):
+def create_concrete_page_property_type(data: json_):
     property_type = PropertyType(data["type"])
-    return PROPERTY_TYPE_MAP[property_type](**data)
+    return PROPERTY_TYPE_MAP[property_type][0](**data)
+
+
+def create_concrete_database_property_type(data: json_):
+    property_type = PropertyType(data["type"])
+    return PROPERTY_TYPE_MAP[property_type][0][1](**data)

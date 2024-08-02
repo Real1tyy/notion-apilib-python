@@ -1,8 +1,9 @@
 from Property import PageProperty, DatabaseProperty
+from UserObject import User
 
 
 class CreatedByPage(PageProperty):
-    pass
+    created_by: User
 
 
 class CreatedByDatabase(DatabaseProperty):
@@ -10,7 +11,7 @@ class CreatedByDatabase(DatabaseProperty):
 
 
 class LastEditedByPage(PageProperty):
-    pass
+    last_edited_by: User
 
 
 class LastEditedByDatabase(DatabaseProperty):
@@ -18,7 +19,7 @@ class LastEditedByDatabase(DatabaseProperty):
 
 
 class PeoplePage(PageProperty):
-    pass
+    people: list[User]
 
 
 class PeopleDatabase(DatabaseProperty):
