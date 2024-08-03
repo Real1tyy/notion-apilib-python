@@ -32,7 +32,7 @@ class Container(containers.DeclarativeContainer):
 
     notion_api_pages_client: NotionAPIPagesClient = providers.Singleton(
         NotionAPIPagesClient,
-        requests_provider=requests_client
+        requests_provider=requests_client,
     )
 
     notion_api_databases_client: NotionAPIDatabasesClient = providers.Singleton(
@@ -47,7 +47,8 @@ class Container(containers.DeclarativeContainer):
 
     notion_page_provider: NotionPageProvider = providers.Singleton(
         NotionPageProvider,
-        notion_client=notion_api_pages_client
+        notion_client=notion_api_pages_client,
+        block_provider=notion_block_provider
     )
 
     notion_database_provider: NotionDatabaseProvider = providers.Singleton(
