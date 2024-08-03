@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Any
 
 from pydantic import BaseModel
 
@@ -27,4 +27,4 @@ class UniqueIdPage(PageProperty):
 
 
 class UniqueIdDatabase(DatabaseProperty):
-    pass
+    unique_id: dict[str, Any]

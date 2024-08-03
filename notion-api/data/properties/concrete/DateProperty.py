@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Any
 
 from pydantic import BaseModel
 
@@ -17,4 +17,4 @@ class DatePage(PageProperty):
 
 
 class DateDatabase(DatabaseProperty):
-    pass
+    date: dict[str, Any]

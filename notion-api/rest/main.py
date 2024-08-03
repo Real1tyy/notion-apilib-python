@@ -11,24 +11,14 @@ if __name__ == "__main__":
     blocks_provider = container.notion_block_provider()
     page_provider = container.notion_page_provider()
 
-    PAGE_ID = "c8607ddadf004e28b9c0bec69e41ffe1"
-    page = page_provider.retrieve_page(PAGE_ID)
-    page = (page_provider.get_page_children(page.unwrap()))
-    print(page)
-    print(page.unwrap().content)
-
-    # file_path = "links"
-    # with open(file_path, "r") as file
-    #     lines = file.readlines()
-    # for line in lines:
-    #     if line != lines[4]:
-    #         continue
-    #     result = database_provider.retrieve_database(line.strip())
-    #     if isinstance(result, Success):
-    #         x = result.unwrap()
-    #         print(x)
-    # response = page_provider.retrieve_page("c8607ddadf004e28b9c0bec69e41ffe1")
-    # print(response.unwrap().get_properties())
+    file_path = "links"
+    with open(file_path, "r") as file:
+        lines = file.readlines()
+    for line in lines:
+        if line != lines[4]:
+            continue
+        result = database_provider.retrieve_database(line.strip())
+        database = result.unwrap()
 
     # response = notion_client.query_database("1a91e289d5d9470d9e30ff1dfde63c60")
     # print(len(response["results"]))

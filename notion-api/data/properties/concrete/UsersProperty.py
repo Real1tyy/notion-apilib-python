@@ -1,3 +1,5 @@
+from typing import Any
+
 from Property import PageProperty, DatabaseProperty
 from UserObject import User
 
@@ -7,7 +9,7 @@ class CreatedByPage(PageProperty):
 
 
 class CreatedByDatabase(DatabaseProperty):
-    pass
+    created_by: dict[str, Any]
 
 
 class LastEditedByPage(PageProperty):
@@ -15,7 +17,7 @@ class LastEditedByPage(PageProperty):
 
 
 class LastEditedByDatabase(DatabaseProperty):
-    pass
+    last_edited_by: dict[str, Any]
 
 
 class PeoplePage(PageProperty):
@@ -23,4 +25,4 @@ class PeoplePage(PageProperty):
 
 
 class PeopleDatabase(DatabaseProperty):
-    pass
+    people: dict[str, Any]

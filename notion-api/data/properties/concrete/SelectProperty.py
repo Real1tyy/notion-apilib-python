@@ -1,3 +1,4 @@
+from typing import Any
 from uuid import UUID
 
 from pydantic import BaseModel, Field
@@ -10,7 +11,7 @@ class CheckboxPage(PageProperty):
 
 
 class CheckboxDatabase(DatabaseProperty):
-    pass
+    checkbox: dict[str, Any]
 
 
 class Option(BaseModel):
@@ -48,8 +49,8 @@ class Group(Option):
 
 
 class StatusDatabaseStructure(BaseModel):
-    options: list[Option]
-    groups: list[Group]
+    options: list[Option] = Field(exclude=True)
+    groups: list[Group] = Field(exclude=True)
 
 
 class StatusDatabase(DatabaseProperty):

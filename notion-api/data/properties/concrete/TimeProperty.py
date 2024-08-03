@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Any
 
 from Property import PageProperty, DatabaseProperty
 
@@ -8,7 +9,7 @@ class CreatedTimePage(PageProperty):
 
 
 class CreatedTimeDatabase(DatabaseProperty):
-    pass
+    created_time: dict[str, Any]
 
 
 class LastEditedTimePage(PageProperty):
@@ -16,4 +17,4 @@ class LastEditedTimePage(PageProperty):
 
 
 class LastEditedTimeDatabase(DatabaseProperty):
-    pass
+    last_edited_time: dict[str, Any]

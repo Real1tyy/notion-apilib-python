@@ -18,48 +18,50 @@ class Parent(BaseModel):
         Get the parent id of the parent object
         :return: id of the parent object or 'workspace' if the parent is the root object
         """
-        if self.database_id is not None:
-            return self.database_id.hex
+        match None:
+            case self.database_id:
+                return self.database_id.hex
+            case self.page_id:
+                return self.page_id.hex
+            case self.block_id:
+                return self.block_id.hex
+            case _:
+                return "workspace"
 
-        if self.page_id is not None:
-            return self.page_id.hex
+    def set_parent_id(self, parent_type: parents_types, parent_id: Optional[UUID] = None):
+        """
+        Sets the parent id of the parent object
+        """
+        self.remove_ids()
+        match parent_type:
+            case "block_id":
+                self.block_id = parent_id
+            case "page_id":
+                self.page_id = parent_id
+            case "database_id":
+                self.database_id = parent_id
+            case _:
+                self.workspace = True
 
-        if self.block_id is not None:
-            return self.block_id.hex
-
-        return "workspace"
+    def remove_ids(self):
+        self.database_id = None
+        self.page_id = None
+        self.block_id = None
 
 
 def create_parent_from_object(parent: parents_types) -> Parent:
     """
-    Set the parent of the object, parent parameter should be subtype of Object class
+    Creates the parent of the object, parent parameter should be subtype of Object class
     """
-    if parent.object == "block_id":
-        return Parent(type="block_id", block_id=parent.id)
-
-    if parent.object == "page_id":
-        return Parent(type="page_id", page_id=parent.id)
-
-    if parent.object == "database_id":
-        return Parent(type="database_id", database_id=parent.id)
-
-    if parent.object == "workspace":
-        return Parent(type="workspace")
+    result_parent = Parent(type=parent.object)
+    result_parent.set_parent_id(parent.object, UUID(parent.id))
+    return result_parent
 
 
 def create_parent(parent_type: parents_types, parent_id: str = None) -> Parent:
     """
-    Set the parent of the object, parent parameter should be subtype of Object class
+    Creates the parent of the object
     """
-    result_id = UUID(parent_id)
-    if parent_type == "block_id":
-        return Parent(type="block_id", block_id=result_id)
-
-    if parent_type == "page_id":
-        return Parent(type="page_id", page_id=result_id)
-
-    if parent_type == "database_id":
-        return Parent(type="database_id", database_id=result_id)
-
-    if parent_type == "workspace":
-        return Parent(type="workspace")
+    parent = Parent(type=parent_type)
+    parent.set_parent_id(parent_type, UUID(parent_id))
+    return parent

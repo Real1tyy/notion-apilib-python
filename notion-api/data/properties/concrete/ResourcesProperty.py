@@ -1,3 +1,5 @@
+from typing import Any
+
 from Property import PageProperty, DatabaseProperty
 from ResourcesAttributes import ResourcesAttributes
 
@@ -7,7 +9,7 @@ class EmailPage(PageProperty):
 
 
 class EmailDatabase(DatabaseProperty):
-    pass
+    email: dict[str, Any]
 
 
 class FilesPage(PageProperty):
@@ -15,7 +17,7 @@ class FilesPage(PageProperty):
 
 
 class FilesDatabase(DatabaseProperty):
-    pass
+    files: dict[str, Any]
 
 
 class PhoneNumberPage(PageProperty):
@@ -23,7 +25,7 @@ class PhoneNumberPage(PageProperty):
 
 
 class PhoneNumberDatabase(DatabaseProperty):
-    pass
+    phone_number: dict[str, Any]
 
 
 class UrlPage(PageProperty):
@@ -31,4 +33,4 @@ class UrlPage(PageProperty):
 
 
 class UrlDatabase(DatabaseProperty):
-    pass
+    url: dict[str, Any]

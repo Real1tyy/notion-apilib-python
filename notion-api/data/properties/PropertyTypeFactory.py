@@ -45,4 +45,4 @@ def create_concrete_page_property_type(data: json_):
 
 def create_concrete_database_property_type(data: json_):
     property_type = PropertyType(data["type"])
-    return PROPERTY_TYPE_MAP[property_type][0][1](**data)
+    return PROPERTY_TYPE_MAP[property_type][1](**data)

@@ -7,6 +7,16 @@ from pydantic import BaseModel, Field
 from Property import PageProperty, DatabaseProperty
 
 
+class DualProperty(BaseModel):
+    synced_property_id: str
+    synced_property_name: str
+
+
+class SingleProperty(BaseModel):
+    single_property_id: str
+    single_property_name: str
+
+
 class RelationStructure(BaseModel):
     id: UUID
 
@@ -18,8 +28,8 @@ class RelationPage(PageProperty):
 
 class RelationDatabaseStructure(BaseModel):
     database_id: UUID
-    synced_property_id: str
-    synced_property_name: str
+    dual_property: Optional[DualProperty] = None
+    single_property: Optional[SingleProperty] = None
 
 
 class RelationDatabase(DatabaseProperty):

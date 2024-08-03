@@ -1,3 +1,5 @@
+from typing import Any
+
 from Property import PageProperty, DatabaseProperty
 from RichText import RichText
 
@@ -11,7 +13,7 @@ class RichTextPage(PageProperty):
 
 
 class RichTextDatabase(DatabaseProperty):
-    pass
+    rich_text: dict[str, Any]
 
 
 class TitlePage(PageProperty):
@@ -19,4 +21,4 @@ class TitlePage(PageProperty):
 
 
 class TitleDatabase(DatabaseProperty):
-    pass
+    title: dict[str, Any]
