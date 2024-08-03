@@ -20,7 +20,7 @@ class Object(ABC, BaseModel, use_enum_values=True, from_attributes=True, arbitra
 
 
 class MajorObject(Object, ABC):
-    icon: Icon
+    icon: Optional[Icon] = None
     cover: Optional[str] = None
     url: Optional[str] = None
     public_url: Optional[str] = None

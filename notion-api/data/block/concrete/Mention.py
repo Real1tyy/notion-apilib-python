@@ -43,7 +43,7 @@ class UserMention(BaseModel):
     id: UUID
 
 
-class MentionAttributes(BaseModel):
+class Mention(BaseModel):
     type: str
     database: Optional[DatabaseMention] = None
     date: Optional[DateMention] = None
@@ -51,10 +51,6 @@ class MentionAttributes(BaseModel):
     page: Optional[PageMention] = None
     template_mention: Optional[TemplateMention] = None
     user: Optional[UserMention] = None
-
-
-class Mention(BaseModel):
-    mention: MentionAttributes
 
 
 def create_mention_object(
@@ -82,13 +78,11 @@ def create_mention_object(
         Mention: A newly created Mention object.
     """
     return Mention(
-        mention=MentionAttributes(
-            type=mention_type,
-            database=database,
-            date=date,
-            link_preview=link_preview,
-            page=page,
-            template_mention=template_mention,
-            user=user
-        )
+        type=mention_type,
+        database=database,
+        date=date,
+        link_preview=link_preview,
+        page=page,
+        template_mention=template_mention,
+        user=user
     )

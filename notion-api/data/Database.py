@@ -4,6 +4,7 @@ from pydantic import BeforeValidator, BaseModel, Field
 from pydantic_core.core_schema import ValidationInfo
 
 from Object import MajorObject
+from Page import Page
 from Property import DatabaseProperty
 from PropertyTypeFactory import create_concrete_database_property_type
 from RichText import RichText
@@ -33,6 +34,7 @@ class Database(MajorObject):
     description: list[RichText]
     is_inline: bool
     properties: Annotated[DatabaseProperties, BeforeValidator(properties_validator)]
+    pages: list[Page] = Field(default=[], exclude=True)
 
     def get_properties(self) -> list[DatabaseProperty]:
         return self.properties.properties

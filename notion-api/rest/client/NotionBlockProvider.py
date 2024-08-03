@@ -1,8 +1,6 @@
 from dataclasses import dataclass
-from typing import Optional
 from uuid import UUID
 
-from requests import Response
 from returns.result import Result, Success, Failure
 
 from Block import Block
@@ -11,14 +9,7 @@ from CustomError import CustomError
 from client.api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
 from custom_types import json_
 from status_codes import SUCCESS, ERROR
-
-
-def _access_children(response: Response) -> Optional[json_]:
-    return response.json()['results']
-
-
-def _access_child_id(child: json_) -> str:
-    return child['id']
+from utils import _access_child_id, _access_children
 
 
 def _create_children_block_data(children_blocks: list[Block], after_block_id: str) -> json_:
