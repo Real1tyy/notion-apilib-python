@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional
+from uuid import UUID
 
 from requests import Response
 from returns.result import Result, Success, Failure
@@ -185,7 +186,15 @@ class NotionBlockProvider:
                                          or a Failure containing a CustomError if the operation fails.
          """
         block.children = []
-        response = self.notion_client.retrieve_block_children(block.id.hex)
+        result = self.retrieve_children(block.id, recursively)
+        if isinstance(result, Failure):
+            return Failure(result.failure())
+        block.children = result.unwrap()
+        return Success(block)
+
+    def retrieve_children(self, _id: UUID, recursively: bool = True) -> Result[CustomError, list[Block]]:
+        result_children = []
+        response = self.notion_client.retrieve_block_children(_id.hex)
         if response.status_code != SUCCESS:
             return Failure(CustomError(response.status_code, response.text))
 
@@ -196,10 +205,10 @@ class NotionBlockProvider:
         for block_child in children:
             child = self.retrieve_block(_access_child_id(block_child), recursively)
             if isinstance(child, Failure):
-                return child
-            block.children.append(child.unwrap())
+                return Failure(child.failure())
+            result_children.append(child.unwrap())
 
-        return Success(block)
+        return Success(result_children)
 
     def update_block(self, block: Block) -> Result[CustomError, Block]:
         """

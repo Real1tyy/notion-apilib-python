@@ -11,6 +11,12 @@ if __name__ == "__main__":
     blocks_provider = container.notion_block_provider()
     page_provider = container.notion_page_provider()
 
+    PAGE_ID = "c8607ddadf004e28b9c0bec69e41ffe1"
+    page = page_provider.retrieve_page(PAGE_ID)
+    page = (page_provider.get_page_children(page.unwrap()))
+    print(page)
+    print(page.unwrap().content)
+
     # file_path = "links"
     # with open(file_path, "r") as file
     #     lines = file.readlines()

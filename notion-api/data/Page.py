@@ -3,6 +3,7 @@ from typing import Any, Annotated
 from pydantic import BeforeValidator, BaseModel, Field
 from pydantic_core.core_schema import ValidationInfo
 
+from Block import Block
 from Object import MajorObject
 from Property import PageProperty
 from PropertyTypeFactory import create_concrete_page_property_type
@@ -29,12 +30,13 @@ def properties_validator(v: dict[str, Any], info: ValidationInfo) -> PagePropert
 
 class Page(MajorObject):
     properties: Annotated[PageProperties, BeforeValidator(properties_validator)]
+    children: list[Block] = Field(default=[])
 
     def get_properties(self) -> list[PageProperty]:
         return self.properties.properties
 
     def deserialize_json(self) -> json_:
-        data = self.model_dump(mode='json', exclude_none=True, exclude={'id', 'archived'})
+        data = self.model_dump(mode='json', exclude_none=True, exclude={'id', 'archived', 'children'})
         properties = data['properties']
         keys_to_check = {'rollup', 'formula', 'last_edited_time', 'created_time', 'unique_id'}
         to_remove = [key for key, value in properties.items() if any(k in value for k in keys_to_check)]
