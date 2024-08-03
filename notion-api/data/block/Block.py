@@ -14,9 +14,7 @@ class Block(Object, ABC):
     children: list['Block'] = Field(default=[], exclude=True)
 
 
-def _create_block_object(
-        cls: Type, parent: Parent, block_type: BlockType,
-        children: list['Block'] = None, **kwargs):
+def _create_block_object(cls: Type, parent: Parent, block_type: BlockType, children: list['Block'] = None, **kwargs):
     """
        Helper function to create block objects with common parameters pre-filled.
        :param cls: The class of the block object to create
@@ -25,7 +23,7 @@ def _create_block_object(
        :param children: The list of children blocks, if any, otherwise by default None
        :param kwargs: Additional keyword arguments specific to the block type
        :return: A new block object of the specified class
-       """
+   """
     common_params = {
         "object": "block",
         "archived": False,

@@ -9,7 +9,7 @@ from BlockTypeFactory import create_concrete_block_type
 from CustomError import CustomError
 from client.api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
 from custom_types import json_
-from status_codes import SUCCESS
+from status_codes import SUCCESS, ERROR
 
 
 def _access_children(response: Response) -> Optional[json_]:
@@ -28,6 +28,11 @@ def _create_children_block_data(children_blocks: list[Block], after_block_id: st
     if after_block_id:
         children['after'] = after_block_id
     return children
+
+
+def _parse_result(response: json_) -> list[Block]:
+    results = response['results']
+    return [create_concrete_block_type(block) for block in results]
 
 
 @dataclass
@@ -59,7 +64,7 @@ class NotionBlockProvider:
     """
     notion_client: NotionAPIBlocksClient
 
-    def create_block(self, block: Block) -> Result[CustomError, bool]:
+    def create_block(self, block: Block) -> Result[CustomError, Block]:
         """
         Creates a block in the Notion API with the values of the passed in block parameter.
 
@@ -73,10 +78,13 @@ class NotionBlockProvider:
             Result[CustomError, bool]: True if the creation is successful,
                                        or a Failure containing a CustomError if the creation fails.
         """
-        return self.append_block_children(block.parent.get_parent_id(), [block])
+        result = self.append_block_children(block.parent.get_parent_id(), [block])
+        if isinstance(result, Failure):
+            return Failure(result.failure())
+        return Success(result.unwrap()[0])
 
     def append_block_children(self, block_id: str, children_blocks: list[Block], after_block_id: str = '') -> \
-            Result[CustomError, bool]:
+            Result[CustomError, list[Block]]:
         """
         Appends children blocks to an existing block in the Notion API. By default, appends the children at the end
         of the children blocks list or after the id of the block specified in the after_block_id parameter. The id of
@@ -102,9 +110,14 @@ class NotionBlockProvider:
         """
         children = _create_children_block_data(children_blocks, after_block_id)
         response = self.notion_client.append_block_children(block_id, children)
-        return True if response.status_code == SUCCESS else Failure(CustomError(response.status_code, response.text))
+        if response.status_code != SUCCESS:
+            return Failure(CustomError(message=response.text, status_code=response.status_code))
+        try:
+            return Success(_parse_result(response.json()))
+        except Exception as e:
+            return Failure(CustomError(message=str(e), status_code=ERROR))
 
-    def set_block_children(self, block: Block) -> Result[CustomError, bool]:
+    def set_block_children(self, block: Block) -> Result[CustomError, list[Block]]:
         """
         Sets the block parameter object children in the Notion API to the block objects in the children attribute.
         The ordering will be set based on the order of the children attribute list. Any children which are currently
@@ -119,12 +132,12 @@ class NotionBlockProvider:
         """
         notion_block = self.retrieve_block(block.id.hex)
         if isinstance(notion_block, Failure):
-            return notion_block
+            return Failure(notion_block.failure())
 
         for child in notion_block.unwrap().children:
             result = self.delete_block(child)
             if isinstance(result, Failure):
-                return result
+                return Failure(result.failure())
 
         return self.append_block_children(block.id.hex, block.children)
 
@@ -145,7 +158,11 @@ class NotionBlockProvider:
         if response.status_code != SUCCESS:
             return Failure(CustomError(response.status_code, response.text))
 
-        block = create_concrete_block_type(response.json())
+        try:
+            block = create_concrete_block_type(response.json())
+        except Exception as e:
+            return Failure(CustomError(message=str(e), status_code=ERROR))
+
         if block.has_children and retrieve_children:
             result = self.retrieve_block_children(block)
             if isinstance(result, Failure):
@@ -169,20 +186,22 @@ class NotionBlockProvider:
          """
         block.children = []
         response = self.notion_client.retrieve_block_children(block.id.hex)
-        if response.status_code != 200:
+        if response.status_code != SUCCESS:
             return Failure(CustomError(response.status_code, response.text))
 
-        children = _access_children(response)
+        try:
+            children = _access_children(response)
+        except Exception as e:
+            return Failure(CustomError(message=str(e), status_code=ERROR))
         for block_child in children:
             child = self.retrieve_block(_access_child_id(block_child), recursively)
-            if isinstance(child, Success):
-                block.children.append(child.unwrap())
-            else:
+            if isinstance(child, Failure):
                 return child
+            block.children.append(child.unwrap())
 
         return Success(block)
 
-    def update_block(self, block: Block) -> Result[CustomError, bool]:
+    def update_block(self, block: Block) -> Result[CustomError, Block]:
         """
          Updates a block in the Notion API with the values of the passed in block parameter. The id of the block will be
          taken from the Block parameter
@@ -196,7 +215,13 @@ class NotionBlockProvider:
          """
         data = block.model_dump(mode='json', exclude_none=True)
         response = self.notion_client.update_block(block.id.hex, data)
-        return True if response.status_code == SUCCESS else Failure(CustomError(response.status_code, response.text))
+        if response.status_code != SUCCESS:
+            return Failure(CustomError(response.status_code, response.text))
+
+        try:
+            return Success(create_concrete_block_type(response.json()))
+        except Exception as e:
+            return Failure(CustomError(message=str(e), status_code=ERROR))
 
     def delete_block_with_id(self, block_id: str) -> Result[CustomError, bool]:
         """

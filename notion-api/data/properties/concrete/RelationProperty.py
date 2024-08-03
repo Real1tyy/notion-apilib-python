@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Literal, Optional, Any
 from uuid import UUID
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from Property import PageProperty, DatabaseProperty
 
@@ -12,7 +12,7 @@ class RelationStructure(BaseModel):
 
 
 class RelationPage(PageProperty):
-    has_more: bool
+    has_more: bool = Field(exclude=True)
     relation: list[RelationStructure]
 
 

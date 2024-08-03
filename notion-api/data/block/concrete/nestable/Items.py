@@ -85,8 +85,7 @@ class Toggle(Block):
 
 
 def create_bulleted_list_item(
-        parent: Parent, color: str, rich_text: list[RichText],
-        children: list[Block] = None) -> BulletedListItem:
+        parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None) -> BulletedListItem:
     """
     Factory method to create a BulletedListItem object.
 
@@ -103,7 +102,7 @@ def create_bulleted_list_item(
         bulleted_list_item=Items(
             color=color,
             rich_text=rich_text,
-            children=children
+            children=children if children else []
         ),
         children=children
     )
@@ -128,7 +127,7 @@ def create_numbered_list_item(
         numbered_list_item=Items(
             color=color,
             rich_text=rich_text,
-            children=children
+            children=children if children else []
         ),
         children=children
     )
@@ -152,7 +151,7 @@ def create_paragraph(
         paragraph=Items(
             color=color,
             rich_text=rich_text,
-            children=children
+            children=children if children else []
         ),
         children=children
     )
@@ -176,7 +175,7 @@ def create_quote(
         quote=Items(
             color=color,
             rich_text=rich_text,
-            children=children
+            children=children if children else []
         ),
         children=children
     )
@@ -203,7 +202,7 @@ def create_to_do(
             color=color,
             rich_text=rich_text,
             checked=checked,
-            children=children
+            children=children if children else []
         ),
         children=children
     )
@@ -227,7 +226,7 @@ def create_toggle(
         toggle=Items(
             color=color,
             rich_text=rich_text,
-            children=children
+            children=children if children else []
         ),
         children=children
     )

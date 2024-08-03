@@ -1,5 +1,3 @@
-import json
-
 from dotenv import load_dotenv
 
 from Container import Container
@@ -14,7 +12,7 @@ if __name__ == "__main__":
     page_provider = container.notion_page_provider()
 
     # file_path = "links"
-    # with open(file_path, "r") as file:
+    # with open(file_path, "r") as file
     #     lines = file.readlines()
     # for line in lines:
     #     if line != lines[4]:
@@ -23,12 +21,8 @@ if __name__ == "__main__":
     #     if isinstance(result, Success):
     #         x = result.unwrap()
     #         print(x)
-    response = page_provider.retrieve_page("c8607ddadf004e28b9c0bec69e41ffe1")
-    x = response.unwrap()
-    print(x)
-    print(json.dumps(x.model_dump(mode='json', exclude_none=True), indent=4))
-    #
-    # print(Page(**(response.json())))
+    # response = page_provider.retrieve_page("c8607ddadf004e28b9c0bec69e41ffe1")
+    # print(response.unwrap().get_properties())
 
     # response = notion_client.query_database("1a91e289d5d9470d9e30ff1dfde63c60")
     # print(len(response["results"]))

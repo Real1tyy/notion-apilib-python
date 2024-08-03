@@ -17,6 +17,11 @@ class RichText(BaseModel):
     plain_text: str
     href: Optional[str]
 
+    def change_text(self, text: str):
+        self.plain_text = text
+        if self.text:
+            self.text.content = text
+
 
 def create_basic_rich_text_object(text: str) -> RichText:
     return RichText(
