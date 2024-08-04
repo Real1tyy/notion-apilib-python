@@ -1,7 +1,7 @@
 # Third Party
+from _properties.data import *
 from custom_types import json_
-from properties import *
-from type import PropertyType
+from type_ import PropertyType
 
 PROPERTY_TYPE_MAP = {
     "checkbox": (CheckboxPage, CheckboxDatabase),

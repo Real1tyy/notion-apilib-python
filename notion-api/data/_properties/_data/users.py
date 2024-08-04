@@ -3,7 +3,7 @@ from typing import Any
 
 # Third Party
 from property import DatabaseProperty, PageProperty
-from UserObject import User
+from _data.UserObject import User
 
 
 class CreatedByPage(PageProperty):

@@ -3,7 +3,7 @@ from typing import Any
 
 # Third Party
 from property import DatabaseProperty, PageProperty
-from RichText import RichText
+from _data.RichText import RichText
 
 
 class RichTextPage(PageProperty):

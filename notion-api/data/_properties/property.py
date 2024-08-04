@@ -4,7 +4,7 @@ from abc import ABC
 from pydantic import BaseModel, Field
 
 # Third Party
-from type import PropertyType
+from type_ import PropertyType
 
 
 class Property(ABC, BaseModel, from_attributes=True, use_enum_values=True):

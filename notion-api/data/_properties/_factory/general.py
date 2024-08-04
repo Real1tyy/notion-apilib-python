@@ -1,7 +1,7 @@
 # Standard Library
 from typing import Type
 
-from _properties.type import PropertyType
+from _properties.type_ import PropertyType
 # Third Party
 from database import Database
 from page import Page

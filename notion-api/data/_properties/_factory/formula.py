@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Literal, Optional
 
-from _properties.type import PropertyType
+from _properties.type_ import PropertyType
 from database import Database
 from formula import FormulaPage, FormulaStructure, FormulaDatabase, FormulaDatabaseStructure
 from general import _create_page_property, _create_database_property

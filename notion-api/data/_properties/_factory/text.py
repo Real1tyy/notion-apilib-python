@@ -1,5 +1,5 @@
-from RichText import RichText
-from _properties.type import PropertyType
+from _data.RichText import RichText
+from _properties.type_ import PropertyType
 from database import Database
 from general import _create_page_property, _create_database_property
 from page import Page

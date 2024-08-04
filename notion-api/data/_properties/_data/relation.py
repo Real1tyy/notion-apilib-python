@@ -3,9 +3,10 @@ from datetime import datetime
 from typing import Any, Literal, Optional
 from uuid import UUID
 
+from pydantic import BaseModel, Field
+
 # Third Party
 from property import DatabaseProperty, PageProperty
-from pydantic import BaseModel, Field
 
 
 class RelationStructure(BaseModel):
@@ -24,7 +25,7 @@ class RelationPage(PageProperty):
 
     Attributes:
         has_more (bool): Indicates if there are more relations.
-        relation (list[RelationStructure]): A list of relation structures.
+        relation (list[RelationStructure]): A list of relation _structures.
     """
     has_more: bool = Field(exclude=True)
     relation: list[RelationStructure]

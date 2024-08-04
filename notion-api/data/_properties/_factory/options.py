@@ -1,4 +1,4 @@
-from _properties.type import PropertyType
+from _properties.type_ import PropertyType
 from database import Database
 from general import _create_page_property, _create_database_property
 from option import StatusPage, Option, SelectPage, OptionStructure, MultiSelectPage, CheckboxPage, \

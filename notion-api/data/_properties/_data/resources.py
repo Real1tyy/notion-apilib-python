@@ -3,7 +3,7 @@ from typing import Any
 
 # Third Party
 from property import DatabaseProperty, PageProperty
-from ResourcesAttributes import ResourcesAttributes
+from _data.ResourcesAttributes import ResourcesAttributes
 
 
 class EmailPage(PageProperty):

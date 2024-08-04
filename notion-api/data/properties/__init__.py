@@ -7,9 +7,14 @@ the structure of Notion API Page and Database Properties.
 The factory methods provide an easy way to create property objects with the necessary attributes,
 while the data classes define the structure and validation of these properties using Pydantic.
 
+Additionally, the package includes factory methods for transforming JSON payloads from the Notion API
+into our custom DSL properties validated through Pydantic. This feature allows users to seamlessly
+convert their JSON data into our structured and validated classes.
+
 Imports:
     from .._properties.data import *
     from .._properties.factory import *
+    from .._properties.property_factory import *
 
 __all__:
     Factory functions:
@@ -99,10 +104,21 @@ __all__:
         - LastEditedByDatabase
         - PeoplePage
         - PeopleDatabase
+
+    Factory:
+        - create_concrete_page_property_type
+        - create_concrete_database_property_type
+
+Note:
+    This package is intended for use by end-users to create and interact with Notion property objects.
+    It provides a user-friendly interface and ensures that all property objects are validated and structured
+    correctly. The additional factory methods enable the transformation of JSON payloads from the Notion API
+    into our custom DSL properties, facilitating seamless data integration.
 """
 
 from .._properties.data import *
 from .._properties.factory import *
+from .._properties.property_factory import *
 
 __all__ = [
     # Factory functions
@@ -123,8 +139,10 @@ __all__ = [
     'UniqueIdDatabase', 'MultiSelectPage', 'MultiSelectDatabase', 'SelectPage', 'SelectDatabase', 'CheckboxPage',
     'CheckboxDatabase', 'StatusDatabase', 'StatusPage', 'RelationPage', 'RelationDatabase', 'RollupPage',
     'RollupDatabase', 'FilesPage', 'FilesDatabase', 'EmailPage', 'EmailDatabase', 'PhoneNumberPage',
-    'PhoneNumberDatabase',
-    'UrlPage', 'UrlDatabase', 'RichTextPage', 'RichTextDatabase', 'TitlePage', 'TitleDatabase', 'CreatedTimePage',
-    'CreatedTimeDatabase', 'LastEditedTimePage', 'LastEditedTimeDatabase', 'CreatedByPage', 'CreatedByDatabase',
-    'LastEditedByPage', 'LastEditedByDatabase', 'PeoplePage', 'PeopleDatabase',
+    'PhoneNumberDatabase', 'UrlPage', 'UrlDatabase', 'RichTextPage', 'RichTextDatabase', 'TitlePage', 'TitleDatabase',
+    'CreatedTimePage', 'CreatedTimeDatabase', 'LastEditedTimePage', 'LastEditedTimeDatabase', 'CreatedByPage',
+    'CreatedByDatabase', 'LastEditedByPage', 'LastEditedByDatabase', 'PeoplePage', 'PeopleDatabase',
+
+    # Factory methods for creating property objects
+    'create_concrete_page_property_type', 'create_concrete_database_property_type',
 ]

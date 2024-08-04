@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
-from _properties.type import PropertyType
+from _properties.type_ import PropertyType
 from database import Database
 from date import DatePage, DateStructure, DateDatabase
 from general import _create_page_property, _create_database_property
