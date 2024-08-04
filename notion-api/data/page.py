@@ -6,7 +6,7 @@ from pydantic_core.core_schema import ValidationInfo
 
 from _type_factory import create_concrete_page_property_type
 # Third Party
-from block import Block
+from blocks import Block
 from custom_types import json_
 from exceptions import catch_exceptions
 from object import MajorObject
@@ -26,7 +26,7 @@ def properties_validator(v: dict[str, Any], info: ValidationInfo) -> PagePropert
         properties.append(_class)
         v[key] = _class
 
-    v['properties'] = properties
+    v['_properties'] = properties
     return v
 
 
@@ -39,7 +39,7 @@ class Page(MajorObject):
 
     def deserialize_json(self) -> json_:
         data = self.model_dump(mode='json', exclude_none=True, exclude={'id', 'archived', 'children'})
-        properties = data['properties']
+        properties = data['_properties']
         keys_to_check = {'rollup', 'formula', 'last_edited_time', 'created_time', 'unique_id'}
         to_remove = [key for key, value in properties.items() if any(k in value for k in keys_to_check)]
         [properties.pop(key) for key in to_remove]

@@ -7,7 +7,7 @@ from returns.result import Failure, Result
 # Third Party
 from ApiError import ApiError
 from _type_factory import create_concrete_block_type
-from block import Block
+from blocks import Block
 from client.api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
 from custom_types import json_
 from decorators import handle_exceptions
@@ -38,34 +38,34 @@ class NotionBlockProvider:
         notion_client (NotionAPIBlocksClient): The helper class object to pass along the requests to the Notion API.
 
     Methods:
-        create_block(block: Block) -> Result[CustomError, bool]:
-            Creates a block in the Notion API with the values of the passed in block parameter.
+        create_block(blocks: Block) -> Result[CustomError, bool]:
+            Creates a blocks in the Notion API with the values of the passed in blocks parameter.
         append_block_children(block_id: str, children_blocks: list[Block], after_block_id: str = '') -> Result[CustomError, bool]:
-            Appends children blocks to an existing block in the Notion API.
-        set_block_children(block: Block) -> Result[CustomError, bool]:
-            Sets the block parameter object children in the Notion API to the block objects in the children attribute.
+            Appends children blocks to an existing blocks in the Notion API.
+        set_block_children(blocks: Block) -> Result[CustomError, bool]:
+            Sets the blocks parameter object children in the Notion API to the blocks objects in the children attribute.
         retrieve_block(block_id: str, retrieve_children: bool = True) -> Result[CustomError, Block]:
-            Retrieve a block from the Notion API. By default, retrieves children blocks recursively.
-        retrieve_block_children(block: Block, recursively: bool = True) -> Result[CustomError, Block]:
-            Recursively retrieves and appends children blocks to a given block.
-        update_block(block: Block) -> Result[CustomError, bool]:
-            Updates a block in the Notion API with the values of the passed in block parameter.
+            Retrieve a blocks from the Notion API. By default, retrieves children blocks recursively.
+        retrieve_block_children(blocks: Block, recursively: bool = True) -> Result[CustomError, Block]:
+            Recursively retrieves and appends children blocks to a given blocks.
+        update_block(blocks: Block) -> Result[CustomError, bool]:
+            Updates a blocks in the Notion API with the values of the passed in blocks parameter.
         delete_block_with_id(block_id: str) -> Result[CustomError, bool]:
-            Deletes a block from the Notion API using its ID.
-        delete_block(block: Block) -> Result[CustomError, bool]:
-            Deletes a block from the Notion API using a Block object.
+            Deletes a blocks from the Notion API using its ID.
+        delete_block(blocks: Block) -> Result[CustomError, bool]:
+            Deletes a blocks from the Notion API using a Block object.
     """
     notion_client: NotionAPIBlocksClient
 
     @handle_exceptions
     def create_block(self, block: Block) -> Result[ApiError, Block]:
         """
-        Creates a block in the Notion API with the values of the passed in block parameter, ID, archived and in_trash
-        attributes will be ignored, as they are redundant as the block has non even been created yet. The block will
+        Creates a blocks in the Notion API with the values of the passed in blocks parameter, ID, archived and in_trash
+        attributes will be ignored, as they are redundant as the blocks has non even been created yet. The blocks will
         be attached to the parent specified in the parent attribute.
 
         Parameters:
-            block (Block): The block to create based on the values of the attributes passed in.
+            block (Block): The blocks to create based on the values of the attributes passed in.
 
         Returns:
             Result[ApiError, bool]: True if the creation is successful,
@@ -80,27 +80,27 @@ class NotionBlockProvider:
     def append_block_children(self, object_id: str, children_blocks: list[Block], after_block_id: str = '') -> \
             Result[ApiError, list[Block]]:
         """
-        Appends children blocks to an existing block in the Notion API. By default, appends the children at the end
-        of the children blocks list or after the id of the block specified in the after_block_id parameter. The id of
-        the block objects in the children are ignored, as these are new block objects that will be created. So this
+        Appends children blocks to an existing blocks in the Notion API. By default, appends the children at the end
+        of the children blocks list or after the id of the blocks specified in the after_block_id parameter. The id of
+        the blocks objects in the children are ignored, as these are new blocks objects that will be created. So this
         functionality is used to create blocks.
 
         From Notion Documentation:
         '
-        Existing blocks cannot be moved using this endpoint. Blocks are appended to the bottom of the parent block.
-        To append a block in a specific place other than the bottom of the parent block, use the "after"(
-        after_block_id) parameter and  set its value to the ID of the block that the new block should be appended after.
-        Once a block is appended as a child, it can't be moved elsewhere via the API.
+        Existing blocks cannot be moved using this endpoint. Blocks are appended to the bottom of the parent blocks.
+        To append a blocks in a specific place other than the bottom of the parent blocks, use the "after"(
+        after_block_id) parameter and  set its value to the ID of the blocks that the new blocks should be appended after.
+        Once a blocks is appended as a child, it can't be moved elsewhere via the API.
         For blocks that allow children, we allow up to two levels of nesting in a single request.
-        There is a limit of 100 block children that can be appended by a single API request. Arrays of block children longer than 100 will result in an error.
+        There is a limit of 100 blocks children that can be appended by a single API request. Arrays of blocks children longer than 100 will result in an error.
         '
 
         Parameters:
-            object_id (str): The id of the block to which children will be appended.
+            object_id (str): The id of the blocks to which children will be appended.
             children_blocks (list, Block): The list of children blocks to append.
-            after_block_id (str): The ID of the block after which the children will be appended.
+            after_block_id (str): The ID of the blocks after which the children will be appended.
                                             If not provided, then by default, the children will be appended at the
-                                            end of the parent block as that is the default behavior in Notion.
+                                            end of the parent blocks as that is the default behavior in Notion.
 
         Returns:
             Result[ApiError, bool]: True if the operation is successful,
@@ -115,13 +115,13 @@ class NotionBlockProvider:
     @handle_exceptions
     def set_block_children(self, block: Block) -> Result[ApiError, list[Block]]:
         """
-        Sets the block parameter object children in the Notion API to the block objects in the children attribute.
+        Sets the blocks parameter object children in the Notion API to the blocks objects in the children attribute.
         The ordering will be set based on the order of the children attribute list. Any children which are currently
-        attached in notion to the block and are not present in the list will be deleted. This first deletes all the
-        children attached to the block in the Notion and afterward appends all the children in the children attribute.
+        attached in notion to the blocks and are not present in the list will be deleted. This first deletes all the
+        children attached to the blocks in the Notion and afterward appends all the children in the children attribute.
 
         Parameters:
-            block (Block): The block whose children are to be set in the Notion API.
+            block (Block): The blocks whose children are to be set in the Notion API.
 
         Returns:
             Result[ApiError, bool]: True if the operation is successful,
@@ -141,12 +141,12 @@ class NotionBlockProvider:
     @handle_exceptions
     def retrieve_block(self, block_id: str, retrieve_children: bool = True) -> Result[ApiError, Block]:
         """
-        Retrieve a block from the Notion API. By default, automatically retrieves and adds the children blocks
+        Retrieve a blocks from the Notion API. By default, automatically retrieves and adds the children blocks
         recursively to the children parameter of the resulting Block.
 
         Parameters:
-            block_id (str): The ID of the block to retrieve.
-            retrieve_children (bool): Whether to retrieve and add the children block to the resulting Block. If set to False the children attribute will contain an empty list
+            block_id (str): The ID of the blocks to retrieve.
+            retrieve_children (bool): Whether to retrieve and add the children blocks to the resulting Block. If set to False the children attribute will contain an empty list
 
         Returns:
             Result[ApiError, Block]: A Success containing the retrieved Block if the operation is successful,
@@ -168,16 +168,16 @@ class NotionBlockProvider:
     @handle_exceptions
     def retrieve_block_children(self, block: Block, recursively: bool = True) -> Result[ApiError, Block]:
         """
-         Retrieves and appends children blocks to a given block to his children attribute. Any objects in the children
-         attribute of the block parameter will be overwritten and removed. By default, it is set to
+         Retrieves and appends children blocks to a given blocks to his children attribute. Any objects in the children
+         attribute of the blocks parameter will be overwritten and removed. By default, it is set to
          recursively retrieve the children of the children blocks as well.
 
          Parameters:
-             block (Block): The parent block whose children are to be retrieved.
+             block (Block): The parent blocks whose children are to be retrieved.
              recursively (bool): Whether to retrieve the children of the children blocks as well, by default True
 
          Returns:
-             Result[ApiError, Block]: A Success containing the block with its children if the operation is successful,
+             Result[ApiError, Block]: A Success containing the blocks with its children if the operation is successful,
                                          or a Failure containing a CustomError if the operation fails.
          """
         block.children = []
@@ -206,11 +206,11 @@ class NotionBlockProvider:
     @handle_exceptions
     def update_block(self, block: Block) -> Result[ApiError, Block]:
         """
-         Updates a block in the Notion API with the values of the passed in block parameter. The id of the block will be
+         Updates a blocks in the Notion API with the values of the passed in blocks parameter. The id of the blocks will be
          taken from the Block parameter
 
          Parameters:
-             block (Block): The block to update. It will be updated based on the values of the parameters of this block.
+             block (Block): The blocks to update. It will be updated based on the values of the parameters of this blocks.
 
          Returns:
              Result[ApiError, bool]: True if the update is successful,
@@ -226,10 +226,10 @@ class NotionBlockProvider:
     @handle_exceptions
     def delete_block_with_id(self, block_id: str) -> Result[ApiError, bool]:
         """
-         Deletes a block from the Notion API with the specified ID.
+         Deletes a blocks from the Notion API with the specified ID.
 
          Parameters:
-             block_id (str): The ID of the block to delete.
+             block_id (str): The ID of the blocks to delete.
 
          Returns:
              Result[ApiError, bool]: True if the deletion is successful,
@@ -241,10 +241,10 @@ class NotionBlockProvider:
     @handle_exceptions
     def delete_block(self, block: Block) -> Result[ApiError, bool]:
         """
-        Deletes a block from the Notion API with the specified ID container in the Block object.
+        Deletes a blocks from the Notion API with the specified ID container in the Block object.
 
         Parameters:
-            block (Block): The block to delete.
+            block (Block): The blocks to delete.
 
         Returns:
             Result[ApiError, bool]: True if the deletion is successful,

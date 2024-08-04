@@ -55,7 +55,7 @@ def create_parent_from_object(parent: Any) -> Parent:
     """
     parent_type: Literal['page_id', 'block_id', 'database_id']
     match parent.object:
-        case "block":
+        case "blocks":
             parent_type = "block_id"
         case "database":
             parent_type = "database_id"

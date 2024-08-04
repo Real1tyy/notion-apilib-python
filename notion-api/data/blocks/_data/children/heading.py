@@ -2,7 +2,7 @@
 from pydantic import BaseModel
 
 from RichText import RichText
-from block.block import Block
+from blocks.block import Block
 
 
 class HeadingsAttributes(BaseModel):
@@ -29,17 +29,17 @@ class Heading1(Block):
 
 class Heading2(Block):
     """
-    Heading 2 block.
+    Heading 2 blocks.
 
-    :param heading_2: Attributes for the heading 2 block.
+    :param heading_2: Attributes for the heading 2 blocks.
     """
     heading_2: HeadingsAttributes
 
 
 class Heading3(Block):
     """
-    Heading 3 block.
+    Heading 3 blocks.
 
-    :param heading_3: Attributes for the heading 3 block.
+    :param heading_3: Attributes for the heading 3 blocks.
     """
     heading_3: HeadingsAttributes

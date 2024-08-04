@@ -33,8 +33,8 @@ if __name__ == "__main__":
 
     #
     # parent = create_parent('page_id', "b5d1877b3a554a7fbaacf206adb8a0e2")
-    # block = create_bulleted_list_item(parent, "green", [])
-    # print(block)
+    # blocks = create_bulleted_list_item(parent, "green", [])
+    # print(blocks)
 
     # database_id = "706cd118dfaf40c288029314d62e2357"
     # result = database_provider.retrieve_database(database_id)

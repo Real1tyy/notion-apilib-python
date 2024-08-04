@@ -1,11 +1,10 @@
-# Standard Library
-from typing import Optional, Type, TypeVar
+from typing import TypeVar, Type, Optional
 
 from FileObject import External, FileObject
 from Parent import Parent
-from ResourcesAttributes import FileAttributes, ResourcesAttributes, determine_file_type
-# Third Party
-from block import Block, _create_block
+from ResourcesAttributes import determine_file_type, ResourcesAttributes
+from _data.resources import File, Image, Pdf, Video
+from block import _create_block
 from type import BlockType
 
 T = TypeVar('T', bound='Block')
@@ -33,22 +32,6 @@ def _create_resources_object(
             file=file
         )
     )
-
-
-class File(Block):
-    file: FileAttributes
-
-
-class Image(Block):
-    image: ResourcesAttributes
-
-
-class Pdf(Block):
-    pdf: ResourcesAttributes
-
-
-class Video(Block):
-    video: ResourcesAttributes
 
 
 def create_file(parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> File:

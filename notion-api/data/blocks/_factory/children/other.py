@@ -1,21 +1,11 @@
-# Third Party
-from pydantic import BaseModel
+from typing import Optional
 
 from Emoji import Emoji
 from Parent import Parent
 from RichText import RichText
-from block import Block, _create_block
+from blocks.block import Block, _create_block
+from other import SyncedFrom, SyncedBlock, SyncedBlockAttributes, Callout, CalloutAttributes
 from type import BlockType
-
-
-class CalloutAttributes(BaseModel):
-    rich_text: list[RichText]
-    icon: Emoji
-    color: str
-
-
-class Callout(Block):
-    callout: CalloutAttributes
 
 
 def create_callout(
@@ -43,35 +33,6 @@ def create_callout(
     )
 
 
-class SyncedFrom(BaseModel):
-    """
-    Represents the source block that the synced block is synced from.
-
-    :param block_id: The UUID of the source block.
-    """
-    block_id: UUID
-
-
-class SyncedBlockAttributes(BaseModel):
-    """
-    Attributes for synced blocks.
-
-    :param synced_from: The source block that this block is synced from.
-    :param children: List of child blocks (default is an empty list).
-    """
-    synced_from: Optional[SyncedFrom]
-    children: list[Block] = []
-
-
-class SyncedBlock(Block):
-    """
-    Synced block.
-
-    :param synced_block: Attributes for the synced block.
-    """
-    synced_block: SyncedBlockAttributes
-
-
 def create_synced_block(
         parent: Parent, synced_from: Optional[SyncedFrom] = None,
         children: Optional[list[Block]] = None) -> SyncedBlock:
@@ -79,7 +40,7 @@ def create_synced_block(
     Factory method to create a SyncedBlock object.
 
     :param parent: The parent object.
-    :param synced_from: The source block that this block is synced from (optional).
+    :param synced_from: The source blocks that this blocks is synced from (optional).
     :param children: List of child blocks (optional).
     :return: A new SyncedBlock object.
     """

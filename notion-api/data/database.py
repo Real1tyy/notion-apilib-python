@@ -27,7 +27,7 @@ def properties_validator(v: dict[str, Any], info: ValidationInfo) -> DatabasePro
         properties.append(_class)
         v[key] = _class
 
-    v['properties'] = properties
+    v['_properties'] = properties
     return v
 
 
@@ -45,7 +45,7 @@ class Database(MajorObject):
         data = self.model_dump(
             mode='json', exclude_none=True, exclude={'id', 'archived', 'in_trash',
                                                      'last_edited_time', 'created_time'})
-        properties = data['properties']
+        properties = data['_properties']
         keys_to_check = {'rollup', 'formula', 'relation', 'unique_id'}
         to_remove = [key for key, value in properties.items() if any(k in value for k in keys_to_check)]
         [properties.pop(key) for key in to_remove]

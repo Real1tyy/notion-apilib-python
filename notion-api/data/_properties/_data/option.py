@@ -29,7 +29,7 @@ class CheckboxDatabase(DatabaseProperty):
 
 class Option(BaseModel):
     """
-    A model representing an option for multi-select and select properties.
+    A model representing an option for multi-select and select _properties.
 
     Attributes:
         id (str): The ID of the option.
@@ -93,7 +93,7 @@ class SelectDatabase(DatabaseProperty):
 
 class Group(Option):
     """
-    A model representing a group of options for status properties.
+    A model representing a group of options for status _properties.
 
     Attributes:
         option_ids (list[str]): A list of option IDs in the group.
@@ -103,7 +103,7 @@ class Group(Option):
 
 class StatusDatabaseStructure(BaseModel):
     """
-    A model representing the structure for status properties in a database.
+    A model representing the structure for status _properties in a database.
 
     Attributes:
         options (list[Option]): A list of options for the status property.

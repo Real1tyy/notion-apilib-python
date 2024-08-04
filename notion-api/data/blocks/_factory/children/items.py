@@ -2,7 +2,7 @@ from typing import Type, Optional
 
 from Parent import Parent
 from RichText import RichText
-from block.block import Block, _create_block
+from blocks.block import Block, _create_block
 from items import Items, BulletedListItem, NumberedListItem, Paragraph, Quote, TodoAttributes, ToDo, Toggle
 from type import BlockType
 
@@ -11,15 +11,15 @@ def _create_item_block(
         block_class: Type[Block], block_type: BlockType, parent: Parent,
         color: str, rich_text: list[RichText], children: Optional[list[Block]] = None) -> Type[Block]:
     """
-    Helper function to create an item block object.
+    Helper function to create an item blocks object.
 
-    :param block_class: The class of the block to create.
-    :param block_type: The type of the block.
+    :param block_class: The class of the blocks to create.
+    :param block_type: The type of the blocks.
     :param parent: The parent object.
     :param color: The color of the item text.
     :param rich_text: The rich text content of the item.
     :param children: List of child blocks (optional).
-    :return: A new block object.
+    :return: A new blocks object.
     """
     return _create_block(
         block_class,

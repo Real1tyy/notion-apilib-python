@@ -1,5 +1,5 @@
 from Parent import Parent
-from block.block import Block, _create_block
+from blocks.block import Block, _create_block
 from child import ChildDatabase, ChildAttributes, ChildPage
 from type import BlockType
 

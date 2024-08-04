@@ -1,11 +1,8 @@
-# Third Party
 from Parent import Parent
-from block import Block, _create_block
+
+from block import _create_block
+from data.other import Divider, ColumnList, Breadcrumb, Unsupported
 from type import BlockType
-
-
-class Divider(Block):
-    pass
 
 
 def create_divider(parent: Parent) -> Divider:
@@ -21,10 +18,6 @@ def create_divider(parent: Parent) -> Divider:
     )
 
 
-class ColumnList(Block):
-    pass
-
-
 def create_column_list(parent: Parent) -> ColumnList:
     """
     Factory method to create ColumnList object
@@ -38,10 +31,6 @@ def create_column_list(parent: Parent) -> ColumnList:
     )
 
 
-class Breadcrumb(Block):
-    pass
-
-
 def create_breadcrumb(parent: Parent) -> Breadcrumb:
     """
     Factory method to create Breadcrumb object
@@ -53,10 +42,6 @@ def create_breadcrumb(parent: Parent) -> Breadcrumb:
         parent=parent,
         block_type=BlockType.BREADCRUMB,
     )
-
-
-class Unsupported(Block):
-    pass
 
 
 def create_unsupported(parent: Parent) -> Unsupported:

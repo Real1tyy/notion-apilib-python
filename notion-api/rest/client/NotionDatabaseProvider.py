@@ -62,7 +62,7 @@ class NotionDatabaseProvider:
             try:
                 page = create_page(page_json)
             except Exception as e:
-                print(page_json['properties'])
+                print(page_json['_properties'])
                 raise e
             database.pages.append(page)
         if has_more:

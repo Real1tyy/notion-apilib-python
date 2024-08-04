@@ -1,20 +1,20 @@
 # Third Party
+from _data.mention import Mention
 from data.Embed import Embed
 from data.LinkPreview import LinkPreview
+from synced import SyncedBlock
 
 from FileObject import FileObject
+from _data.code import Code
+from _data.equation import Equation
+from _data.link import Bookmark
+from _data.other import Breadcrumb, ColumnList, Divider, Unsupported
+from _data.resources import Image, Pdf, Video
 from child import ChildDatabase, ChildPage
 from custom_types import json_
-from data.code import Code
-from data.equation import Equation
-from data.link import Bookmark
-from data.mention import Mention
-from data.other import Breadcrumb, ColumnList, Divider, Unsupported
-from data.resources import Image, Pdf, Video
 from heading import Heading1, Heading2, Heading3
 from items import BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle
 from other import Callout
-from synced import SyncedBlock
 from tables import Column, Table, TableOfContents, TableRow
 
 BLOCK_TYPE_MAP = {

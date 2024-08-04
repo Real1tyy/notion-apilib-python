@@ -1,78 +1,11 @@
-# Standard Library
 from typing import Optional
-
-from pydantic import BaseModel
 
 from Parent import Parent
 from RichText import RichText
-# Third Party
 from block import Block, _create_block
+from tables import TableRow, TableRowAttributes, TableOfContents, TableOfContentsAttributes, Column, Table, \
+    TableAttributes
 from type import BlockType
-
-
-class TableAttributes(BaseModel):
-    """
-    Attributes for table blocks.
-
-    :param has_column_header: Whether the table has a column header.
-    :param has_row_header: Whether the table has a row header.
-    :param table_width: The width of the table.
-    """
-    has_column_header: bool
-    has_row_header: bool
-    table_width: int
-
-
-class Table(Block):
-    """
-    Table block.
-
-    :param table: Attributes for the table block.
-    """
-    table: TableAttributes
-
-
-class TableRowAttributes(BaseModel):
-    """
-    Attributes for table row blocks.
-
-    :param cells: List of rich text elements representing the cells.
-    """
-    cells: list[RichText]
-
-
-class TableRow(Block):
-    """
-    Table row block.
-
-    :param table_row: Attributes for the table row block.
-    """
-    table_row: TableRowAttributes
-
-
-class TableOfContentsAttributes(BaseModel):
-    """
-    Attributes for table of contents blocks.
-
-    :param color: Color of the table of contents text.
-    """
-    color: str
-
-
-class TableOfContents(Block):
-    """
-    Table of contents block.
-
-    :param table_of_contents: Attributes for the table of contents block.
-    """
-    table_of_contents: TableOfContentsAttributes
-
-
-class Column(Block):
-    """
-    Column block.
-    """
-    pass
 
 
 def create_table(

@@ -1,6 +1,6 @@
 from Parent import Parent
 from RichText import RichText
-from block.block import Block, _create_block
+from blocks.block import Block, _create_block
 from heading import Heading1, HeadingsAttributes, Heading2, Heading3
 from type import BlockType
 

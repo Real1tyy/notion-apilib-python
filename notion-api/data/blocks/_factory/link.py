@@ -1,19 +1,8 @@
-# Third Party
-from pydantic import BaseModel
-
 from Parent import Parent
 from RichText import RichText
-from block import Block, _create_block
+from _data.link import Bookmark, BookmarkAttributes, Embed, EmbedAttributes, LinkPreview, LinkPreviewAttributes
+from block import _create_block
 from type import BlockType
-
-
-class BookmarkAttributes(BaseModel):
-    url: str
-    caption: list[RichText]
-
-
-class Bookmark(Block):
-    bookmark: BookmarkAttributes
 
 
 def create_bookmark(parent: Parent, url: str, caption: list[RichText]) -> Bookmark:
@@ -32,14 +21,6 @@ def create_bookmark(parent: Parent, url: str, caption: list[RichText]) -> Bookma
     )
 
 
-class EmbedAttributes(BaseModel):
-    url: str
-
-
-class Embed(Block):
-    embed: EmbedAttributes
-
-
 def create_embed(parent: Parent, url: str) -> Embed:
     """
     Factory method to create Embed object
@@ -53,14 +34,6 @@ def create_embed(parent: Parent, url: str) -> Embed:
         block_type=BlockType.EMBED,
         embed=EmbedAttributes(url=url)
     )
-
-
-class LinkPreviewAttributes(BaseModel):
-    url: str
-
-
-class LinkPreview(Block):
-    link_preview: LinkPreviewAttributes
 
 
 def create_link_preview(parent: Parent, url: str) -> LinkPreview:

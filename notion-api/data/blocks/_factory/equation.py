@@ -1,17 +1,7 @@
-# Third Party
-from pydantic import BaseModel
-
 from Parent import Parent
-from block import Block, _create_block
+from _data.equation import Equation, EquationAttributes
+from block import _create_block
 from type import BlockType
-
-
-class EquationAttributes(BaseModel):
-    expression: str
-
-
-class Equation(Block):
-    equation: EquationAttributes
 
 
 def create_equation(parent: Parent, expression: str) -> Equation:

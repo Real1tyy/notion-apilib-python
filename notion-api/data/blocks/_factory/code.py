@@ -1,20 +1,8 @@
-# Third Party
-from pydantic import BaseModel
-
 from Parent import Parent
 from RichText import RichText
-from block import Block, _create_block
+from _data.code import Code, CodeAttributes
+from block import _create_block
 from type import BlockType
-
-
-class CodeAttributes(BaseModel):
-    caption: list[RichText]
-    rich_text: list[RichText]
-    language: str
-
-
-class Code(Block):
-    code: CodeAttributes
 
 
 def create_code(parent: Parent, caption: list[RichText], rich_text: list[RichText], language: str) -> Code:
