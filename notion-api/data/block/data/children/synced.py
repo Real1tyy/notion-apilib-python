@@ -2,11 +2,12 @@
 from typing import Optional
 from uuid import UUID
 
-# Third Party
-from Block import Block, _create_block
-from BlockType import BlockType
-from Parent import Parent
 from pydantic import BaseModel
+
+from Parent import Parent
+# Third Party
+from block import Block, _create_block
+from type import BlockType
 
 
 class SyncedFrom(BaseModel):

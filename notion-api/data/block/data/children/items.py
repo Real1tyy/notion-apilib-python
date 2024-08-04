@@ -1,12 +1,13 @@
 # Standard Library
 from typing import Optional, Type
 
-# Third Party
-from Block import Block, _create_block
-from BlockType import BlockType
-from Parent import Parent
 from pydantic import BaseModel, Field
+
+from Parent import Parent
 from RichText import RichText
+# Third Party
+from block import Block, _create_block
+from type import BlockType
 
 
 class Items(BaseModel):

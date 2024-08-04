@@ -1,7 +1,7 @@
 # Third Party
-from Block import Block, _create_block
-from BlockType import BlockType
 from Parent import Parent
+from block import Block, _create_block
+from type import BlockType
 
 
 class Divider(Block):

@@ -1,10 +1,11 @@
 # Third Party
-from Block import Block, _create_block
-from BlockType import BlockType
+from pydantic import BaseModel
+
 from Emoji import Emoji
 from Parent import Parent
-from pydantic import BaseModel
 from RichText import RichText
+from block import Block, _create_block
+from type import BlockType
 
 
 class CalloutAttributes(BaseModel):
