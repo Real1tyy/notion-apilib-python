@@ -1,10 +1,10 @@
 # Standard Library
 from typing import Type
 
+from _properties.type import PropertyType
 # Third Party
 from database import Database
 from page import Page
-from properties.type import PropertyType
 
 
 def _create_page_property(

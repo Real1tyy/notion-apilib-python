@@ -1,9 +1,9 @@
+from _properties.type import PropertyType
 from database import Database
 from general import _create_page_property, _create_database_property
 from option import StatusPage, Option, SelectPage, OptionStructure, MultiSelectPage, CheckboxPage, \
     CheckboxDatabase, MultiSelectDatabase, SelectDatabase, Group, StatusDatabaseStructure, StatusDatabase
 from page import Page
-from properties.type import PropertyType
 
 
 def create_checkbox_page(

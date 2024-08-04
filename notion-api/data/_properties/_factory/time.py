@@ -1,10 +1,10 @@
 from datetime import datetime
 
+from _properties.data import CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage, LastEditedTimeDatabase
+from _properties.type import PropertyType
 from database import Database
 from general import _create_page_property, _create_database_property
 from page import Page
-from properties.data import CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage, LastEditedTimeDatabase
-from properties.type import PropertyType
 
 
 def create_created_time_page(
