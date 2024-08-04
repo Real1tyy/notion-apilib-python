@@ -1,12 +1,14 @@
-from typing import Any, Annotated
+# Standard Library
+from typing import Annotated, Any
 
-from pydantic import BeforeValidator, BaseModel, Field
+from pydantic import BaseModel, BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
+# Third Party
 from Block import Block
 from Object import MajorObject
-from Property import PageProperty
-from PropertyTypeFactory import create_concrete_page_property_type
+from property import PageProperty
+from _type_factory import create_concrete_page_property_type
 from custom_types import json_
 from exceptions import catch_exceptions
 
@@ -42,6 +44,11 @@ class Page(MajorObject):
         to_remove = [key for key, value in properties.items() if any(k in value for k in keys_to_check)]
         [properties.pop(key) for key in to_remove]
         return data
+
+    def add_property(self, property_: PageProperty) -> list[PageProperty]:
+        self.get_properties().append(property_)
+        setattr(self.properties, property_.name, property_)
+        return self.get_properties()
 
 
 def create_page(data: json_) -> Page:

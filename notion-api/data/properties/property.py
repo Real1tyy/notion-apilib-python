@@ -1,23 +1,20 @@
+# Standard Library
 from abc import ABC
 
-from pydantic import BaseModel, Field
-
+# Third Party
 from PropertyType import PropertyType
-from custom_types import json_
+from pydantic import BaseModel, Field
 
 
 class Property(ABC, BaseModel, from_attributes=True, use_enum_values=True):
     id: str = Field(exclude=True)
     type: PropertyType = Field(exclude=True)
+    name: str = Field(exclude=True)
 
 
 class PageProperty(Property):
-    name: str = Field(exclude=True)
+    pass
 
 
 class DatabaseProperty(Property):
-    name: str = Field(exclude=True)
-
-
-def create_page_property(data: json_) -> PageProperty:
-    return PageProperty(**data)
+    pass

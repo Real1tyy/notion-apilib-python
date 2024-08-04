@@ -1,17 +1,40 @@
-from DateProperty import DatePage, DateDatabase
-from FormulaProperty import FormulaPage, FormulaDatabase
-from NumberProperty import NumberPage, NumberDatabase, UniqueIdDatabase, UniqueIdPage
+# Third Party
 from PropertyType import PropertyType
-from RelationProperty import RelationPage, RelationDatabase, RollupDatabase, RollupPage
-from ResourcesProperty import EmailPage, FilesPage, PhoneNumberPage, FilesDatabase, EmailDatabase, \
-    PhoneNumberDatabase, UrlDatabase, UrlPage
-from SelectProperty import CheckboxPage, MultiSelectPage, CheckboxDatabase, MultiSelectDatabase, StatusDatabase, \
-    StatusPage, SelectDatabase, SelectPage
-from TextProperty import TitleDatabase, TitlePage, RichTextDatabase, RichTextPage
-from TimeProperty import CreatedTimePage, LastEditedTimePage, CreatedTimeDatabase, LastEditedTimeDatabase
-from UsersProperty import CreatedByPage, LastEditedByPage, PeoplePage, CreatedByDatabase, LastEditedByDatabase, \
-    PeopleDatabase
 from custom_types import json_
+from date import DateDatabase, DatePage
+from formula import FormulaDatabase, FormulaPage
+from number import NumberDatabase, NumberPage, UniqueIdDatabase, UniqueIdPage
+from option import (
+    CheckboxDatabase,
+    CheckboxPage,
+    MultiSelectDatabase,
+    MultiSelectPage,
+    SelectDatabase,
+    SelectPage,
+    StatusDatabase,
+    StatusPage,
+)
+from relation import RelationDatabase, RelationPage, RollupDatabase, RollupPage
+from resources import (
+    EmailDatabase,
+    EmailPage,
+    FilesDatabase,
+    FilesPage,
+    PhoneNumberDatabase,
+    PhoneNumberPage,
+    UrlDatabase,
+    UrlPage,
+)
+from text import RichTextDatabase, RichTextPage, TitleDatabase, TitlePage
+from time import CreatedTimeDatabase, CreatedTimePage, LastEditedTimeDatabase, LastEditedTimePage
+from users import (
+    CreatedByDatabase,
+    CreatedByPage,
+    LastEditedByDatabase,
+    LastEditedByPage,
+    PeopleDatabase,
+    PeoplePage,
+)
 
 PROPERTY_TYPE_MAP = {
     "checkbox": (CheckboxPage, CheckboxDatabase),

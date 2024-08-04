@@ -1,13 +1,15 @@
+# Standard Library
 from typing import Annotated, Any
 
-from pydantic import BeforeValidator, BaseModel, Field
+from pydantic import BaseModel, BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
 from Object import MajorObject
 from Page import Page
-from Property import DatabaseProperty
-from PropertyTypeFactory import create_concrete_database_property_type
+from property import DatabaseProperty
+from _type_factory import create_concrete_database_property_type
 from RichText import RichText
+# Third Party
 from custom_types import json_
 from exceptions import catch_exceptions
 
@@ -48,6 +50,11 @@ class Database(MajorObject):
         to_remove = [key for key, value in properties.items() if any(k in value for k in keys_to_check)]
         [properties.pop(key) for key in to_remove]
         return data
+
+    def add_property(self, property_: DatabaseProperty) -> list[DatabaseProperty]:
+        self.get_properties().append(property_)
+        setattr(self.properties, property_.name, property_)
+        return self.get_properties()
 
 
 def create_database(data: json_) -> Database:
