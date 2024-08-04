@@ -1,8 +1,8 @@
 # Third Party
 from FileObject import FileObject
+from _structures.data import Mention
 from custom_types import json_
 from data import *
-from structures.data import Mention
 
 BLOCK_TYPE_MAP = {
     "bookmark": Bookmark,

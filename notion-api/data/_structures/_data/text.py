@@ -1,13 +1,35 @@
 # Standard Library
 from typing import Optional
 
-from data.Equation import Equation
-from data.Mention import Mention
 from pydantic import BaseModel
 
+
 # Third Party
-from Annotations import Annotations, create_basic_annotations_object
-from Text import Text, create_text_object
+
+class Link(BaseModel):
+    url: str
+
+
+class Text(BaseModel):
+    content: str
+    link: Optional[Link]
+
+
+def create_text_object(text: str, link: str = None) -> Text:
+    return Text(content=text, link=link)
+
+
+class Annotations(BaseModel):
+    bold: bool
+    italic: bool
+    strikethrough: bool
+    underline: bool
+    code: bool
+    color: str
+
+
+def create_basic_annotations_object() -> Annotations:
+    return Annotations(bold=False, italic=False, strikethrough=False, underline=False, code=False, color='default')
 
 
 class RichText(BaseModel):

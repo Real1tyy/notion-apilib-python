@@ -8,6 +8,8 @@ Purpose:
     - Define and validate data models for Notion blocks using Pydantic.
     - Provide factory methods to create instances of block objects with the necessary attributes and validations.
     - Offer a user-friendly interface for creating and interacting with Notion block objects.
+    - Provide methods for transforming JSON payloads from the Notion API into our custom DSL block classes,
+      validated through Pydantic.
 
 Implementation Details:
     - The package includes data models and factory methods for various block types, including child blocks,
@@ -16,6 +18,7 @@ Implementation Details:
     - Each data model is implemented as a Pydantic model, ensuring automatic validation and serialization.
     - Each factory method is designed to instantiate and return a block object with default values and necessary
       validations, leveraging the Pydantic models defined in the package.
+    - Additional factory methods are provided to transform JSON payloads from the Notion API into validated block objects.
 
 Modules Included:
     - children.child: Data models and factory methods for child pages and databases.
@@ -88,14 +91,18 @@ Data Models and Factory Methods:
     - create_video
     - create_file
     - create_image
+    - create_concrete_block_type
 
 Note:
     This package is intended for use by end-users to create and interact with Notion block objects.
     It provides a user-friendly interface and ensures that all block objects are validated and structured correctly.
+    The additional factory methods enable the transformation of JSON payloads from the Notion API into our custom
+    DSL block classes, facilitating seamless data integration.
 """
 
 from .._blocks.data import *
 from .._blocks.factory import *
+from .._blocks.type_factory import *
 
 __all__ = [
     # Factory methods
@@ -120,4 +127,7 @@ __all__ = [
     'Code', 'Equation', 'LinkPreview',
     'Divider', 'Unsupported', 'ColumnList', 'Breadcrumb',
     'File', 'Image', 'Video', 'Pdf',
+
+    # Factory methods for concrete block types
+    'create_concrete_block_type',
 ]

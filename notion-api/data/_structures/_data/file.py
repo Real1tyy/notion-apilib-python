@@ -4,7 +4,7 @@ from typing import Literal, Optional
 # Third Party
 from FileObject import External, FileObject
 from pydantic import BaseModel
-from RichText import RichText
+from _data.RichText import RichText
 
 file_type = Literal['external', 'file']
 

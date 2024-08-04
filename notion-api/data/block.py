@@ -4,7 +4,7 @@ from typing import Type
 
 from pydantic import Field
 
-from Parent import Parent
+from _data.Parent import Parent
 from object import Object
 # Third Party
 from type import BlockType
