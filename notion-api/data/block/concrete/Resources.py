@@ -1,6 +1,6 @@
 from typing import Optional, Type, TypeVar
 
-from Block import Block, _create_block_object
+from Block import Block, _create_block
 from BlockType import BlockType
 from FileObject import External, FileObject
 from Parent import Parent
@@ -21,7 +21,7 @@ def _create_resources_object(
     """
     _type = determine_file_type(external, file)
 
-    return _create_block_object(
+    return _create_block(
         resource,
         parent=parent,
         block_type=BlockType.IMAGE,
@@ -49,7 +49,7 @@ class Video(Block):
     video: ResourcesAttributes
 
 
-def create_file_object(parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> File:
+def create_file(parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> File:
     """
     Factory method to create a File object.
 
@@ -61,7 +61,7 @@ def create_file_object(parent: Parent, external: Optional[External] = None, file
     return _create_resources_object(File, parent, external, file)
 
 
-def create_image_object(
+def create_image(
         parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> Image:
     """
     Factory method to create an Image object.
@@ -74,7 +74,7 @@ def create_image_object(
     return _create_resources_object(Image, parent, external, file)
 
 
-def create_pdf_object(parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> Pdf:
+def create_pdf(parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> Pdf:
     """
     Factory method to create a Pdf object.
 
@@ -86,7 +86,7 @@ def create_pdf_object(parent: Parent, external: Optional[External] = None, file:
     return _create_resources_object(Pdf, parent, external, file)
 
 
-def create_video_object(
+def create_video(
         parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> Video:
     """
     Factory method to create a Video object.

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from Block import Block, _create_block_object
+from Block import Block, _create_block
 from BlockType import BlockType
 from Parent import Parent
 
@@ -13,7 +13,7 @@ class ChildDatabase(Block):
     child_database: ChildAttributes
 
 
-def create_child_database_object(
+def create_child_database(
         parent: Parent,
         title: str,
         children: list['Block'] = None
@@ -25,7 +25,7 @@ def create_child_database_object(
     :param children: optional list of child blocks
     :return: newly created ChildDatabase Object
     """
-    return _create_block_object(
+    return _create_block(
         ChildDatabase,
         parent=parent,
         block_type=BlockType.CHILD_DATABASE,
@@ -38,7 +38,7 @@ class ChildPage(Block):
     child_page: ChildAttributes
 
 
-def create_child_page_object(
+def create_child_page(
         parent: Parent,
         title: str,
         children: list['Block'] = None
@@ -50,7 +50,7 @@ def create_child_page_object(
     :param children: optional list of child blocks
     :return: newly created ChildPage Object
     """
-    return _create_block_object(
+    return _create_block(
         ChildPage,
         parent=parent,
         block_type=BlockType.CHILD_PAGE,

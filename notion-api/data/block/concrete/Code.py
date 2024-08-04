@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from Block import Block, _create_block_object
+from Block import Block, _create_block
 from BlockType import BlockType
 from Parent import Parent
 from RichText import RichText
@@ -16,7 +16,7 @@ class Code(Block):
     code: CodeAttributes
 
 
-def create_code_object(parent: Parent, caption: list[RichText], rich_text: list[RichText], language: str) -> Code:
+def create_code(parent: Parent, caption: list[RichText], rich_text: list[RichText], language: str) -> Code:
     """
     Factory method to create Code object
     :param parent: parent object
@@ -25,7 +25,7 @@ def create_code_object(parent: Parent, caption: list[RichText], rich_text: list[
     :param language: language
     :return: newly created Code Object
     """
-    return _create_block_object(
+    return _create_block(
         Code,
         parent=parent,
         block_type=BlockType.CODE,

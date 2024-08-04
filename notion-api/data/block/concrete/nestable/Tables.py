@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
-from Block import Block, _create_block_object
+from Block import Block, _create_block
 from BlockType import BlockType
 from Parent import Parent
 from RichText import RichText
@@ -73,7 +73,7 @@ class Column(Block):
     pass
 
 
-def create_table_object(
+def create_table(
         parent: Parent, has_column_header: bool, has_row_header: bool, table_width: int,
         children: Optional[list[Block]] = None) -> Table:
     """
@@ -86,7 +86,7 @@ def create_table_object(
     :param children: List of child blocks (optional).
     :return: A new Table object.
     """
-    return _create_block_object(
+    return _create_block(
         Table,
         parent=parent,
         block_type=BlockType.TABLE,
@@ -99,7 +99,7 @@ def create_table_object(
     )
 
 
-def create_table_row_object(parent: Parent, cells: list[RichText], children: Optional[list[Block]] = None) -> TableRow:
+def create_table_row(parent: Parent, cells: list[RichText], children: Optional[list[Block]] = None) -> TableRow:
     """
     Factory method to create a TableRow object.
 
@@ -108,7 +108,7 @@ def create_table_row_object(parent: Parent, cells: list[RichText], children: Opt
     :param children: List of child blocks (optional).
     :return: A new TableRow object.
     """
-    return _create_block_object(
+    return _create_block(
         TableRow,
         parent=parent,
         block_type=BlockType.TABLE_ROW,
@@ -119,7 +119,7 @@ def create_table_row_object(parent: Parent, cells: list[RichText], children: Opt
     )
 
 
-def create_table_of_contents_object(
+def create_table_of_contents(
         parent: Parent, color: str, children: Optional[list[Block]] = None) -> TableOfContents:
     """
     Factory method to create a TableOfContents object.
@@ -129,7 +129,7 @@ def create_table_of_contents_object(
     :param children: List of child blocks (optional).
     :return: A new TableOfContents object.
     """
-    return _create_block_object(
+    return _create_block(
         TableOfContents,
         parent=parent,
         block_type=BlockType.TABLE_OF_CONTENTS,
@@ -140,7 +140,7 @@ def create_table_of_contents_object(
     )
 
 
-def create_column_object(parent: Parent, children: Optional[list[Block]] = None) -> Column:
+def create_column(parent: Parent, children: Optional[list[Block]] = None) -> Column:
     """
     Factory method to create a Column object.
 
@@ -148,7 +148,7 @@ def create_column_object(parent: Parent, children: Optional[list[Block]] = None)
     :param children: List of child blocks (optional).
     :return: A new Column object.
     """
-    return _create_block_object(
+    return _create_block(
         Column,
         parent=parent,
         block_type=BlockType.COLUMN,

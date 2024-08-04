@@ -3,7 +3,7 @@ from uuid import UUID
 
 from pydantic import BaseModel
 
-from Block import Block, _create_block_object
+from Block import Block, _create_block
 from BlockType import BlockType
 from Parent import Parent
 
@@ -37,7 +37,7 @@ class SyncedBlock(Block):
     synced_block: SyncedBlockAttributes
 
 
-def create_synced_block_object(
+def create_synced_block(
         parent: Parent, synced_from: Optional[SyncedFrom] = None,
         children: Optional[list[Block]] = None) -> SyncedBlock:
     """
@@ -48,7 +48,7 @@ def create_synced_block_object(
     :param children: List of child blocks (optional).
     :return: A new SyncedBlock object.
     """
-    return _create_block_object(
+    return _create_block(
         SyncedBlock,
         parent=parent,
         block_type=BlockType.SYNCED_BLOCK,

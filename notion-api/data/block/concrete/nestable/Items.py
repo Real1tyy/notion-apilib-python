@@ -1,8 +1,8 @@
-from typing import Optional
+from typing import Optional, Type
 
 from pydantic import BaseModel, Field
 
-from Block import Block, _create_block_object
+from Block import Block, _create_block
 from BlockType import BlockType
 from Parent import Parent
 from RichText import RichText
@@ -84,6 +84,33 @@ class Toggle(Block):
     toggle: Items
 
 
+def _create_item_block(
+        block_class: Type[Block], block_type: BlockType, parent: Parent,
+        color: str, rich_text: list[RichText], children: Optional[list[Block]] = None) -> Block:
+    """
+    Helper function to create an item block object.
+
+    :param block_class: The class of the block to create.
+    :param block_type: The type of the block.
+    :param parent: The parent object.
+    :param color: The color of the item text.
+    :param rich_text: The rich text content of the item.
+    :param children: List of child blocks (optional).
+    :return: A new block object.
+    """
+    return _create_block(
+        block_class,
+        parent=parent,
+        block_type=block_type,
+        **{block_type.value.lower(): Items(
+            color=color,
+            rich_text=rich_text,
+            children=children if children else []
+        )},
+        children=children
+    )
+
+
 def create_bulleted_list_item(
         parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None) -> BulletedListItem:
     """
@@ -95,22 +122,18 @@ def create_bulleted_list_item(
     :param children: List of child blocks (optional).
     :return: A new BulletedListItem object.
     """
-    return _create_block_object(
+    return _create_item_block(
         BulletedListItem,
-        parent=parent,
-        block_type=BlockType.BULLETED_LIST_ITEM,
-        bulleted_list_item=Items(
-            color=color,
-            rich_text=rich_text,
-            children=children if children else []
-        ),
-        children=children
+        BlockType.BULLETED_LIST_ITEM,
+        parent,
+        color,
+        rich_text,
+        children
     )
 
 
 def create_numbered_list_item(
-        parent: Parent, color: str, rich_text: list[RichText],
-        children: list[Block] = None) -> NumberedListItem:
+        parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None) -> NumberedListItem:
     """
     Factory method to create a NumberedListItem object.
 
@@ -120,16 +143,13 @@ def create_numbered_list_item(
     :param children: List of child blocks (optional).
     :return: A new NumberedListItem object.
     """
-    return _create_block_object(
+    return _create_item_block(
         NumberedListItem,
-        parent=parent,
-        block_type=BlockType.NUMBERED_LIST_ITEM,
-        numbered_list_item=Items(
-            color=color,
-            rich_text=rich_text,
-            children=children if children else []
-        ),
-        children=children
+        BlockType.NUMBERED_LIST_ITEM,
+        parent,
+        color,
+        rich_text,
+        children
     )
 
 
@@ -144,16 +164,13 @@ def create_paragraph(
     :param children: List of child blocks (optional).
     :return: A new Paragraph object.
     """
-    return _create_block_object(
+    return _create_item_block(
         Paragraph,
-        parent=parent,
-        block_type=BlockType.PARAGRAPH,
-        paragraph=Items(
-            color=color,
-            rich_text=rich_text,
-            children=children if children else []
-        ),
-        children=children
+        BlockType.PARAGRAPH,
+        parent,
+        color,
+        rich_text,
+        children
     )
 
 
@@ -168,16 +185,13 @@ def create_quote(
     :param children: List of child blocks (optional).
     :return: A new Quote object.
     """
-    return _create_block_object(
+    return _create_item_block(
         Quote,
-        parent=parent,
-        block_type=BlockType.QUOTE,
-        quote=Items(
-            color=color,
-            rich_text=rich_text,
-            children=children if children else []
-        ),
-        children=children
+        BlockType.QUOTE,
+        parent,
+        color,
+        rich_text,
+        children
     )
 
 
@@ -194,7 +208,7 @@ def create_to_do(
     :param children: List of child blocks (optional).
     :return: A new ToDo object.
     """
-    return _create_block_object(
+    return _create_block(
         ToDo,
         parent=parent,
         block_type=BlockType.TO_DO,
@@ -219,14 +233,11 @@ def create_toggle(
     :param children: List of child blocks (optional).
     :return: A new Toggle object.
     """
-    return _create_block_object(
+    return _create_item_block(
         Toggle,
-        parent=parent,
-        block_type=BlockType.TOGGLE,
-        toggle=Items(
-            color=color,
-            rich_text=rich_text,
-            children=children if children else []
-        ),
-        children=children
+        BlockType.TOGGLE,
+        parent,
+        color,
+        rich_text,
+        children
     )

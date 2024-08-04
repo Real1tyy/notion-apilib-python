@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from Block import Block, _create_block_object
+from Block import Block, _create_block
 from BlockType import BlockType
 from Emoji import Emoji
 from Parent import Parent
@@ -17,7 +17,7 @@ class Callout(Block):
     callout: CalloutAttributes
 
 
-def create_callout_object(
+def create_callout(
         parent: Parent, rich_text: list[RichText], icon: Emoji, color: str,
         children: list['Block'] = None) -> Callout:
     """
@@ -29,7 +29,7 @@ def create_callout_object(
     :param children: optional list of child blocks
     :return: newly created Callout Object
     """
-    return _create_block_object(
+    return _create_block(
         Callout,
         parent=parent,
         block_type=BlockType.CALLOUT,

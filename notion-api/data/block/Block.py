@@ -13,8 +13,13 @@ class Block(Object, ABC):
     has_children: bool
     children: list['Block'] = Field(default=[], exclude=True)
 
+    def deserialize_json(self):
+        return self.model_dump(
+            mode='json', exclude_none=True,
+            exclude={'id', 'parent', 'archived', 'in_trash'})
 
-def _create_block_object(cls: Type, parent: Parent, block_type: BlockType, children: list['Block'] = None, **kwargs):
+
+def _create_block(cls: Type, parent: Parent, block_type: BlockType, children: list['Block'] = None, **kwargs):
     """
        Helper function to create block objects with common parameters pre-filled.
        :param cls: The class of the block object to create

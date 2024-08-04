@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from Block import Block, _create_block_object
+from Block import Block, _create_block
 from BlockType import BlockType
 from Parent import Parent
 from RichText import RichText
@@ -46,7 +46,7 @@ class Heading3(Block):
     heading_3: HeadingsAttributes
 
 
-def create_heading1_object(
+def create_heading1(
         parent: Parent, rich_text: list[RichText], color: str, is_toggleable: bool,
         children: list[Block] = None) -> Heading1:
     """
@@ -59,7 +59,7 @@ def create_heading1_object(
     :param children: List of child blocks (optional).
     :return: A new Heading1 object.
     """
-    return _create_block_object(
+    return _create_block(
         Heading1,
         parent=parent,
         block_type=BlockType.HEADING_1,
@@ -72,7 +72,7 @@ def create_heading1_object(
     )
 
 
-def create_heading2_object(
+def create_heading2(
         parent: Parent, rich_text: list[RichText], color: str, is_toggleable: bool,
         children: list[Block] = None) -> Heading2:
     """
@@ -85,7 +85,7 @@ def create_heading2_object(
     :param children: List of child blocks (optional).
     :return: A new Heading2 object.
     """
-    return _create_block_object(
+    return _create_block(
         Heading2,
         parent=parent,
         block_type=BlockType.HEADING_2,
@@ -98,7 +98,7 @@ def create_heading2_object(
     )
 
 
-def create_heading3_object(
+def create_heading3(
         parent: Parent, rich_text: list[RichText], color: str, is_toggleable: bool,
         children: list[Block] = None) -> Heading3:
     """
@@ -111,7 +111,7 @@ def create_heading3_object(
     :param children: List of child blocks (optional).
     :return: A new Heading3 object.
     """
-    return _create_block_object(
+    return _create_block(
         Heading3,
         parent=parent,
         block_type=BlockType.HEADING_3,

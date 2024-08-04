@@ -53,7 +53,7 @@ class Mention(BaseModel):
     user: Optional[UserMention] = None
 
 
-def create_mention_object(
+def create_mention(
         mention_type: str,
         database: Optional[DatabaseMention] = None,
         date: Optional[DateMention] = None,
