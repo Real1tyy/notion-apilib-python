@@ -1,5 +1,5 @@
 # Third Party
-from _blocks.block import Block
+from block import Block
 
 
 class Divider(Block):

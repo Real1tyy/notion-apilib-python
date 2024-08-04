@@ -1,8 +1,8 @@
 from typing import Type, Optional
 
-from Parent import Parent
-from RichText import RichText
-from _blocks.block import Block, _create_block
+from _data.Parent import Parent
+from _data.RichText import RichText
+from block import Block, _create_block
 from items import Items, BulletedListItem, NumberedListItem, Paragraph, Quote, TodoAttributes, ToDo, Toggle
 from type import BlockType
 

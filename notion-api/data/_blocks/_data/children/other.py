@@ -4,9 +4,9 @@ from uuid import UUID
 
 from pydantic import BaseModel
 
-from Emoji import Emoji
-from RichText import RichText
-from _blocks.block import Block
+from _data.Emoji import Emoji
+from _data.RichText import RichText
+from block import Block
 
 
 class CalloutAttributes(BaseModel):

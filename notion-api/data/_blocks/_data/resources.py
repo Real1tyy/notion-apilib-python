@@ -1,8 +1,8 @@
 # Standard Library
 
-from ResourcesAttributes import FileAttributes, ResourcesAttributes
+from _data.ResourcesAttributes import FileAttributes, ResourcesAttributes
 # Third Party
-from _blocks.block import Block
+from block import Block
 
 
 class File(Block):

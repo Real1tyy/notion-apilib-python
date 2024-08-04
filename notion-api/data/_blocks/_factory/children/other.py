@@ -1,9 +1,9 @@
 from typing import Optional
 
-from Emoji import Emoji
-from Parent import Parent
-from RichText import RichText
-from _blocks.block import Block, _create_block
+from _data.Emoji import Emoji
+from _data.Parent import Parent
+from _data.RichText import RichText
+from block import Block, _create_block
 from other import SyncedFrom, SyncedBlock, SyncedBlockAttributes, Callout, CalloutAttributes
 from type import BlockType
 

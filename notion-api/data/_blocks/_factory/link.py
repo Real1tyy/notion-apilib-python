@@ -1,5 +1,5 @@
-from Parent import Parent
-from RichText import RichText
+from _data.Parent import Parent
+from _data.RichText import RichText
 from _data.link import Bookmark, BookmarkAttributes, Embed, EmbedAttributes, LinkPreview, LinkPreviewAttributes
 from block import _create_block
 from type import BlockType

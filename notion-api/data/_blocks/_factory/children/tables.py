@@ -1,7 +1,7 @@
 from typing import Optional
 
-from Parent import Parent
-from RichText import RichText
+from _data.Parent import Parent
+from _data.RichText import RichText
 from block import Block, _create_block
 from tables import TableRow, TableRowAttributes, TableOfContents, TableOfContentsAttributes, Column, Table, \
     TableAttributes

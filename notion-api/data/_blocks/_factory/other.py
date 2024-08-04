@@ -1,4 +1,4 @@
-from Parent import Parent
+from _data.Parent import Parent
 
 from block import _create_block
 from data.other import Divider, ColumnList, Breadcrumb, Unsupported

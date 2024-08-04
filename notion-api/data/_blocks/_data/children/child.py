@@ -1,7 +1,7 @@
 # Third Party
 from pydantic import BaseModel
 
-from _blocks.block import Block
+from block import Block
 
 
 class ChildAttributes(BaseModel):

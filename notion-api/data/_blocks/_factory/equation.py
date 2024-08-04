@@ -1,4 +1,4 @@
-from Parent import Parent
+from _data.Parent import Parent
 from _data.equation import Equation, EquationAttributes
 from block import _create_block
 from type import BlockType

@@ -1,8 +1,8 @@
 from typing import TypeVar, Type, Optional
 
-from FileObject import External, FileObject
-from Parent import Parent
-from ResourcesAttributes import determine_file_type, ResourcesAttributes
+from _data.FileObject import External, FileObject
+from _data.Parent import Parent
+from _data.ResourcesAttributes import determine_file_type, ResourcesAttributes
 from _data.resources import File, Image, Pdf, Video
 from block import _create_block
 from type import BlockType

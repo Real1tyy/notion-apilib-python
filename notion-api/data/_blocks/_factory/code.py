@@ -1,5 +1,5 @@
-from Parent import Parent
-from RichText import RichText
+from _data.Parent import Parent
+from _data.RichText import RichText
 from _data.code import Code, CodeAttributes
 from block import _create_block
 from type import BlockType
