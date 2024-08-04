@@ -1,21 +1,21 @@
 # Third Party
-from Block import Block
-from Bookmark import Bookmark
-from Callout import Callout
-from Child import ChildDatabase, ChildPage
-from Code import Code
-from custom_types import json_
-from Embed import Embed
-from Equation import Equation
+from data.Embed import Embed
+from data.LinkPreview import LinkPreview
+
 from FileObject import FileObject
-from Heading import Heading1, Heading2, Heading3
-from Items import BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle
-from LinkPreview import LinkPreview
-from Mention import Mention
-from Other import Breadcrumb, ColumnList, Divider, Unsupported
-from Resources import Image, Pdf, Video
-from SyncedBlock import SyncedBlock
-from Tables import Column, Table, TableOfContents, TableRow
+from child import ChildDatabase, ChildPage
+from custom_types import json_
+from data.code import Code
+from data.equation import Equation
+from data.link import Bookmark
+from data.mention import Mention
+from data.other import Breadcrumb, ColumnList, Divider, Unsupported
+from data.resources import Image, Pdf, Video
+from heading import Heading1, Heading2, Heading3
+from items import BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle
+from other import Callout
+from synced import SyncedBlock
+from tables import Column, Table, TableOfContents, TableRow
 
 BLOCK_TYPE_MAP = {
     "bookmark": Bookmark,
@@ -52,6 +52,6 @@ BLOCK_TYPE_MAP = {
 }
 
 
-def create_concrete_block_type(data: json_) -> Block:
+def create_concrete_block_type(data: json_):
     block_type = data["type"]
     return BLOCK_TYPE_MAP[block_type](**data)

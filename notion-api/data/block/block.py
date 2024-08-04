@@ -4,10 +4,10 @@ from typing import Type
 
 from pydantic import Field
 
-# Third Party
-from BlockType import BlockType
 from Parent import Parent
 from object import Object
+# Third Party
+from type import BlockType
 
 
 class Block(Object, ABC):
