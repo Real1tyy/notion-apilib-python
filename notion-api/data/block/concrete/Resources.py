@@ -1,10 +1,12 @@
+# Standard Library
 from typing import Optional, Type, TypeVar
 
+# Third Party
 from Block import Block, _create_block
 from BlockType import BlockType
 from FileObject import External, FileObject
 from Parent import Parent
-from ResourcesAttributes import FileAttributes, determine_file_type, ResourcesAttributes
+from ResourcesAttributes import FileAttributes, ResourcesAttributes, determine_file_type
 
 T = TypeVar('T', bound='Block')
 

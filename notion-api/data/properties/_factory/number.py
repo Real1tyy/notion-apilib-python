@@ -1,13 +1,15 @@
 from typing import Optional
 
-from NumberProperty import UniqueIdPage, UniqueIdStructure, NumberPage
-from Page import Page
-from PropertyType import PropertyType
-from factory.general import _create_page_property
+from _factory.general import _create_page_property, _create_database_property
+from database import Database
+from number import UniqueIdPage, UniqueIdStructure, NumberPage, UniqueIdDatabase, NumberDatabase, \
+    NumberStructure
+from page import Page
+from type import PropertyType
 
 
 def create_number_page(
-        parent: Page, name: str, number: float, id_: Optional[str] = None) -> NumberPage:
+        parent: Page, name: str, number: float) -> NumberPage:
     """
     Factory method to create a NumberPage object.
 
@@ -15,7 +17,6 @@ def create_number_page(
         parent (Page): The parent page to which this number property belongs.
         name (str): The name of the number property.
         number (float): The number value of the property.
-        id_ (Optional[str]): The optional ID of the number property.
 
     Returns:
         NumberPage: A new NumberPage object.
@@ -25,14 +26,34 @@ def create_number_page(
         parent=parent,
         property_type=PropertyType.NUMBER,
         name=name,
-        id_=id_,
         number=number
     )
 
 
+def create_number_database(
+        parent: Database, name: str, format_: str) -> NumberDatabase:
+    """
+    Factory method to create a NumberDatabase object.
+
+    Parameters:
+        parent (Database): The parent database to which this number property belongs.
+        name (str): The name of the number property.
+        format_ (str): The format of the number property.
+
+    Returns:
+        NumberDatabase: A new NumberDatabase object.
+    """
+    return _create_database_property(
+        NumberDatabase,
+        parent=parent,
+        property_type=PropertyType.NUMBER,
+        name=name,
+        number=NumberStructure(format=format_)
+    )
+
+
 def create_unique_id_page(
-        parent: Page, name: str, number: float, prefix: Optional[str] = None,
-        id_: Optional[str] = None) -> UniqueIdPage:
+        parent: Page, name: str, number: float, prefix: Optional[str] = None) -> UniqueIdPage:
     """
     Factory method to create a UniqueIdPage object.
 
@@ -41,7 +62,6 @@ def create_unique_id_page(
         name (str): The name of the unique ID property.
         number (float): The number value of the unique ID.
         prefix (Optional[str]): The optional prefix of the unique ID.
-        id_ (Optional[str]): The optional ID of the unique ID property.
 
     Returns:
         UniqueIdPage: A new UniqueIdPage object.
@@ -51,6 +71,26 @@ def create_unique_id_page(
         parent=parent,
         property_type=PropertyType.UNIQUE_ID,
         name=name,
-        id_=id_,
         unique_id=UniqueIdStructure(number=number, prefix=prefix)
+    )
+
+
+def create_unique_id_database(
+        parent: Database, name: str) -> UniqueIdDatabase:
+    """
+    Factory method to create a UniqueIdDatabase object.
+
+    Parameters:
+        parent (Database): The parent database to which this unique ID property belongs.
+        name (str): The name of the unique ID property.
+
+    Returns:
+        UniqueIdDatabase: A new UniqueIdDatabase object.
+    """
+    return _create_database_property(
+        UniqueIdDatabase,
+        parent=parent,
+        property_type=PropertyType.UNIQUE_ID,
+        name=name,
+        unique_id={}
     )

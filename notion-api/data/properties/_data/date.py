@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Any, Optional
 
 # Third Party
-from Property import DatabaseProperty, PageProperty
+from property import DatabaseProperty, PageProperty
 from pydantic import BaseModel
 
 

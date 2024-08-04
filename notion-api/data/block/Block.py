@@ -1,11 +1,13 @@
+# Standard Library
 from abc import ABC
 from typing import Type
 
 from pydantic import Field
 
+# Third Party
 from BlockType import BlockType
-from Object import Object
 from Parent import Parent
+from object import Object
 
 
 class Block(Object, ABC):

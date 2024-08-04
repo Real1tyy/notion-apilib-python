@@ -1,10 +1,11 @@
+# Standard Library
 from dataclasses import dataclass
 from typing import Optional
 
-from requests import Response
-
+# Third Party
 from client.api_requests.utils.RequestsClient import RequestsClient
 from custom_types import json_
+from requests import Response
 
 
 @dataclass

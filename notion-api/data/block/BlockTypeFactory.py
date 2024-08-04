@@ -1,8 +1,10 @@
+# Third Party
 from Block import Block
 from Bookmark import Bookmark
 from Callout import Callout
 from Child import ChildDatabase, ChildPage
 from Code import Code
+from custom_types import json_
 from Embed import Embed
 from Equation import Equation
 from FileObject import FileObject
@@ -10,12 +12,10 @@ from Heading import Heading1, Heading2, Heading3
 from Items import BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle
 from LinkPreview import LinkPreview
 from Mention import Mention
-from Other import Divider, Breadcrumb, ColumnList, Unsupported
+from Other import Breadcrumb, ColumnList, Divider, Unsupported
 from Resources import Image, Pdf, Video
 from SyncedBlock import SyncedBlock
-from Tables import Table
-from Tables import TableOfContents, TableRow, Column
-from custom_types import json_
+from Tables import Column, Table, TableOfContents, TableRow
 
 BLOCK_TYPE_MAP = {
     "bookmark": Bookmark,

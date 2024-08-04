@@ -2,7 +2,7 @@
 from abc import ABC
 
 # Third Party
-from PropertyType import PropertyType
+from type import PropertyType
 from pydantic import BaseModel, Field
 
 

@@ -1,7 +1,9 @@
-from requests import Response
-
+# Standard Library
 import time
-from client.api_requests.constants.status_codes import SUCCESS, RATE_LIMIT
+
+# Third Party
+from client.api_requests.constants.status_codes import RATE_LIMIT, SUCCESS
+from requests import Response
 
 
 class RequestsStatusChecker:

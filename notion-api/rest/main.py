@@ -1,6 +1,9 @@
+# Third Party
 from dotenv import load_dotenv
 
 from Container import Container
+from Parent import create_parent
+from data.properties.factory import create_date_page
 
 if __name__ == "__main__":
     load_dotenv()
@@ -12,6 +15,9 @@ if __name__ == "__main__":
     page_provider = container.notion_page_provider()
 
     file_path = "links"
+    parent = create_parent("workspace")
+    page = create_date_page(parent, "date", "2021-10-10")
+
     # with open(file_path, "r") as file:
     #     lines = file.readlines()
     # for line in lines:
@@ -24,10 +30,15 @@ if __name__ == "__main__":
     # result = database_provider.query_database(database)
     # print(database.pages)
     # print(len(database.pages))
+
     #
-    database_id = "aa9c9ea5b03b436e92a91edea5f69b19"
-    result = database_provider.retrieve_database(database_id)
-    database = result.unwrap()
-    result = database_provider.query_database(database)
-    print(database.pages)
-    print(len(database.pages))
+    # parent = create_parent('page_id', "b5d1877b3a554a7fbaacf206adb8a0e2")
+    # block = create_bulleted_list_item(parent, "green", [])
+    # print(block)
+
+    # database_id = "706cd118dfaf40c288029314d62e2357"
+    # result = database_provider.retrieve_database(database_id)
+    # database = result.unwrap()
+    # result = database_provider.query_database(database)
+    # print(database.pages)
+    # print(len(database.pages))

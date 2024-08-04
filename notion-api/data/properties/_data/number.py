@@ -4,7 +4,7 @@ from typing import Any, Optional
 from pydantic import BaseModel
 
 # Third Party
-from Property import DatabaseProperty, PageProperty
+from property import DatabaseProperty, PageProperty
 
 
 class NumberPage(PageProperty):

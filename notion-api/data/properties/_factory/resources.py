@@ -1,14 +1,14 @@
-from typing import Optional
-
-from Page import Page
-from PropertyType import PropertyType
 from ResourcesAttributes import ResourcesAttributes
-from ResourcesProperty import EmailPage, UrlPage, PhoneNumberPage, FilesPage
-from factory.general import _create_page_property
+from _factory.general import _create_page_property, _create_database_property
+from database import Database
+from page import Page
+from resources import EmailPage, UrlPage, PhoneNumberPage, FilesPage, EmailDatabase, FilesDatabase, \
+    PhoneNumberDatabase, UrlDatabase
+from type import PropertyType
 
 
 def create_email_page(
-        parent: Page, name: str, email: str, id_: Optional[str] = None) -> EmailPage:
+        parent: Page, name: str, email: str) -> EmailPage:
     """
     Factory method to create an EmailPage object.
 
@@ -16,7 +16,6 @@ def create_email_page(
         parent (Page): The parent page to which this email property belongs.
         name (str): The name of the email property.
         email (str): The email value of the property.
-        id_ (Optional[str]): The optional ID of the email property.
 
     Returns:
         EmailPage: A new EmailPage object.
@@ -26,13 +25,33 @@ def create_email_page(
         parent=parent,
         property_type=PropertyType.EMAIL,
         name=name,
-        id_=id_,
         email=email
     )
 
 
+def create_email_database(
+        parent: Database, name: str) -> EmailDatabase:
+    """
+    Factory method to create an EmailDatabase object.
+
+    Parameters:
+        parent (Database): The parent database to which this email property belongs.
+        name (str): The name of the email property.
+
+    Returns:
+        EmailDatabase: A new EmailDatabase object.
+    """
+    return _create_database_property(
+        EmailDatabase,
+        parent=parent,
+        property_type=PropertyType.EMAIL,
+        name=name,
+        email={}
+    )
+
+
 def create_files_page(
-        parent: Page, name: str, files: list[ResourcesAttributes], id_: Optional[str] = None) -> FilesPage:
+        parent: Page, name: str, files: list[ResourcesAttributes]) -> FilesPage:
     """
     Factory method to create a FilesPage object.
 
@@ -40,7 +59,6 @@ def create_files_page(
         parent (Page): The parent page to which this files property belongs.
         name (str): The name of the files property.
         files (list[ResourcesAttributes]): The list of files for the property.
-        id_ (Optional[str]): The optional ID of the files property.
 
     Returns:
         FilesPage: A new FilesPage object.
@@ -50,13 +68,33 @@ def create_files_page(
         parent=parent,
         property_type=PropertyType.FILES,
         name=name,
-        id_=id_,
         files=files
     )
 
 
+def create_files_database(
+        parent: Database, name: str) -> FilesDatabase:
+    """
+    Factory method to create a FilesDatabase object.
+
+    Parameters:
+        parent (Database): The parent database to which this files property belongs.
+        name (str): The name of the files property.
+
+    Returns:
+        FilesDatabase: A new FilesDatabase object.
+    """
+    return _create_database_property(
+        FilesDatabase,
+        parent=parent,
+        property_type=PropertyType.FILES,
+        name=name,
+        files={}
+    )
+
+
 def create_phone_number_page(
-        parent: Page, name: str, phone_number: str, id_: Optional[str] = None) -> PhoneNumberPage:
+        parent: Page, name: str, phone_number: str) -> PhoneNumberPage:
     """
     Factory method to create a PhoneNumberPage object.
 
@@ -64,7 +102,6 @@ def create_phone_number_page(
         parent (Page): The parent page to which this phone number property belongs.
         name (str): The name of the phone number property.
         phone_number (str): The phone number value of the property.
-        id_ (Optional[str]): The optional ID of the phone number property.
 
     Returns:
         PhoneNumberPage: A new PhoneNumberPage object.
@@ -74,13 +111,33 @@ def create_phone_number_page(
         parent=parent,
         property_type=PropertyType.PHONE_NUMBER,
         name=name,
-        id_=id_,
         phone_number=phone_number
     )
 
 
+def create_phone_number_database(
+        parent: Database, name: str) -> PhoneNumberDatabase:
+    """
+    Factory method to create a PhoneNumberDatabase object.
+
+    Parameters:
+        parent (Database): The parent database to which this phone number property belongs.
+        name (str): The name of the phone number property.
+
+    Returns:
+        PhoneNumberDatabase: A new PhoneNumberDatabase object.
+    """
+    return _create_database_property(
+        PhoneNumberDatabase,
+        parent=parent,
+        property_type=PropertyType.PHONE_NUMBER,
+        name=name,
+        phone_number={}
+    )
+
+
 def create_url_page(
-        parent: Page, name: str, url: str, id_: Optional[str] = None) -> UrlPage:
+        parent: Page, name: str, url: str) -> UrlPage:
     """
     Factory method to create a UrlPage object.
 
@@ -88,7 +145,6 @@ def create_url_page(
         parent (Page): The parent page to which this URL property belongs.
         name (str): The name of the URL property.
         url (str): The URL value of the property.
-        id_ (Optional[str]): The optional ID of the URL property.
 
     Returns:
         UrlPage: A new UrlPage object.
@@ -98,6 +154,26 @@ def create_url_page(
         parent=parent,
         property_type=PropertyType.URL,
         name=name,
-        id_=id_,
         url=url
+    )
+
+
+def create_url_database(
+        parent: Database, name: str) -> UrlDatabase:
+    """
+    Factory method to create a UrlDatabase object.
+
+    Parameters:
+        parent (Database): The parent database to which this URL property belongs.
+        name (str): The name of the URL property.
+
+    Returns:
+        UrlDatabase: A new UrlDatabase object.
+    """
+    return _create_database_property(
+        UrlDatabase,
+        parent=parent,
+        property_type=PropertyType.URL,
+        name=name,
+        url={}
     )

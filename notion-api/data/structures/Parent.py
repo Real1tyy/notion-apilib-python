@@ -1,6 +1,8 @@
-from typing import Optional, Literal
+# Standard Library
+from typing import Any, Literal, Optional
 from uuid import UUID
 
+# Third Party
 from pydantic import BaseModel
 
 parents_types = Literal['database_id', 'page_id', 'block_id', 'workspace']
@@ -18,15 +20,13 @@ class Parent(BaseModel):
         Get the parent id of the parent object
         :return: id of the parent object or 'workspace' if the parent is the root object
         """
-        match None:
-            case self.database_id:
-                return self.database_id.hex
-            case self.page_id:
-                return self.page_id.hex
-            case self.block_id:
-                return self.block_id.hex
-            case _:
-                return "workspace"
+        if self.database_id:
+            return self.database_id.hex
+        if self.page_id:
+            return self.page_id.hex
+        if self.block_id:
+            return self.block_id.hex
+        return "workspace"
 
     def set_parent_id(self, parent_type: parents_types, parent_id: Optional[UUID] = None):
         """
@@ -49,12 +49,21 @@ class Parent(BaseModel):
         self.block_id = None
 
 
-def create_parent_from_object(parent: parents_types) -> Parent:
+def create_parent_from_object(parent: Any) -> Parent:
     """
     Creates the parent of the object, parent parameter should be subtype of Object class
     """
-    result_parent = Parent(type=parent.object)
-    result_parent.set_parent_id(parent.object, UUID(parent.id))
+    parent_type: Literal['page_id', 'block_id', 'database_id']
+    match parent.object:
+        case "block":
+            parent_type = "block_id"
+        case "database":
+            parent_type = "database_id"
+        case _:
+            parent_type = "page_id"
+
+    result_parent = Parent(type=parent_type)
+    result_parent.set_parent_id(parent_type, UUID(parent.id))
     return result_parent
 
 
@@ -63,5 +72,6 @@ def create_parent(parent_type: parents_types, parent_id: str = None) -> Parent:
     Creates the parent of the object
     """
     parent = Parent(type=parent_type)
-    parent.set_parent_id(parent_type, UUID(parent_id))
+    if parent_id:
+        parent.set_parent_id(parent_type, UUID(parent_id))
     return parent

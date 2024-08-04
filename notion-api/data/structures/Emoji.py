@@ -1,8 +1,9 @@
+# Standard Library
 from typing import Literal, Optional
 
-from pydantic import BaseModel
-
+# Third Party
 from FileObject import External, FileObject
+from pydantic import BaseModel
 
 file_type = Literal['external', 'file']
 

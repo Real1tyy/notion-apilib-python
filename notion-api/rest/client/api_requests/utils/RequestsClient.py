@@ -1,11 +1,12 @@
+# Standard Library
 from dataclasses import dataclass
-from typing import Optional, Callable
+from typing import Callable, Optional
 
+# Third Party
 import requests
-from requests import Response
-
 from client.api_requests.constants.notion import BASE_URL
 from custom_types import json_
+from requests import Response
 
 
 @dataclass

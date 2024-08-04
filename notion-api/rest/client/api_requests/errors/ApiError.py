@@ -1,7 +1,8 @@
+# Standard Library
 from dataclasses import dataclass
 
 
 @dataclass
-class CustomError:
+class ApiError:
     status_code: int
     message: str

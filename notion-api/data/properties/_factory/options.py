@@ -1,13 +1,13 @@
-from typing import Optional
-
-from Page import Page
-from PropertyType import PropertyType
-from SelectProperty import StatusPage, Option, SelectPage, OptionStructure, MultiSelectPage, CheckboxPage
-from factory.general import _create_page_property
+from _factory.general import _create_page_property, _create_database_property
+from database import Database
+from option import StatusPage, Option, SelectPage, OptionStructure, MultiSelectPage, CheckboxPage, \
+    CheckboxDatabase, MultiSelectDatabase, SelectDatabase, Group, StatusDatabaseStructure, StatusDatabase
+from page import Page
+from type import PropertyType
 
 
 def create_checkbox_page(
-        parent: Page, name: str, checkbox: bool, id_: Optional[str] = None) -> CheckboxPage:
+        parent: Page, name: str, checkbox: bool) -> CheckboxPage:
     """
     Factory method to create a CheckboxPage object.
 
@@ -15,7 +15,6 @@ def create_checkbox_page(
         parent (Page): The parent page to which this checkbox property belongs.
         name (str): The name of the checkbox property.
         checkbox (bool): The checkbox value of the property.
-        id_ (Optional[str]): The optional ID of the checkbox property.
 
     Returns:
         CheckboxPage: A new CheckboxPage object.
@@ -25,13 +24,33 @@ def create_checkbox_page(
         parent=parent,
         property_type=PropertyType.CHECKBOX,
         name=name,
-        id_=id_,
         checkbox=checkbox
     )
 
 
+def create_checkbox_database(
+        parent: Database, name: str) -> CheckboxDatabase:
+    """
+    Factory method to create a CheckboxDatabase object.
+
+    Parameters:
+        parent (Database): The parent database to which this checkbox property belongs.
+        name (str): The name of the checkbox property.
+
+    Returns:
+        CheckboxDatabase: A new CheckboxDatabase object.
+    """
+    return _create_database_property(
+        CheckboxDatabase,
+        parent=parent,
+        property_type=PropertyType.CHECKBOX,
+        name=name,
+        checkbox={}
+    )
+
+
 def create_multi_select_page(
-        parent: Page, name: str, options: list[Option], id_: Optional[str] = None) -> MultiSelectPage:
+        parent: Page, name: str, options: list[Option]) -> MultiSelectPage:
     """
     Factory method to create a MultiSelectPage object.
 
@@ -39,7 +58,6 @@ def create_multi_select_page(
         parent (Page): The parent page to which this multi-select property belongs.
         name (str): The name of the multi-select property.
         options (list[Option]): A list of options for the multi-select property.
-        id_ (Optional[str]): The optional ID of the multi-select property.
 
     Returns:
         MultiSelectPage: A new MultiSelectPage object.
@@ -50,13 +68,35 @@ def create_multi_select_page(
         parent=parent,
         property_type=PropertyType.MULTI_SELECT,
         name=name,
-        id_=id_,
+        multi_select=option_structure
+    )
+
+
+def create_multi_select_database(
+        parent: Database, name: str, options: list[Option]) -> MultiSelectDatabase:
+    """
+    Factory method to create a MultiSelectDatabase object.
+
+    Parameters:
+        parent (Database): The parent database to which this multi-select property belongs.
+        name (str): The name of the multi-select property.
+        options (list[Option]): A list of options for the multi-select property.
+
+    Returns:
+        MultiSelectDatabase: A new MultiSelectDatabase object.
+    """
+    option_structure = OptionStructure(options=options)
+    return _create_database_property(
+        MultiSelectDatabase,
+        parent=parent,
+        property_type=PropertyType.MULTI_SELECT,
+        name=name,
         multi_select=option_structure
     )
 
 
 def create_select_page(
-        parent: Page, name: str, option: Option, id_: Optional[str] = None) -> SelectPage:
+        parent: Page, name: str, option: Option) -> SelectPage:
     """
     Factory method to create a SelectPage object.
 
@@ -64,7 +104,6 @@ def create_select_page(
         parent (Page): The parent page to which this select property belongs.
         name (str): The name of the select property.
         option (Option): The option for the select property.
-        id_ (Optional[str]): The optional ID of the select property.
 
     Returns:
         SelectPage: A new SelectPage object.
@@ -74,13 +113,34 @@ def create_select_page(
         parent=parent,
         property_type=PropertyType.SELECT,
         name=name,
-        id_=id_,
         select=option
     )
 
 
+def create_select_database(
+        parent: Database, name: str, options: list[Option]) -> SelectDatabase:
+    """
+    Factory method to create a SelectDatabase object.
+
+    Parameters:
+        parent (Database): The parent database to which this select property belongs.
+        name (str): The name of the select property.
+        options (list(Option)): The options for the select property.
+
+    Returns:
+        SelectDatabase: A new SelectDatabase object.
+    """
+    return _create_database_property(
+        SelectDatabase,
+        parent=parent,
+        property_type=PropertyType.SELECT,
+        name=name,
+        select=OptionStructure(options=options)
+    )
+
+
 def create_status_page(
-        parent: Page, name: str, status: Option, id_: Optional[str] = None) -> StatusPage:
+        parent: Page, name: str, status: Option) -> StatusPage:
     """
     Factory method to create a StatusPage object.
 
@@ -88,7 +148,6 @@ def create_status_page(
         parent (Page): The parent page to which this status property belongs.
         name (str): The name of the status property.
         status (Option): The status option for the property.
-        id_ (Optional[str]): The optional ID of the status property.
 
     Returns:
         StatusPage: A new StatusPage object.
@@ -98,6 +157,29 @@ def create_status_page(
         parent=parent,
         property_type=PropertyType.STATUS,
         name=name,
-        id_=id_,
         status=status
+    )
+
+
+def create_status_database(
+        parent: Database, name: str, options: list[Option], groups: list[Group]) -> StatusDatabase:
+    """
+    Factory method to create a StatusDatabase object.
+
+    Parameters:
+        parent (Database): The parent database to which this status property belongs.
+        name (str): The name of the status property.
+        options (list[Option]): A list of options for the status property.
+        groups (list[Group]): A list of groups for the status property.
+
+    Returns:
+        StatusDatabase: A new StatusDatabase object.
+    """
+    status_structure = StatusDatabaseStructure(options=options, groups=groups)
+    return _create_database_property(
+        StatusDatabase,
+        parent=parent,
+        property_type=PropertyType.STATUS,
+        name=name,
+        status=status_structure
     )

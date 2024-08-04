@@ -1,10 +1,11 @@
+# Standard Library
 from typing import Optional, Type
 
-from pydantic import BaseModel, Field
-
+# Third Party
 from Block import Block, _create_block
 from BlockType import BlockType
 from Parent import Parent
+from pydantic import BaseModel, Field
 from RichText import RichText
 
 

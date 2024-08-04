@@ -1,11 +1,12 @@
+# Standard Library
 from typing import Optional
 from uuid import UUID
 
-from pydantic import BaseModel
-
+# Third Party
 from Block import Block, _create_block
 from BlockType import BlockType
 from Parent import Parent
+from pydantic import BaseModel
 
 
 class SyncedFrom(BaseModel):

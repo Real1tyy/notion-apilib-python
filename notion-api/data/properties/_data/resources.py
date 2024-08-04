@@ -2,7 +2,7 @@
 from typing import Any
 
 # Third Party
-from Property import DatabaseProperty, PageProperty
+from property import DatabaseProperty, PageProperty
 from ResourcesAttributes import ResourcesAttributes
 
 

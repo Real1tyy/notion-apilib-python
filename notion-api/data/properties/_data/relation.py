@@ -4,7 +4,7 @@ from typing import Any, Literal, Optional
 from uuid import UUID
 
 # Third Party
-from Property import DatabaseProperty, PageProperty
+from property import DatabaseProperty, PageProperty
 from pydantic import BaseModel, Field
 
 

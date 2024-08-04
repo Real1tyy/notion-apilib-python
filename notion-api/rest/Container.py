@@ -1,13 +1,13 @@
-from dependency_injector import containers, providers
-
-from client.NotionBlockProvider import NotionBlockProvider
-from client.NotionDatabaseProvider import NotionDatabaseProvider
-from client.NotionPageProvider import NotionPageProvider
+# Third Party
 from client.api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
 from client.api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
 from client.api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
 from client.api_requests.utils.NotionHeaderProvider import NotionHeaderProvider
 from client.api_requests.utils.RequestsClient import RequestsClient
+from client.NotionBlockProvider import NotionBlockProvider
+from client.NotionDatabaseProvider import NotionDatabaseProvider
+from client.NotionPageProvider import NotionPageProvider
+from dependency_injector import containers, providers
 
 
 class Container(containers.DeclarativeContainer):

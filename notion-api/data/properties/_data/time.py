@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Any
 
 # Third Party
-from Property import DatabaseProperty, PageProperty
+from property import DatabaseProperty, PageProperty
 
 
 class CreatedTimePage(PageProperty):

@@ -6,11 +6,11 @@ from pydantic_core.core_schema import ValidationInfo
 
 # Third Party
 from Block import Block
-from Object import MajorObject
-from property import PageProperty
 from _type_factory import create_concrete_page_property_type
 from custom_types import json_
 from exceptions import catch_exceptions
+from object import MajorObject
+from property import PageProperty
 
 
 class PageProperties(BaseModel, extra="allow"):

@@ -4,7 +4,7 @@ from typing import Any
 from pydantic import BaseModel, Field
 
 # Third Party
-from Property import DatabaseProperty, PageProperty
+from property import DatabaseProperty, PageProperty
 
 
 class CheckboxPage(PageProperty):
