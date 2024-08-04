@@ -1,6 +1,6 @@
 # Third Party
 from custom_types import json_
-from properties.data import *
+from properties import *
 from type import PropertyType
 
 PROPERTY_TYPE_MAP = {
@@ -29,10 +29,36 @@ PROPERTY_TYPE_MAP = {
 
 
 def create_concrete_page_property_type(data: json_):
+    """
+    Create an instance of a concrete page property type based on the given data.
+
+    Parameters
+    ----------
+    data : dict
+        The data used to create the page property, including the property type.
+
+    Returns
+    -------
+    PageProperty
+        An instance of the concrete page property type.
+    """
     property_type = PropertyType(data["type"])
     return PROPERTY_TYPE_MAP[property_type][0](**data)
 
 
 def create_concrete_database_property_type(data: json_):
+    """
+    Create an instance of a concrete database property type based on the given data.
+
+    Parameters
+    ----------
+    data : dict
+        The data used to create the database property, including the property type.
+
+    Returns
+    -------
+    DatabaseProperty
+        An instance of the concrete database property type.
+    """
     property_type = PropertyType(data["type"])
     return PROPERTY_TYPE_MAP[property_type][1](**data)
