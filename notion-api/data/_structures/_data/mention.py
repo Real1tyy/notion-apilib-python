@@ -8,44 +8,140 @@ from pydantic import BaseModel
 
 
 class DatabaseMention(BaseModel):
+    """
+    Represents a mention of a database in the Notion API.
+
+    Attributes
+    ----------
+    id : UUID
+        The ID of the mentioned database.
+    """
     id: UUID
 
 
 class DateMention(BaseModel):
+    """
+    Represents a mention of a date in the Notion API.
+
+    Attributes
+    ----------
+    start : datetime
+        The start date and time.
+    end : Optional[datetime]
+        The end date and time, if any.
+    """
     start: datetime
     end: Optional[datetime] = None
 
 
 class LinkPreviewMention(BaseModel):
+    """
+    Represents a mention of a link preview in the Notion API.
+
+    Attributes
+    ----------
+    url : str
+        The URL of the link preview.
+    """
     url: str
 
 
 class PageMention(BaseModel):
+    """
+    Represents a mention of a page in the Notion API.
+
+    Attributes
+    ----------
+    id : UUID
+        The ID of the mentioned page.
+    """
     id: UUID
 
 
 class TemplateMentionDate(BaseModel):
+    """
+    Represents a template mention of a date in the Notion API.
+
+    Attributes
+    ----------
+    type : str
+        The type of the template mention.
+    template_mention_date : str
+        The template mention date string.
+    """
     type: str
     template_mention_date: str
 
 
 class TemplateMentionUser(BaseModel):
+    """
+    Represents a template mention of a user in the Notion API.
+
+    Attributes
+    ----------
+    type : str
+        The type of the template mention.
+    template_mention_user : str
+        The template mention user string.
+    """
     type: str
     template_mention_user: str
 
 
 class TemplateMention(BaseModel):
+    """
+    Represents a template mention in the Notion API.
+
+    Attributes
+    ----------
+    type : str
+        The type of the template mention.
+    template_mention_date : Optional[TemplateMentionDate]
+        The template mention date object, if any.
+    template_mention_user : Optional[TemplateMentionUser]
+        The template mention user object, if any.
+    """
     type: str
     template_mention_date: Optional[TemplateMentionDate] = None
     template_mention_user: Optional[TemplateMentionUser] = None
 
 
 class UserMention(BaseModel):
+    """
+    Represents a mention of a user in the Notion API.
+
+    Attributes
+    ----------
+    object : str
+        The object type (always 'user').
+    id : UUID
+        The ID of the mentioned user.
+    """
     object: str
     id: UUID
 
 
 class Mention(BaseModel):
+    """
+    Represents a mention in the Notion API.
+
+    Attributes
+    ----------
+    type : str
+        The type of the mention.
+    database : Optional[DatabaseMention]
+        The database mention object, if any.
+    date : Optional[DateMention]
+        The date mention object, if any.
+    link_preview : Optional[LinkPreviewMention]
+        The link preview mention object, if any.
+    page : Optional[PageMention]
+        The page mention object, if any.
+    template_mention : Optional[TemplateMention]
+        The template mention object, if any.
+    user : Optional[UserMention]
+        The user mention object, if any.
+    """
     type: str
     database: Optional[DatabaseMention] = None
     date: Optional[DateMention] = None

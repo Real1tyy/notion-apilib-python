@@ -4,13 +4,13 @@ from typing import Annotated, Any
 from pydantic import BaseModel, BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
-from RichText import RichText
-from _type_factory import create_concrete_database_property_type
+from _data.RichText import RichText
 # Third Party
 from custom_types import json_
 from exceptions import catch_exceptions
 from object import MajorObject
 from page import Page
+from properties import create_concrete_database_property_type
 from property import DatabaseProperty
 
 

@@ -4,13 +4,13 @@ from typing import Annotated, Any
 from pydantic import BaseModel, BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
-from _type_factory import create_concrete_page_property_type
 # Third Party
 from _blocks import Block
 from custom_types import json_
 from exceptions import catch_exceptions
 from object import MajorObject
 from property import PageProperty
+from type_factory import create_concrete_page_property_type
 
 
 class PageProperties(BaseModel, extra="allow"):

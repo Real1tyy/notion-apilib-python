@@ -1,25 +1,59 @@
 # Standard Library
 from typing import Optional
 
+# Third Party
 from pydantic import BaseModel
 
+from _structures.data import Mention
+from data.blocks import Equation
 
-# Third Party
 
 class Link(BaseModel):
+    """
+    Represents a link in the Notion API.
+
+    Attributes
+    ----------
+    url : str
+        The URL of the link.
+    """
     url: str
 
 
 class Text(BaseModel):
+    """
+    Represents a text object in the Notion API.
+
+    Attributes
+    ----------
+    content : str
+        The content of the text.
+    link : Optional[Link]
+        An optional link associated with the text.
+    """
     content: str
-    link: Optional[Link]
-
-
-def create_text_object(text: str, link: str = None) -> Text:
-    return Text(content=text, link=link)
+    link: Optional[Link] = None
 
 
 class Annotations(BaseModel):
+    """
+    Represents text annotations in the Notion API.
+
+    Attributes
+    ----------
+    bold : bool
+        Indicates if the text is bold.
+    italic : bool
+        Indicates if the text is italicized.
+    strikethrough : bool
+        Indicates if the text is strikethrough.
+    underline : bool
+        Indicates if the text is underlined.
+    code : bool
+        Indicates if the text is code.
+    color : str
+        The color of the text.
+    """
     bold: bool
     italic: bool
     strikethrough: bool
@@ -28,30 +62,44 @@ class Annotations(BaseModel):
     color: str
 
 
-def create_basic_annotations_object() -> Annotations:
-    return Annotations(bold=False, italic=False, strikethrough=False, underline=False, code=False, color='default')
-
-
 class RichText(BaseModel):
+    """
+    Represents a rich text object in the Notion API.
+
+    Attributes
+    ----------
+    type : str
+        The type of the rich text.
+    text : Text
+        The text object.
+    mention : Mention
+        The mention object.
+    equation : Equation
+        The equation object.
+    annotations : Annotations
+        The annotations applied to the text.
+    plain_text : str
+        The plain text without annotations.
+    href : Optional[str]
+        An optional hyperlink reference.
+    """
     type: str
-    text: Text = None
-    mention: Mention = None
-    equation: Equation = None
+    text: Optional[Text] = None
+    mention: Optional[Mention] = None
+    equation: Optional[Equation] = None
     annotations: Annotations
     plain_text: str
-    href: Optional[str]
+    href: Optional[str] = None
 
     def change_text(self, text: str):
+        """
+        Change the text content of the rich text object.
+
+        Parameters
+        ----------
+        text : str
+            The new text content.
+        """
         self.plain_text = text
         if self.text:
             self.text.content = text
-
-
-def create_basic_rich_text_object(text: str) -> RichText:
-    return RichText(
-        type='text',
-        text=create_text_object(text),
-        annotations=create_basic_annotations_object(),
-        plain_text=text,
-        href=None
-    )

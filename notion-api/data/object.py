@@ -5,8 +5,8 @@ from typing import Literal, Optional
 from uuid import UUID
 
 # Third Party
-from Emoji import Icon
-from Parent import Parent
+from _data.Emoji import Icon
+from _data.Parent import Parent
 from pydantic import BaseModel, Field
 
 
