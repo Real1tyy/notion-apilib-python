@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 from Container import Container
 from Parent import create_parent
-from data.properties.factory import create_date_page
+from properties import create_date_page
 
 if __name__ == "__main__":
     load_dotenv()
@@ -33,8 +33,8 @@ if __name__ == "__main__":
 
     #
     # parent = create_parent('page_id', "b5d1877b3a554a7fbaacf206adb8a0e2")
-    # blocks = create_bulleted_list_item(parent, "green", [])
-    # print(blocks)
+    # _blocks = create_bulleted_list_item(parent, "green", [])
+    # print(_blocks)
 
     # database_id = "706cd118dfaf40c288029314d62e2357"
     # result = database_provider.retrieve_database(database_id)

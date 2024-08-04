@@ -2,12 +2,12 @@
 from pydantic import BaseModel
 
 from RichText import RichText
-from blocks.block import Block
+from _blocks.block import Block
 
 
 class HeadingsAttributes(BaseModel):
     """
-    Attributes for heading blocks.
+    Attributes for heading _blocks.
 
     :param rich_text: List of rich text elements.
     :param color: Color of the heading text.
@@ -29,17 +29,17 @@ class Heading1(Block):
 
 class Heading2(Block):
     """
-    Heading 2 blocks.
+    Heading 2 _blocks.
 
-    :param heading_2: Attributes for the heading 2 blocks.
+    :param heading_2: Attributes for the heading 2 _blocks.
     """
     heading_2: HeadingsAttributes
 
 
 class Heading3(Block):
     """
-    Heading 3 blocks.
+    Heading 3 _blocks.
 
-    :param heading_3: Attributes for the heading 3 blocks.
+    :param heading_3: Attributes for the heading 3 _blocks.
     """
     heading_3: HeadingsAttributes

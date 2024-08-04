@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 from Emoji import Emoji
 from RichText import RichText
-from blocks.block import Block
+from _blocks.block import Block
 
 
 class CalloutAttributes(BaseModel):
@@ -47,11 +47,11 @@ class SyncedFrom(BaseModel):
 
 class SyncedBlockAttributes(BaseModel):
     """
-    Attributes for synced blocks.
+    Attributes for synced _blocks.
 
     :param synced_from: The source block that this block is synced from.
     :type synced_from: Optional[SyncedFrom]
-    :param children: List of child blocks (default is an empty list).
+    :param children: List of child _blocks (default is an empty list).
     :type children: list[Block]
     """
     synced_from: Optional[SyncedFrom]

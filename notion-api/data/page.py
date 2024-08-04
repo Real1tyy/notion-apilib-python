@@ -6,7 +6,7 @@ from pydantic_core.core_schema import ValidationInfo
 
 from _type_factory import create_concrete_page_property_type
 # Third Party
-from blocks import Block
+from _blocks import Block
 from custom_types import json_
 from exceptions import catch_exceptions
 from object import MajorObject

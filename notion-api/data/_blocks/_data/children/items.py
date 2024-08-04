@@ -5,15 +5,15 @@ from pydantic import BaseModel, Field
 
 from RichText import RichText
 # Third Party
-from blocks.block import Block
+from _blocks.block import Block
 
 
 class Items(BaseModel):
     """
-    Base attributes for list items and other blocks types.
+    Base attributes for list items and other _blocks types.
 
     :param color: Color of the item text.
-    :param children: List of child blocks (default is an empty list).
+    :param children: List of child _blocks (default is an empty list).
     :param rich_text: List of rich text elements.
     """
     color: str
@@ -23,7 +23,7 @@ class Items(BaseModel):
 
 class BulletedListItem(Block):
     """
-    Bulleted list item blocks.
+    Bulleted list item _blocks.
 
     :param bulleted_list_item: Attributes for the bulleted list item.
     """
@@ -32,7 +32,7 @@ class BulletedListItem(Block):
 
 class NumberedListItem(Block):
     """
-    Numbered list item blocks.
+    Numbered list item _blocks.
 
     :param numbered_list_item: Attributes for the numbered list item.
     """
@@ -41,7 +41,7 @@ class NumberedListItem(Block):
 
 class Paragraph(Block):
     """
-    Paragraph blocks.
+    Paragraph _blocks.
 
     :param paragraph: Attributes for the paragraph.
     """
@@ -50,7 +50,7 @@ class Paragraph(Block):
 
 class Quote(Block):
     """
-    Quote blocks.
+    Quote _blocks.
 
     :param quote: Attributes for the quote.
     """
@@ -68,7 +68,7 @@ class TodoAttributes(Items):
 
 class ToDo(Block):
     """
-    To-do blocks.
+    To-do _blocks.
 
     :param to_do: Attributes for the to-do item.
     """
@@ -77,7 +77,7 @@ class ToDo(Block):
 
 class Toggle(Block):
     """
-    Toggle blocks.
+    Toggle _blocks.
 
     :param toggle: Attributes for the toggle item.
     """

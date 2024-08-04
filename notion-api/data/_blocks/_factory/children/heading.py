@@ -1,6 +1,6 @@
 from Parent import Parent
 from RichText import RichText
-from blocks.block import Block, _create_block
+from _blocks.block import Block, _create_block
 from heading import Heading1, HeadingsAttributes, Heading2, Heading3
 from type import BlockType
 
@@ -15,7 +15,7 @@ def create_heading1(
     :param rich_text: The rich text content of the heading.
     :param color: The color of the heading.
     :param is_toggleable: Whether the heading is toggleable.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new Heading1 object.
     """
     return _create_block(
@@ -41,7 +41,7 @@ def create_heading2(
     :param rich_text: The rich text content of the heading.
     :param color: The color of the heading.
     :param is_toggleable: Whether the heading is toggleable.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new Heading2 object.
     """
     return _create_block(
@@ -67,7 +67,7 @@ def create_heading3(
     :param rich_text: The rich text content of the heading.
     :param color: The color of the heading.
     :param is_toggleable: Whether the heading is toggleable.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new Heading3 object.
     """
     return _create_block(

@@ -4,12 +4,12 @@ from pydantic import BaseModel
 
 from RichText import RichText
 # Third Party
-from blocks.block import Block
+from _blocks.block import Block
 
 
 class TableAttributes(BaseModel):
     """
-    Attributes for table blocks.
+    Attributes for table _blocks.
 
     :param has_column_header: Whether the table has a column header.
     :param has_row_header: Whether the table has a row header.
@@ -22,16 +22,16 @@ class TableAttributes(BaseModel):
 
 class Table(Block):
     """
-    Table blocks.
+    Table _blocks.
 
-    :param table: Attributes for the table blocks.
+    :param table: Attributes for the table _blocks.
     """
     table: TableAttributes
 
 
 class TableRowAttributes(BaseModel):
     """
-    Attributes for table row blocks.
+    Attributes for table row _blocks.
 
     :param cells: List of rich text elements representing the cells.
     """
@@ -40,16 +40,16 @@ class TableRowAttributes(BaseModel):
 
 class TableRow(Block):
     """
-    Table row blocks.
+    Table row _blocks.
 
-    :param table_row: Attributes for the table row blocks.
+    :param table_row: Attributes for the table row _blocks.
     """
     table_row: TableRowAttributes
 
 
 class TableOfContentsAttributes(BaseModel):
     """
-    Attributes for table of contents blocks.
+    Attributes for table of contents _blocks.
 
     :param color: Color of the table of contents text.
     """
@@ -58,15 +58,15 @@ class TableOfContentsAttributes(BaseModel):
 
 class TableOfContents(Block):
     """
-    Table of contents blocks.
+    Table of contents _blocks.
 
-    :param table_of_contents: Attributes for the table of contents blocks.
+    :param table_of_contents: Attributes for the table of contents _blocks.
     """
     table_of_contents: TableOfContentsAttributes
 
 
 class Column(Block):
     """
-    Column blocks.
+    Column _blocks.
     """
     pass

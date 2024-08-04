@@ -7,7 +7,7 @@ from returns.result import Failure, Result, Success
 # Third Party
 from ApiError import ApiError
 from NotionBlockProvider import NotionBlockProvider
-from blocks import Block
+from _blocks import Block
 from client.api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
 from custom_types import json_
 from decorators import handle_exceptions

@@ -1,21 +1,8 @@
 # Third Party
-from _data.mention import Mention
-from data.Embed import Embed
-from data.LinkPreview import LinkPreview
-from synced import SyncedBlock
-
 from FileObject import FileObject
-from _data.code import Code
-from _data.equation import Equation
-from _data.link import Bookmark
-from _data.other import Breadcrumb, ColumnList, Divider, Unsupported
-from _data.resources import Image, Pdf, Video
-from child import ChildDatabase, ChildPage
 from custom_types import json_
-from heading import Heading1, Heading2, Heading3
-from items import BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle
-from other import Callout
-from tables import Column, Table, TableOfContents, TableRow
+from data import *
+from structures.data import Mention
 
 BLOCK_TYPE_MAP = {
     "bookmark": Bookmark,
@@ -53,5 +40,13 @@ BLOCK_TYPE_MAP = {
 
 
 def create_concrete_block_type(data: json_):
+    """
+    Create an instance of a concrete block type based on the given data.
+
+    :param data: The data used to create the block, including the block type.
+    :type data: dict
+    :return: An instance of the concrete block type.
+    :rtype: Block
+    """
     block_type = data["type"]
     return BLOCK_TYPE_MAP[block_type](**data)

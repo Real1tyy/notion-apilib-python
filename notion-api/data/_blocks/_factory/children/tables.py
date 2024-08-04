@@ -18,7 +18,7 @@ def create_table(
     :param has_column_header: Whether the table has a column header.
     :param has_row_header: Whether the table has a row header.
     :param table_width: The width of the table.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new Table object.
     """
     return _create_block(
@@ -40,7 +40,7 @@ def create_table_row(parent: Parent, cells: list[RichText], children: Optional[l
 
     :param parent: The parent object.
     :param cells: The rich text content of the cells.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new TableRow object.
     """
     return _create_block(
@@ -61,7 +61,7 @@ def create_table_of_contents(
 
     :param parent: The parent object.
     :param color: The color of the table of contents text.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new TableOfContents object.
     """
     return _create_block(
@@ -80,7 +80,7 @@ def create_column(parent: Parent, children: Optional[list[Block]] = None) -> Col
     Factory method to create a Column object.
 
     :param parent: The parent object.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new Column object.
     """
     return _create_block(

@@ -21,9 +21,9 @@ Modules:
     - child: Contains data models and factory methods for child properties like pages and databases.
     - heading: Contains data models and factory methods for heading properties.
     - items: Contains data models and factory methods for list items such as to-do, bulleted, and numbered lists.
-    - other: Contains data models and factory methods for other properties like callouts and synced blocks.
+    - other: Contains data models and factory methods for other properties like callouts and synced _blocks.
     - tables: Contains data models and factory methods for table properties.
-    - code: Contains data models and factory methods for code blocks.
+    - code: Contains data models and factory methods for code _blocks.
     - equation: Contains data models and factory methods for equation properties.
     - link: Contains data models and factory methods for link previews and bookmarks.
     - resources: Contains data models and factory methods for resource properties like files, images, videos, and PDFs.

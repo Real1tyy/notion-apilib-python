@@ -2,7 +2,7 @@
 from pydantic import BaseModel
 
 from RichText import RichText
-from blocks.block import Block
+from _blocks.block import Block
 
 
 class BookmarkAttributes(BaseModel):

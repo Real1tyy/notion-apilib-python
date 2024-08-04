@@ -2,7 +2,7 @@ from typing import Type, Optional
 
 from Parent import Parent
 from RichText import RichText
-from blocks.block import Block, _create_block
+from _blocks.block import Block, _create_block
 from items import Items, BulletedListItem, NumberedListItem, Paragraph, Quote, TodoAttributes, ToDo, Toggle
 from type import BlockType
 
@@ -11,15 +11,15 @@ def _create_item_block(
         block_class: Type[Block], block_type: BlockType, parent: Parent,
         color: str, rich_text: list[RichText], children: Optional[list[Block]] = None) -> Type[Block]:
     """
-    Helper function to create an item blocks object.
+    Helper function to create an item _blocks object.
 
-    :param block_class: The class of the blocks to create.
-    :param block_type: The type of the blocks.
+    :param block_class: The class of the _blocks to create.
+    :param block_type: The type of the _blocks.
     :param parent: The parent object.
     :param color: The color of the item text.
     :param rich_text: The rich text content of the item.
-    :param children: List of child blocks (optional).
-    :return: A new blocks object.
+    :param children: List of child _blocks (optional).
+    :return: A new _blocks object.
     """
     return _create_block(
         block_class,
@@ -42,7 +42,7 @@ def create_bulleted_list_item(
     :param parent: The parent object.
     :param color: The color of the item text.
     :param rich_text: The rich text content of the item.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new BulletedListItem object.
     """
     return _create_item_block(
@@ -63,7 +63,7 @@ def create_numbered_list_item(
     :param parent: The parent object.
     :param color: The color of the item text.
     :param rich_text: The rich text content of the item.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new NumberedListItem object.
     """
     return _create_item_block(
@@ -84,7 +84,7 @@ def create_paragraph(
     :param parent: The parent object.
     :param color: The color of the paragraph text.
     :param rich_text: The rich text content of the paragraph.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new Paragraph object.
     """
     return _create_item_block(
@@ -105,7 +105,7 @@ def create_quote(
     :param parent: The parent object.
     :param color: The color of the quote text.
     :param rich_text: The rich text content of the quote.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new Quote object.
     """
     return _create_item_block(
@@ -128,7 +128,7 @@ def create_to_do(
     :param color: The color of the to-do text.
     :param rich_text: The rich text content of the to-do item.
     :param checked: Whether the to-do item is checked (optional).
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new ToDo object.
     """
     return _create_block(
@@ -153,7 +153,7 @@ def create_toggle(
     :param parent: The parent object.
     :param color: The color of the toggle text.
     :param rich_text: The rich text content of the toggle.
-    :param children: List of child blocks (optional).
+    :param children: List of child _blocks (optional).
     :return: A new Toggle object.
     """
     return _create_item_block(

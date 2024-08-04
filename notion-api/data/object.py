@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 
 class Object(ABC, BaseModel, use_enum_values=True, from_attributes=True, arbitrary_types_allowed=True):
     id: UUID = Field(default=None)
-    object: Literal['blocks', 'database', 'page', 'user', 'workspace']
+    object: Literal['_blocks', 'database', 'page', 'user', 'workspace']
     created_time: datetime.datetime = Field(exclude=True, default=None)
     last_edited_time: datetime.datetime = Field(exclude=True, default=None)
     parent: Parent

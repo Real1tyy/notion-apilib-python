@@ -1,5 +1,5 @@
 from Parent import Parent
-from blocks.block import Block, _create_block
+from _blocks.block import Block, _create_block
 from child import ChildDatabase, ChildAttributes, ChildPage
 from type import BlockType
 
@@ -13,7 +13,7 @@ def create_child_database(
     Factory method to create ChildDatabase object
     :param parent: parent object
     :param title: title of the child database
-    :param children: optional list of child blocks
+    :param children: optional list of child _blocks
     :return: newly created ChildDatabase Object
     """
     return _create_block(
@@ -34,7 +34,7 @@ def create_child_page(
     Factory method to create ChildPage object
     :param parent: parent object
     :param title: title of the child page
-    :param children: optional list of child blocks
+    :param children: optional list of child _blocks
     :return: newly created ChildPage Object
     """
     return _create_block(

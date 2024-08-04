@@ -42,16 +42,22 @@ class Block(Object, ABC):
 
 def _create_block(cls: Type, parent: Parent, block_type: BlockType, children: list['Block'] = None, **kwargs):
     """
-       Helper function to create blocks objects with common parameters pre-filled.
-       :param cls: The class of the blocks object to create
-       :param parent: The parent object
-       :param block_type: The type of the blocks
-       :param children: The list of children blocks, if any, otherwise by default None
-       :param kwargs: Additional keyword arguments specific to the blocks type
-       :return: A new blocks object of the specified class
-   """
+    Helper function to create block objects with common parameters pre-filled.
+
+    :param cls: The class of the block object to create.
+    :type cls: Type
+    :param parent: The parent object.
+    :type parent: Parent
+    :param block_type: The type of the block.
+    :type block_type: BlockType
+    :param children: The list of children blocks, if any. Defaults to None.
+    :type children: list[Block], optional
+    :param kwargs: Additional keyword arguments specific to the block type.
+    :return: A new block object of the specified class.
+    :rtype: Block
+    """
     common_params = {
-        "object": "blocks",
+        "object": "block",
         "archived": False,
         "in_trash": False,
         "parent": parent,

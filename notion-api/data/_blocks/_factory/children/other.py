@@ -3,7 +3,7 @@ from typing import Optional
 from Emoji import Emoji
 from Parent import Parent
 from RichText import RichText
-from blocks.block import Block, _create_block
+from _blocks.block import Block, _create_block
 from other import SyncedFrom, SyncedBlock, SyncedBlockAttributes, Callout, CalloutAttributes
 from type import BlockType
 
@@ -17,7 +17,7 @@ def create_callout(
     :param rich_text: rich text for the callout
     :param icon: icon for the callout
     :param color: color of the callout
-    :param children: optional list of child blocks
+    :param children: optional list of child _blocks
     :return: newly created Callout Object
     """
     return _create_block(
@@ -40,8 +40,8 @@ def create_synced_block(
     Factory method to create a SyncedBlock object.
 
     :param parent: The parent object.
-    :param synced_from: The source blocks that this blocks is synced from (optional).
-    :param children: List of child blocks (optional).
+    :param synced_from: The source _blocks that this _blocks is synced from (optional).
+    :param children: List of child _blocks (optional).
     :return: A new SyncedBlock object.
     """
     return _create_block(
