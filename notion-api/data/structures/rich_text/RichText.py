@@ -1,11 +1,12 @@
 # Standard Library
 from typing import Optional
 
+from data.Equation import Equation
+from data.Mention import Mention
+from pydantic import BaseModel
+
 # Third Party
 from Annotations import Annotations, create_basic_annotations_object
-from Equation import Equation
-from Mention import Mention
-from pydantic import BaseModel
 from Text import Text, create_text_object
 
 

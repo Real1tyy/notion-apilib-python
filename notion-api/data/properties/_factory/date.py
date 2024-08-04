@@ -1,11 +1,11 @@
 from datetime import datetime
 from typing import Optional
 
-from _factory.general import _create_page_property, _create_database_property
 from database import Database
 from date import DatePage, DateStructure, DateDatabase
+from general import _create_page_property, _create_database_property
 from page import Page
-from type import PropertyType
+from properties.type import PropertyType
 
 
 def create_date_page(

@@ -1,8 +1,8 @@
 from UserObject import User
-from _factory.general import _create_page_property, _create_database_property
 from database import Database
+from general import _create_page_property, _create_database_property
 from page import Page
-from type import PropertyType
+from properties.type import PropertyType
 from users import PeoplePage, LastEditedByPage, CreatedByPage, CreatedByDatabase, LastEditedByDatabase, \
     PeopleDatabase
 

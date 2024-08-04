@@ -4,9 +4,9 @@ from typing import Annotated, Any
 from pydantic import BaseModel, BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
-# Third Party
-from Block import Block
 from _type_factory import create_concrete_page_property_type
+# Third Party
+from block import Block
 from custom_types import json_
 from exceptions import catch_exceptions
 from object import MajorObject

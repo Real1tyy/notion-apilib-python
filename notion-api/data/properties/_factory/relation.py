@@ -2,12 +2,12 @@ from datetime import datetime
 from typing import Optional, Literal, Any
 from uuid import UUID
 
-from _factory.general import _create_page_property, _create_database_property
 from database import Database
+from general import _create_page_property, _create_database_property
 from page import Page
+from properties.type import PropertyType
 from relation import RelationPage, RelationStructure, RollupPage, RollupStructure, RelationDatabase, \
     RollupDatabase, RollupDatabaseStructure, RelationDatabaseStructure
-from type import PropertyType
 
 
 def create_relation_page(

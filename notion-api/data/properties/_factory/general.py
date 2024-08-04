@@ -4,7 +4,7 @@ from typing import Type
 # Third Party
 from database import Database
 from page import Page
-from type import PropertyType
+from properties.type import PropertyType
 
 
 def _create_page_property(
