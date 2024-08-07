@@ -3,6 +3,7 @@ from pydantic import BaseModel
 
 from block import Block
 from structures import RichText
+from type import BlockType
 
 
 class CodeAttributes(BaseModel):
@@ -29,3 +30,7 @@ class Code(Block):
     :type code: CodeAttributes
     """
     code: CodeAttributes
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.CODE

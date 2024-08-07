@@ -1,7 +1,8 @@
 from typing import Optional
 
 from structures import Parent, RichText, Emoji
-from block import Block, _create_block
+from block import Block
+from _blocks._factory.general import _create_block
 from _blocks.data import SyncedFrom, SyncedBlock, SyncedBlockAttributes, Callout, CalloutAttributes
 from _blocks.type import BlockType
 

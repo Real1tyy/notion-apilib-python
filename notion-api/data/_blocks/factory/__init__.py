@@ -58,9 +58,9 @@ Note:
 """
 
 from _blocks._factory.children.child import create_child_page, create_child_database
-from _blocks._factory.children.heading import create_heading1, create_heading2, create_heading3
+from _blocks._factory.children.heading import create_heading, create_basic_heading, create_headings_attributes
 from _blocks._factory.children.items import (create_bulleted_list_item, create_numbered_list_item, create_to_do,
-                                             create_quote, create_toggle, create_paragraph)
+                                             create_quote, create_toggle, create_paragraph, create_basic_paragraph)
 from _blocks._factory.children.other import create_synced_block, create_callout
 from _blocks._factory.children.tables import (create_table, create_table_row, create_column, create_table_of_contents)
 from _blocks._factory.code import create_code
@@ -71,9 +71,9 @@ from _blocks._factory.resources import create_pdf, create_video, create_file, cr
 
 __all__ = [
     'create_child_page', 'create_child_database',
-    'create_heading1', 'create_heading2', 'create_heading3',
+    'create_heading', 'create_basic_heading', 'create_headings_attributes',
     'create_bulleted_list_item', 'create_numbered_list_item', 'create_to_do',
-    'create_quote', 'create_toggle', 'create_paragraph',
+    'create_quote', 'create_toggle', 'create_paragraph', 'create_basic_paragraph',
     'create_synced_block', 'create_callout',
     'create_table', 'create_table_row', 'create_column', 'create_table_of_contents',
     'create_code',

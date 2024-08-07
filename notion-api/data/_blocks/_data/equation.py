@@ -2,6 +2,7 @@
 from pydantic import BaseModel
 
 from block import Block
+from type import BlockType
 
 
 class EquationAttributes(BaseModel):
@@ -22,3 +23,7 @@ class Equation(Block):
     :type equation: EquationAttributes
     """
     equation: EquationAttributes
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.EQUATION

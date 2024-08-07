@@ -1,7 +1,7 @@
 from typing import TypeVar, Type, Optional
 
 from _blocks.data import File, Image, Pdf, Video
-from block import _create_block
+from _blocks._factory.general import _create_block
 from _blocks.type import BlockType
 from structures import Parent, External, FileObject, file_type, ResourcesAttributes
 

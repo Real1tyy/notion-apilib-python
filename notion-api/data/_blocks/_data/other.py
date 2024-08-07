@@ -1,30 +1,43 @@
 # Third Party
 from block import Block
+from type import BlockType
 
 
 class Divider(Block):
     """
     Represents a Divider block.
     """
-    pass
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.DIVIDER
 
 
 class ColumnList(Block):
     """
     Represents a Column List block.
     """
-    pass
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.COLUMN_LIST
 
 
 class Breadcrumb(Block):
     """
     Represents a Breadcrumb block.
     """
-    pass
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.BREADCRUMB
 
 
 class Unsupported(Block):
     """
     Represents an Unsupported block.
     """
-    pass
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.UNSUPPORTED

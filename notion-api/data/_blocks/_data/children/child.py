@@ -2,6 +2,7 @@
 from pydantic import BaseModel
 
 from block import Block
+from type import BlockType
 
 
 class ChildAttributes(BaseModel):
@@ -23,6 +24,10 @@ class ChildDatabase(Block):
     """
     child_database: ChildAttributes
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.CHILD_DATABASE
+
 
 class ChildPage(Block):
     """
@@ -32,3 +37,7 @@ class ChildPage(Block):
     :type child_page: ChildAttributes
     """
     child_page: ChildAttributes
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.CHILD_PAGE

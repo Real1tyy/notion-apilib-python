@@ -1,13 +1,12 @@
 # Standard Library
-from abc import ABC
-from typing import Type
+from abc import ABC, abstractmethod
+from typing import Type, Any
 
 from pydantic import Field
 
 from data.object import Object
 # Third Party
 from type import BlockType
-from data.structures import Parent
 
 
 class Block(Object, ABC):
@@ -27,9 +26,14 @@ class Block(Object, ABC):
     has_children: bool
     children: list['Block'] = Field(default=[], exclude=True)
 
-    def deserialize_json(self):
+    def to_json_payload(self) -> dict[str, Any]:
         """
-        Deserialize the block to JSON format, excluding certain fields.
+        Converts the block into a JSON payload suitable for creating or updating a block in Notion.
+        Certain fields are omitted in the JSON representation, such as:
+            - id
+            - parent
+            - archived
+            - in_trash
 
         :return: The JSON representation of the block.
         :rtype: dict
@@ -39,33 +43,27 @@ class Block(Object, ABC):
             exclude={'id', 'parent', 'archived', 'in_trash'}
         )
 
+    @classmethod
+    @abstractmethod
+    def get_associated_block_type(cls) -> BlockType:
+        """
+        Retrieves the block type associated with this class.
 
-def _create_block(cls: Type, parent: Parent, block_type: BlockType, children: list[Block] = None, **kwargs):
-    """
-    Helper function to create block objects with common parameters pre-filled.
+        :return: The associated BlockType enum value.
+        :rtype: BlockType
+        """
+        pass
 
-    :param cls: The class of the block object to create.
-    :type cls: Type
-    :param parent: The parent object.
-    :type parent: Parent
-    :param block_type: The type of the block.
-    :type block_type: BlockType
-    :param children: The list of children blocks, if any. Defaults to None.
-    :type children: list[Block], optional
-    :param kwargs: Additional keyword arguments specific to the block type.
-    :return: A new block object of the specified class.
-    :rtype: Block
-    """
-    common_params = {
-        "object": "block",
-        "archived": False,
-        "in_trash": False,
-        "parent": parent,
-        "type": block_type,
-        "has_children": bool(children),
-        "children": children if children else []
-    }
-    return cls(**common_params, **kwargs)
+    @classmethod
+    def get_payload_property_name(cls) -> str:
+        """
+        Retrieves the property name of the block type as a string, which is used in the Notion JSON format.
+        Utilizes the get_associated_block_type method to obtain the enum value and converts it to a string.
+
+        :return: The property name of the block type as a string.
+        :rtype: str
+        """
+        return cls.get_associated_block_type().value
 
 
 Block.model_rebuild()

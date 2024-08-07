@@ -1,7 +1,8 @@
 from structures import Parent
-from block import Block, _create_block
+from block import Block
 from _blocks.data import ChildDatabase, ChildAttributes, ChildPage
 from _blocks.type import BlockType
+from _blocks._factory.general import _create_block
 
 
 def create_child_database(
@@ -11,6 +12,7 @@ def create_child_database(
 ) -> ChildDatabase:
     """
     Factory method to create ChildDatabase object
+    The created object does not work with blocks_provider create_block method
     :param parent: parent object
     :param title: title of the child database
     :param children: optional list of child _blocks
@@ -32,6 +34,7 @@ def create_child_page(
 ) -> ChildPage:
     """
     Factory method to create ChildPage object
+    The created object does not work with blocks_provider create_block method
     :param parent: parent object
     :param title: title of the child page
     :param children: optional list of child _blocks

@@ -1,5 +1,5 @@
 from _blocks.data import Bookmark, BookmarkAttributes, Embed, EmbedAttributes, LinkPreview, LinkPreviewAttributes
-from block import _create_block
+from _blocks._factory.general import _create_block
 from _blocks.type import BlockType
 from structures import Parent, RichText
 

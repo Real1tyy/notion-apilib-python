@@ -1,7 +1,8 @@
 from typing import Optional
 
 from structures import Parent, RichText
-from block import Block, _create_block
+from block import Block
+from _blocks._factory.general import _create_block
 from _blocks.data import TableRow, TableRowAttributes, TableOfContents, TableOfContentsAttributes, Column, Table, \
     TableAttributes
 from _blocks.type import BlockType

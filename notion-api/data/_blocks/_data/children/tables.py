@@ -5,6 +5,7 @@ from pydantic import BaseModel
 # Third Party
 from block import Block
 from structures import RichText
+from type import BlockType
 
 
 class TableAttributes(BaseModel):
@@ -28,6 +29,10 @@ class Table(Block):
     """
     table: TableAttributes
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.TABLE
+
 
 class TableRowAttributes(BaseModel):
     """
@@ -45,6 +50,10 @@ class TableRow(Block):
     :param table_row: Attributes for the table row _blocks.
     """
     table_row: TableRowAttributes
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.TABLE_ROW
 
 
 class TableOfContentsAttributes(BaseModel):
@@ -64,9 +73,16 @@ class TableOfContents(Block):
     """
     table_of_contents: TableOfContentsAttributes
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.TABLE_OF_CONTENTS
+
 
 class Column(Block):
     """
     Column _blocks.
     """
-    pass
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.COLUMN

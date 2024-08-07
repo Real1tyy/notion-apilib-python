@@ -3,6 +3,7 @@ from pydantic import BaseModel
 
 from block import Block
 from structures import RichText
+from type import BlockType
 
 
 class BookmarkAttributes(BaseModel):
@@ -27,6 +28,10 @@ class Bookmark(Block):
     """
     bookmark: BookmarkAttributes
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.BOOKMARK
+
 
 class EmbedAttributes(BaseModel):
     """
@@ -47,6 +52,10 @@ class Embed(Block):
     """
     embed: EmbedAttributes
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.EMBED
+
 
 class LinkPreviewAttributes(BaseModel):
     """
@@ -66,3 +75,7 @@ class LinkPreview(Block):
     :type link_preview: LinkPreviewAttributes
     """
     link_preview: LinkPreviewAttributes
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.LINK_PREVIEW

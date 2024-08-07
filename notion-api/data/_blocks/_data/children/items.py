@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 # Third Party
 from block import Block
 from structures import RichText
+from type import BlockType
 
 
 class Items(BaseModel):
@@ -29,6 +30,10 @@ class BulletedListItem(Block):
     """
     bulleted_list_item: Items
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.BULLETED_LIST_ITEM
+
 
 class NumberedListItem(Block):
     """
@@ -37,6 +42,10 @@ class NumberedListItem(Block):
     :param numbered_list_item: Attributes for the numbered list item.
     """
     numbered_list_item: Items
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.NUMBERED_LIST_ITEM
 
 
 class Paragraph(Block):
@@ -47,6 +56,10 @@ class Paragraph(Block):
     """
     paragraph: Items
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.PARAGRAPH
+
 
 class Quote(Block):
     """
@@ -55,6 +68,10 @@ class Quote(Block):
     :param quote: Attributes for the quote.
     """
     quote: Items
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.QUOTE
 
 
 class TodoAttributes(Items):
@@ -74,6 +91,10 @@ class ToDo(Block):
     """
     to_do: TodoAttributes
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.TO_DO
+
 
 class Toggle(Block):
     """
@@ -82,3 +103,7 @@ class Toggle(Block):
     :param toggle: Attributes for the toggle item.
     """
     toggle: Items
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.TOGGLE

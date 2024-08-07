@@ -6,6 +6,7 @@ from pydantic import BaseModel
 
 from block import Block
 from structures import Emoji, RichText
+from type import BlockType
 
 
 class CalloutAttributes(BaseModel):
@@ -32,6 +33,10 @@ class Callout(Block):
     :type callout: CalloutAttributes
     """
     callout: CalloutAttributes
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.CALLOUT
 
 
 class SyncedFrom(BaseModel):
@@ -65,3 +70,7 @@ class SyncedBlock(Block):
     :type synced_block: SyncedBlockAttributes
     """
     synced_block: SyncedBlockAttributes
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.SYNCED_BLOCK

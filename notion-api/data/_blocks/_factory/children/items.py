@@ -1,7 +1,8 @@
 from typing import Type, Optional
 
-from structures import RichText, Parent
-from block import Block, _create_block
+from structures import RichText, Parent, create_basic_rich_text
+from block import Block
+from _blocks._factory.general import _create_block
 from _blocks.data import Items, BulletedListItem, NumberedListItem, Paragraph, Quote, TodoAttributes, ToDo, Toggle
 from _blocks.type import BlockType
 
@@ -71,6 +72,26 @@ def create_numbered_list_item(
         parent,
         color,
         rich_text,
+        children
+    )
+
+
+def create_basic_paragraph(
+        parent: Parent, text: str, children: list[Block] = None) -> Paragraph:
+    """
+    Factory method to create a basic Paragraph object.
+
+    :param parent: The parent object.
+    :param text: The text content of the paragraph.
+    :param children: List of child _blocks (optional).
+    :return: A new Paragraph object.
+    """
+    return _create_item_block(
+        Paragraph,
+        BlockType.PARAGRAPH,
+        parent,
+        "default",
+        [create_basic_rich_text(text)],
         children
     )
 

@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 from block import Block
 from structures import RichText
+from type import BlockType
 
 
 class HeadingsAttributes(BaseModel):
@@ -25,6 +26,10 @@ class Heading1(Block):
     """
     heading_1: HeadingsAttributes
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.HEADING_1
+
 
 class Heading2(Block):
     """
@@ -34,6 +39,10 @@ class Heading2(Block):
     """
     heading_2: HeadingsAttributes
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.HEADING_2
+
 
 class Heading3(Block):
     """
@@ -42,3 +51,7 @@ class Heading3(Block):
     :param heading_3: Attributes for the heading 3 _blocks.
     """
     heading_3: HeadingsAttributes
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.HEADING_3
