@@ -1,4 +1,4 @@
-from typing import Type, Optional, TypeVar, Union
+from typing import Type, Optional, TypeVar
 
 from structures import Parent, RichText, create_basic_rich_text
 from block import Block
@@ -41,8 +41,8 @@ def create_heading(
     return _create_block(
         heading_type,
         parent=parent,
-        block_type_specific_params=create_headings_attributes(rich_text, color, is_toggleable),
-        children=children
+        children=children,
+        block_type_specific_params=create_headings_attributes(rich_text, color, is_toggleable)
     )
 
 
@@ -59,10 +59,102 @@ def create_basic_heading(
     :param children: List of child blocks (optional).
     :return: A new heading object of the specified type.
     """
-    heading_attributes = create_headings_attributes([create_basic_rich_text(text)], "default", is_toggleable)
-    return _create_block(
-        heading_type,
-        parent=parent,
-        block_type_specific_params=heading_attributes,
-        children=children,
-    )
+    return create_heading(
+        heading_type, parent, [create_basic_rich_text(text)],
+        'default', is_toggleable, children)
+
+
+def create_basic_heading1(
+        parent: Parent, text: str, is_toggleable: bool, children: Optional[list[Block]] = None) -> Heading1:
+    """
+    Factory method to create a basic Heading1 object.
+
+    :param parent: The parent object.
+    :param text: The text content of the heading.
+    :param is_toggleable: Whether the heading is toggleable.
+    :param children: List of child blocks (optional).
+    :return: A new Heading1 object.
+    """
+    return create_basic_heading(Heading1, parent, text, is_toggleable, children)
+
+
+def create_basic_heading2(
+        parent: Parent, text: str, is_toggleable: bool, children: Optional[list[Block]] = None) -> Heading2:
+    """
+    Factory method to create a basic Heading2 object.
+
+    :param parent: The parent object.
+    :param text: The text content of the heading.
+    :param is_toggleable: Whether the heading is toggleable.
+    :param children: List of child blocks (optional).
+    :return: A new Heading2 object.
+    """
+    return create_basic_heading(Heading2, parent, text, is_toggleable, children)
+
+
+def create_basic_heading3(
+        parent: Parent, text: str, is_toggleable: bool, children: Optional[list[Block]] = None) -> Heading3:
+    """
+    Factory method to create a basic Heading3 object.
+
+    :param parent: The parent object.
+    :param text: The text content of the heading.
+    :param is_toggleable: Whether the heading is toggleable.
+    :param children: List of child blocks (optional).
+    :return: A new Heading3 object.
+    """
+    return create_basic_heading(Heading3, parent, text, is_toggleable, children)
+
+
+def create_heading1(
+        parent: Parent, rich_text: list[RichText], color: str, is_toggleable: bool,
+        children: Optional[list[Block]] = None) -> Heading1:
+    """
+    Factory method to create a Heading1 object.
+
+    :param parent: The parent object.
+    :param rich_text: The rich text content of the heading.
+    :param color: The color of the heading.
+    :param is_toggleable: Whether the heading is toggleable.
+    :param children: List of child blocks (optional).
+    :return: A new Heading1 object.
+    """
+    return create_heading(Heading1, parent, rich_text, color, is_toggleable, children)
+
+
+def create_heading2(
+        parent: Parent, rich_text: list[RichText], color: str, is_toggleable: bool,
+        children: Optional[list[Block]] = None) -> Heading2:
+    """
+    Factory method to create a Heading2 object.
+
+    :param parent: The parent object.
+    :param rich_text: The rich text content of the heading.
+    :param color: The color of the heading.
+    :param is_toggleable: Whether the heading is toggleable.
+    :param children: List of child blocks (optional).
+    :return: A new Heading2 object.
+    """
+    return create_heading(Heading2, parent, rich_text, color, is_toggleable, children)
+
+
+def create_heading3(
+        parent: Parent, rich_text: list[RichText], color: str, is_toggleable: bool,
+        children: Optional[list[Block]] = None) -> Heading3:
+    """
+    Factory method to create a Heading3 object.
+
+    :param parent: The parent object.
+    :param rich_text: The rich text content of the heading.
+    :param color: The color of the heading.
+    :param is_toggleable: Whether the heading is toggleable.
+    :param children: List of child blocks (optional).
+    :return: A new Heading3 object.
+    """
+    return create_heading(Heading3, parent, rich_text, color, is_toggleable, children)
+
+
+__all__ = [
+    'create_heading1', 'create_heading2', 'create_heading3',
+    'create_basic_heading1', 'create_basic_heading2', 'create_basic_heading3',
+]

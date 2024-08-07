@@ -4,7 +4,6 @@ from structures import Parent, RichText, Emoji
 from block import Block
 from _blocks._factory.general import _create_block
 from _blocks.data import SyncedFrom, SyncedBlock, SyncedBlockAttributes, Callout, CalloutAttributes
-from _blocks.type import BlockType
 
 
 def create_callout(
@@ -22,9 +21,8 @@ def create_callout(
     return _create_block(
         Callout,
         parent=parent,
-        block_type=BlockType.CALLOUT,
         children=children,
-        callout=CalloutAttributes(
+        block_type_specific_params=CalloutAttributes(
             rich_text=rich_text,
             icon=icon,
             color=color
@@ -46,10 +44,14 @@ def create_synced_block(
     return _create_block(
         SyncedBlock,
         parent=parent,
-        block_type=BlockType.SYNCED_BLOCK,
-        synced_block=SyncedBlockAttributes(
+        block_type_specific_params=SyncedBlockAttributes(
             synced_from=synced_from,
             children=children
         ),
         children=children
     )
+
+
+__all__ = [
+    'create_callout', 'create_synced_block'
+]

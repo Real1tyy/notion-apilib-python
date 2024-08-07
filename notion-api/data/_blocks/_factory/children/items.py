@@ -1,36 +1,47 @@
-from typing import Type, Optional
+from typing import Type, Optional, TypeVar
 
 from structures import RichText, Parent, create_basic_rich_text
 from block import Block
 from _blocks._factory.general import _create_block
-from _blocks.data import Items, BulletedListItem, NumberedListItem, Paragraph, Quote, TodoAttributes, ToDo, Toggle
-from _blocks.type import BlockType
+from _blocks.data import Items, BulletedListItem, NumberedListItem, Paragraph, Quote, ToDoAttributes, ToDo, Toggle
+
+T = TypeVar('T', ToDoAttributes, BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle)
 
 
-def _create_item_block(
-        block_class: Type[Block], block_type: BlockType, parent: Parent,
-        color: str, rich_text: list[RichText], children: Optional[list[Block]] = None) -> Type[Block]:
+def _create_items_attribute(rich_text: list[RichText], color: str, children: Optional[list[Block]] = None) -> Items:
     """
-    Helper function to create an item _blocks object.
+    Factory method to create an Items object.
 
-    :param block_class: The class of the _blocks to create.
-    :param block_type: The type of the _blocks.
+    :param rich_text: List of rich text elements.
+    :param color: Color of the item text.
+    :param children: List of child blocks (optional).
+    :return: A new Items instance.
+    """
+    return Items(
+        rich_text=rich_text,
+        color=color,
+        children=children
+    )
+
+
+def _create_item(
+        item_type: Type[T], parent: Parent, color: str, rich_text: list[RichText],
+        children: Optional[list[Block]] = None) -> T:
+    """
+    Factory method to create an item block object.
+
+    :param item_type: The type of the item block (BulletedListItem, NumberedListItem, Paragraph, Quote, or Toggle).
     :param parent: The parent object.
     :param color: The color of the item text.
     :param rich_text: The rich text content of the item.
-    :param children: List of child _blocks (optional).
-    :return: A new _blocks object.
+    :param children: List of child blocks (optional).
+    :return: A new item block object of the specified type.
     """
     return _create_block(
-        block_class,
+        item_type,
         parent=parent,
-        block_type=block_type,
-        **{block_type.value.lower(): Items(
-            color=color,
-            rich_text=rich_text,
-            children=children if children else []
-        )},
-        children=children
+        children=children,
+        block_type_specific_params=_create_items_attribute(rich_text, color, children)
     )
 
 
@@ -42,12 +53,11 @@ def create_bulleted_list_item(
     :param parent: The parent object.
     :param color: The color of the item text.
     :param rich_text: The rich text content of the item.
-    :param children: List of child _blocks (optional).
+    :param children: List of child blocks (optional).
     :return: A new BulletedListItem object.
     """
-    return _create_item_block(
+    return _create_item(
         BulletedListItem,
-        BlockType.BULLETED_LIST_ITEM,
         parent,
         color,
         rich_text,
@@ -63,12 +73,11 @@ def create_numbered_list_item(
     :param parent: The parent object.
     :param color: The color of the item text.
     :param rich_text: The rich text content of the item.
-    :param children: List of child _blocks (optional).
+    :param children: List of child blocks (optional).
     :return: A new NumberedListItem object.
     """
-    return _create_item_block(
+    return _create_item(
         NumberedListItem,
-        BlockType.NUMBERED_LIST_ITEM,
         parent,
         color,
         rich_text,
@@ -83,12 +92,11 @@ def create_basic_paragraph(
 
     :param parent: The parent object.
     :param text: The text content of the paragraph.
-    :param children: List of child _blocks (optional).
+    :param children: List of child blocks (optional).
     :return: A new Paragraph object.
     """
-    return _create_item_block(
+    return _create_item(
         Paragraph,
-        BlockType.PARAGRAPH,
         parent,
         "default",
         [create_basic_rich_text(text)],
@@ -104,12 +112,11 @@ def create_paragraph(
     :param parent: The parent object.
     :param color: The color of the paragraph text.
     :param rich_text: The rich text content of the paragraph.
-    :param children: List of child _blocks (optional).
+    :param children: List of child blocks (optional).
     :return: A new Paragraph object.
     """
-    return _create_item_block(
+    return _create_item(
         Paragraph,
-        BlockType.PARAGRAPH,
         parent,
         color,
         rich_text,
@@ -125,12 +132,31 @@ def create_quote(
     :param parent: The parent object.
     :param color: The color of the quote text.
     :param rich_text: The rich text content of the quote.
-    :param children: List of child _blocks (optional).
+    :param children: List of child blocks (optional).
     :return: A new Quote object.
     """
-    return _create_item_block(
+    return _create_item(
         Quote,
-        BlockType.QUOTE,
+        parent,
+        color,
+        rich_text,
+        children
+    )
+
+
+def create_toggle(
+        parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None) -> Toggle:
+    """
+    Factory method to create a Toggle object.
+
+    :param parent: The parent object.
+    :param color: The color of the toggle text.
+    :param rich_text: The rich text content of the toggle.
+    :param children: List of child blocks (optional).
+    :return: A new Toggle object.
+    """
+    return _create_item(
+        Toggle,
         parent,
         color,
         rich_text,
@@ -154,33 +180,123 @@ def create_to_do(
     return _create_block(
         ToDo,
         parent=parent,
-        block_type=BlockType.TO_DO,
-        to_do=TodoAttributes(
-            color=color,
-            rich_text=rich_text,
-            checked=checked,
+        children=children,
+        block_type_specific_params=ToDoAttributes(
+            color=color, rich_text=rich_text, checked=checked,
             children=children if children else []
-        ),
-        children=children
+        )
     )
 
 
-def create_toggle(
-        parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None) -> Toggle:
+def _create_basic_item(item_type: Type[T], parent: Parent, text: str, children: list[Block] = None) -> T:
     """
-    Factory method to create a Toggle object.
+    Factory method to create an item block object.
 
+    :param item_type: The type of the item block (BulletedListItem, NumberedListItem, Paragraph, Quote, or Toggle).
     :param parent: The parent object.
-    :param color: The color of the toggle text.
-    :param rich_text: The rich text content of the toggle.
-    :param children: List of child _blocks (optional).
-    :return: A new Toggle object.
+    :param text: The text content of the item.
+    :param children: List of child blocks (optional).
+    :return: A new item block object of the specified type.
     """
-    return _create_item_block(
-        Toggle,
-        BlockType.TOGGLE,
+    return _create_item(
+        item_type,
         parent,
-        color,
-        rich_text,
+        "default",
+        [create_basic_rich_text(text)],
         children
     )
+
+
+def create_basic_bulleted_list_item(parent: Parent, text: str, children: list[Block] = None) -> BulletedListItem:
+    """
+    Factory method to create a basic BulletedListItem object.
+
+    :param parent: The parent object.
+    :param text: The text content of the bulleted list item.
+    :param children: List of child blocks (optional).
+    :return: A new BulletedListItem object.
+    """
+    return _create_basic_item(
+        BulletedListItem,
+        parent,
+        text,
+        children
+    )
+
+
+def create_basic_numbered_list_item(parent: Parent, text: str, children: list[Block] = None) -> NumberedListItem:
+    """
+    Factory method to create a basic NumberedListItem object.
+
+    :param parent: The parent object.
+    :param text: The text content of the numbered list item.
+    :param children: List of child blocks (optional).
+    :return: A new NumberedListItem object.
+    """
+    return _create_basic_item(
+        NumberedListItem,
+        parent,
+        text,
+        children
+    )
+
+
+def create_basic_quote(parent: Parent, text: str, children: list[Block] = None) -> Quote:
+    """
+    Factory method to create a basic Quote object.
+
+    :param parent: The parent object.
+    :param text: The text content of the quote.
+    :param children: List of child blocks (optional).
+    :return: A new Quote object.
+    """
+    return _create_basic_item(
+        Quote,
+        parent,
+        text,
+        children
+    )
+
+
+def create_basic_toggle(parent: Parent, text: str, children: list[Block] = None) -> Toggle:
+    """
+    Factory method to create a basic Toggle object.
+
+    :param parent: The parent object.
+    :param text: The text content of the toggle.
+    :param children: List of child blocks (optional).
+    :return: A new Toggle object.
+    """
+    return _create_basic_item(
+        Toggle,
+        parent,
+        text,
+        children
+    )
+
+
+def create_basic_to_do(parent: Parent, text: str, checked: Optional[bool] = None, children: list[Block] = None) -> ToDo:
+    """
+    Factory method to create a basic ToDo object.
+
+    :param parent: The parent object.
+    :param text: The text content of the to-do item.
+    :param checked: Whether the to-do item is checked (optional).
+    :param children: List of child blocks (optional).
+    :return: A new ToDo object.
+    """
+    return create_to_do(
+        parent,
+        "default",
+        [create_basic_rich_text(text)],
+        checked,
+        children
+    )
+
+
+__all__ = [
+    'create_bulleted_list_item', 'create_numbered_list_item', 'create_basic_paragraph', 'create_paragraph',
+    'create_quote', 'create_toggle', 'create_basic_bulleted_list_item',
+    'create_basic_numbered_list_item',
+    'create_basic_quote', 'create_basic_toggle', 'create_basic_to_do', 'create_to_do'
+]

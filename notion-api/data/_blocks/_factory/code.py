@@ -1,6 +1,5 @@
 from _blocks.data import Code, CodeAttributes
 from _blocks._factory.general import _create_block
-from _blocks.type import BlockType
 from structures import Parent, RichText
 
 
@@ -16,6 +15,10 @@ def create_code(parent: Parent, caption: list[RichText], rich_text: list[RichTex
     return _create_block(
         Code,
         parent=parent,
-        block_type=BlockType.CODE,
-        code=CodeAttributes(caption=caption, rich_text=rich_text, language=language)
+        block_type_specific_params=CodeAttributes(caption=caption, rich_text=rich_text, language=language)
     )
+
+
+__all__ = [
+    'create_code'
+]

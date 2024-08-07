@@ -5,7 +5,6 @@ from block import Block
 from _blocks._factory.general import _create_block
 from _blocks.data import TableRow, TableRowAttributes, TableOfContents, TableOfContentsAttributes, Column, Table, \
     TableAttributes
-from _blocks.type import BlockType
 
 
 def create_table(
@@ -24,8 +23,7 @@ def create_table(
     return _create_block(
         Table,
         parent=parent,
-        block_type=BlockType.TABLE,
-        table=TableAttributes(
+        block_type_specific_params=TableAttributes(
             has_column_header=has_column_header,
             has_row_header=has_row_header,
             table_width=table_width
@@ -46,8 +44,7 @@ def create_table_row(parent: Parent, cells: list[RichText], children: Optional[l
     return _create_block(
         TableRow,
         parent=parent,
-        block_type=BlockType.TABLE_ROW,
-        table_row=TableRowAttributes(
+        block_type_specific_params=TableRowAttributes(
             cells=cells
         ),
         children=children
@@ -67,8 +64,7 @@ def create_table_of_contents(
     return _create_block(
         TableOfContents,
         parent=parent,
-        block_type=BlockType.TABLE_OF_CONTENTS,
-        table_of_contents=TableOfContentsAttributes(
+        block_type_specific_params=TableOfContentsAttributes(
             color=color
         ),
         children=children
@@ -86,6 +82,10 @@ def create_column(parent: Parent, children: Optional[list[Block]] = None) -> Col
     return _create_block(
         Column,
         parent=parent,
-        block_type=BlockType.COLUMN,
-        children=children
+        children=children,
     )
+
+
+__all__ = [
+    'create_column', 'create_table', 'create_table_row', 'create_table_of_contents'
+]

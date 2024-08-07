@@ -2,13 +2,12 @@ from typing import TypeVar, Type, Optional
 
 from _blocks.data import File, Image, Pdf, Video
 from _blocks._factory.general import _create_block
-from _blocks.type import BlockType
 from structures import Parent, External, FileObject, file_type, ResourcesAttributes
 
-T = TypeVar('T', bound='Block')
+T = TypeVar('T', File, Image, Pdf, Video)
 
 
-def determine_file_type(external: Optional[External], file: Optional[FileObject]) -> file_type:
+def _determine_file_type(external: Optional[External], file: Optional[FileObject]) -> file_type:
     """
     Determine the type of file based on the provided parameters.
 
@@ -48,13 +47,12 @@ def _create_resources_object(
     :param file: internal file details (optional)
     :return: newly created Resources Object
     """
-    _type = determine_file_type(external, file)
+    _type = _determine_file_type(external, file)
 
     return _create_block(
         resource,
         parent=parent,
-        block_type=BlockType.IMAGE,
-        image=ResourcesAttributes(
+        block_type_specific_params=ResourcesAttributes(
             type=_type,
             external=external,
             file=file
@@ -110,3 +108,8 @@ def create_video(
     :return: A newly created Video object.
     """
     return _create_resources_object(Video, parent, external, file)
+
+
+__all__ = [
+    'create_file', 'create_image', 'create_pdf', 'create_video'
+]

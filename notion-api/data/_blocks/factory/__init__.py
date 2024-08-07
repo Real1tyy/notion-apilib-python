@@ -56,29 +56,27 @@ Note:
     This package is intended for use by developers to simplify the creation of Notion block objects.
     It provides factory methods that ensure all block objects are created consistently and correctly.
 """
+from _blocks._factory.children.heading import *
+from _blocks._factory.children.child import *
+from _blocks._factory.children.items import *
+from _blocks._factory.children.other import *
+from _blocks._factory.children.tables import *
+from _blocks._factory.code import *
+from _blocks._factory.equation import *
+from _blocks._factory.link import *
+from _blocks._factory.other import *
+from _blocks._factory.resources import *
 
-from _blocks._factory.children.child import create_child_page, create_child_database
-from _blocks._factory.children.heading import create_heading, create_basic_heading, create_headings_attributes
-from _blocks._factory.children.items import (create_bulleted_list_item, create_numbered_list_item, create_to_do,
-                                             create_quote, create_toggle, create_paragraph, create_basic_paragraph)
-from _blocks._factory.children.other import create_synced_block, create_callout
-from _blocks._factory.children.tables import (create_table, create_table_row, create_column, create_table_of_contents)
-from _blocks._factory.code import create_code
-from _blocks._factory.equation import create_equation
-from _blocks._factory.link import create_link_preview, create_embed, create_bookmark
-from _blocks._factory.other import (create_divider, create_breadcrumb, create_unsupported, create_column_list)
-from _blocks._factory.resources import create_pdf, create_video, create_file, create_image
+from _blocks._factory.children.heading import __all__ as heading_all
+from _blocks._factory.children.child import __all__ as child_all
+from _blocks._factory.children.items import __all__ as items_all
+from _blocks._factory.children.other import __all__ as other_all
+from _blocks._factory.children.tables import __all__ as tables_all
+from _blocks._factory.code import __all__ as code_all
+from _blocks._factory.equation import __all__ as equation_all
+from _blocks._factory.link import __all__ as link_all
+from _blocks._factory.other import __all__ as other_basic_all
+from _blocks._factory.resources import __all__ as resources_all
 
-__all__ = [
-    'create_child_page', 'create_child_database',
-    'create_heading', 'create_basic_heading', 'create_headings_attributes',
-    'create_bulleted_list_item', 'create_numbered_list_item', 'create_to_do',
-    'create_quote', 'create_toggle', 'create_paragraph', 'create_basic_paragraph',
-    'create_synced_block', 'create_callout',
-    'create_table', 'create_table_row', 'create_column', 'create_table_of_contents',
-    'create_code',
-    'create_equation',
-    'create_link_preview', 'create_embed', 'create_bookmark',
-    'create_divider', 'create_breadcrumb', 'create_unsupported', 'create_column_list',
-    'create_pdf', 'create_video', 'create_file', 'create_image'
-]
+__all__ = (heading_all + child_all + items_all + other_all + tables_all + code_all + equation_all +
+           link_all + other_basic_all + resources_all)

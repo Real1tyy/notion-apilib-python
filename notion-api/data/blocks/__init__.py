@@ -105,44 +105,30 @@ Note:
 from structures import Annotations
 from data._blocks.data import ChildDatabase, ChildPage, Heading1, Heading2, Heading3, BulletedListItem, \
     NumberedListItem, \
-    Paragraph, Quote, TodoAttributes, ToDo, Toggle, Callout, SyncedBlock, Table, TableRow, TableOfContents, Code, \
+    Paragraph, Quote, ToDoAttributes, ToDo, Toggle, Callout, SyncedBlock, Table, TableRow, TableOfContents, Code, \
     Equation, LinkPreview, Divider, Unsupported, ColumnList, Breadcrumb, File, Image, Video, Pdf
 
-from data._blocks.factory import create_child_page, create_child_database, create_heading1, create_heading2, \
-    create_heading3, create_bulleted_list_item, create_numbered_list_item, create_to_do, create_quote, create_toggle, \
-    create_paragraph, create_synced_block, create_callout, create_table, create_table_row, create_column, \
-    create_table_of_contents, create_code, create_equation, create_link_preview, create_embed, create_bookmark, \
-    create_divider, create_breadcrumb, create_unsupported, create_column_list, create_pdf, create_video, create_file, \
-    create_image
+from data._blocks.factory import *
+from data._blocks.factory import __all__ as factory_all
 from data._blocks.type_factory import create_concrete_block_type
 
 # added to prevent IDE from flagging the import as unused
 structures = Annotations
 
-__all__ = [
-    # Factory methods
-    'create_child_page', 'create_child_database',
-    'create_heading1', 'create_heading2', 'create_heading3',
-    'create_bulleted_list_item', 'create_numbered_list_item', 'create_to_do',
-    'create_quote', 'create_toggle', 'create_paragraph',
-    'create_synced_block', 'create_callout',
-    'create_table', 'create_table_row', 'create_column', 'create_table_of_contents',
-    'create_code',
-    'create_equation',
-    'create_link_preview', 'create_embed', 'create_bookmark',
-    'create_divider', 'create_breadcrumb', 'create_unsupported', 'create_column_list',
-    'create_pdf', 'create_video', 'create_file', 'create_image',
+__all__ = (
+        factory_all +
+        [
+            # Data models
+            'ChildDatabase', 'ChildPage',
+            'Heading1', 'Heading2', 'Heading3',
+            'BulletedListItem', 'NumberedListItem', 'Paragraph', 'Quote', 'TodoAttributes', 'ToDo', 'Toggle',
+            'Callout', 'SyncedBlock',
+            'Table', 'TableRow', 'TableOfContents',
+            'Code', 'Equation', 'LinkPreview',
+            'Divider', 'Unsupported', 'ColumnList', 'Breadcrumb',
+            'File', 'Image', 'Video', 'Pdf',
 
-    # Data models
-    'ChildDatabase', 'ChildPage',
-    'Heading1', 'Heading2', 'Heading3',
-    'BulletedListItem', 'NumberedListItem', 'Paragraph', 'Quote', 'TodoAttributes', 'ToDo', 'Toggle',
-    'Callout', 'SyncedBlock',
-    'Table', 'TableRow', 'TableOfContents',
-    'Code', 'Equation', 'LinkPreview',
-    'Divider', 'Unsupported', 'ColumnList', 'Breadcrumb',
-    'File', 'Image', 'Video', 'Pdf',
-
-    # Factory methods for concrete block types
-    'create_concrete_block_type',
-]
+            # Factory methods for concrete block types
+            'create_concrete_block_type',
+        ]
+)

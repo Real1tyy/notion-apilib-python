@@ -13,7 +13,6 @@ def create_divider(parent: Parent) -> Divider:
     return _create_block(
         Divider,
         parent=parent,
-        block_type=BlockType.DIVIDER,
     )
 
 
@@ -25,8 +24,7 @@ def create_column_list(parent: Parent) -> ColumnList:
     """
     return _create_block(
         ColumnList,
-        parent=parent,
-        block_type=BlockType.COLUMN_LIST,
+        parent=parent
     )
 
 
@@ -38,8 +36,7 @@ def create_breadcrumb(parent: Parent) -> Breadcrumb:
     """
     return _create_block(
         Breadcrumb,
-        parent=parent,
-        block_type=BlockType.BREADCRUMB,
+        parent=parent
     )
 
 
@@ -52,5 +49,9 @@ def create_unsupported(parent: Parent) -> Unsupported:
     return _create_block(
         Unsupported,
         parent=parent,
-        block_type=BlockType.UNSUPPORTED,
     )
+
+
+__all__ = [
+    'create_divider', 'create_column_list', 'create_breadcrumb', 'create_unsupported'
+]

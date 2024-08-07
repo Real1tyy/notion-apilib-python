@@ -74,7 +74,7 @@ class Quote(Block):
         return BlockType.QUOTE
 
 
-class TodoAttributes(Items):
+class ToDoAttributes(Items):
     """
     Attributes for todo items.
 
@@ -89,7 +89,7 @@ class ToDo(Block):
 
     :param to_do: Attributes for the to-do item.
     """
-    to_do: TodoAttributes
+    to_do: ToDoAttributes
 
     @classmethod
     def get_associated_block_type(cls) -> BlockType:

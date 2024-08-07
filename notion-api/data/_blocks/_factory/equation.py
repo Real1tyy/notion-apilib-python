@@ -1,6 +1,5 @@
 from _blocks.data import Equation, EquationAttributes
 from _blocks._factory.general import _create_block
-from _blocks.type import BlockType
 from structures import Parent
 
 
@@ -14,6 +13,10 @@ def create_equation(parent: Parent, expression: str) -> Equation:
     return _create_block(
         Equation,
         parent=parent,
-        block_type=BlockType.EQUATION,
-        equation=EquationAttributes(expression=expression)
+        block_type_specific_params=EquationAttributes(expression=expression)
     )
+
+
+__all__ = [
+    'create_equation'
+]

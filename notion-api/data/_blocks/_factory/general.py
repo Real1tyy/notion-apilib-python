@@ -1,4 +1,4 @@
-from typing import Type, TypeVar, Any
+from typing import Type, TypeVar, Any, Optional
 
 from data.structures import Parent
 from _blocks.block import Block
@@ -6,7 +6,10 @@ from _blocks.block import Block
 T = TypeVar('T', bound=Block)
 
 
-def _create_block(cls: Type[T], parent: Parent, block_type_specific_params: Any, children: list[Block] = None) -> T:
+def _create_block(
+        cls: Type[T], parent: Parent, block_type_specific_params: Optional[Any] = None, children: list[
+            Block] = None) \
+        -> T:
     """
     Helper function to create block objects with common parameters pre-filled.
 
@@ -30,6 +33,7 @@ def _create_block(cls: Type[T], parent: Parent, block_type_specific_params: Any,
         "has_children": bool(children),
         "children": children if children else []
     }
-    payload_property_name = cls.get_payload_property_name()
-    common_params[payload_property_name] = block_type_specific_params
+    if block_type_specific_params:
+        payload_property_name = cls.get_payload_property_name()
+        common_params[payload_property_name] = block_type_specific_params
     return cls(**common_params)

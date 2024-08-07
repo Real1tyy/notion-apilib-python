@@ -1,6 +1,5 @@
 from _blocks.data import Bookmark, BookmarkAttributes, Embed, EmbedAttributes, LinkPreview, LinkPreviewAttributes
 from _blocks._factory.general import _create_block
-from _blocks.type import BlockType
 from structures import Parent, RichText
 
 
@@ -15,8 +14,7 @@ def create_bookmark(parent: Parent, url: str, caption: list[RichText]) -> Bookma
     return _create_block(
         Bookmark,
         parent=parent,
-        block_type=BlockType.CODE,
-        bookmark=BookmarkAttributes(caption=caption, url=url)
+        block_type_specific_params=BookmarkAttributes(caption=caption, url=url)
     )
 
 
@@ -30,8 +28,7 @@ def create_embed(parent: 'Parent', url: str) -> Embed:
     return _create_block(
         Embed,
         parent=parent,
-        block_type=BlockType.EMBED,
-        embed=EmbedAttributes(url=url)
+        block_type_specific_params=EmbedAttributes(url=url)
     )
 
 
@@ -45,6 +42,10 @@ def create_link_preview(parent: 'Parent', url: str) -> LinkPreview:
     return _create_block(
         LinkPreview,
         parent=parent,
-        block_type=BlockType.LINK_PREVIEW,
-        link_preview=LinkPreviewAttributes(url=url)
+        block_type_specific_params=LinkPreviewAttributes(url=url)
     )
+
+
+__all__ = [
+    'create_bookmark', 'create_embed', 'create_link_preview'
+]

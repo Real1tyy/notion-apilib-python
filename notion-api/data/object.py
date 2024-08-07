@@ -13,7 +13,7 @@ from data.structures import Icon, Parent
 
 class Object(ABC, BaseModel, use_enum_values=True, from_attributes=True, arbitrary_types_allowed=True):
     id: UUID = Field(default=None)
-    object: Literal['blocks', 'database', 'page', 'user', 'workspace']
+    object: Literal['block', 'database', 'page', 'user', 'workspace']
     created_time: datetime = Field(exclude=True, default=None)
     last_edited_time: datetime = Field(exclude=True, default=None)
     parent: Parent

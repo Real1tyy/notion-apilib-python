@@ -67,7 +67,7 @@ Note:
 
 from _blocks._data.children.child import ChildDatabase, ChildPage, ChildAttributes
 from _blocks._data.children.heading import Heading1, Heading2, Heading3, HeadingsAttributes
-from _blocks._data.children.items import (BulletedListItem, NumberedListItem, Paragraph, Quote, TodoAttributes, ToDo,
+from _blocks._data.children.items import (BulletedListItem, NumberedListItem, Paragraph, Quote, ToDoAttributes, ToDo,
                                           Toggle, Items)
 from _blocks._data.children.other import Callout, SyncedBlock, SyncedBlockAttributes, SyncedFrom, CalloutAttributes
 from _blocks._data.children.tables import (Table, TableRow, TableOfContents, Column, TableRowAttributes,
@@ -81,7 +81,7 @@ from _blocks._data.resources import File, Image, Video, Pdf
 __all__ = [
     'ChildDatabase', 'ChildPage', 'ChildAttributes',
     'Heading1', 'Heading2', 'Heading3', 'HeadingsAttributes',
-    'BulletedListItem', 'NumberedListItem', 'Paragraph', 'Quote', 'TodoAttributes', 'ToDo', 'Toggle', 'Items',
+    'BulletedListItem', 'NumberedListItem', 'Paragraph', 'Quote', 'ToDoAttributes', 'ToDo', 'Toggle', 'Items',
     'Callout', 'SyncedBlock', 'CalloutAttributes', 'SyncedBlockAttributes', 'SyncedFrom',
     'Table', 'TableRow', 'TableOfContents', 'Column', 'TableRowAttributes', 'TableAttributes',
     'TableOfContentsAttributes',
