@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 from type_ import PropertyType
 
 
-class Property(ABC, BaseModel, from_attributes=True, use_enum_values=True):
+class Property(ABC, BaseModel, from_attributes=True, use_enum_values=True, arbitrary_types_allowed=True):
     """
     Abstract base class representing a property in the Notion API.
 

@@ -2,9 +2,9 @@ from datetime import datetime
 
 from _properties.data import CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage, LastEditedTimeDatabase
 from _properties.type_ import PropertyType
-from database import Database
-from general import _create_page_property, _create_database_property
-from page import Page
+from data.database import Database
+from _properties._factory.general import _create_page_property, _create_database_property
+from data.page import Page
 
 
 def create_created_time_page(

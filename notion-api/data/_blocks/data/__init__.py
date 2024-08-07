@@ -65,26 +65,29 @@ Note:
     correctly.
 """
 
-from .._data.children.child import ChildDatabase, ChildPage
-from .._data.children.heading import Heading1, Heading2, Heading3
-from .._data.children.items import BulletedListItem, NumberedListItem, Paragraph, Quote, TodoAttributes, ToDo, Toggle
-from .._data.children.other import Callout, SyncedBlock
-from .._data.children.tables import Table, TableRow, TableOfContents, Column
-from .._data.code import Code
-from .._data.equation import Equation
-from .._data.link import LinkPreview, Bookmark, Embed
-from .._data.other import Divider, Unsupported, ColumnList, Breadcrumb
-from .._data.resources import File, Image, Video, Pdf
+from _blocks._data.children.child import ChildDatabase, ChildPage, ChildAttributes
+from _blocks._data.children.heading import Heading1, Heading2, Heading3, HeadingsAttributes
+from _blocks._data.children.items import (BulletedListItem, NumberedListItem, Paragraph, Quote, TodoAttributes, ToDo,
+                                          Toggle, Items)
+from _blocks._data.children.other import Callout, SyncedBlock, SyncedBlockAttributes, SyncedFrom, CalloutAttributes
+from _blocks._data.children.tables import (Table, TableRow, TableOfContents, Column, TableRowAttributes,
+                                           TableAttributes, TableOfContentsAttributes)
+from _blocks._data.code import Code, CodeAttributes
+from _blocks._data.equation import Equation, EquationAttributes
+from _blocks._data.link import LinkPreview, Bookmark, Embed, BookmarkAttributes, EmbedAttributes, LinkPreviewAttributes
+from _blocks._data.other import Divider, Unsupported, ColumnList, Breadcrumb
+from _blocks._data.resources import File, Image, Video, Pdf
 
 __all__ = [
-    'ChildDatabase', 'ChildPage',
-    'Heading1', 'Heading2', 'Heading3',
-    'BulletedListItem', 'NumberedListItem', 'Paragraph', 'Quote', 'TodoAttributes', 'ToDo', 'Toggle',
-    'Callout', 'SyncedBlock',
-    'Table', 'TableRow', 'TableOfContents', 'Column',
-    'Code',
-    'Equation',
-    'LinkPreview', 'Bookmark', 'Embed',
+    'ChildDatabase', 'ChildPage', 'ChildAttributes',
+    'Heading1', 'Heading2', 'Heading3', 'HeadingsAttributes',
+    'BulletedListItem', 'NumberedListItem', 'Paragraph', 'Quote', 'TodoAttributes', 'ToDo', 'Toggle', 'Items',
+    'Callout', 'SyncedBlock', 'CalloutAttributes', 'SyncedBlockAttributes', 'SyncedFrom',
+    'Table', 'TableRow', 'TableOfContents', 'Column', 'TableRowAttributes', 'TableAttributes',
+    'TableOfContentsAttributes',
+    'Code', 'CodeAttributes',
+    'Equation', 'EquationAttributes',
+    'LinkPreview', 'Bookmark', 'Embed', 'BookmarkAttributes', 'EmbedAttributes', 'LinkPreviewAttributes',
     'Divider', 'Unsupported', 'ColumnList', 'Breadcrumb',
     'File', 'Image', 'Video', 'Pdf'
 ]

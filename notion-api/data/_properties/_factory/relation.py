@@ -3,10 +3,10 @@ from typing import Optional, Literal, Any
 from uuid import UUID
 
 from _properties.type_ import PropertyType
-from database import Database
-from general import _create_page_property, _create_database_property
-from page import Page
-from relation import RelationPage, RelationStructure, RollupPage, RollupStructure, RelationDatabase, \
+from data.database import Database
+from _properties._factory.general import _create_page_property, _create_database_property
+from data.page import Page
+from _properties.data import RelationPage, RelationStructure, RollupPage, RollupStructure, RelationDatabase, \
     RollupDatabase, RollupDatabaseStructure, RelationDatabaseStructure
 
 

@@ -3,8 +3,8 @@ from typing import Type
 
 from _properties.type_ import PropertyType
 # Third Party
-from database import Database
-from page import Page
+from data.database import Database
+from data.page import Page
 
 
 def _create_page_property(

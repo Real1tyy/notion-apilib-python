@@ -1,7 +1,7 @@
-from _data.Parent import Parent
-from _data.equation import Equation, EquationAttributes
+from _blocks.data import Equation, EquationAttributes
 from block import _create_block
-from type import BlockType
+from _blocks.type import BlockType
+from structures import Parent
 
 
 def create_equation(parent: Parent, expression: str) -> Equation:

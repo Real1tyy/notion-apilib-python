@@ -1,23 +1,31 @@
 # Third Party
 from dotenv import load_dotenv
 
-from Container import Container
-from Parent import create_parent
-from properties import create_date_page
+from data.blocks import *
+from data.properties import *
+from notion import Container, NotionApi
 
 if __name__ == "__main__":
     load_dotenv()
-    container: Container = Container()
-    container.config.api_key.from_env("NOTION_INTEGRATION_KEY")
+    # yx = create_concrete_block_type("da")
+    # z = create_date_page("da", "Date", "2021-10-10")
+    #
+    notion = NotionApi("secret_iptuPR2jz8YNka3cHhIPEwQJDRspoI9VxcUBZkN8pca")
+    y = notion.get_pages_provider()
+    x = notion.get_pages_provider()
+    print(x.retrieve_page("b5d1877b3a554a7fbaacf206adb8a0e2"))
 
-    database_provider = container.notion_database_provider()
-    blocks_provider = container.notion_block_provider()
-    page_provider = container.notion_page_provider()
+    # container: Container = Container()
+    # container.config.api_key.from_env("NOTION_INTEGRATION_KEY")
 
-    file_path = "links"
-    parent = create_parent("workspace")
-    page = create_date_page(parent, "date", "2021-10-10")
-
+    # database_provider = container.notion_database_provider()
+    # blocks_provider = container.notion_block_provider()
+    # # page_provider = container.notion_page_provider()
+    #
+    # file_path = "links"
+    # parent = create_parent("workspace")
+    # page = create_date_page(parent, "date", "2021-10-10")
+    #
     # with open(file_path, "r") as file:
     #     lines = file.readlines()
     # for line in lines:

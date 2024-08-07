@@ -4,14 +4,13 @@ from typing import Annotated, Any
 from pydantic import BaseModel, BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
-from _data.RichText import RichText
+from structures import RichText
 # Third Party
-from custom_types import json_
-from exceptions import catch_exceptions
-from object import MajorObject
-from page import Page
-from properties import create_concrete_database_property_type
-from property import DatabaseProperty
+from data.exceptions import catch_exceptions
+from data.object import MajorObject
+from data.page import Page
+from data._properties.property import DatabaseProperty
+from data._properties.property_factory import create_concrete_database_property_type
 
 
 class DatabaseProperties(BaseModel, extra="allow"):
@@ -41,7 +40,7 @@ class Database(MajorObject):
     def get_properties(self) -> list[DatabaseProperty]:
         return self.properties.properties
 
-    def deserialize_json(self) -> json_:
+    def deserialize_json(self) -> dict[str, Any]:
         data = self.model_dump(
             mode='json', exclude_none=True, exclude={'id', 'archived', 'in_trash',
                                                      'last_edited_time', 'created_time'})
@@ -57,5 +56,5 @@ class Database(MajorObject):
         return self.get_properties()
 
 
-def create_database(data: json_) -> Database:
+def create_database(data: dict[str, Any]) -> Database:
     return Database(**data)

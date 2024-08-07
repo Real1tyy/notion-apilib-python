@@ -1,9 +1,9 @@
-from _data.ResourcesAttributes import ResourcesAttributes
+from structures import ResourcesAttributes
 from _properties.type_ import PropertyType
-from database import Database
-from general import _create_page_property, _create_database_property
-from page import Page
-from resources import EmailPage, UrlPage, PhoneNumberPage, FilesPage, EmailDatabase, FilesDatabase, \
+from data.database import Database
+from _properties._factory.general import _create_page_property, _create_database_property
+from data.page import Page
+from _properties.data import EmailPage, UrlPage, PhoneNumberPage, FilesPage, EmailDatabase, FilesDatabase, \
     PhoneNumberDatabase, UrlDatabase
 
 

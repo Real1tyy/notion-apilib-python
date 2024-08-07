@@ -3,9 +3,9 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from _data.RichText import RichText
 # Third Party
 from block import Block
+from structures import RichText
 
 
 class Items(BaseModel):

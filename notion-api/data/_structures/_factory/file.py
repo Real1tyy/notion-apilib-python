@@ -3,8 +3,7 @@
 from datetime import datetime
 from typing import Optional, List
 
-from _structures.data import FileObject, External, ResourcesAttributes, FileAttributes
-from _structures.data import RichText
+from _structures.data import FileObject, External, ResourcesAttributes, FileAttributes, RichText
 from types_ import file_type
 
 

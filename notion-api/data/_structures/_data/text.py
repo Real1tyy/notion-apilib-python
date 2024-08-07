@@ -4,9 +4,6 @@ from typing import Optional
 # Third Party
 from pydantic import BaseModel
 
-from _structures.data import Mention
-from data.blocks import Equation
-
 
 class Link(BaseModel):
     """
@@ -62,7 +59,19 @@ class Annotations(BaseModel):
     color: str
 
 
-class RichText(BaseModel):
+class EquationStructure(BaseModel):
+    """
+    Represents an equation structure in the Notion API.
+
+    Attributes
+    ----------
+    expression : str
+        The expression of the equation.
+    """
+    expression: str
+
+
+class RichText(BaseModel, arbitrary_types_allowed=True):
     """
     Represents a rich text object in the Notion API.
 
@@ -85,8 +94,8 @@ class RichText(BaseModel):
     """
     type: str
     text: Optional[Text] = None
-    mention: Optional[Mention] = None
-    equation: Optional[Equation] = None
+    mention: Optional['Mention'] = None
+    equation: Optional[EquationStructure] = None
     annotations: Annotations
     plain_text: str
     href: Optional[str] = None

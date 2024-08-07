@@ -1,10 +1,9 @@
 from typing import Type, Optional
 
-from _data.Parent import Parent
-from _data.RichText import RichText
+from structures import RichText, Parent
 from block import Block, _create_block
-from items import Items, BulletedListItem, NumberedListItem, Paragraph, Quote, TodoAttributes, ToDo, Toggle
-from type import BlockType
+from _blocks.data import Items, BulletedListItem, NumberedListItem, Paragraph, Quote, TodoAttributes, ToDo, Toggle
+from _blocks.type import BlockType
 
 
 def _create_item_block(

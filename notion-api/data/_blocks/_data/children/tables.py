@@ -2,9 +2,9 @@
 
 from pydantic import BaseModel
 
-from _data.RichText import RichText
 # Third Party
 from block import Block
+from structures import RichText
 
 
 class TableAttributes(BaseModel):

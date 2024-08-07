@@ -1,8 +1,7 @@
-from _data.Parent import Parent
-from _data.RichText import RichText
-from _data.link import Bookmark, BookmarkAttributes, Embed, EmbedAttributes, LinkPreview, LinkPreviewAttributes
+from _blocks.data import Bookmark, BookmarkAttributes, Embed, EmbedAttributes, LinkPreview, LinkPreviewAttributes
 from block import _create_block
-from type import BlockType
+from _blocks.type import BlockType
+from structures import Parent, RichText
 
 
 def create_bookmark(parent: Parent, url: str, caption: list[RichText]) -> Bookmark:
@@ -21,7 +20,7 @@ def create_bookmark(parent: Parent, url: str, caption: list[RichText]) -> Bookma
     )
 
 
-def create_embed(parent: Parent, url: str) -> Embed:
+def create_embed(parent: 'Parent', url: str) -> Embed:
     """
     Factory method to create Embed object
     :param parent: parent object
@@ -36,7 +35,7 @@ def create_embed(parent: Parent, url: str) -> Embed:
     )
 
 
-def create_link_preview(parent: Parent, url: str) -> LinkPreview:
+def create_link_preview(parent: 'Parent', url: str) -> LinkPreview:
     """
     Factory method to create LinkPreview object
     :param parent: parent object

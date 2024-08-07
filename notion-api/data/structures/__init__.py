@@ -84,8 +84,9 @@ Note:
     payloads from the Notion API into our custom DSL properties, facilitating seamless data integration.
 """
 
-from .._structures.data import *
-from .._structures.factory import *
+from data._structures.data import *
+from data._structures.factory import *
+from data._structures.types_ import file_type
 
 __all__ = [
     # Data classes
@@ -107,5 +108,8 @@ __all__ = [
     'create_text', 'create_annotations', 'create_rich_text', 'create_link', 'create_basic_rich_text',
     'create_basic_annotations',
     'create_user', 'create_bot', 'create_people_structure', 'create_people', 'create_owner_structure',
-    'create_bot_structure'
+    'create_bot_structure',
+
+    # Types
+    'file_type',
 ]

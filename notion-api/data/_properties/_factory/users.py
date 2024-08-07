@@ -1,9 +1,9 @@
-from _data.UserObject import User
+from structures import User
 from _properties.type_ import PropertyType
-from database import Database
-from general import _create_page_property, _create_database_property
-from page import Page
-from users import PeoplePage, LastEditedByPage, CreatedByPage, CreatedByDatabase, LastEditedByDatabase, \
+from data.database import Database
+from _properties._factory.general import _create_page_property, _create_database_property
+from data.page import Page
+from _properties.data import PeoplePage, LastEditedByPage, CreatedByPage, CreatedByDatabase, LastEditedByDatabase, \
     PeopleDatabase
 
 

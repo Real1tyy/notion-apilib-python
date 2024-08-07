@@ -5,7 +5,6 @@ from typing import Optional
 # Third Party
 from pydantic import BaseModel
 
-from _structures.data import RichText
 from types_ import file_type
 
 
@@ -36,36 +35,7 @@ class External(BaseModel):
     url: str
 
 
-def determine_file_type(external: Optional[External], file: Optional[FileObject]) -> file_type:
-    """
-    Determine the type of file based on the provided parameters.
-
-    Parameters
-    ----------
-    external : Optional[External]
-        The external file object, if any.
-    file : Optional[FileObject]
-        The file object, if any.
-
-    Returns
-    -------
-    file_type
-        The type of the file, either 'external' or 'file'.
-
-    Raises
-    ------
-    ValueError
-        If neither external nor file is provided.
-    """
-    if external is None and file is None:
-        raise ValueError("Either external or file should be provided")
-    if external is not None:
-        return "external"
-    else:
-        return "file"
-
-
-class ResourcesAttributes(BaseModel):
+class ResourcesAttributes(BaseModel, arbitrary_types_allowed=True):
     """
     Represents the attributes of a resource in the Notion API.
 
@@ -94,5 +64,5 @@ class FileAttributes(ResourcesAttributes):
     name : str
         The name of the file.
     """
-    caption: list[RichText]
+    caption: list['RichText']
     name: str

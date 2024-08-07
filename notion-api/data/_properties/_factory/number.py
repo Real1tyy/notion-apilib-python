@@ -1,11 +1,11 @@
 from typing import Optional
 
 from _properties.type_ import PropertyType
-from database import Database
-from general import _create_page_property, _create_database_property
-from number import UniqueIdPage, UniqueIdStructure, NumberPage, UniqueIdDatabase, NumberDatabase, \
+from data.database import Database
+from _properties._factory.general import _create_page_property, _create_database_property
+from _properties.data import UniqueIdPage, UniqueIdStructure, NumberPage, UniqueIdDatabase, NumberDatabase, \
     NumberStructure
-from page import Page
+from data.page import Page
 
 
 def create_number_page(

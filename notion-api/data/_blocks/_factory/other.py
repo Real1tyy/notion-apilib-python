@@ -1,8 +1,7 @@
-from _data.Parent import Parent
-
+from _blocks.data import Divider, ColumnList, Breadcrumb, Unsupported
 from block import _create_block
-from data.other import Divider, ColumnList, Breadcrumb, Unsupported
-from type import BlockType
+from _blocks.type import BlockType
+from structures import Parent
 
 
 def create_divider(parent: Parent) -> Divider:

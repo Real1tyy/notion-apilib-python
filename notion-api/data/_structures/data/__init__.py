@@ -41,6 +41,7 @@ Data Classes:
     - People
     - BotStructure
     - Bot
+    - Equation
 
 Note:
     This package is intended for use by developers to ensure that the data objects used in the Notion API are
@@ -48,18 +49,23 @@ Note:
     facilitating data integrity and consistency.
 """
 
-from .._data.file import *
-from .._data.icon import *
-from .._data.mention import *
-from .._data.parent import *
-from .._data.text import *
-from .._data.user import *
+from _structures._data.file import FileObject, External, FileAttributes, ResourcesAttributes
+from _structures._data.icon import Emoji, Icon
+from _structures._data.mention import (Mention, DatabaseMention, DateMention, LinkPreviewMention, UserMention,
+                                       TemplateMention, TemplateMentionDate, TemplateMentionUser, PageMention)
+from _structures._data.parent import Parent
+from _structures._data.text import RichText, Text, Link, Annotations
+from _structures._data.user import User, OwnerStructure, PeopleStructure, People, BotStructure, Bot
+
+FileAttributes.model_rebuild()
+Icon.model_rebuild()
+RichText.model_rebuild()
 
 __all__ = [
     'FileObject', 'External', 'FileAttributes', 'ResourcesAttributes',
     'Emoji', 'Icon',
     'Mention', 'DatabaseMention', 'DateMention', 'LinkPreviewMention', 'UserMention', 'TemplateMention',
-    'TemplateMentionDate', 'TemplateMentionUser',
+    'TemplateMentionDate', 'TemplateMentionUser', 'PageMention',
     'Parent',
     'RichText', 'Text', 'Link', 'Annotations',
     'User', 'OwnerStructure', 'PeopleStructure', 'People', 'BotStructure', 'Bot',

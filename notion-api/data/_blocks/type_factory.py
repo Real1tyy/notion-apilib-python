@@ -1,5 +1,4 @@
 # Third Party
-from _data.FileObject import FileObject
 from _blocks.data import *
 from _structures.data import Mention
 from custom_types import json_
@@ -12,7 +11,7 @@ BLOCK_TYPE_MAP = {
     "divider": Divider,
     "embed": Embed,
     "equation": Equation,
-    "file": FileObject,
+    "file": File,
     "image": Image,
     "link_preview": LinkPreview,
     "pdf": Pdf,
@@ -41,7 +40,7 @@ BLOCK_TYPE_MAP = {
 
 def create_concrete_block_type(data: json_):
     """
-    Create an instance of a concrete block type based on the given data.
+    Create an instance of a concrete block type based on the given json format data.
 
     :param data: The data used to create the block, including the block type.
     :type data: dict

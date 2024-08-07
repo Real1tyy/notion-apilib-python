@@ -5,12 +5,11 @@ from pydantic import BaseModel, BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
 # Third Party
-from _blocks import Block
-from custom_types import json_
-from exceptions import catch_exceptions
-from object import MajorObject
-from property import PageProperty
-from type_factory import create_concrete_page_property_type
+from block import Block
+from data.exceptions import catch_exceptions
+from data.object import MajorObject
+from data._properties.property import PageProperty
+from data._properties.property_factory import create_concrete_page_property_type
 
 
 class PageProperties(BaseModel, extra="allow"):
@@ -37,7 +36,7 @@ class Page(MajorObject):
     def get_properties(self) -> list[PageProperty]:
         return self.properties.properties
 
-    def deserialize_json(self) -> json_:
+    def deserialize_json(self) -> dict[str, Any]:
         data = self.model_dump(mode='json', exclude_none=True, exclude={'id', 'archived', 'children'})
         properties = data['_properties']
         keys_to_check = {'rollup', 'formula', 'last_edited_time', 'created_time', 'unique_id'}
@@ -51,5 +50,5 @@ class Page(MajorObject):
         return self.get_properties()
 
 
-def create_page(data: json_) -> Page:
+def create_page(data: dict[str, Any]) -> Page:
     return Page(**data)

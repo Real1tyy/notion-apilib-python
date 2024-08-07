@@ -1,9 +1,9 @@
-from _data.RichText import RichText
+from structures import RichText
 from _properties.type_ import PropertyType
-from database import Database
-from general import _create_page_property, _create_database_property
-from page import Page
-from text import TitlePage, RichTextPage, RichTextDatabase, TitleDatabase
+from data.database import Database
+from _properties._factory.general import _create_page_property, _create_database_property
+from data.page import Page
+from _properties.data import TitlePage, RichTextPage, RichTextDatabase, TitleDatabase
 
 
 def create_rich_text_page(

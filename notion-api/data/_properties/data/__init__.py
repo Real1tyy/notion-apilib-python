@@ -70,21 +70,23 @@ API provided by the main package, ensuring that all property objects are validat
 correctly.
 """
 
-from .._data.date import DatePage, DateDatabase
-from .._data.formula import FormulaDatabase, FormulaPage
-from .._data.number import NumberPage, NumberDatabase, UniqueIdPage, UniqueIdDatabase
-from .._data.option import (
+from _properties._data.date import DatePage, DateDatabase, DateStructure
+from _properties._data.formula import FormulaDatabase, FormulaPage, FormulaStructure, FormulaDatabaseStructure
+from _properties._data.number import NumberPage, NumberDatabase, UniqueIdPage, UniqueIdDatabase, UniqueIdStructure, \
+    NumberStructure
+from _properties._data.option import (
     MultiSelectPage, MultiSelectDatabase, SelectPage, SelectDatabase, CheckboxPage,
-    CheckboxDatabase, StatusDatabase, StatusPage
+    CheckboxDatabase, StatusDatabase, StatusPage, Option, OptionStructure, Group, StatusDatabaseStructure
 )
-from .._data.relation import RelationPage, RelationDatabase, RollupPage, RollupDatabase
-from .._data.resources import (
+from _properties._data.relation import RelationPage, RelationDatabase, RollupPage, RollupDatabase, \
+    RollupDatabaseStructure, RelationDatabaseStructure, RelationStructure, RollupStructure
+from _properties._data.resources import (
     FilesPage, FilesDatabase, EmailPage, EmailDatabase, PhoneNumberPage,
     PhoneNumberDatabase, UrlDatabase, UrlPage
 )
-from .._data.text import RichTextPage, RichTextDatabase, TitlePage, TitleDatabase
-from .._data.time import CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage, LastEditedTimeDatabase
-from .._data.users import (
+from _properties._data.text import RichTextPage, RichTextDatabase, TitlePage, TitleDatabase
+from _properties._data.time import CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage, LastEditedTimeDatabase
+from _properties._data.users import (
     CreatedByPage, CreatedByDatabase, LastEditedByPage, LastEditedByDatabase, PeoplePage,
     PeopleDatabase
 )
@@ -92,12 +94,17 @@ from .._data.users import (
 __all__ = [
     'DatePage',
     'DateDatabase',
+    'DateStructure',
     'FormulaPage',
     'FormulaDatabase',
+    'FormulaStructure',
+    'FormulaDatabaseStructure',
     'NumberPage',
     'NumberDatabase',
     'UniqueIdPage',
     'UniqueIdDatabase',
+    'NumberStructure',
+    'UniqueIdStructure',
     'MultiSelectPage',
     'MultiSelectDatabase',
     'SelectPage',
@@ -106,10 +113,18 @@ __all__ = [
     'CheckboxDatabase',
     'StatusDatabase',
     'StatusPage',
+    'Option',
+    'OptionStructure',
+    'Group',
+    'StatusDatabaseStructure',
     'RelationPage',
     'RelationDatabase',
     'RollupPage',
     'RollupDatabase',
+    'RollupDatabaseStructure',
+    'RelationDatabaseStructure',
+    'RelationStructure',
+    'RollupStructure',
     'FilesPage',
     'FilesDatabase',
     'EmailPage',

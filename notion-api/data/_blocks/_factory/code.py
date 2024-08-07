@@ -1,8 +1,7 @@
-from _data.Parent import Parent
-from _data.RichText import RichText
-from _data.code import Code, CodeAttributes
+from _blocks.data import Code, CodeAttributes
 from block import _create_block
-from type import BlockType
+from _blocks.type import BlockType
+from structures import Parent, RichText
 
 
 def create_code(parent: Parent, caption: list[RichText], rich_text: list[RichText], language: str) -> Code:

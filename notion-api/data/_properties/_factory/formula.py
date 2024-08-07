@@ -2,10 +2,10 @@ from datetime import datetime
 from typing import Literal, Optional
 
 from _properties.type_ import PropertyType
-from database import Database
-from formula import FormulaPage, FormulaStructure, FormulaDatabase, FormulaDatabaseStructure
-from general import _create_page_property, _create_database_property
-from page import Page
+from data.database import Database
+from _properties.data import FormulaPage, FormulaStructure, FormulaDatabase, FormulaDatabaseStructure
+from _properties._factory.general import _create_page_property, _create_database_property
+from data.page import Page
 
 
 def create_formula_page(

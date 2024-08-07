@@ -1,6 +1,6 @@
 from typing import Optional
 
-from _structures.data import Annotations, Text, RichText, Link, Mention, Equation
+from _structures.data import Annotations, Text, RichText, Link, Mention
 
 
 def create_basic_annotations() -> Annotations:
@@ -84,7 +84,8 @@ def create_annotations(
 
 def create_rich_text(
         type_: str, annotations: Annotations, plain_text: str, text: Optional[Text] = None,
-        mention: Optional[Mention] = None, equation: Optional[Equation] = None, href: Optional[str] = None) -> RichText:
+        mention: Optional[Mention] = None, equation: Optional['Equation'] = None,
+        href: Optional[str] = None) -> RichText:
     """
     Factory method to create a RichText object.
 

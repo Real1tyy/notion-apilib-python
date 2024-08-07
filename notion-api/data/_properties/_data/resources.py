@@ -2,8 +2,8 @@
 from typing import Any
 
 # Third Party
-from property import DatabaseProperty, PageProperty
-from _data.ResourcesAttributes import ResourcesAttributes
+from _properties.property import DatabaseProperty, PageProperty
+from structures import ResourcesAttributes
 
 
 class EmailPage(PageProperty):

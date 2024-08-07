@@ -1,20 +1,21 @@
 # Standard Library
-import datetime
+from datetime import datetime
 from abc import ABC
 from typing import Literal, Optional
 from uuid import UUID
 
-# Third Party
-from _data.Emoji import Icon
-from _data.Parent import Parent
 from pydantic import BaseModel, Field
+from data.structures import Icon, Parent
+
+
+# Third Party
 
 
 class Object(ABC, BaseModel, use_enum_values=True, from_attributes=True, arbitrary_types_allowed=True):
     id: UUID = Field(default=None)
-    object: Literal['_blocks', 'database', 'page', 'user', 'workspace']
-    created_time: datetime.datetime = Field(exclude=True, default=None)
-    last_edited_time: datetime.datetime = Field(exclude=True, default=None)
+    object: Literal['blocks', 'database', 'page', 'user', 'workspace']
+    created_time: datetime = Field(exclude=True, default=None)
+    last_edited_time: datetime = Field(exclude=True, default=None)
     parent: Parent
     archived: bool
     in_trash: bool

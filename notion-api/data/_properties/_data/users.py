@@ -2,8 +2,8 @@
 from typing import Any
 
 # Third Party
-from property import DatabaseProperty, PageProperty
-from _data.UserObject import User
+from _properties.property import DatabaseProperty, PageProperty
+from structures import User
 
 
 class CreatedByPage(PageProperty):

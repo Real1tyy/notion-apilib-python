@@ -4,7 +4,6 @@ from typing import Optional
 # Third Party
 from pydantic import BaseModel
 
-from _structures.data import External, FileObject
 from types_ import file_type
 
 
@@ -23,7 +22,7 @@ class Emoji(BaseModel):
     type: str
 
 
-class Icon(BaseModel):
+class Icon(BaseModel, arbitrary_types_allowed=True):
     """
     Represents an Icon in the Notion API.
 
@@ -37,5 +36,5 @@ class Icon(BaseModel):
         The file object, if any.
     """
     type: file_type
-    external: Optional[External] = None
-    file: Optional[FileObject] = None
+    external: Optional['External'] = None
+    file: Optional['FileObject'] = None

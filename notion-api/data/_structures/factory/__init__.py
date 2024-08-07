@@ -47,6 +47,7 @@ Factory Methods:
     - create_people
     - create_owner_structure
     - create_bot_structure
+    - create_equation
 
 Note:
     This package is intended for use by developers to simplify the creation of Notion API data structures. It provides
@@ -54,12 +55,12 @@ Note:
     requirements.
 """
 
-from .._factory.file import *
-from .._factory.icon import *
-from .._factory.mention import *
-from .._factory.parent import *
-from .._factory.text import *
-from .._factory.user import *
+from _structures._factory.file import *
+from _structures._factory.icon import *
+from _structures._factory.mention import *
+from _structures._factory.parent import *
+from _structures._factory.text import *
+from _structures._factory.user import *
 
 __all__ = [
     'create_file_object', 'create_external', 'create_resources_attributes', 'create_file_attributes',
@@ -71,5 +72,5 @@ __all__ = [
     'create_text', 'create_annotations', 'create_rich_text', 'create_link', 'create_basic_rich_text',
     'create_basic_annotations',
     'create_user', 'create_bot', 'create_people_structure', 'create_people', 'create_owner_structure',
-    'create_bot_structure'
+    'create_bot_structure',
 ]

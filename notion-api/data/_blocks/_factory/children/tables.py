@@ -1,11 +1,10 @@
 from typing import Optional
 
-from _data.Parent import Parent
-from _data.RichText import RichText
+from structures import Parent, RichText
 from block import Block, _create_block
-from tables import TableRow, TableRowAttributes, TableOfContents, TableOfContentsAttributes, Column, Table, \
+from _blocks.data import TableRow, TableRowAttributes, TableOfContents, TableOfContentsAttributes, Column, Table, \
     TableAttributes
-from type import BlockType
+from _blocks.type import BlockType
 
 
 def create_table(

@@ -4,10 +4,10 @@ from typing import Type
 
 from pydantic import Field
 
-from data.structures import Parent
-from object import Object
+from data.object import Object
 # Third Party
 from type import BlockType
+from data.structures import Parent
 
 
 class Block(Object, ABC):
@@ -40,7 +40,7 @@ class Block(Object, ABC):
         )
 
 
-def _create_block(cls: Type, parent: Parent, block_type: BlockType, children: list['Block'] = None, **kwargs):
+def _create_block(cls: Type, parent: Parent, block_type: BlockType, children: list[Block] = None, **kwargs):
     """
     Helper function to create block objects with common parameters pre-filled.
 
@@ -66,3 +66,6 @@ def _create_block(cls: Type, parent: Parent, block_type: BlockType, children: li
         "children": children if children else []
     }
     return cls(**common_params, **kwargs)
+
+
+Block.model_rebuild()

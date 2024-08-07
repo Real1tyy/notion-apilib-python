@@ -6,12 +6,12 @@ from returns.result import Failure, Result
 
 # Third Party
 from ApiError import ApiError
-from _type_factory import create_concrete_block_type
-from _blocks import Block
+from block import Block
 from client.api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
 from custom_types import json_
 from decorators import handle_exceptions
 from status_codes import SUCCESS
+from type_factory import create_concrete_block_type
 from utils import _access_child_id, _access_children
 
 

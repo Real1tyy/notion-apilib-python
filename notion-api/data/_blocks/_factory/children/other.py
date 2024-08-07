@@ -1,11 +1,9 @@
 from typing import Optional
 
-from _data.Emoji import Emoji
-from _data.Parent import Parent
-from _data.RichText import RichText
+from structures import Parent, RichText, Emoji
 from block import Block, _create_block
-from other import SyncedFrom, SyncedBlock, SyncedBlockAttributes, Callout, CalloutAttributes
-from type import BlockType
+from _blocks.data import SyncedFrom, SyncedBlock, SyncedBlockAttributes, Callout, CalloutAttributes
+from _blocks.type import BlockType
 
 
 def create_callout(

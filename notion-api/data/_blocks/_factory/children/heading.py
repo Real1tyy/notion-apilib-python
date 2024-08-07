@@ -1,8 +1,7 @@
-from _data.Parent import Parent
-from _data.RichText import RichText
+from structures import Parent, RichText
 from block import Block, _create_block
-from heading import Heading1, HeadingsAttributes, Heading2, Heading3
-from type import BlockType
+from _blocks.data import Heading1, HeadingsAttributes, Heading2, Heading3
+from _blocks.type import BlockType
 
 
 def create_heading1(

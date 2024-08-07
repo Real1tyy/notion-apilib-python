@@ -1,7 +1,7 @@
-from _data.Parent import Parent
+from structures import Parent
 from block import Block, _create_block
-from child import ChildDatabase, ChildAttributes, ChildPage
-from type import BlockType
+from _blocks.data import ChildDatabase, ChildAttributes, ChildPage
+from _blocks.type import BlockType
 
 
 def create_child_database(

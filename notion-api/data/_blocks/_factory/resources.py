@@ -1,17 +1,45 @@
 from typing import TypeVar, Type, Optional
 
-from _data.FileObject import External, FileObject
-from _data.Parent import Parent
-from _data.ResourcesAttributes import determine_file_type, ResourcesAttributes
-from _data.resources import File, Image, Pdf, Video
+from _blocks.data import File, Image, Pdf, Video
 from block import _create_block
-from type import BlockType
+from _blocks.type import BlockType
+from structures import Parent, External, FileObject, file_type, ResourcesAttributes
 
 T = TypeVar('T', bound='Block')
 
 
+def determine_file_type(external: Optional[External], file: Optional[FileObject]) -> file_type:
+    """
+    Determine the type of file based on the provided parameters.
+
+    Parameters
+    ----------
+    external : Optional[External]
+        The external file object, if any.
+    file : Optional[FileObject]
+        The file object, if any.
+
+    Returns
+    -------
+    file_type
+        The type of the file, either 'external' or 'file'.
+
+    Raises
+    ------
+    ValueError
+        If neither external nor file is provided.
+    """
+    if external is None and file is None:
+        raise ValueError("Either external or file should be provided")
+    if external is not None:
+        return "external"
+    else:
+        return "file"
+
+
 def _create_resources_object(
-        resource: Type[T], parent: Parent, external: Optional[External] = None, file: Optional[FileObject] = None) -> T:
+        resource: Type[T], parent: Parent, external: Optional[External] = None, file: Optional[FileObject] =
+        None) -> T:
     """
     Factory method to create Resources object
     :param resource: the class of the resource to create

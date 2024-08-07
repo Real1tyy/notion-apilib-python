@@ -33,6 +33,8 @@ Modules Included:
     - resources: Data models and factory methods for resource blocks (File, Image, Video, Pdf).
 
 Data Models and Factory Methods:
+    - Block
+    - BlockType
     - ChildDatabase
     - ChildPage
     - Heading1
@@ -100,9 +102,22 @@ Note:
     DSL block classes, facilitating seamless data integration.
 """
 
-from .._blocks.data import *
-from .._blocks.factory import *
-from .._blocks.type_factory import *
+from structures import Annotations
+from data._blocks.data import ChildDatabase, ChildPage, Heading1, Heading2, Heading3, BulletedListItem, \
+    NumberedListItem, \
+    Paragraph, Quote, TodoAttributes, ToDo, Toggle, Callout, SyncedBlock, Table, TableRow, TableOfContents, Code, \
+    Equation, LinkPreview, Divider, Unsupported, ColumnList, Breadcrumb, File, Image, Video, Pdf
+
+from data._blocks.factory import create_child_page, create_child_database, create_heading1, create_heading2, \
+    create_heading3, create_bulleted_list_item, create_numbered_list_item, create_to_do, create_quote, create_toggle, \
+    create_paragraph, create_synced_block, create_callout, create_table, create_table_row, create_column, \
+    create_table_of_contents, create_code, create_equation, create_link_preview, create_embed, create_bookmark, \
+    create_divider, create_breadcrumb, create_unsupported, create_column_list, create_pdf, create_video, create_file, \
+    create_image
+from data._blocks.type_factory import create_concrete_block_type
+
+# added to prevent IDE from flagging the import as unused
+structures = Annotations
 
 __all__ = [
     # Factory methods
