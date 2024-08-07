@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from _properties.data import CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage, LastEditedTimeDatabase
-from _properties.type_ import PropertyType
 from data.database import Database
 from _properties._factory.general import _create_page_property, _create_database_property
 from data.page import Page
@@ -23,9 +22,8 @@ def create_created_time_page(
     return _create_page_property(
         CreatedTimePage,
         parent=parent,
-        property_type=PropertyType.CREATED_TIME,
         name=name,
-        created_time=created_time
+        property_specific_params=created_time
     )
 
 
@@ -44,9 +42,8 @@ def create_created_time_database(
     return _create_database_property(
         CreatedTimeDatabase,
         parent=parent,
-        property_type=PropertyType.CREATED_TIME,
         name=name,
-        created_time={}
+        property_specific_params={}
     )
 
 
@@ -66,9 +63,8 @@ def create_last_edited_time_page(
     return _create_page_property(
         LastEditedTimePage,
         parent=parent,
-        property_type=PropertyType.LAST_EDITED_TIME,
         name=name,
-        last_edited_time=last_edited_time
+        property_specific_params=last_edited_time
     )
 
 
@@ -87,7 +83,12 @@ def create_last_edited_time_database(
     return _create_database_property(
         LastEditedTimeDatabase,
         parent=parent,
-        property_type=PropertyType.LAST_EDITED_TIME,
         name=name,
-        ast_edited_time={}
+        property_specific_params={}
     )
+
+
+__all__ = [
+    'create_created_time_page', 'create_created_time_database',
+    'create_last_edited_time_page', 'create_last_edited_time_database'
+]

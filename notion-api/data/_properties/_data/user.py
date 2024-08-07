@@ -4,6 +4,7 @@ from typing import Any
 # Third Party
 from _properties.property import DatabaseProperty, PageProperty
 from structures import User
+from type_ import PropertyType
 
 
 class CreatedByPage(PageProperty):
@@ -15,6 +16,10 @@ class CreatedByPage(PageProperty):
     """
     created_by: User
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.CREATED_BY
+
 
 class CreatedByDatabase(DatabaseProperty):
     """
@@ -24,6 +29,10 @@ class CreatedByDatabase(DatabaseProperty):
         created_by (dict[str, Any]): The dictionary representing the created by property for the database.
     """
     created_by: dict[str, Any]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.CREATED_BY
 
 
 class LastEditedByPage(PageProperty):
@@ -35,6 +44,10 @@ class LastEditedByPage(PageProperty):
     """
     last_edited_by: User
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.LAST_EDITED_BY
+
 
 class LastEditedByDatabase(DatabaseProperty):
     """
@@ -44,6 +57,10 @@ class LastEditedByDatabase(DatabaseProperty):
         last_edited_by (dict[str, Any]): The dictionary representing the last edited by property for the database.
     """
     last_edited_by: dict[str, Any]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.LAST_EDITED_BY
 
 
 class PeoplePage(PageProperty):
@@ -55,6 +72,10 @@ class PeoplePage(PageProperty):
     """
     people: list[User]
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.PEOPLE
+
 
 class PeopleDatabase(DatabaseProperty):
     """
@@ -64,3 +85,17 @@ class PeopleDatabase(DatabaseProperty):
         people (dict[str, Any]): The dictionary representing the people property for the database.
     """
     people: dict[str, Any]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.PEOPLE
+
+
+__all__ = [
+    "CreatedByPage",
+    "CreatedByDatabase",
+    "LastEditedByPage",
+    "LastEditedByDatabase",
+    "PeoplePage",
+    "PeopleDatabase"
+]

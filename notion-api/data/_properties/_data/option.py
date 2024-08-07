@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 
 # Third Party
 from _properties.property import DatabaseProperty, PageProperty
+from type_ import PropertyType
 
 
 class CheckboxPage(PageProperty):
@@ -16,6 +17,10 @@ class CheckboxPage(PageProperty):
     """
     checkbox: bool
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.CHECKBOX
+
 
 class CheckboxDatabase(DatabaseProperty):
     """
@@ -25,6 +30,10 @@ class CheckboxDatabase(DatabaseProperty):
         checkbox (dict[str, Any]): The dictionary representing the checkbox property for the database.
     """
     checkbox: dict[str, Any]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.CHECKBOX
 
 
 class Option(BaseModel):
@@ -60,6 +69,10 @@ class MultiSelectPage(PageProperty):
     """
     multi_select: OptionStructure
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.MULTI_SELECT
+
 
 class MultiSelectDatabase(DatabaseProperty):
     """
@@ -69,6 +82,10 @@ class MultiSelectDatabase(DatabaseProperty):
         multi_select (OptionStructure): The multi-select structure of the database property.
     """
     multi_select: OptionStructure
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.MULTI_SELECT
 
 
 class SelectPage(PageProperty):
@@ -80,6 +97,10 @@ class SelectPage(PageProperty):
     """
     select: Option
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.SELECT
+
 
 class SelectDatabase(DatabaseProperty):
     """
@@ -89,6 +110,10 @@ class SelectDatabase(DatabaseProperty):
         select (OptionStructure): The select structure of the database property.
     """
     select: OptionStructure
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.SELECT
 
 
 class Group(Option):
@@ -122,6 +147,10 @@ class StatusPage(PageProperty):
     """
     status: Option
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.STATUS
+
 
 class StatusDatabase(DatabaseProperty):
     """
@@ -131,3 +160,11 @@ class StatusDatabase(DatabaseProperty):
         status (StatusDatabaseStructure): The status structure of the database property.
     """
     status: StatusDatabaseStructure
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.STATUS
+
+
+__all__ = ['CheckboxPage', 'CheckboxDatabase', 'MultiSelectPage', 'MultiSelectDatabase', 'SelectPage', 'SelectDatabase',
+           'StatusPage', 'StatusDatabase']

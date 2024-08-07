@@ -1,5 +1,4 @@
 from structures import RichText
-from _properties.type_ import PropertyType
 from data.database import Database
 from _properties._factory.general import _create_page_property, _create_database_property
 from data.page import Page
@@ -22,9 +21,8 @@ def create_rich_text_page(
     return _create_page_property(
         RichTextPage,
         parent=parent,
-        property_type=PropertyType.RICH_TEXT,
         name=name,
-        rich_text=rich_text
+        property_specific_params=rich_text
     )
 
 
@@ -44,9 +42,8 @@ def create_rich_text_database(
     return _create_database_property(
         RichTextDatabase,
         parent=parent,
-        property_type=PropertyType.RICH_TEXT,
         name=name,
-        rich_text=rich_text
+        property_specific_params=rich_text
     )
 
 
@@ -66,9 +63,8 @@ def create_title_page(
     return _create_page_property(
         TitlePage,
         parent=parent,
-        property_type=PropertyType.TITLE,
         name=name,
-        title=title
+        property_specific_params=title
     )
 
 
@@ -87,7 +83,9 @@ def create_title_database(
     return _create_database_property(
         TitleDatabase,
         parent=parent,
-        property_type=PropertyType.TITLE,
         name=name,
-        title={}
+        property_specific_params={}
     )
+
+
+__all__ = ['create_rich_text_page', 'create_rich_text_database', 'create_title_page', 'create_title_database']

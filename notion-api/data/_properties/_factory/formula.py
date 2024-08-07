@@ -1,9 +1,8 @@
 from datetime import datetime
 from typing import Literal, Optional
 
-from _properties.type_ import PropertyType
 from data.database import Database
-from _properties.data import FormulaPage, FormulaStructure, FormulaDatabase, FormulaDatabaseStructure
+from _properties._data.formula import FormulaPage, FormulaStructure, FormulaDatabase, FormulaDatabaseStructure
 from _properties._factory.general import _create_page_property, _create_database_property
 from data.page import Page
 
@@ -30,9 +29,8 @@ def create_formula_page(
     return _create_page_property(
         FormulaPage,
         parent=parent,
-        property_type=PropertyType.FORMULA,
         name=name,
-        formula=FormulaStructure(type=type_, number=number, boolean=boolean, date=date, string=string)
+        property_specific_params=FormulaStructure(type=type_, number=number, boolean=boolean, date=date, string=string)
     )
 
 
@@ -52,7 +50,9 @@ def create_formula_database(
     return _create_database_property(
         FormulaDatabase,
         parent=parent,
-        property_type=PropertyType.FORMULA,
         name=name,
-        formula=FormulaDatabaseStructure(expression=expression)
+        property_specific_params=FormulaDatabaseStructure(expression=expression)
     )
+
+
+__all__ = ['create_formula_page', 'create_formula_database']

@@ -2,11 +2,10 @@ from datetime import datetime
 from typing import Optional, Literal, Any
 from uuid import UUID
 
-from _properties.type_ import PropertyType
 from data.database import Database
 from _properties._factory.general import _create_page_property, _create_database_property
 from data.page import Page
-from _properties.data import RelationPage, RelationStructure, RollupPage, RollupStructure, RelationDatabase, \
+from _properties._data.relation import RelationPage, RelationStructure, RollupPage, RollupStructure, RelationDatabase, \
     RollupDatabase, RollupDatabaseStructure, RelationDatabaseStructure
 
 
@@ -23,13 +22,12 @@ def create_relation_page(
     Returns:
         RelationPage: A new RelationPage object.
     """
-    relations = [RelationStructure(id=rid) for rid in relation_ids]
+    relations = [RelationStructure(id=id_) for id_ in relation_ids]
     return _create_page_property(
         RelationPage,
         parent=parent,
-        property_type=PropertyType.RELATION,
         name=name,
-        relation=relations
+        property_specific_params=relations
     )
 
 
@@ -64,9 +62,8 @@ def create_relation_database(
     return _create_database_property(
         RelationDatabase,
         parent=parent,
-        property_type=PropertyType.RELATION,
         name=name,
-        relation=RelationDatabaseStructure(
+        property_specific_params=RelationDatabaseStructure(
             database_id=database_id,
             dual_property=dual_property,
             single_property=single_property
@@ -99,9 +96,8 @@ def create_rollup_page(
     return _create_page_property(
         RollupPage,
         parent=parent,
-        property_type=PropertyType.ROLLUP,
         name=name,
-        rollup=RollupStructure(
+        property_specific_params=RollupStructure(
             type=type_, function=function, array=array, date=date,
             number=number, incomplete=incomplete, unsupported=unsupported)
     )
@@ -128,9 +124,8 @@ def create_rollup_database(
     return _create_database_property(
         RollupDatabase,
         parent=parent,
-        property_type=PropertyType.ROLLUP,
         name=name,
-        rollup=RollupDatabaseStructure(
+        property_specific_params=RollupDatabaseStructure(
             relation_property_id=relation_property_id,
             relation_property_name=relation_property_name,
             rollup_property_name=rollup_property_name,
@@ -138,3 +133,6 @@ def create_rollup_database(
             function=function
         )
     )
+
+
+__all__ = ['create_relation_page', 'create_relation_database', 'create_rollup_page', 'create_rollup_database']

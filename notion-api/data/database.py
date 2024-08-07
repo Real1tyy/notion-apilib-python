@@ -40,7 +40,7 @@ class Database(MajorObject):
     def get_properties(self) -> list[DatabaseProperty]:
         return self.properties.properties
 
-    def deserialize_json(self) -> dict[str, Any]:
+    def serialize_to_json(self) -> dict[str, Any]:
         data = self.model_dump(
             mode='json', exclude_none=True, exclude={'id', 'archived', 'in_trash',
                                                      'last_edited_time', 'created_time'})

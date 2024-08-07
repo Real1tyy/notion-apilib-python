@@ -1,5 +1,4 @@
 from structures import User
-from _properties.type_ import PropertyType
 from data.database import Database
 from _properties._factory.general import _create_page_property, _create_database_property
 from data.page import Page
@@ -23,9 +22,8 @@ def create_created_by_page(
     return _create_page_property(
         CreatedByPage,
         parent=parent,
-        property_type=PropertyType.CREATED_BY,
         name=name,
-        created_by=created_by
+        property_specific_params=created_by
     )
 
 
@@ -44,9 +42,8 @@ def create_created_by_database(
     return _create_database_property(
         CreatedByDatabase,
         parent=parent,
-        property_type=PropertyType.CREATED_BY,
         name=name,
-        created_by={}
+        property_specific_params={}
     )
 
 
@@ -66,9 +63,8 @@ def create_last_edited_by_page(
     return _create_page_property(
         LastEditedByPage,
         parent=parent,
-        property_type=PropertyType.LAST_EDITED_BY,
         name=name,
-        last_edited_by=last_edited_by
+        property_specific_params=last_edited_by
     )
 
 
@@ -87,9 +83,8 @@ def create_last_edited_by_database(
     return _create_database_property(
         LastEditedByDatabase,
         parent=parent,
-        property_type=PropertyType.LAST_EDITED_BY,
         name=name,
-        last_edited_by={}
+        property_specific_params={}
     )
 
 
@@ -109,9 +104,8 @@ def create_people_page(
     return _create_page_property(
         PeoplePage,
         parent=parent,
-        property_type=PropertyType.PEOPLE,
         name=name,
-        people=people
+        property_specific_params=people
     )
 
 
@@ -130,7 +124,10 @@ def create_people_database(
     return _create_database_property(
         PeopleDatabase,
         parent=parent,
-        property_type=PropertyType.PEOPLE,
         name=name,
-        people={}
+        property_specific_params={}
     )
+
+
+__all__ = ['create_created_by_page', 'create_created_by_database', 'create_last_edited_by_page',
+           'create_last_edited_by_database', 'create_people_page', 'create_people_database']

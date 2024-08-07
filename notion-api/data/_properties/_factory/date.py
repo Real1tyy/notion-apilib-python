@@ -1,9 +1,8 @@
 from datetime import datetime
 from typing import Optional
 
-from _properties.type_ import PropertyType
 from data.database import Database
-from _properties.data import DatePage, DateStructure, DateDatabase
+from _properties._data.date import DatePage, DateStructure, DateDatabase
 from _properties._factory.general import _create_page_property, _create_database_property
 from data.page import Page
 
@@ -27,9 +26,8 @@ def create_date_page(
     return _create_page_property(
         DatePage,
         parent=parent,
-        property_type=PropertyType.DATE,
         name=name,
-        date=DateStructure(end=end, start=start, time_zone=time_zone)
+        property_specific_params=DateStructure(end=end, start=start, time_zone=time_zone)
     )
 
 
@@ -48,7 +46,9 @@ def create_date_database(
     return _create_database_property(
         DateDatabase,
         parent=parent,
-        property_type=PropertyType.DATE,
         name=name,
-        date={}
+        property_specific_params={}
     )
+
+
+__all__ = ['create_date_page', 'create_date_database']

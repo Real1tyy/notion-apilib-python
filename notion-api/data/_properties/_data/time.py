@@ -4,6 +4,7 @@ from typing import Any
 
 # Third Party
 from _properties.property import DatabaseProperty, PageProperty
+from type_ import PropertyType
 
 
 class CreatedTimePage(PageProperty):
@@ -15,6 +16,10 @@ class CreatedTimePage(PageProperty):
     """
     created_time: datetime
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.CREATED_TIME
+
 
 class CreatedTimeDatabase(DatabaseProperty):
     """
@@ -24,6 +29,10 @@ class CreatedTimeDatabase(DatabaseProperty):
         created_time (dict[str, Any]): The dictionary representing the created time property for the database.
     """
     created_time: dict[str, Any]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.CREATED_TIME
 
 
 class LastEditedTimePage(PageProperty):
@@ -35,6 +44,10 @@ class LastEditedTimePage(PageProperty):
     """
     last_edited_time: datetime
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.LAST_EDITED_TIME
+
 
 class LastEditedTimeDatabase(DatabaseProperty):
     """
@@ -44,3 +57,15 @@ class LastEditedTimeDatabase(DatabaseProperty):
         last_edited_time (dict[str, Any]): The dictionary representing the last edited time property for the database.
     """
     last_edited_time: dict[str, Any]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.LAST_EDITED_TIME
+
+
+__all__ = [
+    "CreatedTimePage",
+    "CreatedTimeDatabase",
+    "LastEditedTimePage",
+    "LastEditedTimeDatabase"
+]

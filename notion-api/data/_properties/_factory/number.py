@@ -1,9 +1,8 @@
 from typing import Optional
 
-from _properties.type_ import PropertyType
 from data.database import Database
 from _properties._factory.general import _create_page_property, _create_database_property
-from _properties.data import UniqueIdPage, UniqueIdStructure, NumberPage, UniqueIdDatabase, NumberDatabase, \
+from _properties._data.number import UniqueIdPage, UniqueIdStructure, NumberPage, UniqueIdDatabase, NumberDatabase, \
     NumberStructure
 from data.page import Page
 
@@ -24,9 +23,8 @@ def create_number_page(
     return _create_page_property(
         NumberPage,
         parent=parent,
-        property_type=PropertyType.NUMBER,
         name=name,
-        number=number
+        property_specific_params=number
     )
 
 
@@ -46,9 +44,8 @@ def create_number_database(
     return _create_database_property(
         NumberDatabase,
         parent=parent,
-        property_type=PropertyType.NUMBER,
         name=name,
-        number=NumberStructure(format=format_)
+        property_specific_params=NumberStructure(format=format_)
     )
 
 
@@ -69,9 +66,8 @@ def create_unique_id_page(
     return _create_page_property(
         UniqueIdPage,
         parent=parent,
-        property_type=PropertyType.UNIQUE_ID,
         name=name,
-        unique_id=UniqueIdStructure(number=number, prefix=prefix)
+        property_specific_params=UniqueIdStructure(number=number, prefix=prefix)
     )
 
 
@@ -90,7 +86,9 @@ def create_unique_id_database(
     return _create_database_property(
         UniqueIdDatabase,
         parent=parent,
-        property_type=PropertyType.UNIQUE_ID,
         name=name,
-        unique_id={}
+        property_specific_params={}
     )
+
+
+__all__ = ['create_number_page', 'create_number_database', 'create_unique_id_page', 'create_unique_id_database']

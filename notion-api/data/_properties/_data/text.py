@@ -4,6 +4,7 @@ from typing import Any
 # Third Party
 from _properties.property import DatabaseProperty, PageProperty
 from structures import RichText
+from type_ import PropertyType
 
 
 class RichTextPage(PageProperty):
@@ -25,6 +26,10 @@ class RichTextPage(PageProperty):
         if len(self.rich_text) > 0:
             self.rich_text[0].change_text(text)
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.RICH_TEXT
+
 
 class RichTextDatabase(DatabaseProperty):
     """
@@ -34,6 +39,10 @@ class RichTextDatabase(DatabaseProperty):
         rich_text (dict[str, Any]): The dictionary representing the rich text property for the database.
     """
     rich_text: dict[str, Any]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.RICH_TEXT
 
 
 class TitlePage(PageProperty):
@@ -45,6 +54,10 @@ class TitlePage(PageProperty):
     """
     title: list[RichText]
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.TITLE
+
 
 class TitleDatabase(DatabaseProperty):
     """
@@ -54,3 +67,10 @@ class TitleDatabase(DatabaseProperty):
         title (dict[str, Any]): The dictionary representing the title property for the database.
     """
     title: dict[str, Any]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.TITLE
+
+
+__all__ = ["RichTextPage", "RichTextDatabase", "TitlePage", "TitleDatabase"]

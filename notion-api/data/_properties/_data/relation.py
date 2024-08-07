@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 
 # Third Party
 from _properties.property import DatabaseProperty, PageProperty
+from type_ import PropertyType
 
 
 class RelationStructure(BaseModel):
@@ -29,6 +30,10 @@ class RelationPage(PageProperty):
     """
     has_more: bool = Field(exclude=True)
     relation: list[RelationStructure]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.RELATION
 
 
 class DualProperty(BaseModel):
@@ -73,6 +78,10 @@ class RelationDatabase(DatabaseProperty):
     """
     relation: RelationDatabaseStructure
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.RELATION
+
 
 class RollupStructure(BaseModel):
     """
@@ -105,6 +114,10 @@ class RollupPage(PageProperty):
     """
     rollup: RollupStructure
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.ROLLUP
+
 
 class RollupDatabaseStructure(BaseModel):
     """
@@ -132,3 +145,12 @@ class RollupDatabase(DatabaseProperty):
         rollup (RollupDatabaseStructure): The rollup structure of the database property.
     """
     rollup: RollupDatabaseStructure
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.ROLLUP
+
+
+__all__ = [
+    'RelationPage', 'RelationDatabase',
+    'RollupPage', 'RollupDatabase']

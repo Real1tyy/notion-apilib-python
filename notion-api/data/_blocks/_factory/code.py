@@ -1,4 +1,4 @@
-from _blocks.data import Code, CodeAttributes
+from _blocks._data.code import Code, CodeAttributes
 from _blocks._factory.general import _create_block
 from structures import Parent, RichText
 

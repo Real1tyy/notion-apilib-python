@@ -1,7 +1,7 @@
 # Standard Library
 from datetime import datetime
-from abc import ABC
-from typing import Literal, Optional
+from abc import ABC, abstractmethod
+from typing import Literal, Optional, Any
 from uuid import UUID
 
 from pydantic import BaseModel, Field
@@ -20,9 +20,21 @@ class Object(ABC, BaseModel, use_enum_values=True, from_attributes=True, arbitra
     archived: bool
     in_trash: bool
 
+    @abstractmethod
+    def serialize_to_json(self) -> dict[str, Any]:
+        pass
+
 
 class MajorObject(Object, ABC):
     icon: Optional[Icon] = None
     cover: Optional[str] = None
     url: Optional[str] = None
     public_url: Optional[str] = None
+
+    @abstractmethod
+    def get_properties(self):
+        pass
+
+    @abstractmethod
+    def add_property(self, property_):
+        pass

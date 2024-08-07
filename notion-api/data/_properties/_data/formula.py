@@ -6,6 +6,8 @@ from typing import Literal, Optional
 from _properties.property import DatabaseProperty, PageProperty
 from pydantic import BaseModel
 
+from type_ import PropertyType
+
 
 class FormulaStructure(BaseModel):
     """
@@ -34,6 +36,10 @@ class FormulaPage(PageProperty):
     """
     formula: FormulaStructure
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.FORMULA
+
 
 class FormulaDatabaseStructure(BaseModel):
     """
@@ -53,3 +59,10 @@ class FormulaDatabase(DatabaseProperty):
         formula (FormulaDatabaseStructure): The formula structure of the database property.
     """
     formula: FormulaDatabaseStructure
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.FORMULA
+
+
+__all__ = ['FormulaDatabase', 'FormulaPage']

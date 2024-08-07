@@ -1,4 +1,4 @@
-from _blocks.data import Equation, EquationAttributes
+from _blocks._data.equation import Equation, EquationAttributes
 from _blocks._factory.general import _create_block
 from structures import Parent
 

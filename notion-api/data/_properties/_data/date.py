@@ -6,6 +6,8 @@ from typing import Any, Optional
 from _properties.property import DatabaseProperty, PageProperty
 from pydantic import BaseModel
 
+from type_ import PropertyType
+
 
 class DateStructure(BaseModel):
     """
@@ -30,6 +32,10 @@ class DatePage(PageProperty):
     """
     date: Optional[DateStructure]
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.DATE
+
 
 class DateDatabase(DatabaseProperty):
     """
@@ -39,3 +45,10 @@ class DateDatabase(DatabaseProperty):
         date (dict[str, Any]): The dictionary representing the date property for the database.
     """
     date: dict[str, Any]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.DATE
+
+
+__all__ = ['DatePage', 'DateDatabase']

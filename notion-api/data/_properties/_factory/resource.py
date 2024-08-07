@@ -1,5 +1,4 @@
 from structures import ResourcesAttributes
-from _properties.type_ import PropertyType
 from data.database import Database
 from _properties._factory.general import _create_page_property, _create_database_property
 from data.page import Page
@@ -23,9 +22,8 @@ def create_email_page(
     return _create_page_property(
         EmailPage,
         parent=parent,
-        property_type=PropertyType.EMAIL,
         name=name,
-        email=email
+        property_specific_params=email
     )
 
 
@@ -44,9 +42,8 @@ def create_email_database(
     return _create_database_property(
         EmailDatabase,
         parent=parent,
-        property_type=PropertyType.EMAIL,
         name=name,
-        email={}
+        property_specific_params={}
     )
 
 
@@ -66,9 +63,8 @@ def create_files_page(
     return _create_page_property(
         FilesPage,
         parent=parent,
-        property_type=PropertyType.FILES,
         name=name,
-        files=files
+        property_specific_params=files
     )
 
 
@@ -87,9 +83,8 @@ def create_files_database(
     return _create_database_property(
         FilesDatabase,
         parent=parent,
-        property_type=PropertyType.FILES,
         name=name,
-        files={}
+        property_specific_params={}
     )
 
 
@@ -109,9 +104,8 @@ def create_phone_number_page(
     return _create_page_property(
         PhoneNumberPage,
         parent=parent,
-        property_type=PropertyType.PHONE_NUMBER,
         name=name,
-        phone_number=phone_number
+        property_specific_params=phone_number
     )
 
 
@@ -130,9 +124,8 @@ def create_phone_number_database(
     return _create_database_property(
         PhoneNumberDatabase,
         parent=parent,
-        property_type=PropertyType.PHONE_NUMBER,
         name=name,
-        phone_number={}
+        property_specific_params={}
     )
 
 
@@ -152,9 +145,8 @@ def create_url_page(
     return _create_page_property(
         UrlPage,
         parent=parent,
-        property_type=PropertyType.URL,
         name=name,
-        url=url
+        property_specific_params=url
     )
 
 
@@ -173,7 +165,10 @@ def create_url_database(
     return _create_database_property(
         UrlDatabase,
         parent=parent,
-        property_type=PropertyType.URL,
         name=name,
-        url={}
+        property_specific_params={}
     )
+
+
+__all__ = ['create_email_page', 'create_email_database', 'create_files_page', 'create_files_database',
+           'create_phone_number_page', 'create_phone_number_database', 'create_url_page', 'create_url_database']

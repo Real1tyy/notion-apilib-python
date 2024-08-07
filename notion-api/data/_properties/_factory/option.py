@@ -1,8 +1,7 @@
-from _properties.type_ import PropertyType
 from data.database import Database
 from _properties._factory.general import _create_page_property, _create_database_property
 from data.page import Page
-from _properties.data import StatusPage, Option, SelectPage, OptionStructure, MultiSelectPage, CheckboxPage, \
+from _properties._data.option import StatusPage, Option, SelectPage, OptionStructure, MultiSelectPage, CheckboxPage, \
     CheckboxDatabase, MultiSelectDatabase, SelectDatabase, Group, StatusDatabaseStructure, StatusDatabase
 
 
@@ -22,9 +21,8 @@ def create_checkbox_page(
     return _create_page_property(
         CheckboxPage,
         parent=parent,
-        property_type=PropertyType.CHECKBOX,
         name=name,
-        checkbox=checkbox
+        property_specific_params=checkbox
     )
 
 
@@ -43,9 +41,8 @@ def create_checkbox_database(
     return _create_database_property(
         CheckboxDatabase,
         parent=parent,
-        property_type=PropertyType.CHECKBOX,
         name=name,
-        checkbox={}
+        property_specific_params={}
     )
 
 
@@ -66,9 +63,8 @@ def create_multi_select_page(
     return _create_page_property(
         MultiSelectPage,
         parent=parent,
-        property_type=PropertyType.MULTI_SELECT,
         name=name,
-        multi_select=option_structure
+        property_specific_params=option_structure
     )
 
 
@@ -89,9 +85,8 @@ def create_multi_select_database(
     return _create_database_property(
         MultiSelectDatabase,
         parent=parent,
-        property_type=PropertyType.MULTI_SELECT,
         name=name,
-        multi_select=option_structure
+        property_specific_params=option_structure
     )
 
 
@@ -111,9 +106,8 @@ def create_select_page(
     return _create_page_property(
         SelectPage,
         parent=parent,
-        property_type=PropertyType.SELECT,
         name=name,
-        select=option
+        property_specific_params=option
     )
 
 
@@ -133,9 +127,8 @@ def create_select_database(
     return _create_database_property(
         SelectDatabase,
         parent=parent,
-        property_type=PropertyType.SELECT,
         name=name,
-        select=OptionStructure(options=options)
+        property_specific_params=OptionStructure(options=options)
     )
 
 
@@ -155,9 +148,8 @@ def create_status_page(
     return _create_page_property(
         StatusPage,
         parent=parent,
-        property_type=PropertyType.STATUS,
         name=name,
-        status=status
+        property_specific_params=status
     )
 
 
@@ -179,7 +171,11 @@ def create_status_database(
     return _create_database_property(
         StatusDatabase,
         parent=parent,
-        property_type=PropertyType.STATUS,
         name=name,
-        status=status_structure
+        property_specific_params=status_structure
     )
+
+
+__all__ = ['create_checkbox_page', 'create_checkbox_database', 'create_multi_select_page',
+           'create_multi_select_database',
+           'create_select_page', 'create_select_database', 'create_status_page', 'create_status_database']

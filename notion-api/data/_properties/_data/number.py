@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 # Third Party
 from _properties.property import DatabaseProperty, PageProperty
+from type_ import PropertyType
 
 
 class NumberPage(PageProperty):
@@ -15,6 +16,10 @@ class NumberPage(PageProperty):
         number (float): The number value of the page property.
     """
     number: float
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.NUMBER
 
 
 class NumberStructure(BaseModel):
@@ -35,6 +40,10 @@ class NumberDatabase(DatabaseProperty):
         number (NumberStructure): The structure of the number property.
     """
     number: NumberStructure
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.NUMBER
 
 
 class UniqueIdStructure(BaseModel):
@@ -58,6 +67,10 @@ class UniqueIdPage(PageProperty):
     """
     unique_id: UniqueIdStructure
 
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.UNIQUE_ID
+
 
 class UniqueIdDatabase(DatabaseProperty):
     """
@@ -67,3 +80,10 @@ class UniqueIdDatabase(DatabaseProperty):
         unique_id (dict[str, Any]): The dictionary representing the unique ID property for the database.
     """
     unique_id: dict[str, Any]
+
+    @classmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        return PropertyType.UNIQUE_ID
+
+
+__all__ = ["NumberPage", "NumberDatabase", "UniqueIdPage", "UniqueIdDatabase"]

@@ -36,7 +36,7 @@ class Page(MajorObject):
     def get_properties(self) -> list[PageProperty]:
         return self.properties.properties
 
-    def deserialize_json(self) -> dict[str, Any]:
+    def serialize_to_json(self) -> dict[str, Any]:
         data = self.model_dump(mode='json', exclude_none=True, exclude={'id', 'archived', 'children'})
         properties = data['_properties']
         keys_to_check = {'rollup', 'formula', 'last_edited_time', 'created_time', 'unique_id'}

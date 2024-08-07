@@ -1,5 +1,5 @@
 # Standard Library
-from abc import ABC
+from abc import ABC, abstractmethod
 
 from pydantic import BaseModel, Field
 
@@ -24,15 +24,36 @@ class Property(ABC, BaseModel, from_attributes=True, use_enum_values=True, arbit
     type: PropertyType = Field(exclude=True)
     name: str = Field(exclude=True)
 
+    @classmethod
+    @abstractmethod
+    def get_associated_property_type(cls) -> PropertyType:
+        """
+        Retrieves the property type associated with this class.
 
-class PageProperty(Property):
+        :return: The associated property type enum value.
+        :rtype: PropertyType
+        """
+        pass
+
+    @classmethod
+    def get_payload_property_name(cls) -> str:
+        """
+        Retrieves the property name of the property type as a string, which is used in the Notion JSON format.
+        Utilizes the get_associated_block_type method to obtain the enum value and converts it to a string.
+
+        :return: The property name of the block type as a string.
+        :rtype: str
+        """
+        return cls.get_associated_property_type().value
+
+
+class PageProperty(Property, ABC):
     """
     Class representing a page property in the Notion API.
     """
-    pass
 
 
-class DatabaseProperty(Property):
+class DatabaseProperty(Property, ABC):
     """
     Class representing a database property in the Notion API.
     """
