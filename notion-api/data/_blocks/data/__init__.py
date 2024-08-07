@@ -65,29 +65,27 @@ Note:
     correctly.
 """
 
-from _blocks._data.children.child import ChildDatabase, ChildPage, ChildAttributes
-from _blocks._data.children.heading import Heading1, Heading2, Heading3, HeadingsAttributes
-from _blocks._data.children.items import (BulletedListItem, NumberedListItem, Paragraph, Quote, ToDoAttributes, ToDo,
-                                          Toggle, Items)
-from _blocks._data.children.other import Callout, SyncedBlock, SyncedBlockAttributes, SyncedFrom, CalloutAttributes
-from _blocks._data.children.tables import (Table, TableRow, TableOfContents, Column, TableRowAttributes,
-                                           TableAttributes, TableOfContentsAttributes)
-from _blocks._data.code import Code, CodeAttributes
-from _blocks._data.equation import Equation, EquationAttributes
-from _blocks._data.link import LinkPreview, Bookmark, Embed, BookmarkAttributes, EmbedAttributes, LinkPreviewAttributes
-from _blocks._data.other import Divider, Unsupported, ColumnList, Breadcrumb
-from _blocks._data.resources import File, Image, Video, Pdf
+from _blocks._data.children.child import __all__ as child_all
+from _blocks._data.children.heading import __all__ as heading_all
+from _blocks._data.children.items import __all__ as items_all
+from _blocks._data.children.other import __all__ as other_all
+from _blocks._data.children.tables import __all__ as tables_all
+from _blocks._data.code import __all__ as code_all
+from _blocks._data.equation import __all__ as equation_all
+from _blocks._data.link import __all__ as link_all
+from _blocks._data.other import __all__ as other_basic_all
+from _blocks._data.resources import __all__ as resources_all
 
-__all__ = [
-    'ChildDatabase', 'ChildPage', 'ChildAttributes',
-    'Heading1', 'Heading2', 'Heading3', 'HeadingsAttributes',
-    'BulletedListItem', 'NumberedListItem', 'Paragraph', 'Quote', 'ToDoAttributes', 'ToDo', 'Toggle', 'Items',
-    'Callout', 'SyncedBlock', 'CalloutAttributes', 'SyncedBlockAttributes', 'SyncedFrom',
-    'Table', 'TableRow', 'TableOfContents', 'Column', 'TableRowAttributes', 'TableAttributes',
-    'TableOfContentsAttributes',
-    'Code', 'CodeAttributes',
-    'Equation', 'EquationAttributes',
-    'LinkPreview', 'Bookmark', 'Embed', 'BookmarkAttributes', 'EmbedAttributes', 'LinkPreviewAttributes',
-    'Divider', 'Unsupported', 'ColumnList', 'Breadcrumb',
-    'File', 'Image', 'Video', 'Pdf'
-]
+from _blocks._data.children.child import *
+from _blocks._data.children.heading import *
+from _blocks._data.children.items import *
+from _blocks._data.children.other import *
+from _blocks._data.children.tables import *
+from _blocks._data.code import *
+from _blocks._data.equation import *
+from _blocks._data.link import *
+from _blocks._data.other import *
+from _blocks._data.resources import *
+
+__all__ = (child_all + heading_all + items_all + other_all + tables_all + code_all + equation_all +
+           link_all + other_basic_all + resources_all)

@@ -34,3 +34,6 @@ class Code(Block):
     @classmethod
     def get_associated_block_type(cls) -> BlockType:
         return BlockType.CODE
+
+
+__all__ = ["Code"]

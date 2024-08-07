@@ -74,3 +74,6 @@ class SyncedBlock(Block):
     @classmethod
     def get_associated_block_type(cls) -> BlockType:
         return BlockType.SYNCED_BLOCK
+
+
+__all__ = ['Callout', 'SyncedBlock']

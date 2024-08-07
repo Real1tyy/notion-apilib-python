@@ -86,3 +86,6 @@ class Column(Block):
     @classmethod
     def get_associated_block_type(cls) -> BlockType:
         return BlockType.COLUMN
+
+
+__all__ = ['Table', 'TableRow', 'TableOfContents', 'Column']

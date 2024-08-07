@@ -26,7 +26,7 @@ class Block(Object, ABC):
     has_children: bool
     children: list['Block'] = Field(default=[], exclude=True)
 
-    def to_json_payload(self) -> dict[str, Any]:
+    def serialize_to_json(self) -> dict[str, Any]:
         """
         Converts the block into a JSON payload suitable for creating or updating a block in Notion.
         Certain fields are omitted in the JSON representation, such as:

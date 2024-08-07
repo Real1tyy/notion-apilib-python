@@ -103,32 +103,12 @@ Note:
 """
 
 from structures import Annotations
-from data._blocks.data import ChildDatabase, ChildPage, Heading1, Heading2, Heading3, BulletedListItem, \
-    NumberedListItem, \
-    Paragraph, Quote, ToDoAttributes, ToDo, Toggle, Callout, SyncedBlock, Table, TableRow, TableOfContents, Code, \
-    Equation, LinkPreview, Divider, Unsupported, ColumnList, Breadcrumb, File, Image, Video, Pdf
 
+from data._blocks.data import *
 from data._blocks.factory import *
+from data._blocks.type_factory import *
+from data._blocks.data import __all__ as data_all
 from data._blocks.factory import __all__ as factory_all
-from data._blocks.type_factory import create_concrete_block_type
+from data._blocks.type_factory import __all__ as type_all
 
-# added to prevent IDE from flagging the import as unused
-structures = Annotations
-
-__all__ = (
-        factory_all +
-        [
-            # Data models
-            'ChildDatabase', 'ChildPage',
-            'Heading1', 'Heading2', 'Heading3',
-            'BulletedListItem', 'NumberedListItem', 'Paragraph', 'Quote', 'TodoAttributes', 'ToDo', 'Toggle',
-            'Callout', 'SyncedBlock',
-            'Table', 'TableRow', 'TableOfContents',
-            'Code', 'Equation', 'LinkPreview',
-            'Divider', 'Unsupported', 'ColumnList', 'Breadcrumb',
-            'File', 'Image', 'Video', 'Pdf',
-
-            # Factory methods for concrete block types
-            'create_concrete_block_type',
-        ]
-)
+__all__ = factory_all + data_all + type_all

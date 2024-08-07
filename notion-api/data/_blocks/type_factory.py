@@ -1,7 +1,8 @@
 # Third Party
+from typing import Any
+
 from _blocks.data import *
 from _structures.data import Mention
-from custom_types import json_
 
 BLOCK_TYPE_MAP = {
     "bookmark": Bookmark,
@@ -38,7 +39,7 @@ BLOCK_TYPE_MAP = {
 }
 
 
-def create_concrete_block_type(data: json_):
+def deserialize_block(data: dict[str, Any]):
     """
     Create an instance of a concrete block type based on the given json format data.
 
@@ -49,3 +50,8 @@ def create_concrete_block_type(data: json_):
     """
     block_type = data["type"]
     return BLOCK_TYPE_MAP[block_type](**data)
+
+
+__all__ = [
+    'deserialize_block',
+]

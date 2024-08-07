@@ -41,3 +41,6 @@ class ChildPage(Block):
     @classmethod
     def get_associated_block_type(cls) -> BlockType:
         return BlockType.CHILD_PAGE
+
+
+__all__ = ["ChildDatabase", "ChildPage"]

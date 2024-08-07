@@ -55,3 +55,6 @@ class Heading3(Block):
     @classmethod
     def get_associated_block_type(cls) -> BlockType:
         return BlockType.HEADING_3
+
+
+__all__ = ["Heading1", "Heading2", "Heading3"]

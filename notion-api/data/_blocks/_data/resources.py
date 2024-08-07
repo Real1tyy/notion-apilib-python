@@ -3,6 +3,7 @@
 # Third Party
 from block import Block
 from structures import FileAttributes, ResourcesAttributes
+from type import BlockType
 
 
 class File(Block):
@@ -14,6 +15,10 @@ class File(Block):
     """
     file: FileAttributes
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.FILE
+
 
 class Image(Block):
     """
@@ -23,6 +28,10 @@ class Image(Block):
     :type image: ResourcesAttributes
     """
     image: ResourcesAttributes
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.IMAGE
 
 
 class Pdf(Block):
@@ -34,6 +43,10 @@ class Pdf(Block):
     """
     pdf: ResourcesAttributes
 
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.PDF
+
 
 class Video(Block):
     """
@@ -43,3 +56,10 @@ class Video(Block):
     :type video: ResourcesAttributes
     """
     video: ResourcesAttributes
+
+    @classmethod
+    def get_associated_block_type(cls) -> BlockType:
+        return BlockType.VIDEO
+
+
+__all__ = ["File", "Image", "Pdf", "Video"]

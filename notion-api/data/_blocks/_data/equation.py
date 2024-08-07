@@ -27,3 +27,6 @@ class Equation(Block):
     @classmethod
     def get_associated_block_type(cls) -> BlockType:
         return BlockType.EQUATION
+
+
+__all__ = ["Equation"]
