@@ -4,17 +4,46 @@ from pydantic import BaseModel
 
 
 class Sort(BaseModel):
+    """
+    Base class for sorting options in a Notion database query.
+
+    Attributes:
+        direction (Literal['ascending', 'descending']): The direction in which to sort the results.
+    """
+
     direction: Literal['ascending', 'descending']
 
     def serialize_to_json(self) -> dict[str, str]:
+        """
+        Serializes the sort object to a JSON-compatible dictionary.
+
+        Returns:
+            dict[str, str]: The serialized dictionary of the sort object.
+        """
         return self.model_dump(mode='json')
 
 
 class PropertySort(Sort):
+    """
+    Class for sorting based on a specific property in a Notion database query.
+
+    Attributes:
+        property (str): The name of the property to sort by.
+        direction (Literal['ascending', 'descending']): The direction in which to sort the results.
+    """
+
     property: str
 
 
 class TimestampSort(Sort):
+    """
+    Class for sorting based on timestamps in a Notion database query.
+
+    Attributes:
+        timestamp (Literal['created_time', 'last_edited_time']): The timestamp field to sort by.
+        direction (Literal['ascending', 'descending']): The direction in which to sort the results.
+    """
+
     timestamp: Literal['created_time', 'last_edited_time']
 
 

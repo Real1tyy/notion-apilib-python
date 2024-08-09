@@ -115,11 +115,72 @@ __all__:
         - PropertySort
         - TimestampSort
 
-Note:
-    This package is intended for use by end-users to create and interact with Notion property objects.
-    It provides a user-friendly interface and ensures that all property objects are validated and structured
-    correctly. The additional factory methods enable the transformation of JSON payloads from the Notion API
-    into our custom DSL properties, facilitating seamless data integration.
+    Generic Filter Object to create filters used for querying databases:
+        - Filter
+        - QueryFilterOptions
+        - QueryFilter
+
+    Concrete Filter Objects and their factory methods:
+    - CheckboxFilter
+      - `create_checkbox_filter_equals(property_name: str, equals: bool) -> CheckboxFilter`
+      - `create_checkbox_filter_does_not_equal(property_name: str, does_not_equal: bool) -> CheckboxFilter`
+
+    - DateFilter
+      - `create_date_filter_is_empty(property_name: str, is_empty: bool) -> DateFilter`
+      - `create_concrete_date_filter(property_name: str, filter_type: Literal['after', 'before', 'equals', 'on_or_after', 'on_or_before'], date_value: datetime) -> DateFilter`
+      - `create_relative_date_filter(property_name: str, filter_type: Literal['next_month', 'next_week', 'next_year', 'past_month', 'past_week', 'past_year', 'this_week']) -> DateFilter`
+
+    - FilesFilter (Assumed class and methods, adjust if necessary)
+      - `create_files_filter_contains(property_name: str, contains: str) -> FilesFilter`
+      - `create_files_filter_does_not_contain(property_name: str, does_not_contain: str) -> FilesFilter`
+
+    - FormulaFilter
+      - `create_formula_checkbox_filter(property_name: str, checkbox_filter: dict) -> FormulaFilter`
+      - `create_formula_date_filter(property_name: str, date_filter: dict) -> FormulaFilter`
+      - `create_formula_number_filter(property_name: str, number_filter: dict) -> FormulaFilter`
+      - `create_formula_string_filter(property_name: str, string_filter: dict) -> FormulaFilter`
+
+    - MultiSelectFilter
+      - `create_multi_select_filter_contains(property_name: str, contains: str) -> MultiSelectFilter`
+      - `create_multi_select_filter_is_empty(property_name: str, is_empty: bool) -> MultiSelectFilter`
+
+    - NumberFilter
+      - `create_number_filter_is_empty(property_name: str, is_empty: bool) -> NumberFilter`
+      - `create_concrete_number_filter(property_name: str, filter_type: Literal['does_not_equal', 'equals', 'greater_than', 'greater_than_or_equal_to', 'less_than', 'less_than_or_equal_to'], number_value: float) -> NumberFilter`
+
+    - PeopleFilter
+      - `create_people_filter_contains(property_name: str, contains: str) -> PeopleFilter`
+      - `create_people_filter_does_not_contain(property_name: str, does_not_contain: str) -> PeopleFilter`
+      - `create_people_filter_is_empty(property_name: str, is_empty: bool) -> PeopleFilter`
+
+    - PhoneNumberFilter (Assumed class and methods, adjust if necessary)
+      - `create_phone_number_filter_contains(property_name: str, contains: str) -> PhoneNumberFilter`
+      - `create_phone_number_filter_does_not_contain(property_name: str, does_not_contain: str) -> PhoneNumberFilter`
+      - `create_phone_number_filter_is_empty(property_name: str, is_empty: bool) -> PhoneNumberFilter`
+
+    - RelationFilter
+      - `create_relation_filter_contains(property_name: str, contains: str) -> RelationFilter`
+      - `create_relation_filter_does_not_contain(property_name: str, does_not_contain: str) -> RelationFilter`
+      - `create_relation_filter_is_empty(property_name: str, is_empty: bool) -> RelationFilter`
+
+    - RichTextFilter
+      - `create_rich_text_filter(property_name: str, filter_type: Literal['contains', 'does_not_contain', 'does_not_equal', 'ends_with', 'equals', 'starts_with', 'is_empty', 'is_not_empty'], text_value: Optional[str] = None) -> RichTextFilter`
+
+    - SelectFilter
+      - `create_select_filter_equals(property_name: str, equals: str) -> SelectFilter`
+      - `create_select_filter_does_not_equal(property_name: str, does_not_equal: str) -> SelectFilter`
+      - `create_select_filter_is_empty(property_name: str, is_empty: bool) -> SelectFilter`
+
+    - StatusFilter
+      - `create_status_filter_equals(property_name: str, equals: str) -> StatusFilter`
+      - `create_status_filter_does_not_equal(property_name: str, does_not_equal: str) -> StatusFilter`
+      - `create_status_filter_is_empty(property_name: str, is_empty: bool) -> StatusFilter`
+
+    - TimestampFilter
+      - `create_timestamp_filter(timestamp_type: Literal['created_time', 'last_edited_time'], date_filter: DateFilter) -> TimestampFilter`
+
+    - IDFilter
+      - `create_id_filter(property_name: str, filter_type: Literal['equals', 'does_not_equal', 'greater_than', 'greater_than_or_equal_to', 'less_than', 'less_than_or_equal_to'], value: int) -> IDFilter`
 """
 
 from structures import *
@@ -129,11 +190,15 @@ from data._properties.factory import *
 from data._properties.property_factory import *
 from data._properties.property import *
 from data._properties.sort import *
+from data._properties.filter import *
+from data._properties.query_filter import *
 
 from data._properties.data import __all__ as data_all
 from data._properties.factory import __all__ as factory_all
 from data._properties.property_factory import __all__ as property_factory_all
 from data._properties.property import __all__ as property_all
 from data._properties.sort import __all__ as sort_all
+from data._properties.filter import __all__ as filter_all
+from data._properties.query_filter import __all__ as query_filter_all
 
-__all__ = data_all + factory_all + property_factory_all + property_all + sort_all
+__all__ = data_all + factory_all + property_factory_all + property_all + sort_all + filter_all + query_filter_all

@@ -3,11 +3,7 @@ import os
 
 from dotenv import load_dotenv
 
-from data.structures import create_parent
-from data.blocks import create_basic_heading1, Heading1
-from data.properties import *
 from notion import NotionApi
-from data import *
 
 
 def create_and_print(object, blocks_provider):
