@@ -56,7 +56,8 @@ __all__:
         - create_created_by_database
         - create_last_edited_by_database
 
-    Data classes:
+    Data classes - you can use the class method create_sort_object to get the desired sorting object for database
+    querying:
         - DatePage
         - DateDatabase
         - FormulaPage
@@ -109,6 +110,11 @@ __all__:
         - DatabaseProperty
         - PropertyType
 
+    Sort Objects with static class factory methods used in database querying:
+        - Sort
+        - PropertySort
+        - TimestampSort
+
 Note:
     This package is intended for use by end-users to create and interact with Notion property objects.
     It provides a user-friendly interface and ensures that all property objects are validated and structured
@@ -122,10 +128,12 @@ from data._properties.data import *
 from data._properties.factory import *
 from data._properties.property_factory import *
 from data._properties.property import *
+from data._properties.sort import *
 
 from data._properties.data import __all__ as data_all
 from data._properties.factory import __all__ as factory_all
 from data._properties.property_factory import __all__ as property_factory_all
 from data._properties.property import __all__ as property_all
+from data._properties.sort import __all__ as sort_all
 
-__all__ = data_all + factory_all + property_factory_all + property_all
+__all__ = data_all + factory_all + property_factory_all + property_all + sort_all

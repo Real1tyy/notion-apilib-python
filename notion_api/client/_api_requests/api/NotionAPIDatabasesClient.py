@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 # Third Party
-from client.api_requests.utils.RequestsClient import RequestsClient
+from client._api_requests._utils.RequestsClient import RequestsClient
 from custom_types import json_
 from requests import Response
 

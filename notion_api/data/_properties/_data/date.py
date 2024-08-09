@@ -6,7 +6,7 @@ from typing import Any, Optional
 from _properties.property import DatabaseProperty, PageProperty
 from pydantic import BaseModel
 
-from type_ import PropertyType
+from _properties.type_ import PropertyType
 
 
 class DateStructure(BaseModel):

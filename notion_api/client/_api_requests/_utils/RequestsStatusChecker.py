@@ -2,7 +2,7 @@
 import time
 
 # Third Party
-from client.api_requests.constants.status_codes import RATE_LIMIT, SUCCESS
+from client._api_requests.constants.status_codes import RATE_LIMIT, SUCCESS
 from requests import Response
 
 

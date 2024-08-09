@@ -1,10 +1,12 @@
 # Standard Library
 from abc import ABC, abstractmethod
+from typing import Literal, Any
 
 from pydantic import BaseModel, Field
 
 # Third Party
-from type_ import PropertyType
+from _properties.type_ import PropertyType
+from sort import PropertySort
 
 
 class Property(ABC, BaseModel, from_attributes=True, use_enum_values=True, arbitrary_types_allowed=True):
@@ -57,7 +59,14 @@ class DatabaseProperty(Property, ABC):
     """
     Class representing a database property in the Notion API.
     """
-    pass
+
+    def create_sort_object(self, direction: Literal['ascending', 'descending']) -> PropertySort:
+        """
+          Creates a sort object for the property with the specified sort direction.
+        :param direction:
+        :return: PropertySort object representing the sort object
+        """
+        return PropertySort(direction=direction, property=self.name)
 
 
 __all__ = [

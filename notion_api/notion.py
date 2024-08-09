@@ -1,12 +1,12 @@
 # Third Party
-from client.api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
-from client.api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
-from client.api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
-from client.api_requests.utils.NotionHeaderProvider import NotionHeaderProvider
-from client.api_requests.utils.RequestsClient import RequestsClient
-from client.NotionBlockProvider import NotionBlockProvider
-from client.NotionDatabaseProvider import NotionDatabaseProvider
-from client.NotionPageProvider import NotionPageProvider
+from client._api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
+from client._api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
+from client._api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
+from client._api_requests._utils.NotionHeaderProvider import NotionHeaderProvider
+from client._api_requests._utils.RequestsClient import RequestsClient
+from client.block import NotionBlockProvider
+from client.database import NotionDatabaseProvider
+from client.page import NotionPageProvider
 from dependency_injector import containers, providers
 
 
@@ -63,10 +63,10 @@ class NotionApi:
         self.container.config.api_key.from_value(api_key)
         self.container.init_resources()
 
-    def get_pages_provider(self):
+    def get_page_provider(self):
         return self.container._notion_page_provider()
 
-    def get_blocks_provider(self):
+    def get_block_provider(self):
         return self.container._notion_block_provider()
 
     def get_database_provider(self):

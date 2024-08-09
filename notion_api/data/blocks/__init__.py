@@ -95,9 +95,14 @@ Data Models and Factory Methods:
     - create_image
     - create_concrete_block_type
 
-+
-deserialization function to convert json into a concrete block type:
+
+- deserialization function to convert json into a concrete block type:
     - deserialize_block
+
+- Generic Block class and BlockType:
+    - Block
+    - BlockType
+
 
 Note:
     This package is intended for use by end-users to create and interact with Notion block objects.
@@ -111,9 +116,11 @@ from structures import *
 from data._blocks.data import *
 from data._blocks.factory import *
 from data._blocks.type_factory import *
+from data._blocks.block import *
 
 from data._blocks.data import __all__ as data_all
 from data._blocks.factory import __all__ as factory_all
 from data._blocks.type_factory import __all__ as type_all
+from data._blocks.block import __all__ as block_all
 
-__all__ = factory_all + data_all + type_all
+__all__ = factory_all + data_all + type_all + block_all

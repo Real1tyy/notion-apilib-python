@@ -14,7 +14,7 @@ from data._properties.property_factory import deserialize_database_property
 
 
 class DatabaseProperties(BaseModel, extra="allow"):
-    properties: list[DatabaseProperty] = Field(exclude=True, default=[])
+    properties: list = Field(exclude=True, default=[])
 
 
 @catch_exceptions
@@ -26,7 +26,7 @@ def properties_validator(v: dict[str, Any], info: ValidationInfo) -> DatabasePro
         properties.append(_class)
         v[key] = _class
 
-    v['_properties'] = properties
+    v['properties'] = properties
     return v
 
 
@@ -38,16 +38,15 @@ class Database(MajorObject):
     pages: list[Page] = Field(default=[], exclude=True)
 
     def get_properties(self) -> list[DatabaseProperty]:
-        return self.properties.properties
+        props = self.properties
+        return props.properties
 
     def serialize_to_json(self) -> dict[str, Any]:
         data = self.model_dump(
-            mode='json', exclude_none=True, exclude={'id', 'archived', 'in_trash',
-                                                     'last_edited_time', 'created_time'})
+            mode='json', exclude_none=True, exclude={'id', 'archived', 'last_edited_time', 'created_time'})
         properties = data['_properties']
         keys_to_check = {'rollup', 'formula', 'relation', 'unique_id'}
-        to_remove = [key for key, value in properties.items() if any(k in value for k in keys_to_check)]
-        [properties.pop(key) for key in to_remove]
+        [properties.pop(key) for key, value in properties.items() if any(k in value for k in keys_to_check)]
         return data
 
     def add_property(self, property_: DatabaseProperty) -> list[DatabaseProperty]:
@@ -56,8 +55,8 @@ class Database(MajorObject):
         return self.get_properties()
 
 
-def create_database(data: dict[str, Any]) -> Database:
+def deserialize_database(data: dict[str, Any]) -> Database:
     return Database(**data)
 
 
-__all__ = ["Database", "create_database", "DatabaseProperties"]
+__all__ = ["Database", "deserialize_database", "DatabaseProperties"]
