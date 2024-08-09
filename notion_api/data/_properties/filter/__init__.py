@@ -75,6 +75,8 @@ Concrete Filter Objects and their factory methods:
 
 - IDFilter
   - `create_id_filter(property_name: str, filter_type: Literal['equals', 'does_not_equal', 'greater_than', 'greater_than_or_equal_to', 'less_than', 'less_than_or_equal_to'], value: int) -> IDFilter`
+
+- Filter
 """
 
 from _properties._filter.date import *
@@ -86,6 +88,7 @@ from _properties._filter.resources import *
 from _properties._filter.text import *
 from _properties._filter.time import *
 from _properties._filter.user import *
+from _properties._filter.general import *
 
 from _properties._filter.date import __all__ as __date_all__
 from _properties._filter.formula import __all__ as __formula_all__
@@ -96,6 +99,7 @@ from _properties._filter.resources import __all__ as __resources_all__
 from _properties._filter.text import __all__ as __text_all__
 from _properties._filter.time import __all__ as __time_all__
 from _properties._filter.user import __all__ as __user_all__
+from _properties._filter.general import __all__ as __general_all__
 
 __all__ = (__date_all__ + __formula_all__ + __number_all__ + __option_all__ + __relation_all__ +
-           __resources_all__ + __text_all__ + __time_all__ + __user_all__)
+           __resources_all__ + __text_all__ + __time_all__ + __user_all__ + __general_all__)

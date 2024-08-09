@@ -111,16 +111,16 @@ Note:
     DSL block classes, facilitating seamless data integration.
 """
 
-from structures import *
+from notion_api.data.structures import *
 
-from data._blocks.data import *
-from data._blocks.factory import *
-from data._blocks.type_factory import *
-from data._blocks.block import *
+from notion_api.data._blocks.data import *
+from notion_api.data._blocks.factory import *
+from notion_api.data._blocks.type_factory import *
+from notion_api.data._blocks.block import *
 
-from data._blocks.data import __all__ as data_all
-from data._blocks.factory import __all__ as factory_all
-from data._blocks.type_factory import __all__ as type_all
-from data._blocks.block import __all__ as block_all
+from notion_api.data._blocks.data import __all__ as data_all
+from notion_api.data._blocks.factory import __all__ as factory_all
+from notion_api.data._blocks.type_factory import __all__ as type_all
+from notion_api.data._blocks.block import __all__ as block_all
 
 __all__ = factory_all + data_all + type_all + block_all

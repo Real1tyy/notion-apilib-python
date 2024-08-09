@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Literal, Optional
+from typing import Literal
 
 from _filter.general import FilterStructure
 from _properties.query_filter import Filter

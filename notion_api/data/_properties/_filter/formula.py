@@ -1,10 +1,6 @@
-from pydantic import BaseModel, Extra
-from typing import Literal
-
 from _filter.date import DateFilter
 from _filter.general import FilterStructure
 from _filter.number import NumberFilter
-from _filter.option import CheckboxFilter, create_checkbox_filter
 from _filter.text import RichTextFilter
 from _properties.query_filter import Filter
 
@@ -21,7 +17,7 @@ class FormulaFilter(Filter):
     formula: FilterStructure
 
 
-def create_formula_checkbox_filter(property_name: str, checkbox_filter: CheckboxFilter) -> FormulaFilter:
+def create_formula_checkbox_filter(property_name: str, checkbox_filter: 'CheckboxFilter') -> FormulaFilter:
     """
     Factory function to create a FormulaFilter object with a checkbox condition.
 

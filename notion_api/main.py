@@ -1,9 +1,11 @@
 # Third Party
+import json
 import os
 
 from dotenv import load_dotenv
 
-from notion import NotionApi
+from notion_api.data.properties import *
+from notion_api import *
 
 
 def create_and_print(object, blocks_provider):
@@ -28,13 +30,18 @@ if __name__ == "__main__":
     # heading1 = create_basic_heading1(parent, "Heading 1", False)
     # create_and_print(heading1, blocks_provider)
     # paragraph = create_basic_paragraph(parent, "Database")
+    filters = [create_checkbox_filter("property", True), create_checkbox_filter("ppproperty", False)]
+    and_filter = create_and_filter(filters)
+    or_filter = create_or_filter(filters)
+    and_filter.add_nested_filter_object(or_filter)
+    print(json.dumps(and_filter.serialize_to_json(), indent=4))
 
-    file_path = "links"
-
-    with open(file_path, "r") as file:
-        lines = file.readlines()
-    for line in lines:
-        database_id = line.rstrip()
-        database = database_provider.retrieve_database(database_id)
-        # print(len(database.pages))
-        break
+    # file_path = "links"
+    #
+    # with open(file_path, "r") as file:
+    #     lines = file.readlines()
+    # for line in lines:
+    #     database_id = line.rstrip()
+    #     database = database_provider.retrieve_database(database_id)
+    #     # print(len(database.pages))
+    #     break

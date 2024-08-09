@@ -83,12 +83,12 @@ Note:
     payloads from the Notion API into our custom DSL properties, facilitating seamless data integration.
 """
 
-from data._structures.data import *
-from data._structures.factory import *
-from data._structures.types_ import *
+from notion_api.data._structures.data import *
+from notion_api.data._structures.factory import *
+from notion_api.data._structures.types_ import *
 
-from data._structures.data import __all__ as data_all
-from data._structures.factory import __all__ as factory_all
-from data._structures.types_ import __all__ as types_all
+from notion_api.data._structures.data import __all__ as data_all
+from notion_api.data._structures.factory import __all__ as factory_all
+from notion_api.data._structures.types_ import __all__ as types_all
 
 __all__ = data_all + factory_all + types_all
