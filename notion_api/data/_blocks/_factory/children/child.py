@@ -1,7 +1,7 @@
 from typing import TypeVar, Type, Optional
 
 from structures import Parent
-from block import Block
+from _blocks.block import Block
 from _blocks._data.children.child import ChildDatabase, ChildAttributes, ChildPage
 from _blocks._factory.general import _create_block
 

@@ -5,7 +5,6 @@ from pydantic import BaseModel, BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
 # Third Party
-from block import Block
 from data.exceptions import catch_exceptions
 from data.object import MajorObject
 from data._properties.property import PageProperty
@@ -31,7 +30,7 @@ def properties_validator(v: dict[str, Any], info: ValidationInfo) -> PagePropert
 
 class Page(MajorObject):
     properties: Annotated[PageProperties, BeforeValidator(properties_validator)]
-    children: list[Block] = Field(default=[])
+    children: list['Block'] = Field(default=[])
 
     def get_properties(self) -> list[PageProperty]:
         return self.properties.properties

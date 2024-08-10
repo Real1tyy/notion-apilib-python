@@ -1,11 +1,9 @@
 # Third Party
-import json
 import os
 
 from dotenv import load_dotenv
-
-from notion_api.data.properties import *
 from notion_api import *
+from notion_api.data.properties import *
 
 
 def create_and_print(object, blocks_provider):
@@ -30,11 +28,22 @@ if __name__ == "__main__":
     # heading1 = create_basic_heading1(parent, "Heading 1", False)
     # create_and_print(heading1, blocks_provider)
     # paragraph = create_basic_paragraph(parent, "Database")
-    filters = [create_checkbox_filter("property", True), create_checkbox_filter("ppproperty", False)]
+    filters = [create_select_filter_equals("Type", "Never Ending"), create_timestamp_filter(
+        "created_time",
+        create_relative_date_filter(
+            "whatever",
+            "past_month"))]
     and_filter = create_and_filter(filters)
-    or_filter = create_or_filter(filters)
-    and_filter.add_nested_filter_object(or_filter)
-    print(json.dumps(and_filter.serialize_to_json(), indent=4))
+    # or_filter = create_or_filter(filters)
+    # and_filter.add_nested_filter_object(or_filter)
+    print(and_filter.to_json_string())
+    database = database_provider.retrieve_database("1a91e289d5d9470d9e30ff1dfde63c60")
+    database = database_provider.query_database(database, and_filter)
+    print(len(database.pages))
+    filters = [create_select_filter_equals("Type", "Never Ending")]
+    and_filter = create_and_filter(filters)
+    database = database_provider.query_database(database, and_filter)
+    print(len(database.pages))
 
     # file_path = "links"
     #

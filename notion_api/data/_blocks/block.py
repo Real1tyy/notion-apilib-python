@@ -1,12 +1,12 @@
 # Standard Library
 from abc import ABC, abstractmethod
-from typing import Type, Any
+from typing import Any
 
 from pydantic import Field
 
-from data.object import Object
+from object import Object
 # Third Party
-from type_ import BlockType
+from _blocks.type_ import BlockType
 
 
 class Block(Object, ABC):
@@ -65,7 +65,5 @@ class Block(Object, ABC):
         """
         return cls.get_associated_block_type().value
 
-
-Block.model_rebuild()
 
 __all__ = ['Block', 'BlockType']

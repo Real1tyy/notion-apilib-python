@@ -1,9 +1,8 @@
 # Third Party
 from pydantic import BaseModel
 
-from block import Block
+from _blocks.block import Block, BlockType
 from structures import RichText
-from type_ import BlockType
 
 
 class BookmarkAttributes(BaseModel):

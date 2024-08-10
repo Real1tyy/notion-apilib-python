@@ -2,6 +2,8 @@ from abc import ABC
 
 from pydantic import BaseModel
 
+from data.configuration import BasicConfiguration
+
 
 class FilterStructure(BaseModel, extra='allow'):
     """
@@ -10,7 +12,7 @@ class FilterStructure(BaseModel, extra='allow'):
     pass
 
 
-class Filter(ABC, BaseModel, use_enum_values=True, from_attributes=True, arbitrary_types_allowed=True):
+class Filter(BasicConfiguration, ABC):
     property: str
 
     def serialize_to_json(self) -> dict:

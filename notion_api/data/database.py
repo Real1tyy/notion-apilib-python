@@ -1,9 +1,10 @@
 # Standard Library
 from typing import Annotated, Any
 
-from pydantic import BaseModel, BeforeValidator, Field
+from pydantic import BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
+from data.configuration import ExtraConfiguration
 from structures import RichText
 # Third Party
 from data.exceptions import catch_exceptions
@@ -13,7 +14,7 @@ from data._properties.property import DatabaseProperty
 from data._properties.property_factory import deserialize_database_property
 
 
-class DatabaseProperties(BaseModel, extra="allow"):
+class DatabaseProperties(ExtraConfiguration):
     properties: list = Field(exclude=True, default=[])
 
 

@@ -3,10 +3,12 @@ from typing import Any, Optional
 
 from _filter.general import Filter
 
-from pydantic import BaseModel, Field
+from pydantic import Field
+
+from data.configuration import ExtraConfiguration
 
 
-class QueryFilter(ABC, BaseModel, extra='allow', from_attributes=True, arbitrary_types_allowed=True):
+class QueryFilter(ExtraConfiguration, ABC):
     """
     A model representing a query filter object for use during database querying.
     """
@@ -27,9 +29,8 @@ class QueryFilter(ABC, BaseModel, extra='allow', from_attributes=True, arbitrary
     def get_nested_filter_object(self) -> 'QueryFilter':
         pass
 
-    @abstractmethod
     def serialize_to_json(self) -> dict[str, Any]:
-        pass
+        return self.model_dump(mode='json', by_alias=True)
 
 
 class AndFilter(QueryFilter):
@@ -42,10 +43,10 @@ class AndFilter(QueryFilter):
         self.and_filter.append(filter_object)
 
     def add_nested_filter_object(self, nested_filter: 'OrFilter'):
-        for filter_object in self.and_filter:
-            if isinstance(filter_object, OrFilter):
-                filter_object.get_current_filters().extend(nested_filter.get_current_filters())
-                return
+        filter_object = self.get_nested_filter_object()
+        if filter_object:
+            filter_object.get_current_filters().extend(nested_filter.get_current_filters())
+            return
         self.and_filter.append(nested_filter)
 
     def get_current_filters(self) -> list[Filter]:
@@ -55,23 +56,6 @@ class AndFilter(QueryFilter):
         for filter_object in self.and_filter:
             if isinstance(filter_object, OrFilter):
                 return filter_object
-
-    def serialize_to_json(self) -> dict[str, Any]:
-        data = self.model_dump(mode='json')
-        filter_data = data.pop('and_filter')
-        data['and'] = filter_data
-        key_to_remove = None
-        for filter_object in filter_data:
-            for key in filter_object.keys():
-                if key == 'or_filter':
-                    key_to_remove = key
-                    break
-            if key_to_remove:
-                or_data = filter_object.pop(key_to_remove)
-                filter_object['or'] = or_data
-                break
-
-        return data
 
 
 class OrFilter(QueryFilter):
@@ -84,10 +68,10 @@ class OrFilter(QueryFilter):
         self.or_filter.append(filter_object)
 
     def add_nested_filter_object(self, nested_filter: 'OrFilter'):
-        for filter_object in self.or_filter:
-            if isinstance(filter_object, AndFilter):
-                filter_object.get_current_filters().extend(nested_filter.get_current_filters())
-                return
+        filter_object = self.get_nested_filter_object()
+        if filter_object:
+            filter_object.get_current_filters().extend(nested_filter.get_current_filters())
+            return
         self.or_filter.append(nested_filter)
 
     def get_current_filters(self) -> list[Filter]:
@@ -97,23 +81,6 @@ class OrFilter(QueryFilter):
         for filter_object in self.or_filter:
             if isinstance(filter_object, AndFilter):
                 return filter_object
-
-    def serialize_to_json(self) -> dict[str, Any]:
-        data = self.model_dump(mode='json')
-        filter_data = data.pop('or_filter')
-        data['or'] = filter_data
-        key_to_remove = None
-        for filter_object in filter_data:
-            for key in filter_object.keys():
-                if key == 'and_filter':
-                    key_to_remove = key
-                    break
-            if key_to_remove:
-                or_data = filter_object.pop(key_to_remove)
-                filter_object['and'] = or_data
-                break
-
-        return data
 
 
 def create_and_filter(and_filter: list[Filter]) -> AndFilter:

@@ -1,6 +1,6 @@
 from typing import Type, TypeVar, Any, Optional
 
-from data.structures import Parent
+from structures import Parent
 from _blocks.block import Block
 
 T = TypeVar('T', bound=Block)

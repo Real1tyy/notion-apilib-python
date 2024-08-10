@@ -33,11 +33,17 @@ factory methods to deserialize json into our DSL data class:
 This package is essential for developers who want to interact with the Notion API without getting bogged down in its intricacies, providing a more intuitive and error-resistant way to build and manipulate Notion objects.
 """
 from notion_api.data.structures import *
+from notion_api.data.blocks import Block
+
+from notion_api.data.properties import *
 
 from notion_api.data.page import *
 from notion_api.data.database import *
 
 from notion_api.data.page import __all__ as page_all
 from notion_api.data.database import __all__ as database_all
+
+Page.model_rebuild()
+Database.model_rebuild()
 
 __all__ = page_all + database_all

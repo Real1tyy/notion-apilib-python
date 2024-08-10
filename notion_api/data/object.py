@@ -4,14 +4,16 @@ from abc import ABC, abstractmethod
 from typing import Literal, Optional, Any
 from uuid import UUID
 
-from pydantic import BaseModel, Field
-from data.structures import Icon, Parent
+from pydantic import Field
+
+from configuration import BasicConfiguration
+from structures import Icon, Parent
 
 
 # Third Party
 
 
-class Object(ABC, BaseModel, use_enum_values=True, from_attributes=True, arbitrary_types_allowed=True):
+class Object(BasicConfiguration, ABC):
     id: UUID = Field(default=None)
     object: Literal['block', 'database', 'page', 'user', 'workspace']
     created_time: datetime = Field(exclude=True, default=None)

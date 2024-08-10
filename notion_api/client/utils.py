@@ -1,7 +1,8 @@
 # Standard Library
 from typing import Optional, Callable, TypeVar, Any
 
-from block import Block
+from notion_api.data import QueryFilter
+from data.blocks import Block
 # Third Party
 from custom_types import json_
 from requests import Response
@@ -66,12 +67,12 @@ def _parse_and_serialize_result(response: json_) -> list[Block]:
 
 def _prepare_query_data(
         next_cursor: Optional[str] = None, sort: Optional[list[Sort]] = None,
-        filter: Optional[str] = None) -> dict[str, Any]:
+        filter: Optional[QueryFilter] = None) -> dict[str, Any]:
     data = dict()
     if next_cursor:
         data['start_cursor'] = next_cursor
     if sort:
         data['sorts'] = [s.serialize_to_json() for s in sort]
     if filter:
-        data['filter'] = filter
+        data['filter'] = filter.serialize_to_json()
     return data

@@ -1,8 +1,7 @@
 # Third Party
 from pydantic import BaseModel
 
-from block import Block
-from type_ import BlockType
+from _blocks.block import Block, BlockType
 
 
 class EquationAttributes(BaseModel):

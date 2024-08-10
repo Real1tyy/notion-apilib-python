@@ -13,8 +13,6 @@ class TimestampFilter(BaseModel, extra='allow'):
 
     Attributes:
         timestamp (Literal['created_time', 'last_edited_time']): The type of timestamp to filter.
-        created_time (Optional[FilterStructure]): The filter criteria for the created_time timestamp.
-        last_edited_time (Optional[FilterStructure]): The filter criteria for the last_edited_time timestamp.
     """
     timestamp: Literal['created_time', 'last_edited_time']
 

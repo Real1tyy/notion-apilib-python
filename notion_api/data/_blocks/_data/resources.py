@@ -1,9 +1,8 @@
 # Standard Library
 
 # Third Party
-from block import Block
+from _blocks.block import Block, BlockType
 from structures import FileAttributes, ResourcesAttributes
-from type_ import BlockType
 
 
 class File(Block):

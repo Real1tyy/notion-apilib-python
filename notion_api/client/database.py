@@ -7,8 +7,9 @@ from requests import Response
 # Third Party
 from client._api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
 from data import Database, deserialize_database
+from notion_api.data import QueryFilter
 from page import deserialize_page
-from sort import Sort
+from data.properties import Sort
 from utils import _get_children_from_json, _handle_pagination, _prepare_query_data
 
 
@@ -37,7 +38,7 @@ class NotionDatabaseProvider:
         return deserialize_database(response.json())
 
     def query_database(
-            self, database: Database, filter: Optional[str] = None, sort: Optional[list[Sort]] =
+            self, database: Database, filter: Optional[QueryFilter] = None, sort: Optional[list[Sort]] =
             None) -> (
             Database):
         """
@@ -57,6 +58,7 @@ class NotionDatabaseProvider:
         """
         database.pages = []
         data = _prepare_query_data(sort=sort, filter=filter)
+        print(data)
         response = self.notion_client.query_database(database.id.hex, data)
         children = _get_children_from_json(response)
         database.pages.extend(map(deserialize_page, children))
@@ -65,7 +67,7 @@ class NotionDatabaseProvider:
             filter=filter, sort=sort)
 
     def _query_paginated_database(
-            self, database: Database, next_cursor: str, filter: Optional[str] = None,
+            self, database: Database, next_cursor: str, filter: Optional[QueryFilter] = None,
             sort: dict[str, Any] = None) -> Database:
         """
         Handles paginated queries to a Notion database.

@@ -1,7 +1,7 @@
 from typing import Type, Optional, TypeVar
 
 from structures import RichText, Parent, create_basic_rich_text
-from block import Block
+from _blocks.block import Block
 from _blocks._factory.general import _create_block
 from _blocks._data.children.items import (Items, BulletedListItem, NumberedListItem, Paragraph, Quote, ToDoAttributes,
                                           ToDo, Toggle)
