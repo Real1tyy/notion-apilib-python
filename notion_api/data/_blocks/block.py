@@ -28,7 +28,7 @@ class Block(Object, ABC):
 
     def serialize_to_json(self) -> dict[str, Any]:
         """
-        Converts the block into a JSON payload suitable for creating or updating a block in Notion.
+        Converts the block into a JSON payload suitable for creating a block in Notion.
         Certain fields are omitted in the JSON representation, such as:
             - id
             - parent
@@ -40,7 +40,7 @@ class Block(Object, ABC):
         """
         return self.model_dump(
             mode='json', exclude_none=True,
-            exclude={'id', 'parent', 'archived', 'in_trash'}
+            exclude={'id', 'parent', 'archived', 'in_trash', 'has_children'}
         )
 
     @classmethod

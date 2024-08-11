@@ -2,8 +2,11 @@
 import os
 
 from dotenv import load_dotenv
+
 from notion_api import *
 from notion_api.data.properties import *
+from type_ import BlockType
+from type_factory import deserialize_block
 
 
 def create_and_print(object, blocks_provider):
@@ -16,6 +19,13 @@ def create_and_print(object, blocks_provider):
         print(e)
 
 
+DATA = {'object': 'block', 'id': 'c02fc1d3-db8b-45c5-a222-27595b15aea7',
+        'parent': {'type': 'page_id', 'page_id': 'fa0bec9897ef4abba867f0c16513561c'},
+        'created_time': '2022-03-01T19:05:00+00:00', 'last_edited_time': '2022-07-06T19:41:00+00:00',
+        'created_by': {'object': 'user', 'id': 'ee5f0f84-409a-440f-983a-a5315961c6e4'},
+        'last_edited_by': {'object': 'user', 'id': 'ee5f0f84-409a-440f-983a-a5315961c6e4'}, 'archived': False,
+        'in_trash': False, 'has_children': False, 'type': BlockType.CHILD_PAGE, 'child_page': {'title': 'BEST TITLE'}}
+
 if __name__ == "__main__":
     load_dotenv()
     api_key = os.getenv("NOTION_INTEGRATION_KEY")
@@ -23,36 +33,13 @@ if __name__ == "__main__":
     blocks_provider = notion.get_block_provider()
     database_provider = notion.get_database_provider()
     page_provider = notion.get_page_provider()
-    # parent = create_parent("page_id", "fa0bec9897ef4abba867f0c16513561c")
-    #
+    block = deserialize_block(DATA)
+    json = block.serialize_to_json()
+    print(json)
+    blocks_provider.create_block(block)
+
+    parent = create_parent("page_id", "fa0bec9897ef4abba867f0c16513561c")
+
     # heading1 = create_basic_heading1(parent, "Heading 1", False)
     # create_and_print(heading1, blocks_provider)
     # paragraph = create_basic_paragraph(parent, "Database")
-    filters = [create_select_filter_equals("Type", "Never Ending"), create_timestamp_filter(
-        "created_time",
-        create_relative_date_filter(
-            "whatever",
-            "past_month"))]
-    and_filter = create_and_filter(filters)
-    # or_filter = create_or_filter(filters)
-    # and_filter.add_nested_filter_object(or_filter)
-    # print(and_filter.to_json_string())
-    database = database_provider.retrieve_database("1a91e289d5d9470d9e30ff1dfde63c60")
-    print(database.created_by)
-    print(database.last_edited_by)
-    # database = database_provider.query_database(database, and_filter)
-    # print(len(database.pages))
-    # filters = [create_select_filter_equals("Type", "Never Ending")]
-    # and_filter = create_and_filter(filters)
-    # database = database_provider.query_database(database, and_filter)
-    # print(len(database.pages))
-
-    # file_path = "links"
-    #
-    # with open(file_path, "r") as file:
-    #     lines = file.readlines()
-    # for line in lines:
-    #     database_id = line.rstrip()
-    #     database = database_provider.retrieve_database(database_id)
-    #     # print(len(database.pages))
-    #     break

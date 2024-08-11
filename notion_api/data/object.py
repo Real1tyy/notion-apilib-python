@@ -18,8 +18,8 @@ class Object(BasicConfiguration, ABC):
     object: Literal['block', 'database', 'page', 'user', 'workspace']
     created_time: datetime = Field(exclude=True, default=None)
     last_edited_time: datetime = Field(exclude=True, default=None)
-    created_by: User
-    last_edited_by: User
+    created_by: User = Field(exclude=True)
+    last_edited_by: User = Field(exclude=True)
     parent: Parent
     archived: bool
     in_trash: bool

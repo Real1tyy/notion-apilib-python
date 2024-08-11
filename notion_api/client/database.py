@@ -11,7 +11,7 @@ from data import Database, deserialize_database
 from notion_api.data import QueryFilter
 from page import deserialize_page
 from data.properties import Sort
-from utils import _get_children_from_json, _handle_pagination, _prepare_query_data
+from client.utils import _get_children_from_json, _handle_pagination, _prepare_query_data
 
 
 @dataclass

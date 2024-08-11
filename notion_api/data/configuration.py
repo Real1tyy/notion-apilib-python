@@ -15,7 +15,7 @@ class BasicConfiguration(ABC, BaseModel, use_enum_values=True, from_attributes=T
         printing out purposes
         :return:
         """
-        return json.dumps(self.model_dump(mode='json', by_alias=True), indent=4)
+        return json.dumps(self.model_dump(mode='json', by_alias=True, exclude_none=True), indent=4)
 
 
 class ExtraConfiguration(BasicConfiguration, ABC, extra='allow'):

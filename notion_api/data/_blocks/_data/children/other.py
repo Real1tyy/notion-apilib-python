@@ -2,7 +2,7 @@
 from typing import Optional
 from uuid import UUID
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from _blocks.block import Block, BlockType
 from structures import Emoji, RichText
@@ -58,7 +58,7 @@ class SyncedBlockAttributes(BaseModel):
     :type children: list[Block]
     """
     synced_from: Optional[SyncedFrom]
-    children: list[Block] = []
+    children: list[Block] = Field(default_factory=list, exclude=True)
 
 
 class SyncedBlock(Block):
