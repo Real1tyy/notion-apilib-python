@@ -1,4 +1,5 @@
 # Standard Library
+import json
 from dataclasses import dataclass
 from typing import Optional, Any
 
@@ -116,6 +117,7 @@ class NotionDatabaseProvider:
             ResponseException: If the Notion API returns an error status code.
         """
         response = self.notion_client.retrieve_database(database_id)
+        print(json.dumps(response.json(), indent=4))
         return deserialize_database(response.json())
 
     def update_database(self, database: Database) -> Database:

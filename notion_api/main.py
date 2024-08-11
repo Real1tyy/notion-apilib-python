@@ -36,14 +36,16 @@ if __name__ == "__main__":
     and_filter = create_and_filter(filters)
     # or_filter = create_or_filter(filters)
     # and_filter.add_nested_filter_object(or_filter)
-    print(and_filter.to_json_string())
+    # print(and_filter.to_json_string())
     database = database_provider.retrieve_database("1a91e289d5d9470d9e30ff1dfde63c60")
-    database = database_provider.query_database(database, and_filter)
-    print(len(database.pages))
-    filters = [create_select_filter_equals("Type", "Never Ending")]
-    and_filter = create_and_filter(filters)
-    database = database_provider.query_database(database, and_filter)
-    print(len(database.pages))
+    print(database.created_by)
+    print(database.last_edited_by)
+    # database = database_provider.query_database(database, and_filter)
+    # print(len(database.pages))
+    # filters = [create_select_filter_equals("Type", "Never Ending")]
+    # and_filter = create_and_filter(filters)
+    # database = database_provider.query_database(database, and_filter)
+    # print(len(database.pages))
 
     # file_path = "links"
     #

@@ -7,7 +7,7 @@ from uuid import UUID
 from pydantic import Field
 
 from configuration import BasicConfiguration
-from structures import Icon, Parent
+from structures import Icon, Parent, User
 
 
 # Third Party
@@ -18,6 +18,8 @@ class Object(BasicConfiguration, ABC):
     object: Literal['block', 'database', 'page', 'user', 'workspace']
     created_time: datetime = Field(exclude=True, default=None)
     last_edited_time: datetime = Field(exclude=True, default=None)
+    created_by: User
+    last_edited_by: User
     parent: Parent
     archived: bool
     in_trash: bool

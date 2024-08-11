@@ -1,3 +1,5 @@
+from abc import ABC
+
 from pydantic import BaseModel
 
 from _blocks.block import Block, BlockType

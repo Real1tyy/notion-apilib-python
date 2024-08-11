@@ -26,7 +26,9 @@ h11==0.14.0
 httpcore==1.0.5
 httpx==0.27.0
 idna==3.7
+iniconfig==2.0.0
 ipython==8.12.3
+isort==5.13.2
 jedi==0.19.1
 Jinja2==3.1.4
 jsonschema==4.22.0
@@ -54,6 +56,7 @@ pip-tools==7.4.1
 pip-upgrade-outdated==1.5
 pipreqs==0.5.0
 platformdirs==4.2.2
+pluggy==1.5.0
 prompt_toolkit==3.0.47
 psycopg2==2.9.9
 ptyprocess==0.7.0
@@ -65,11 +68,13 @@ pyflakes==3.2.0
 Pygments==2.18.0
 pymongo==4.8.0
 pyproject_hooks==1.1.0
+pytest==8.3.2
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pyzmq==26.0.3
 referencing==0.35.1
 requests==2.32.3
+returns==0.23.0
 rpds-py==0.18.1
 six==1.16.0
 sniffio==1.3.1
