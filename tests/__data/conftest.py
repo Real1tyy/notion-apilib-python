@@ -4,8 +4,25 @@ import pytest
 from __data.constants import *
 
 
+@pytest.fixture(params=['page_id', 'database_id', 'workspace', 'block_id'])
+def basic_parent_data(request):
+    basic_data = {
+        "type": request.param,
+    }
+    match request.param:
+        case "page_id":
+            basic_data["page_id"] = PARENT_PAGE_ID
+        case "database_id":
+            basic_data["database_id"] = PARENT_DATABASE_ID
+        case "block_id":
+            basic_data["block_id"] = PARENT_BLOCK_ID
+        case "workspace":
+            basic_data["workspace"] = True
+    return basic_data
+
+
 @pytest.fixture
-def object_data():
+def object_data(basic_parent_data):
     def return_object_data(object_type):
         return {
             "object": object_type,
