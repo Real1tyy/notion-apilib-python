@@ -1,6 +1,25 @@
+from datetime import datetime
 from typing import Any, Callable, TypeVar
+from uuid import UUID
 
 T = TypeVar("T")
+
+
+def map_data(data: T, value_transform: Callable[[Any], Any]) -> T:
+    """
+    Recursively apply a transformation to all values in a dictionary or list.
+
+    :param data: The data to transform.
+    :param value_transform: A function that transforms a value.
+    :return: The transformed data.
+    """
+    if isinstance(data, list):
+        return [map_data(item, value_transform) for item in data]
+
+    if isinstance(data, dict):
+        return {key: map_data(value, value_transform) for key, value in data.items()}
+
+    return value_transform(data)
 
 
 def filter_data(
@@ -56,3 +75,49 @@ def remove_children_keys(data: T) -> T:
     :return: The cleaned data with no 'children' keys.
     """
     return filter_data(data, key_predicate=lambda key: key == 'children')
+
+
+def transform_uuid_to_string(data: T) -> T:
+    """
+    Recursively transform all UUID values in a dictionary or list into strings.
+
+    :param data: The data to transform.
+    :return: The transformed data with UUIDs as strings.
+    """
+
+    def value_predicate(value: Any) -> Any:
+        if isinstance(value, UUID):
+            return str(value)
+        return value
+
+    return map_data(data, value_predicate)
+
+
+def transform_datetime_to_string(data: T) -> T:
+    """
+    Recursively transform all datetime values in a dictionary or list into strings.
+
+    :param data: The data to transform.
+    :return: The transformed data with datetimes as strings.
+    """
+
+    def value_predicate(value: Any) -> Any:
+        if isinstance(value, datetime):
+            return value.strftime("%Y-%m-%dT%H:%M:%SZ")
+        return value
+
+    return map_data(data, value_predicate)
+
+
+def transform_dictionary(dictionary: dict) -> dict:
+    """
+    Transform a dictionary by removing None values, 'children' keys, UUIDs, and datetimes.
+
+    :param dictionary: The dictionary to transform.
+    :return: The transformed dictionary.
+    """
+    transformed = remove_none_values(dictionary)
+    transformed = remove_children_keys(transformed)
+    transformed = transform_uuid_to_string(transformed)
+    transformed = transform_datetime_to_string(transformed)
+    return transformed

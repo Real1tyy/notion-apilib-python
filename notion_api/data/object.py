@@ -15,7 +15,7 @@ from structures import Icon, Parent, User
 
 class Object(BasicConfiguration, ABC):
     id: UUID = Field(default=None)
-    object: Literal['block', 'database', 'page', 'user', 'workspace']
+    object: Literal['block', 'database', 'page', 'workspace']
     created_time: datetime = Field(exclude=True, default=None)
     last_edited_time: datetime = Field(exclude=True, default=None)
     created_by: User = Field(exclude=True)

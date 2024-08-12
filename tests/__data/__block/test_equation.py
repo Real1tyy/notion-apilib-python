@@ -1,33 +1,37 @@
 import pytest
 
 from notion_api.data.blocks import Equation
-from __block.assertions import assert_block_data_is_correct, create_block_structure
+from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
+from __block.assertions import assert_block_data_is_correct
 
 # Constants
 EQUATION_EXPRESSION = "E = mc^2"
+
+EQUATION_DATA = {
+    "expression": EQUATION_EXPRESSION,
+}
 
 
 @pytest.fixture
 def equation_block(block_data):
     def create_equation_data(block_type) -> dict:
-        equation_data = {
-            "expression": EQUATION_EXPRESSION,
-        }
-        data = block_data(block_type, equation_data)
-        return data
+        return block_data(block_type, EQUATION_DATA)
 
     return create_equation_data
 
 
-def test_equation_structure(equation_block):
-    equation = create_block_structure(Equation, equation_block)
-    assert_equation_data_is_correct(equation)
-
-
-def assert_equation_data_is_correct(data: Equation):
-    block_type = Equation.get_associated_block_type()
-    assert_block_data_is_correct(data, block_type)
+def assert_equation_data_is_correct(data: Equation, expected_data: dict):
+    assert_block_data_is_correct(data, expected_data)
     equation_data = data.equation
+    expected_equation_data = expected_data["equation"]
 
     # Verify the expression
-    assert equation_data.expression == EQUATION_EXPRESSION
+    assert equation_data.expression == expected_equation_data["expression"]
+
+
+def test_block_structure(equation_block):
+    extract_create_assert_structure(equation_block, Equation, assert_equation_data_is_correct)
+
+
+def test_block_serialization(equation_block):
+    extract_create_assert_serialization(equation_block, Equation)

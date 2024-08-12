@@ -1,26 +1,22 @@
-from __data.constants import *
 from notion_api.data.object import Object, MajorObject
+from .utils.__structures import assert_icon_structure, assert_user_structure, assert_parent_structure
 
 
-def assert_object_data_is_correct(data: Object, expected_object_type: str):
-    assert data.object == expected_object_type
-    assert data.id == OBJECT_ID
-    assert data.created_time == CREATED_TIME
-    assert data.last_edited_time == LAST_EDITED_TIME
-    assert data.created_by.object == "user"
-    assert data.created_by.id == CREATED_BY_ID
-    assert data.last_edited_by.object == "user"
-    assert data.last_edited_by.id == LAST_EDITED_BY_ID
-    assert data.parent.type == PARENT_TYPE
-    assert data.parent.page_id == PARENT_PAGE_ID
+def assert_object_data_is_correct(data: Object, expected_data: dict):
+    assert data.object == expected_data["object"]
+    assert data.id == expected_data["id"]
+    assert data.created_time == expected_data["created_time"]
+    assert data.last_edited_time == expected_data["last_edited_time"]
+    assert_user_structure(data.created_by, expected_data["created_by"])
+    assert_user_structure(data.last_edited_by, expected_data["last_edited_by"])
+    assert_parent_structure(data.parent, expected_data["parent"])
     assert not data.archived
     assert not data.in_trash
 
 
-def assert_major_object_data_is_correct(data: MajorObject, expected_object_type):
-    assert_object_data_is_correct(data, expected_object_type)
-    assert data.cover == COVER
-    assert data.icon.type == ICON_TYPE
-    assert data.icon.external.url == ICON_URL
-    assert data.url == URL
+def assert_major_object_data_is_correct(data: MajorObject, expected_data: dict):
+    assert_object_data_is_correct(data, expected_data)
+    assert_icon_structure(data.icon, expected_data["icon"])
+    assert data.cover == expected_data["cover"]
+    assert data.url == expected_data
     assert data.public_url is None

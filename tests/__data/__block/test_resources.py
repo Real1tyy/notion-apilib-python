@@ -4,13 +4,14 @@ from typing import Literal
 from functools import partial
 
 from notion_api.data.blocks import File, Image, Pdf, Video
-from __block.assertions import assert_block_data_is_correct, create_block_structure
+from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
+from __block.assertions import assert_block_data_is_correct
 from __data.utils.__structures import create_rich_text_data, assert_rich_text_structure
 
 # Constants
 RESOURCE_URL = "https://example.com/resource"
 FILE_URL = "https://example.com/file"
-EXPIRY_TIME = "2022-03-01T19:05:00.000Z"
+EXPIRY_TIME = datetime(2022, 3, 1, 19, 5, 0, tzinfo=timezone.utc)
 DATE_TIME_EXPIRY_TIME = datetime(2022, 3, 1, 19, 5, 0, tzinfo=timezone.utc)
 CAPTION_CONTENT = "Sample Caption"
 CAPTION_COLOR = "red"
@@ -34,8 +35,7 @@ def resources_block(request, block_data):
                 "url": FILE_URL,
                 "expiry_time": EXPIRY_TIME,
             }
-        data = block_data(block_type, resources_data)
-        return data
+        return block_data(block_type, resources_data)
 
     return partial(create_resources_attributes, file_type=request.param)
 
@@ -51,33 +51,43 @@ def file_block(request, resources_block):
     return create_file_attributes
 
 
+def assert_file_data_is_correct(data: File, expected_data: dict):
+    assert_resources_data_is_correct(data, expected_data)
+    file_data = data.file
+    expected_file_data = expected_data["file"]
+
+    assert_rich_text_structure(file_data.caption, expected_file_data["caption"])
+    assert file_data.name == expected_file_data["name"]
+
+
+def assert_resources_data_is_correct(data, expected_data: dict):
+    block_type = data.__class__.get_associated_block_type()
+    assert_block_data_is_correct(data, expected_data)
+
+    resources_data = getattr(data, f"{block_type.value}")
+    expected_resources_data = expected_data[block_type.value]
+
+    match resources_data.type:
+        case "external":
+            assert resources_data.external.url == expected_resources_data["external"]["url"]
+        case "file":
+            assert resources_data.file.url == expected_resources_data["file"]["url"]
+            assert resources_data.file.expiry_time == expected_resources_data["file"]["expiry_time"]
+
+
 @pytest.mark.parametrize("block_class", [Image, Pdf, Video])
 def test_resources_structure(resources_block, block_class):
-    item = create_block_structure(block_class, resources_block)
-    assert_resources_data_is_correct(item)
+    extract_create_assert_structure(resources_block, block_class, assert_resources_data_is_correct)
+
+
+@pytest.mark.parametrize("block_class", [Image, Pdf, Video])
+def test_resources_serialization(resources_block, block_class):
+    extract_create_assert_serialization(resources_block, block_class)
 
 
 def test_file_structure(file_block):
-    item = create_block_structure(File, file_block)
-    assert_file_data_is_correct(item)
+    extract_create_assert_structure(file_block, File, assert_file_data_is_correct)
 
 
-def assert_file_data_is_correct(data: File):
-    assert_resources_data_is_correct(data)
-    file_data = data.file
-
-    assert_rich_text_structure(file_data.caption, CAPTION_CONTENT, CAPTION_COLOR)
-    assert file_data.name == FILE_NAME
-
-
-def assert_resources_data_is_correct(data):
-    block_type = data.__class__.get_associated_block_type()
-    assert_block_data_is_correct(data, block_type)
-
-    resources_data = getattr(data, f"{block_type.value}")
-    if resources_data.type == EXTERNAL_TYPE:
-        assert resources_data.external.url == RESOURCE_URL
-    else:
-        assert resources_data.type == FILE_TYPE
-        assert resources_data.file.url == FILE_URL
-        assert resources_data.file.expiry_time == DATE_TIME_EXPIRY_TIME
+def test_file_serialization(file_block):
+    extract_create_assert_serialization(file_block, File)

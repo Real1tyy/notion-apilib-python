@@ -9,20 +9,20 @@ def object_data():
     def return_object_data(object_type):
         return {
             "object": object_type,
-            "id": str(OBJECT_ID),
+            "id": OBJECT_ID,
             "parent": {
                 "type": PARENT_TYPE,
-                "page_id": str(PARENT_PAGE_ID)
+                "page_id": PARENT_PAGE_ID
             },
-            "created_time": CREATED_TIME.isoformat(),
-            "last_edited_time": LAST_EDITED_TIME.isoformat(),
+            "created_time": CREATED_TIME,
+            "last_edited_time": LAST_EDITED_TIME,
             "created_by": {
                 "object": "user",
-                "id": str(CREATED_BY_ID)
+                "id": CREATED_BY_ID
             },
             "last_edited_by": {
                 "object": "user",
-                "id": str(LAST_EDITED_BY_ID)
+                "id": LAST_EDITED_BY_ID
             },
             "archived": False,
             "in_trash": False

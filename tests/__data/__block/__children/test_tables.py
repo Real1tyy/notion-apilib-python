@@ -1,7 +1,8 @@
 import pytest
 
+from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
 from notion_api.data.blocks import Table, TableRow, TableOfContents, Column
-from __block.assertions import assert_block_data_is_correct, create_block_structure
+from __block.assertions import assert_block_data_is_correct, create_block_object, extract_block_data
 from __data.utils.__structures import create_rich_text_data, assert_rich_text_structure
 
 # Constants
@@ -20,8 +21,7 @@ def table_block(block_data):
             "has_row_header": HAS_ROW_HEADER,
             "table_width": TABLE_WIDTH,
         }
-        data = block_data(block_type, table_data)
-        return data
+        return block_data(block_type, table_data)
 
     return create_table_data
 
@@ -34,8 +34,7 @@ def table_row_block(block_data):
                 create_rich_text_data(TABLE_ROW_CONTENT, TABLE_OF_CONTENTS_COLOR)
             ],
         }
-        data = block_data(block_type, table_row_data)
-        return data
+        return block_data(block_type, table_row_data)
 
     return create_table_row_data
 
@@ -46,8 +45,7 @@ def table_of_contents_block(block_data):
         table_of_contents_data = {
             "color": TABLE_OF_CONTENTS_COLOR,
         }
-        data = block_data(block_type, table_of_contents_data)
-        return data
+        return block_data(block_type, table_of_contents_data)
 
     return create_table_of_contents_data
 
@@ -56,59 +54,51 @@ def table_of_contents_block(block_data):
 def column_block(block_data):
     def create_column_data(block_type) -> dict:
         column_data = {}
-        data = block_data(block_type, column_data)
-        return data
+        return block_data(block_type, column_data)
 
     return create_column_data
 
 
-def test_table_structure(table_block):
-    table = create_block_structure(Table, table_block)
-    assert_table_data_is_correct(table)
-
-
-def test_table_row_structure(table_row_block):
-    table_row = create_block_structure(TableRow, table_row_block)
-    assert_table_row_data_is_correct(table_row)
-
-
-def test_table_of_contents_structure(table_of_contents_block):
-    table_of_contents = create_block_structure(TableOfContents, table_of_contents_block)
-    assert_table_of_contents_data_is_correct(table_of_contents)
-
-
-def test_column_structure(column_block):
-    column = create_block_structure(Column, column_block)
-    assert_column_data_is_correct(column)
-
-
-def assert_table_data_is_correct(data: Table):
-    block_type = data.__class__.get_associated_block_type()
-    assert_block_data_is_correct(data, block_type)
+def assert_table_data_is_correct(data: Table, expected_data: dict):
+    assert_block_data_is_correct(data, expected_data)
     table_data = data.table
-
-    assert table_data.has_column_header == HAS_COLUMN_HEADER
-    assert table_data.has_row_header == HAS_ROW_HEADER
-    assert table_data.table_width == TABLE_WIDTH
-
-
-def assert_table_row_data_is_correct(data: TableRow):
-    block_type = data.__class__.get_associated_block_type()
-    assert_block_data_is_correct(data, block_type)
-    table_row_data = data.table_row
-
-    assert_rich_text_structure(table_row_data.cells, TABLE_ROW_CONTENT, TABLE_OF_CONTENTS_COLOR)
+    expected_table_data = expected_data["table"]
+    assert table_data.has_column_header == expected_table_data["has_column_header"]
+    assert table_data.has_row_header == expected_table_data["has_row_header"]
+    assert table_data.table_width == expected_table_data["table_width"]
 
 
-def assert_table_of_contents_data_is_correct(data: TableOfContents):
-    block_type = data.__class__.get_associated_block_type()
-    assert_block_data_is_correct(data, block_type)
-    table_of_contents_data = data.table_of_contents
-
-    assert table_of_contents_data.color == TABLE_OF_CONTENTS_COLOR
+def assert_table_row_data_is_correct(data: TableRow, expected_data: dict):
+    assert_block_data_is_correct(data, expected_data)
+    assert_rich_text_structure(data.table_row.cells, expected_data["table_row"]["cells"])
 
 
-def assert_column_data_is_correct(data: Column):
-    block_type = data.__class__.get_associated_block_type()
-    assert_block_data_is_correct(data, block_type)
-    # No specific attributes to check for Column blocks.
+def assert_table_of_contents_data_is_correct(data: TableOfContents, expected_data: dict):
+    assert_block_data_is_correct(data, expected_data)
+    assert data.table_of_contents.color == expected_data["table_of_contents"]["color"]
+
+
+def assert_column_data_is_correct(data: Column, expected_data: dict):
+    assert_block_data_is_correct(data, expected_data)
+
+
+@pytest.mark.parametrize(
+    "block_class, fixture_name, assert_func", [
+        (Table, "table_block", assert_table_data_is_correct),
+        (TableRow, "table_row_block", assert_table_row_data_is_correct),
+        (TableOfContents, "table_of_contents_block", assert_table_of_contents_data_is_correct),
+        (Column, "column_block", assert_column_data_is_correct),
+    ])
+def test_table_block_structure(request, block_class, fixture_name, assert_func):
+    extract_create_assert_structure(request.getfixturevalue(fixture_name), block_class, assert_func)
+
+
+@pytest.mark.parametrize(
+    "block_class, fixture_name", [
+        (Table, "table_block"),
+        (TableRow, "table_row_block"),
+        (TableOfContents, "table_of_contents_block"),
+        (Column, "column_block"),
+    ])
+def test_table_block_serialization(request, block_class, fixture_name):
+    extract_create_assert_serialization(request.getfixturevalue(fixture_name), block_class)
