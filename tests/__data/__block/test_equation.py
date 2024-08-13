@@ -7,14 +7,13 @@ from __block.assertions import assert_block_data_is_correct
 # Constants
 EQUATION_EXPRESSION = "E = mc^2"
 
-EQUATION_DATA = {
-    "expression": EQUATION_EXPRESSION,
-}
-
 
 @pytest.fixture
 def equation_block(block_data):
     def create_equation_data(block_type) -> dict:
+        EQUATION_DATA = {
+            "expression": EQUATION_EXPRESSION,
+        }
         return block_data(block_type, EQUATION_DATA)
 
     return create_equation_data

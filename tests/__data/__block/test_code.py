@@ -3,29 +3,21 @@ import pytest
 from notion_api.data.blocks import Code
 from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
 from __block.assertions import assert_block_data_is_correct
-from __data.utils.__structures import create_rich_text_data, assert_rich_text_structure
+from __structures.assertions import assert_rich_text_structure
+from ..__structures.conftest import create_rich_text
 
 # Constants
-CAPTION_CONTENT = "Code snippet caption"
-CODE_CONTENT = "print('Hello, World!')"
 LANGUAGE = "python"
-CAPTION_COLOR = "gray"
-CODE_COLOR = "black"
-
-CODE_DATA = {
-    "caption": [
-        create_rich_text_data(CAPTION_CONTENT, CAPTION_COLOR)
-    ],
-    "rich_text": [
-        create_rich_text_data(CODE_CONTENT, CODE_COLOR)
-    ],
-    "language": LANGUAGE,
-}
 
 
 @pytest.fixture
-def code_block(block_data):
+def code_block(block_data, create_rich_text):
     def create_code_data(block_type) -> dict:
+        CODE_DATA = {
+            "caption": create_rich_text,
+            "rich_text": create_rich_text,
+            "language": LANGUAGE,
+        }
         return block_data(block_type, CODE_DATA)
 
     return create_code_data

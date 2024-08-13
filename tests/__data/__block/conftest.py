@@ -16,3 +16,11 @@ def block_data(object_data):
         return data
 
     return return_block_data
+
+
+@pytest.fixture
+def block_text_data(create_rich_text):
+    return {
+        "rich_text": create_rich_text,
+        "color": BLOCK_TEXT_COLOR,
+    }

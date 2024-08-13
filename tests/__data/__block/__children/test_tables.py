@@ -2,8 +2,8 @@ import pytest
 
 from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
 from notion_api.data.blocks import Table, TableRow, TableOfContents, Column
-from __block.assertions import assert_block_data_is_correct, create_block_object, extract_block_data
-from __data.utils.__structures import create_rich_text_data, assert_rich_text_structure
+from __block.assertions import assert_block_data_is_correct
+from __structures.assertions import assert_rich_text_structure
 
 # Constants
 HAS_COLUMN_HEADER = True
@@ -27,12 +27,10 @@ def table_block(block_data):
 
 
 @pytest.fixture
-def table_row_block(block_data):
+def table_row_block(block_data, create_rich_text):
     def create_table_row_data(block_type) -> dict:
         table_row_data = {
-            "cells": [
-                create_rich_text_data(TABLE_ROW_CONTENT, TABLE_OF_CONTENTS_COLOR)
-            ],
+            "cells": create_rich_text
         }
         return block_data(block_type, table_row_data)
 
@@ -82,23 +80,33 @@ def assert_column_data_is_correct(data: Column, expected_data: dict):
     assert_block_data_is_correct(data, expected_data)
 
 
-@pytest.mark.parametrize(
-    "block_class, fixture_name, assert_func", [
-        (Table, "table_block", assert_table_data_is_correct),
-        (TableRow, "table_row_block", assert_table_row_data_is_correct),
-        (TableOfContents, "table_of_contents_block", assert_table_of_contents_data_is_correct),
-        (Column, "column_block", assert_column_data_is_correct),
-    ])
-def test_table_block_structure(request, block_class, fixture_name, assert_func):
-    extract_create_assert_structure(request.getfixturevalue(fixture_name), block_class, assert_func)
+def test_table_block_structure(table_block):
+    extract_create_assert_structure(table_block, Table, assert_table_data_is_correct)
 
 
-@pytest.mark.parametrize(
-    "block_class, fixture_name", [
-        (Table, "table_block"),
-        (TableRow, "table_row_block"),
-        (TableOfContents, "table_of_contents_block"),
-        (Column, "column_block"),
-    ])
-def test_table_block_serialization(request, block_class, fixture_name):
-    extract_create_assert_serialization(request.getfixturevalue(fixture_name), block_class)
+def test_table_row_block_structure(table_row_block):
+    extract_create_assert_structure(table_row_block, TableRow, assert_table_row_data_is_correct)
+
+
+def test_table_of_contents_block_structure(table_of_contents_block):
+    extract_create_assert_structure(table_of_contents_block, TableOfContents, assert_table_of_contents_data_is_correct)
+
+
+def test_column_block_structure(column_block):
+    extract_create_assert_structure(column_block, Column, assert_column_data_is_correct)
+
+
+def test_table_block_serialization(table_block):
+    extract_create_assert_serialization(table_block, Table)
+
+
+def test_table_row_block_serialization(table_row_block):
+    extract_create_assert_serialization(table_row_block, TableRow)
+
+
+def test_table_of_contents_block_serialization(table_of_contents_block):
+    extract_create_assert_serialization(table_of_contents_block, TableOfContents)
+
+
+def test_column_block_serialization(column_block):
+    extract_create_assert_serialization(column_block, Column)

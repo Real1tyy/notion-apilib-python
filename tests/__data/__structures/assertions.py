@@ -1,33 +1,4 @@
-def create_rich_text_data(content: str, color: str) -> dict:
-    return {
-        "type": "text",
-        "text": {
-            "content": content,
-            "link": None
-        },
-        "annotations": {
-            "bold": False,
-            "italic": False,
-            "strikethrough": False,
-            "underline": False,
-            "code": False,
-            "color": color
-        },
-        "plain_text": content,
-        "href": None
-    }
-
-
-def create_emoji_data(emoji: str) -> dict:
-    return {
-        "type": "emoji",
-        "emoji": emoji
-    }
-
-
 def assert_rich_text_structure(rich_text, expected_rich_text: dict):
-    print(rich_text)
-    print(expected_rich_text)
     assert len(rich_text) == len(expected_rich_text)
     for index, text in enumerate(rich_text):
         assert_rich_text_value(text, expected_rich_text[index])
@@ -35,7 +6,7 @@ def assert_rich_text_structure(rich_text, expected_rich_text: dict):
 
 def assert_text_structure(text, expected_text: dict):
     assert text.content == expected_text["content"]
-    assert text.link == expected_text["link"]
+    assert text.link.url == expected_text["link"]["url"]
 
 
 def assert_template_mention_structure(template_mention, expected_template_mention: dict):

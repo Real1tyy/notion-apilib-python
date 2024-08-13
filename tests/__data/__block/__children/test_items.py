@@ -1,39 +1,31 @@
 import pytest
 
 from ..helper import extract_create_assert_structure, extract_create_assert_serialization
-from ...__block.assertions import assert_block_data_is_correct, create_block_object, assert_serialization_to_json
+from ...__block.assertions import assert_block_data_is_correct
 from notion_api.data.blocks import BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle, ToDo, BlockType
-from ....__data.utils.__structures import create_rich_text_data, assert_rich_text_structure
+from __structures.assertions import assert_rich_text_structure
+from ...__structures.conftest import create_rich_text
 
 # Constants
-TEST_CONTENT = "Test content"
-COLOR = "blue"
 IS_CHECKED = True
-ITEM_DATA = {
-    "rich_text": [
-        create_rich_text_data(TEST_CONTENT, COLOR)
-    ],
-    "color": COLOR,
-    "children": [],
-}
-TODO_DATA = {
-    **ITEM_DATA,
-    "checked": IS_CHECKED
-}
 
 
 @pytest.fixture
-def item_block(block_data):
+def item_block(block_data, block_text_data):
     def create_item_data(block_type) -> dict:
-        return block_data(block_type, ITEM_DATA)
+        data = block_text_data
+        data["children"] = []
+        return block_data(block_type, data)
 
     return create_item_data
 
 
 @pytest.fixture
-def todo_block(block_data):
+def todo_block(block_data, item_block):
     def create_todo_data() -> dict:
-        return block_data(BlockType.TO_DO, TODO_DATA)
+        data = item_block(BlockType.TO_DO)
+        data["to_do"]["checked"] = IS_CHECKED
+        return data
 
     return lambda block_type: create_todo_data()
 
@@ -55,27 +47,21 @@ def assert_todo_data_is_correct(data: ToDo, expected_data):
     assert todo_data.checked == expected_data["to_do"]["checked"]
 
 
-@pytest.mark.parametrize(
-    "block_class, fixture_name, assert_func", [
-        (BulletedListItem, "item_block", assert_item_data_is_correct),
-        (NumberedListItem, "item_block", assert_item_data_is_correct),
-        (Paragraph, "item_block", assert_item_data_is_correct),
-        (Quote, "item_block", assert_item_data_is_correct),
-        (Toggle, "item_block", assert_item_data_is_correct),
-        (ToDo, "todo_block", assert_todo_data_is_correct),
-    ])
-def test_block_structure(request, block_class, fixture_name, assert_func):
-    extract_create_assert_structure(request.getfixturevalue(fixture_name), block_class, assert_func)
+@pytest.mark.parametrize("block_class", [BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle])
+def test_item_block_structure(block_class, item_block):
+    extract_create_assert_structure(item_block, block_class, assert_item_data_is_correct)
 
 
-@pytest.mark.parametrize(
-    "block_class, fixture_name", [
-        (BulletedListItem, "item_block"),
-        (NumberedListItem, "item_block"),
-        (Paragraph, "item_block"),
-        (Quote, "item_block"),
-        (Toggle, "item_block"),
-        (ToDo, "todo_block"),
-    ])
-def test_block_serialization(request, block_class, fixture_name):
-    extract_create_assert_serialization(request.getfixturevalue(fixture_name), block_class)
+@pytest.mark.parametrize("block_class", [ToDo])
+def test_todo_block_structure(block_class, todo_block):
+    extract_create_assert_structure(todo_block, block_class, assert_todo_data_is_correct)
+
+
+@pytest.mark.parametrize("block_class", [BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle])
+def test_item_block_serialization(block_class, item_block):
+    extract_create_assert_serialization(item_block, block_class)
+
+
+@pytest.mark.parametrize("block_class", [ToDo, ])
+def test_todo_block_serialization(block_class, todo_block):
+    extract_create_assert_serialization(todo_block, block_class)

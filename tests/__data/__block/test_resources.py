@@ -6,15 +6,14 @@ from functools import partial
 from notion_api.data.blocks import File, Image, Pdf, Video
 from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
 from __block.assertions import assert_block_data_is_correct
-from __data.utils.__structures import create_rich_text_data, assert_rich_text_structure
+from __structures.assertions import assert_rich_text_structure
+from ..__structures.conftest import create_rich_text
 
 # Constants
 RESOURCE_URL = "https://example.com/resource"
 FILE_URL = "https://example.com/file"
 EXPIRY_TIME = datetime(2022, 3, 1, 19, 5, 0, tzinfo=timezone.utc)
 DATE_TIME_EXPIRY_TIME = datetime(2022, 3, 1, 19, 5, 0, tzinfo=timezone.utc)
-CAPTION_CONTENT = "Sample Caption"
-CAPTION_COLOR = "red"
 FILE_NAME = "example_file.txt"
 FILE_TYPE = "file"
 EXTERNAL_TYPE = "external"
@@ -41,10 +40,10 @@ def resources_block(request, block_data):
 
 
 @pytest.fixture()
-def file_block(request, resources_block):
+def file_block(request, resources_block, create_rich_text):
     def create_file_attributes(block_type) -> dict:
         data = resources_block(block_type)
-        data['file']['caption'] = [create_rich_text_data(CAPTION_CONTENT, CAPTION_COLOR)]
+        data['file']['caption'] = create_rich_text
         data['file']['name'] = FILE_NAME
         return data
 

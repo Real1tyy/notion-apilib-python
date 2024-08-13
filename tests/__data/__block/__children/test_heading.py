@@ -1,28 +1,19 @@
 import pytest
 
-from __block.assertions import assert_block_data_is_correct, create_block_object, assert_serialization_to_json, \
-    extract_block_data
+from __block.assertions import assert_block_data_is_correct
 from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
 from notion_api.data.blocks import Heading1, Heading2, Heading3
-from __data.utils.__structures import create_rich_text_data, assert_rich_text_structure
+from ...__structures.assertions import assert_rich_text_structure
 
-RICH_TEXT_CONTENT = "Lacinato kale"
-RICH_TEXT_COLOR = "green"
 IS_TOGGLEABLE = False
-
-HEADING_DATA = {
-    "rich_text": [
-        create_rich_text_data(RICH_TEXT_CONTENT, RICH_TEXT_COLOR)
-    ],
-    "color": RICH_TEXT_COLOR,
-    "is_toggleable": IS_TOGGLEABLE,
-}
 
 
 @pytest.fixture
-def heading_block(block_data):
+def heading_block(block_data, block_text_data):
     def create_heading_data(block_type) -> dict:
-        return block_data(block_type, HEADING_DATA)
+        data = block_text_data
+        data["is_toggleable"] = IS_TOGGLEABLE
+        return block_data(block_type, data)
 
     return create_heading_data
 

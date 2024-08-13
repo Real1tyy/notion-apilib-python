@@ -1,5 +1,5 @@
 from notion_api.data.object import Object, MajorObject
-from .utils.__structures import assert_icon_structure, assert_user_structure, assert_parent_structure
+from __structures.assertions import assert_icon_structure, assert_user_structure, assert_parent_structure
 
 
 def assert_object_data_is_correct(data: Object, expected_data: dict):

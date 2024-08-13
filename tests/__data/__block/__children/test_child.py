@@ -1,19 +1,18 @@
 import pytest
 
-from __block.assertions import assert_block_data_is_correct, create_block_object, assert_serialization_to_json, \
-    extract_block_data
+from __block.assertions import assert_block_data_is_correct
 from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
 from notion_api.data.blocks import ChildPage, ChildDatabase
 
 TITLE = "BEST TITLE"
-CHILD_DATA = {
-    "title": TITLE,
-}
 
 
 @pytest.fixture
 def child_block(block_data):
     def create_child_data(block_type) -> dict:
+        CHILD_DATA = {
+            "title": TITLE,
+        }
         return block_data(block_type, CHILD_DATA)
 
     return create_child_data

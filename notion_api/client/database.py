@@ -59,7 +59,6 @@ class NotionDatabaseProvider:
         """
         database.pages = []
         data = _prepare_query_data(sort=sort, filter=filter)
-        print(data)
         response = self.notion_client.query_database(database.id.hex, data)
         children = _get_children_from_json(response)
         database.pages.extend(map(deserialize_page, children))

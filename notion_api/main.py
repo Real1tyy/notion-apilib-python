@@ -34,11 +34,12 @@ if __name__ == "__main__":
     database_provider = notion.get_database_provider()
     page_provider = notion.get_page_provider()
     block = deserialize_block(DATA)
-    json = block.serialize_to_json()
-    print(json)
-    blocks_provider.create_block(block)
+    # json = block.serialize_to_json()
+    # print(json)
+    # blocks_provider.create_block(block)
 
-    parent = create_parent("page_id", "fa0bec9897ef4abba867f0c16513561c")
+    # parent = create_parent("page_id", "fa0bec9897ef4abba867f0c16513561c")
+    print(database_provider.retrieve_database("97b48d4fece741b395ce37ec64e93346").created_by)
 
     # heading1 = create_basic_heading1(parent, "Heading 1", False)
     # create_and_print(heading1, blocks_provider)

@@ -37,6 +37,4 @@ def assert_serialization_to_json(block, block_type_specific_data):
     property_name = block.__class__.get_payload_property_name()
     assert json["type"] == property_name
     if block_type_specific_data != {}:
-        print(json[property_name])
-        print(block_data)
         assert json[property_name] == block_data
