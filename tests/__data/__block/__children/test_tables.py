@@ -9,7 +9,6 @@ from __structures.assertions import assert_rich_text_structure
 HAS_COLUMN_HEADER = True
 HAS_ROW_HEADER = False
 TABLE_WIDTH = 3
-TABLE_ROW_CONTENT = "Row content"
 TABLE_OF_CONTENTS_COLOR = "gray"
 
 

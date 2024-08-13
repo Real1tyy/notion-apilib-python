@@ -17,3 +17,5 @@ EQUATION_EXPRESSION = "a^2 + b^2 = c^2"
 EMOJI_TYPE = "emoji"
 EMOJI_EMOJI = "🥬"
 MENTION_USER_ID = uuid.UUID("c02fc1d3-db8b-45c5-a222-27595b15aea7")
+ICON_URL = "https://www.notion.so/icons/target_gray.svg"
+ICON_EXPIRY_TIME = datetime(2022, 3, 1, 19, 5, tzinfo=timezone.utc)

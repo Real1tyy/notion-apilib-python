@@ -1,7 +1,5 @@
 import pytest
 from datetime import datetime, timezone
-from typing import Literal
-from functools import partial
 
 from notion_api.data.blocks import File, Image, Pdf, Video
 from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
@@ -11,32 +9,17 @@ from ..__structures.conftest import create_rich_text
 
 # Constants
 RESOURCE_URL = "https://example.com/resource"
-FILE_URL = "https://example.com/file"
+FILE_NAME = "example.pdf"
 EXPIRY_TIME = datetime(2022, 3, 1, 19, 5, 0, tzinfo=timezone.utc)
 DATE_TIME_EXPIRY_TIME = datetime(2022, 3, 1, 19, 5, 0, tzinfo=timezone.utc)
-FILE_NAME = "example_file.txt"
-FILE_TYPE = "file"
-EXTERNAL_TYPE = "external"
 
 
-@pytest.fixture(params=['file', 'external'])
-def resources_block(request, block_data):
-    def create_resources_attributes(block_type, file_type: Literal['file', 'external']) -> dict:
-        resources_data = {
-            "type": file_type,
-        }
-        if file_type == 'external':
-            resources_data["external"] = {
-                "url": RESOURCE_URL,
-            }
-        else:
-            resources_data["file"] = {
-                "url": FILE_URL,
-                "expiry_time": EXPIRY_TIME,
-            }
-        return block_data(block_type, resources_data)
+@pytest.fixture()
+def resources_block(request, block_data, create_resource):
+    def create_resources_attributes(block_type) -> dict:
+        return block_data(block_type, create_resource)
 
-    return partial(create_resources_attributes, file_type=request.param)
+    return create_resources_attributes
 
 
 @pytest.fixture()

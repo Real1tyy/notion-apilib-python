@@ -4,7 +4,6 @@ from ..helper import extract_create_assert_structure, extract_create_assert_seri
 from ...__block.assertions import assert_block_data_is_correct
 from notion_api.data.blocks import BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle, ToDo, BlockType
 from __structures.assertions import assert_rich_text_structure
-from ...__structures.conftest import create_rich_text
 
 # Constants
 IS_CHECKED = True

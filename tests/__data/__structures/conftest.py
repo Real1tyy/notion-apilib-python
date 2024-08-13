@@ -101,3 +101,34 @@ def create_emoji() -> dict:
         "type": "emoji",
         "emoji": EMOJI_EMOJI
     }
+
+
+icon_type = ['external', 'file']
+
+
+@pytest.fixture
+def create_file_object():
+    return {
+        "url": ICON_URL,
+        "expiry_time": ICON_EXPIRY_TIME,
+    }
+
+
+@pytest.fixture
+def create_external():
+    return {
+        "url": ICON_URL,
+    }
+
+
+@pytest.fixture(params=icon_type)
+def create_resource(request, create_emoji, create_file_object, create_external) -> dict:
+    basic_data = {
+        "type": request.param,
+    }
+    match request.param:
+        case "external":
+            basic_data[request.param] = create_external
+        case "file":
+            basic_data[request.param] = create_file_object
+    return basic_data

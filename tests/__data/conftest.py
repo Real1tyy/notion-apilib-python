@@ -1,6 +1,7 @@
 import pytest
 from __data.constants import *
-from __structures.conftest import parent_data, user_data, create_emoji, create_rich_text, text, mention, equation
+from __structures.conftest import parent_data, user_data, create_emoji, create_rich_text, text, mention, equation, \
+    create_resource, create_external, create_file_object
 
 
 @pytest.fixture
@@ -22,17 +23,12 @@ def object_data(parent_data, user_data):
 
 
 @pytest.fixture
-def major_object_data(object_data):
+def major_object_data(object_data, create_resource):
     def return_major_object_data(object_type):
         data = object_data(object_type)
         major_data = {
             "cover": COVER,
-            "icon": {
-                "type": ICON_TYPE,
-                "external": {
-                    "url": ICON_URL
-                }
-            },
+            "icon": create_resource,
             "url": URL,
             "public_url": PUBLIC_URL,
         }

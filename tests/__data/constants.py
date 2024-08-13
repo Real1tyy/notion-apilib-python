@@ -10,7 +10,5 @@ LAST_EDITED_TIME = datetime(2022, 7, 6, 19, 41, tzinfo=timezone.utc)
 CREATED_BY_ID = uuid.UUID("ee5f0f84-409a-440f-983a-a5315961c6e4")
 LAST_EDITED_BY_ID = uuid.UUID("ee5f0f84-409a-440f-983a-a5315961c6e4")
 COVER = None
-ICON_TYPE = "external"
-ICON_URL = "https://www.notion.so/icons/target_gray.svg"
 URL = "https://www.notion.so/1a91e289d5d9470d9e30ff1dfde63c60"
 PUBLIC_URL = None
