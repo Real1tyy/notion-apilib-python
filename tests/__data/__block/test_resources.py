@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from notion_api.data.blocks import File, Image, Pdf, Video
 from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
 from __block.assertions import assert_block_data_is_correct
-from __structures.assertions import assert_rich_text_structure
+from __structures.assertions import assert_rich_text_structure, assert_resources_structure
 from ..__structures.conftest import create_rich_text
 
 # Constants
@@ -48,13 +48,7 @@ def assert_resources_data_is_correct(data, expected_data: dict):
 
     resources_data = getattr(data, f"{block_type.value}")
     expected_resources_data = expected_data[block_type.value]
-
-    match resources_data.type:
-        case "external":
-            assert resources_data.external.url == expected_resources_data["external"]["url"]
-        case "file":
-            assert resources_data.file.url == expected_resources_data["file"]["url"]
-            assert resources_data.file.expiry_time == expected_resources_data["file"]["expiry_time"]
+    assert_resources_structure(resources_data, expected_resources_data)
 
 
 @pytest.mark.parametrize("block_class", [Image, Pdf, Video])

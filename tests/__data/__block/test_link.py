@@ -50,17 +50,23 @@ def assert_embed_or_link_preview_data_is_correct(data, expected_data: dict):
     assert link_data.url == expected_data[block_type.value]["url"]
 
 
-def test_bookmark_block_structure(bookmark_block):
-    extract_create_assert_structure(bookmark_block, Bookmark, assert_bookmark_data_is_correct)
+@pytest.mark.parametrize(
+    "block_fixture, block_class, assert_func", [
+        ("bookmark_block", Bookmark, assert_bookmark_data_is_correct),
+        ("link_block", LinkPreview, assert_embed_or_link_preview_data_is_correct),
+    ]
+)
+def test_block_structure(request, block_fixture, block_class, assert_func):
+    block_data = request.getfixturevalue(block_fixture)
+    extract_create_assert_structure(block_data, block_class, assert_func)
 
 
-def test_link_preview_block_structure(link_block):
-    extract_create_assert_structure(link_block, LinkPreview, assert_embed_or_link_preview_data_is_correct)
-
-
-def test_bookmark_block_serialization(bookmark_block):
-    extract_create_assert_serialization(bookmark_block, Bookmark)
-
-
-def test_link_preview_block_serialization(link_block):
-    extract_create_assert_serialization(link_block, LinkPreview)
+@pytest.mark.parametrize(
+    "block_fixture, block_class", [
+        ("bookmark_block", Bookmark),
+        ("link_block", LinkPreview),
+    ]
+)
+def test_block_serialization(request, block_fixture, block_class):
+    block_data = request.getfixturevalue(block_fixture)
+    extract_create_assert_serialization(block_data, block_class)

@@ -69,7 +69,6 @@ class TemplateMentionDate(BaseModel):
     template_mention_date : str
         The template mention date string.
     """
-    type: str
     template_mention_date: str
 
 
@@ -84,7 +83,6 @@ class TemplateMentionUser(BaseModel):
     template_mention_user : str
         The template mention user string.
     """
-    type: str
     template_mention_user: str
 
 
@@ -102,8 +100,8 @@ class TemplateMention(BaseModel):
         The template mention user object, if any.
     """
     type: str
-    template_mention_date: Optional[TemplateMentionDate] = None
-    template_mention_user: Optional[TemplateMentionUser] = None
+    template_mention_date: Optional[str] = None
+    template_mention_user: Optional[str] = None
 
 
 class UserMention(BaseModel):

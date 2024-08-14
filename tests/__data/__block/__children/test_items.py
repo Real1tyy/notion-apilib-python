@@ -46,21 +46,31 @@ def assert_todo_data_is_correct(data: ToDo, expected_data):
     assert todo_data.checked == expected_data["to_do"]["checked"]
 
 
-@pytest.mark.parametrize("block_class", [BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle])
-def test_item_block_structure(block_class, item_block):
-    extract_create_assert_structure(item_block, block_class, assert_item_data_is_correct)
+@pytest.mark.parametrize(
+    "block_fixture, block_class, assert_func", [
+        ("item_block", BulletedListItem, assert_item_data_is_correct),
+        ("item_block", NumberedListItem, assert_item_data_is_correct),
+        ("item_block", Paragraph, assert_item_data_is_correct),
+        ("item_block", Quote, assert_item_data_is_correct),
+        ("item_block", Toggle, assert_item_data_is_correct),
+        ("todo_block", ToDo, assert_todo_data_is_correct),
+    ]
+)
+def test_block_structure(request, block_fixture, block_class, assert_func):
+    block_data = request.getfixturevalue(block_fixture)
+    extract_create_assert_structure(block_data, block_class, assert_func)
 
 
-@pytest.mark.parametrize("block_class", [ToDo])
-def test_todo_block_structure(block_class, todo_block):
-    extract_create_assert_structure(todo_block, block_class, assert_todo_data_is_correct)
-
-
-@pytest.mark.parametrize("block_class", [BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle])
-def test_item_block_serialization(block_class, item_block):
-    extract_create_assert_serialization(item_block, block_class)
-
-
-@pytest.mark.parametrize("block_class", [ToDo, ])
-def test_todo_block_serialization(block_class, todo_block):
-    extract_create_assert_serialization(todo_block, block_class)
+@pytest.mark.parametrize(
+    "block_fixture, block_class", [
+        ("item_block", BulletedListItem),
+        ("item_block", NumberedListItem),
+        ("item_block", Paragraph),
+        ("item_block", Quote),
+        ("item_block", Toggle),
+        ("todo_block", ToDo),
+    ]
+)
+def test_block_serialization(request, block_fixture, block_class):
+    block_data = request.getfixturevalue(block_fixture)
+    extract_create_assert_serialization(block_data, block_class)

@@ -52,17 +52,23 @@ def assert_synced_block_data_is_correct(data: SyncedBlock, expected_data: dict):
     assert synced_block_data.children == expected_synced_block_data["children"]
 
 
-def test_callout_block_structure(callout_block):
-    extract_create_assert_structure(callout_block, Callout, assert_callout_data_is_correct)
+@pytest.mark.parametrize(
+    "block_fixture, block_class, assert_func", [
+        ("callout_block", Callout, assert_callout_data_is_correct),
+        ("synced_block", SyncedBlock, assert_synced_block_data_is_correct),
+    ]
+)
+def test_block_structure(request, block_fixture, block_class, assert_func):
+    block_data = request.getfixturevalue(block_fixture)
+    extract_create_assert_structure(block_data, block_class, assert_func)
 
 
-def test_synced_block_structure(synced_block):
-    extract_create_assert_structure(synced_block, SyncedBlock, assert_synced_block_data_is_correct)
-
-
-def test_callout_block_serialization(callout_block):
-    extract_create_assert_serialization(callout_block, Callout)
-
-
-def test_synced_block_serialization(synced_block):
-    extract_create_assert_serialization(synced_block, SyncedBlock)
+@pytest.mark.parametrize(
+    "block_fixture, block_class", [
+        ("callout_block", Callout),
+        ("synced_block", SyncedBlock),
+    ]
+)
+def test_block_serialization(request, block_fixture, block_class):
+    block_data = request.getfixturevalue(block_fixture)
+    extract_create_assert_serialization(block_data, block_class)

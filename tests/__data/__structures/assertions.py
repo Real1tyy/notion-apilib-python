@@ -13,18 +13,9 @@ def assert_template_mention_structure(template_mention, expected_template_mentio
     assert template_mention.type == expected_template_mention["type"]
     match template_mention.type:
         case "template_mention_date":
-            assert template_mention.template_mention_date.type == expected_template_mention["template_mention_date"][
-                "type"]
-            assert template_mention.template_mention_user.template_mention_date == expected_template_mention[
-                "template_mention_date"][
-                "template_mention_date"]
-
+            assert template_mention.template_mention_date == expected_template_mention["template_mention_date"]
         case "template_mention_user":
-            assert template_mention.template_mention_user.type == expected_template_mention["template_mention_user"][
-                "type"]
-            assert template_mention.template_mention_user.template_mention_user == expected_template_mention[
-                "template_mention_user"][
-                "template_mention_user"]
+            assert template_mention.template_mention_user == expected_template_mention["template_mention_user"]
 
 
 def assert_mention_structure(mention, expected_mention: dict):
@@ -94,3 +85,12 @@ def assert_parent_structure(parent, expected_parent: dict):
             assert parent.workspace
         case "block_id":
             assert parent.block_id == expected_parent["block_id"]
+
+
+def assert_resources_structure(resources, expected_resources: dict):
+    match resources.type:
+        case "external":
+            assert resources.external.url == expected_resources["external"]["url"]
+        case "file":
+            assert resources.file.url == expected_resources["file"]["url"]
+            assert resources.file.expiry_time == expected_resources["file"]["expiry_time"]

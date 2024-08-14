@@ -1,20 +1,20 @@
 import pytest
 from __data.constants import *
-from __structures.conftest import parent_data, user_data, create_emoji, create_rich_text, text, mention, equation, \
-    create_resource, create_external, create_file_object
+from __structures.conftest import create_parent_data, create_user_data, create_emoji, create_rich_text, create_text, \
+    create_mention, create_equation, create_resource, create_external, create_file_object
 
 
 @pytest.fixture
-def object_data(parent_data, user_data):
+def object_data(create_parent_data, create_user_data):
     def return_object_data(object_type):
         return {
             "object": object_type,
             "id": OBJECT_ID,
-            "parent": parent_data,
+            "parent": create_parent_data,
             "created_time": CREATED_TIME,
             "last_edited_time": LAST_EDITED_TIME,
-            "created_by": user_data,
-            "last_edited_by": user_data,
+            "created_by": create_user_data,
+            "last_edited_by": create_user_data,
             "archived": False,
             "in_trash": False
         }

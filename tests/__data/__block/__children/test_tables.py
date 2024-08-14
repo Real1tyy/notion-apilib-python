@@ -79,33 +79,27 @@ def assert_column_data_is_correct(data: Column, expected_data: dict):
     assert_block_data_is_correct(data, expected_data)
 
 
-def test_table_block_structure(table_block):
-    extract_create_assert_structure(table_block, Table, assert_table_data_is_correct)
+@pytest.mark.parametrize(
+    "block_fixture, block_class, assert_func", [
+        ("table_block", Table, assert_table_data_is_correct),
+        ("table_row_block", TableRow, assert_table_row_data_is_correct),
+        ("table_of_contents_block", TableOfContents, assert_table_of_contents_data_is_correct),
+        ("column_block", Column, assert_column_data_is_correct),
+    ]
+)
+def test_block_structure(request, block_fixture, block_class, assert_func):
+    block_data = request.getfixturevalue(block_fixture)
+    extract_create_assert_structure(block_data, block_class, assert_func)
 
 
-def test_table_row_block_structure(table_row_block):
-    extract_create_assert_structure(table_row_block, TableRow, assert_table_row_data_is_correct)
-
-
-def test_table_of_contents_block_structure(table_of_contents_block):
-    extract_create_assert_structure(table_of_contents_block, TableOfContents, assert_table_of_contents_data_is_correct)
-
-
-def test_column_block_structure(column_block):
-    extract_create_assert_structure(column_block, Column, assert_column_data_is_correct)
-
-
-def test_table_block_serialization(table_block):
-    extract_create_assert_serialization(table_block, Table)
-
-
-def test_table_row_block_serialization(table_row_block):
-    extract_create_assert_serialization(table_row_block, TableRow)
-
-
-def test_table_of_contents_block_serialization(table_of_contents_block):
-    extract_create_assert_serialization(table_of_contents_block, TableOfContents)
-
-
-def test_column_block_serialization(column_block):
-    extract_create_assert_serialization(column_block, Column)
+@pytest.mark.parametrize(
+    "block_fixture, block_class", [
+        ("table_block", Table),
+        ("table_row_block", TableRow),
+        ("table_of_contents_block", TableOfContents),
+        ("column_block", Column),
+    ]
+)
+def test_block_serialization(request, block_fixture, block_class):
+    block_data = request.getfixturevalue(block_fixture)
+    extract_create_assert_serialization(block_data, block_class)

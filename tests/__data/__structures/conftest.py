@@ -1,14 +1,27 @@
 import pytest
 from .constants import *
+from .__rich_text import (create_rich_text, create_text, create_mention, create_equation, create_template_mention_date, \
+                          create_template_mention_user, create_template_mention, create_user_mention,
+                          create_extensive_mention,
+                          create_page_mention, create_link_preview_mention, create_date_mention,
+                          create_database_mention, create_extensive_rich_text)
 
-parent_types = ['page_id', 'workspace']
+
+@pytest.fixture(params=HREF_OPTIONS)
+def create_href(request):
+    return request.param
 
 
-# parent_types = ['page_id', 'database_id', 'block_id', 'workspace']
+@pytest.fixture()
+def create_parent_data(request):
+    return {
+        "type": "page_id",
+        "page_id": PARENT_PAGE_ID,
+    }
 
 
-@pytest.fixture(params=parent_types)
-def parent_data(request):
+@pytest.fixture(params=PARENT_TYPES)
+def create_extensive_parent_data(request):
     basic_data = {
         "type": request.param,
     }
@@ -24,75 +37,26 @@ def parent_data(request):
     return basic_data
 
 
-# user_types = ['person', 'bot']
-user_types = ['person']
-
-
-@pytest.fixture(params=user_types)
-def user_data(request):
+@pytest.fixture()
+def create_user_data(request):
     return {
         'object': 'user',
         "id": USER_ID,
-        "type": request.param,
+        "type": "person",
         "name": USER_NAME,
         "avatar_url": USER_AVATAR_URL,
     }
 
 
-rich_text_type = ['text', 'mention', 'equation']
-
-
-@pytest.fixture
-def text():
+@pytest.fixture(params=USER_TYPES)
+def create_extensive_user_data(request, create_href):
     return {
-        "content": RICH_TEXT_CONTENT,
-        "link": {
-            "url": TEXT_LINK,
-        }
-    }
-
-
-@pytest.fixture
-def equation():
-    return {
-        "expression": EQUATION_EXPRESSION,
-    }
-
-
-@pytest.fixture
-def mention():
-    return {
-        "type": "user",
-        "user": {
-            "object": "user",
-            "id": MENTION_USER_ID,
-        }
-    }
-
-
-@pytest.fixture(params=rich_text_type)
-def create_rich_text(request, text, equation, mention) -> list[dict]:
-    basic_data = {
+        'object': 'user',
+        "id": USER_ID,
         "type": request.param,
-        "annotations": {
-            "bold": False,
-            "italic": False,
-            "strikethrough": False,
-            "underline": False,
-            "code": False,
-            "color": RICH_TEXT_COLOR
-        },
-        "plain_text": RICH_TEXT_CONTENT,
-        "href": None
+        "name": USER_NAME,
+        "avatar_url": create_href,
     }
-    match request.param:
-        case "text":
-            basic_data[request.param] = text
-        case "mention":
-            basic_data[request.param] = mention
-        case "equation":
-            basic_data[request.param] = equation
-    return [basic_data]
 
 
 @pytest.fixture
@@ -101,9 +65,6 @@ def create_emoji() -> dict:
         "type": "emoji",
         "emoji": EMOJI_EMOJI
     }
-
-
-icon_type = ['external', 'file']
 
 
 @pytest.fixture
@@ -121,7 +82,7 @@ def create_external():
     }
 
 
-@pytest.fixture(params=icon_type)
+@pytest.fixture(params=RESOURCE_TYPE)
 def create_resource(request, create_emoji, create_file_object, create_external) -> dict:
     basic_data = {
         "type": request.param,
