@@ -46,7 +46,7 @@ class NumberDatabase(DatabaseProperty):
         return PropertyType.NUMBER
 
 
-class UniqueIdStructure(BaseModel):
+class UniqueIdPageStructure(BaseModel):
     """
     A model representing the structure for a unique ID property.
 
@@ -63,13 +63,17 @@ class UniqueIdPage(PageProperty):
     A model representing a unique ID property for a page.
 
     Attributes:
-        unique_id (UniqueIdStructure): The unique ID structure of the page property.
+        unique_id (UniqueIdPageStructure): The unique ID structure of the page property.
     """
-    unique_id: UniqueIdStructure
+    unique_id: UniqueIdPageStructure
 
     @classmethod
     def get_associated_property_type(cls) -> PropertyType:
         return PropertyType.UNIQUE_ID
+
+
+class UniqueIdDatabaseStructure(BaseModel):
+    prefix: Optional[str]
 
 
 class UniqueIdDatabase(DatabaseProperty):
@@ -79,7 +83,7 @@ class UniqueIdDatabase(DatabaseProperty):
     Attributes:
         unique_id (dict[str, Any]): The dictionary representing the unique ID property for the database.
     """
-    unique_id: dict[str, Any]
+    unique_id: UniqueIdDatabaseStructure
 
     @classmethod
     def get_associated_property_type(cls) -> PropertyType:

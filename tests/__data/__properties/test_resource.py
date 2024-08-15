@@ -1,125 +1,155 @@
-# Standard Library
-from typing import Any
+import pytest
 
-# Third Party
-from _properties.property import DatabaseProperty, PageProperty
-from structures import ResourcesAttributes
-from _properties.type_ import PropertyType
+from __structures.assertions import assert_resources_structure
+from .helper import extract_create_assert_structure, extract_create_assert_serialization
+from .assertions import assert_properties_data_is_correct
+from notion_api.data.properties import EmailPage, EmailDatabase, FilesPage, FilesDatabase, PhoneNumberPage, \
+    PhoneNumberDatabase, UrlPage, UrlDatabase
 
+# Constants for Email Properties
+EMAIL_VALUE = "example@example.com"
 
-class EmailPage(PageProperty):
-    """
-    A model representing an email property for a page.
+# Constants for Phone Number Properties
+PHONE_NUMBER_VALUE = "+1234567890"
 
-    Attributes:
-        email (str): The email value of the page property.
-    """
-    email: str
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.EMAIL
+# Constants for URL Properties
+URL_VALUE = "https://example.com"
 
 
-class EmailDatabase(DatabaseProperty):
-    """
-    A model representing an email property for a database.
+@pytest.fixture
+def email_page(property_data):
+    def create_email_page(property_type):
+        return property_data(property_type, EMAIL_VALUE)
 
-    Attributes:
-        email (dict[str, Any]): The dictionary representing the email property for the database.
-    """
-    email: dict[str, Any]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.EMAIL
+    return create_email_page
 
 
-class FilesPage(PageProperty):
-    """
-    A model representing a files property for a page.
+@pytest.fixture
+def email_database(property_data):
+    def create_email_database(property_type):
+        return property_data(property_type, {})
 
-    Attributes:
-        files (list[ResourcesAttributes]): The list of files for the page property.
-    """
-    files: list[ResourcesAttributes]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.FILES
+    return create_email_database
 
 
-class FilesDatabase(DatabaseProperty):
-    """
-    A model representing a files property for a database.
+@pytest.fixture
+def files_page(property_data, create_resource):
+    def create_files_page(property_type):
+        return property_data(property_type, [create_resource])
 
-    Attributes:
-        files (dict[str, Any]): The dictionary representing the files property for the database.
-    """
-    files: dict[str, Any]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.FILES
+    return create_files_page
 
 
-class PhoneNumberPage(PageProperty):
-    """
-    A model representing a phone number property for a page.
+@pytest.fixture
+def files_database(property_data):
+    def create_files_database(property_type):
+        return property_data(property_type, {})
 
-    Attributes:
-        phone_number (str): The phone number value of the page property.
-    """
-    phone_number: str
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.PHONE_NUMBER
+    return create_files_database
 
 
-class PhoneNumberDatabase(DatabaseProperty):
-    """
-    A model representing a phone number property for a database.
+@pytest.fixture
+def phone_number_page(property_data):
+    def create_phone_number_page(property_type):
+        return property_data(property_type, PHONE_NUMBER_VALUE)
 
-    Attributes:
-        phone_number (dict[str, Any]): The dictionary representing the phone number property for the database.
-    """
-    phone_number: dict[str, Any]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.PHONE_NUMBER
+    return create_phone_number_page
 
 
-class UrlPage(PageProperty):
-    """
-    A model representing a URL property for a page.
+@pytest.fixture
+def phone_number_database(property_data):
+    def create_phone_number_database(property_type):
+        return property_data(property_type, {})
 
-    Attributes:
-        url (str): The URL value of the page property.
-    """
-    url: str
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.URL
+    return create_phone_number_database
 
 
-class UrlDatabase(DatabaseProperty):
-    """
-    A model representing a URL property for a database.
+@pytest.fixture
+def url_page(property_data):
+    def create_url_page(property_type):
+        return property_data(property_type, URL_VALUE)
 
-    Attributes:
-        url (dict[str, Any]): The dictionary representing the URL property for the database.
-    """
-    url: dict[str, Any]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.URL
+    return create_url_page
 
 
-__all__ = [
-    'EmailPage', 'EmailDatabase', 'FilesPage', 'FilesDatabase', 'PhoneNumberPage', 'PhoneNumberDatabase', 'UrlPage',
-    'UrlDatabase'
-]
+@pytest.fixture
+def url_database(property_data):
+    def create_url_database(property_type):
+        return property_data(property_type, {})
+
+    return create_url_database
+
+
+def assert_email_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.email == expected_data["email"]
+
+
+def assert_email_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.email == expected_data["email"]
+
+
+def assert_files_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    files = data.files
+    expected_files = expected_data["files"]
+    for file, expected_file in zip(files, expected_files):
+        assert_resources_structure(file, expected_file)
+
+
+def assert_files_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.files == expected_data["files"]
+
+
+def assert_phone_number_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.phone_number == expected_data["phone_number"]
+
+
+def assert_phone_number_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.phone_number == expected_data["phone_number"]
+
+
+def assert_url_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.url == expected_data["url"]
+
+
+def assert_url_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.url == expected_data["url"]
+
+
+@pytest.mark.parametrize(
+    "property_fixture, property_class, assert_func", [
+        ("email_page", EmailPage, assert_email_page_is_correct),
+        ("email_database", EmailDatabase, assert_email_database_is_correct),
+        ("files_page", FilesPage, assert_files_page_is_correct),
+        ("files_database", FilesDatabase, assert_files_database_is_correct),
+        ("phone_number_page", PhoneNumberPage, assert_phone_number_page_is_correct),
+        ("phone_number_database", PhoneNumberDatabase, assert_phone_number_database_is_correct),
+        ("url_page", UrlPage, assert_url_page_is_correct),
+        ("url_database", UrlDatabase, assert_url_database_is_correct),
+    ]
+)
+def test_property_structure(request, property_fixture, property_class, assert_func):
+    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+
+
+@pytest.mark.parametrize(
+    "property_fixture, property_class", [
+        ("email_page", EmailPage),
+        ("email_database", EmailDatabase),
+        ("files_page", FilesPage),
+        ("files_database", FilesDatabase),
+        ("phone_number_page", PhoneNumberPage),
+        ("phone_number_database", PhoneNumberDatabase),
+        ("url_page", UrlPage),
+        ("url_database", UrlDatabase),
+    ]
+)
+def test_property_serialization(request, property_fixture, property_class):
+    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)

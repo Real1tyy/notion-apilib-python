@@ -1,89 +1,115 @@
-# Standard Library
-from typing import Any, Optional
+import pytest
+from datetime import datetime
+from .helper import extract_create_assert_structure, extract_create_assert_serialization
+from .assertions import assert_properties_data_is_correct
+from notion_api.data.properties import NumberPage, NumberDatabase, UniqueIdPage, UniqueIdDatabase
 
-from pydantic import BaseModel
+# Constants for Number Properties
+NUMBER_VALUE = 123.45
+NUMBER_FORMAT = "currency"
 
-# Third Party
-from _properties.property import DatabaseProperty, PageProperty
-from _properties.type_ import PropertyType
-
-
-class NumberPage(PageProperty):
-    """
-    A model representing a number property for a page.
-
-    Attributes:
-        number (float): The number value of the page property.
-    """
-    number: float
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.NUMBER
+# Constants for Unique ID Properties
+UNIQUE_ID_NUMBER = 98765.4321
+UNIQUE_ID_PREFIX_OPTIONS = ["ID-", None]
 
 
-class NumberStructure(BaseModel):
-    """
-    A model representing the structure for a number property in a database.
+@pytest.fixture
+def number_page(property_data):
+    def create_number_page(property_type):
+        return property_data(property_type, NUMBER_VALUE)
 
-    Attributes:
-        format (str): The format of the number.
-    """
-    format: str
+    return create_number_page
 
 
-class NumberDatabase(DatabaseProperty):
-    """
-    A model representing a number property for a database.
+@pytest.fixture
+def number_database(property_data):
+    def create_number_database(property_type):
+        NUMBER_DATABASE_DATA = {
+            "format": NUMBER_FORMAT,
+        }
+        return property_data(property_type, NUMBER_DATABASE_DATA)
 
-    Attributes:
-        number (NumberStructure): The structure of the number property.
-    """
-    number: NumberStructure
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.NUMBER
+    return create_number_database
 
 
-class UniqueIdStructure(BaseModel):
-    """
-    A model representing the structure for a unique ID property.
+@pytest.fixture(params=UNIQUE_ID_PREFIX_OPTIONS)
+def unique_id_page(request, property_data):
+    def create_unique_id_page(property_type):
+        UNIQUE_ID_PAGE_DATA = {
+            "number": UNIQUE_ID_NUMBER,
+            "prefix": request.param,
+        }
+        return property_data(property_type, UNIQUE_ID_PAGE_DATA)
 
-    Attributes:
-        number (float): The number value of the unique ID.
-        prefix (Optional[str]): The optional prefix of the unique ID.
-    """
-    number: float
-    prefix: Optional[str] = None
-
-
-class UniqueIdPage(PageProperty):
-    """
-    A model representing a unique ID property for a page.
-
-    Attributes:
-        unique_id (UniqueIdStructure): The unique ID structure of the page property.
-    """
-    unique_id: UniqueIdStructure
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.UNIQUE_ID
+    return create_unique_id_page
 
 
-class UniqueIdDatabase(DatabaseProperty):
-    """
-    A model representing a unique ID property for a database.
+@pytest.fixture(params=UNIQUE_ID_PREFIX_OPTIONS)
+def unique_id_database(request, property_data):
+    def create_unique_id_database(property_type):
+        UNIQUE_ID_DATABASE_DATA = {
+            "prefix": request.param,
+        }
+        return property_data(property_type, UNIQUE_ID_DATABASE_DATA)
 
-    Attributes:
-        unique_id (dict[str, Any]): The dictionary representing the unique ID property for the database.
-    """
-    unique_id: dict[str, Any]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.UNIQUE_ID
+    return create_unique_id_database
 
 
-__all__ = ["NumberPage", "NumberDatabase", "UniqueIdPage", "UniqueIdDatabase"]
+def assert_number_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.number == expected_data["number"]
+
+
+def assert_number_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    expected_data = expected_data["number"]
+    assert data.number.format == expected_data["format"]
+
+
+def assert_unique_id_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    expected_data = expected_data["unique_id"]
+    assert data.unique_id.number == expected_data["number"]
+    assert data.unique_id.prefix == expected_data["prefix"]
+
+
+def assert_unique_id_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    expected_data = expected_data["unique_id"]
+    assert data.unique_id.prefix == expected_data["prefix"]
+
+
+@pytest.mark.parametrize(
+    "property_fixture, property_class, assert_func", [
+        ("number_page", NumberPage, assert_number_page_is_correct),
+        ("number_database", NumberDatabase, assert_number_database_is_correct),
+    ]
+)
+def test_number_property_structure(request, property_fixture, property_class, assert_func):
+    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+
+
+def test_unique_id_page_structure(unique_id_page):
+    extract_create_assert_structure(unique_id_page, UniqueIdPage, assert_unique_id_page_is_correct)
+
+
+def test_unique_id_page_serialization(unique_id_page):
+    extract_create_assert_serialization(unique_id_page, UniqueIdPage)
+
+
+@pytest.mark.parametrize(
+    "property_fixture, property_class", [
+        ("number_page", NumberPage),
+        ("number_database", NumberDatabase),
+    ]
+)
+def test_number_property_serialization(request, property_fixture, property_class):
+    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)
+
+
+def test_unique_id_database_structure(unique_id_database):
+    extract_create_assert_structure(unique_id_database, UniqueIdDatabase, assert_unique_id_database_is_correct)
+
+
+def test_unique_id_database_serialization(unique_id_database):
+    extract_create_assert_serialization(unique_id_database, UniqueIdDatabase)

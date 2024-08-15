@@ -1,5 +1,6 @@
 # Standard Library
 from typing import Any
+from uuid import UUID
 
 from pydantic import BaseModel, Field
 
@@ -36,7 +37,7 @@ class CheckboxDatabase(DatabaseProperty):
         return PropertyType.CHECKBOX
 
 
-class Option(BaseModel):
+class OptionPage(BaseModel):
     """
     A model representing an option for multi-select and select _properties.
 
@@ -45,19 +46,43 @@ class Option(BaseModel):
         name (str): The name of the option.
         color (str): The color of the option.
     """
-    id: str = Field(exclude=True)
+    id: UUID = Field(exclude=True)
     name: str
     color: str = Field(exclude=True)
 
 
-class OptionStructure(BaseModel):
+class OptionDatabase(BaseModel):
+    """
+    A model representing an option for multi-select and select _properties.
+
+    Attributes:
+        id (str): The ID of the option.
+        name (str): The name of the option.
+        color (str): The color of the option.
+    """
+    id: UUID = Field(exclude=True)
+    name: str
+    color: str
+
+
+class OptionStructurePage(BaseModel):
     """
     A model representing the structure for multi-select options.
 
     Attributes:
-        options (list[Option]): A list of options for the multi-select property.
+        options (list[OptionPage]): A list of options for the multi-select property.
     """
-    options: list[Option]
+    options: list[OptionPage]
+
+
+class OptionStructureDatabase(BaseModel):
+    """
+    A model representing the structure for multi-select options.
+
+    Attributes:
+        options (list[OptionPage]): A list of options for the multi-select property.
+    """
+    options: list[OptionDatabase]
 
 
 class MultiSelectPage(PageProperty):
@@ -65,9 +90,9 @@ class MultiSelectPage(PageProperty):
     A model representing a multi-select property for a page.
 
     Attributes:
-        multi_select (OptionStructure): The multi-select structure of the page property.
+        multi_select (OptionStructurePage): The multi-select structure of the page property.
     """
-    multi_select: OptionStructure
+    multi_select: OptionStructurePage
 
     @classmethod
     def get_associated_property_type(cls) -> PropertyType:
@@ -79,9 +104,9 @@ class MultiSelectDatabase(DatabaseProperty):
     A model representing a multi-select property for a database.
 
     Attributes:
-        multi_select (OptionStructure): The multi-select structure of the database property.
+        multi_select (OptionStructurePage): The multi-select structure of the database property.
     """
-    multi_select: OptionStructure
+    multi_select: OptionStructureDatabase
 
     @classmethod
     def get_associated_property_type(cls) -> PropertyType:
@@ -93,9 +118,9 @@ class SelectPage(PageProperty):
     A model representing a select property for a page.
 
     Attributes:
-        select (Option): The select structure of the page property.
+        select (OptionPage): The select structure of the page property.
     """
-    select: Option
+    select: OptionPage
 
     @classmethod
     def get_associated_property_type(cls) -> PropertyType:
@@ -107,23 +132,23 @@ class SelectDatabase(DatabaseProperty):
     A model representing a select property for a database.
 
     Attributes:
-        select (OptionStructure): The select structure of the database property.
+        select (OptionStructurePage): The select structure of the database property.
     """
-    select: OptionStructure
+    select: OptionStructureDatabase
 
     @classmethod
     def get_associated_property_type(cls) -> PropertyType:
         return PropertyType.SELECT
 
 
-class Group(Option):
+class Group(OptionDatabase):
     """
     A model representing a group of options for status _properties.
 
     Attributes:
         option_ids (list[str]): A list of option IDs in the group.
     """
-    option_ids: list[str]
+    option_ids: list[UUID]
 
 
 class StatusDatabaseStructure(BaseModel):
@@ -131,11 +156,11 @@ class StatusDatabaseStructure(BaseModel):
     A model representing the structure for status _properties in a database.
 
     Attributes:
-        options (list[Option]): A list of options for the status property.
+        options (list[OptionPage]): A list of options for the status property.
         groups (list[Group]): A list of groups for the status property.
     """
-    options: list[Option] = Field(exclude=True)
-    groups: list[Group] = Field(exclude=True)
+    options: list[OptionDatabase]
+    groups: list[Group]
 
 
 class StatusPage(PageProperty):
@@ -143,9 +168,9 @@ class StatusPage(PageProperty):
     A model representing a status property for a page.
 
     Attributes:
-        status (Option): The status structure of the page property.
+        status (OptionPage): The status structure of the page property.
     """
-    status: Option
+    status: OptionPage
 
     @classmethod
     def get_associated_property_type(cls) -> PropertyType:

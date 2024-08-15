@@ -2,7 +2,7 @@ from typing import Optional
 
 from data.database import Database
 from _properties._factory.general import _create_page_property, _create_database_property
-from _properties._data.number import UniqueIdPage, UniqueIdStructure, NumberPage, UniqueIdDatabase, NumberDatabase, \
+from _properties._data.number import UniqueIdPage, UniqueIdPageStructure, NumberPage, UniqueIdDatabase, NumberDatabase, \
     NumberStructure
 from data.page import Page
 
@@ -67,7 +67,7 @@ def create_unique_id_page(
         UniqueIdPage,
         parent=parent,
         name=name,
-        property_specific_params=UniqueIdStructure(number=number, prefix=prefix)
+        property_specific_params=UniqueIdPageStructure(number=number, prefix=prefix)
     )
 
 

@@ -12,3 +12,4 @@ LAST_EDITED_BY_ID = uuid.UUID("ee5f0f84-409a-440f-983a-a5315961c6e4")
 COVER = None
 URL = "https://www.notion.so/1a91e289d5d9470d9e30ff1dfde63c60"
 PUBLIC_URL = None
+OBJECT_TYPES = ["page", "database", "block", "workspace"]

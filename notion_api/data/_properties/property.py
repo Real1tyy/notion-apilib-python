@@ -1,15 +1,17 @@
 # Standard Library
 from abc import ABC, abstractmethod
 from typing import Literal, Any
+from uuid import UUID
 
 from pydantic import BaseModel, Field
 
 # Third Party
 from _properties.type_ import PropertyType
+from configuration import BasicConfiguration
 from sort import PropertySort
 
 
-class Property(ABC, BaseModel, from_attributes=True, use_enum_values=True, arbitrary_types_allowed=True):
+class Property(BasicConfiguration, ABC):
     """
     Abstract base class representing a property in the Notion API.
 
@@ -22,7 +24,7 @@ class Property(ABC, BaseModel, from_attributes=True, use_enum_values=True, arbit
     name : str
         The name of the property (excluded from serialization).
     """
-    id: str = Field(exclude=True)
+    id: UUID = Field(exclude=True)
     type: PropertyType = Field(exclude=True)
     name: str = Field(exclude=True)
 
@@ -48,6 +50,9 @@ class Property(ABC, BaseModel, from_attributes=True, use_enum_values=True, arbit
         """
         return cls.get_associated_property_type().value
 
+    def serialize_to_json(self):
+        return self.model_dump(mode='json', exclude_none=True)
+
 
 class PageProperty(Property, ABC):
     """
@@ -70,4 +75,4 @@ class DatabaseProperty(Property, ABC):
 
 
 __all__ = [
-    'PageProperty', 'DatabaseProperty', 'PropertyType']
+    'PageProperty', 'DatabaseProperty', 'PropertyType', 'Property']

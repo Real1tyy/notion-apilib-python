@@ -1,76 +1,82 @@
-# Standard Library
-from typing import Any
+import pytest
 
-# Third Party
-from _properties.property import DatabaseProperty, PageProperty
-from structures import RichText
-from _properties.type_ import PropertyType
-
-
-class RichTextPage(PageProperty):
-    """
-    A model representing a rich text property for a page.
-
-    Attributes:
-        rich_text (list[RichText]): The rich text content of the page property.
-    """
-    rich_text: list[RichText]
-
-    def change_text(self, text: str):
-        """
-        Change the text of the first rich text element.
-
-        Parameters:
-            text (str): The new text to set.
-        """
-        if len(self.rich_text) > 0:
-            self.rich_text[0].change_text(text)
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.RICH_TEXT
+from __structures.assertions import assert_rich_text_structure
+from .helper import extract_create_assert_structure, extract_create_assert_serialization
+from .assertions import assert_properties_data_is_correct
+from notion_api.data.properties import RichTextPage, RichTextDatabase, TitlePage, TitleDatabase
 
 
-class RichTextDatabase(DatabaseProperty):
-    """
-    A model representing a rich text property for a database.
+@pytest.fixture
+def rich_text_page(property_data, create_rich_text):
+    def create_rich_text_page(property_type):
+        return property_data(property_type, create_rich_text)
 
-    Attributes:
-        rich_text (dict[str, Any]): The dictionary representing the rich text property for the database.
-    """
-    rich_text: dict[str, Any]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.RICH_TEXT
+    return create_rich_text_page
 
 
-class TitlePage(PageProperty):
-    """
-    A model representing a title property for a page.
+@pytest.fixture
+def rich_text_database(property_data):
+    def create_rich_text_database(property_type):
+        return property_data(property_type, {})
 
-    Attributes:
-        title (list[RichText]): The title content of the page property.
-    """
-    title: list[RichText]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.TITLE
+    return create_rich_text_database
 
 
-class TitleDatabase(DatabaseProperty):
-    """
-    A model representing a title property for a database.
+@pytest.fixture
+def title_page(property_data, create_rich_text):
+    def create_title_page(property_type):
+        return property_data(property_type, create_rich_text)
 
-    Attributes:
-        title (dict[str, Any]): The dictionary representing the title property for the database.
-    """
-    title: dict[str, Any]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.TITLE
+    return create_title_page
 
 
-__all__ = ["RichTextPage", "RichTextDatabase", "TitlePage", "TitleDatabase"]
+@pytest.fixture
+def title_database(property_data):
+    def create_title_database(property_type):
+        return property_data(property_type, {})
+
+    return create_title_database
+
+
+def assert_rich_text_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert_rich_text_structure(data.rich_text, expected_data["rich_text"])
+
+
+def assert_rich_text_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.rich_text == expected_data["rich_text"]
+
+
+def assert_title_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert_rich_text_structure(data.title, expected_data["title"])
+
+
+def assert_title_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.title == expected_data["title"]
+
+
+@pytest.mark.parametrize(
+    "property_fixture, property_class, assert_func", [
+        ("rich_text_page", RichTextPage, assert_rich_text_page_is_correct),
+        ("rich_text_database", RichTextDatabase, assert_rich_text_database_is_correct),
+        ("title_page", TitlePage, assert_title_page_is_correct),
+        ("title_database", TitleDatabase, assert_title_database_is_correct),
+    ]
+)
+def test_property_structure(request, property_fixture, property_class, assert_func):
+    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+
+
+@pytest.mark.parametrize(
+    "property_fixture, property_class", [
+        ("rich_text_page", RichTextPage),
+        ("rich_text_database", RichTextDatabase),
+        ("title_page", TitlePage),
+        ("title_database", TitleDatabase),
+    ]
+)
+def test_property_serialization(request, property_fixture, property_class):
+    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)

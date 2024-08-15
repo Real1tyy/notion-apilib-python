@@ -65,6 +65,7 @@ class RelationDatabaseStructure(BaseModel):
         single_property (Optional[SingleProperty]): The optional single property structure.
     """
     database_id: UUID
+    type: Literal['dual_property', 'single_property']
     dual_property: Optional[DualProperty] = None
     single_property: Optional[SingleProperty] = None
 

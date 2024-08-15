@@ -1,54 +1,63 @@
 # Standard Library
-from datetime import datetime
-from typing import Any, Optional
+from datetime import datetime, timezone
 
-# Third Party
-from _properties.property import DatabaseProperty, PageProperty
-from pydantic import BaseModel
+import pytest
 
-from _properties.type_ import PropertyType
+from .helper import extract_create_assert_structure, extract_create_assert_serialization
+from .assertions import assert_properties_data_is_correct
+from notion_api.data.properties import DatePage, DateDatabase
 
-
-class DateStructure(BaseModel):
-    """
-    A model representing a date structure with a start datetime, optional end datetime, and optional time zone.
-
-    Attributes:
-        start (datetime): The start datetime of the date structure.
-        end (Optional[datetime]): The optional end datetime of the date structure.
-        time_zone (Optional[str]): The optional time zone of the date structure.
-    """
-    end: Optional[datetime]
-    start: datetime
-    time_zone: Optional[str]
+START = datetime(2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+END_OPTIONS = [datetime(2021, 1, 1, 0, 0, 0, tzinfo=timezone.utc), None]
+TIME_ZONE_OPTIONS = ["America/New_York", None]
 
 
-class DatePage(PageProperty):
-    """
-    A model representing a date property for a page.
+@pytest.fixture(params=[(end, tz) for end in END_OPTIONS for tz in TIME_ZONE_OPTIONS])
+def date_page(request, property_data):
+    def create_page_database(property_type):
+        end, time_zone = request.param
+        PAGE_DATA = {
+            "end": end,
+            "start": START,
+            "time_zone": time_zone,
+        }
+        return property_data(property_type, PAGE_DATA)
 
-    Attributes:
-        date (Optional[DateStructure]): The optional date structure of the page property.
-    """
-    date: Optional[DateStructure]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.DATE
-
-
-class DateDatabase(DatabaseProperty):
-    """
-    A model representing a date property for a database.
-
-    Attributes:
-        date (dict[str, Any]): The dictionary representing the date property for the database.
-    """
-    date: dict[str, Any]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.DATE
+    return create_page_database
 
 
-__all__ = ['DatePage', 'DateDatabase']
+@pytest.fixture
+def date_database(property_data):
+    def create_date_database(property_type):
+        return property_data(property_type, {})
+
+    return create_date_database
+
+
+def assert_date_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    expected_date_data = expected_data["date"]
+    assert data.date.end == expected_date_data["end"]
+    assert data.date.start == expected_date_data["start"]
+    assert data.date.time_zone == expected_date_data["time_zone"]
+
+
+def assert_date_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.date == expected_data["date"]
+
+
+def test_date_database_structure(date_database):
+    extract_create_assert_structure(date_database, DateDatabase, assert_date_database_is_correct)
+
+
+def test_date_page_structure(date_page):
+    extract_create_assert_structure(date_page, DatePage, assert_date_page_is_correct)
+
+
+def test_date_database_serialization(date_database):
+    extract_create_assert_serialization(date_database, DateDatabase)
+
+
+def test_date_page_serialization(date_page):
+    extract_create_assert_serialization(date_page, DatePage)

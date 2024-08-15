@@ -51,19 +51,27 @@ def assert_resources_data_is_correct(data, expected_data: dict):
     assert_resources_structure(resources_data, expected_resources_data)
 
 
-@pytest.mark.parametrize("block_class", [Image, Pdf, Video])
-def test_resources_structure(resources_block, block_class):
-    extract_create_assert_structure(resources_block, block_class, assert_resources_data_is_correct)
+@pytest.mark.parametrize(
+    "block_fixture, block_class, assert_func", [
+        ("resources_block", Image, assert_resources_data_is_correct),
+        ("resources_block", Pdf, assert_resources_data_is_correct),
+        ("resources_block", Video, assert_resources_data_is_correct),
+        ("file_block", File, assert_file_data_is_correct),
+    ]
+)
+def test_block_structure(request, block_fixture, block_class, assert_func):
+    block_data = request.getfixturevalue(block_fixture)
+    extract_create_assert_structure(block_data, block_class, assert_func)
 
 
-@pytest.mark.parametrize("block_class", [Image, Pdf, Video])
-def test_resources_serialization(resources_block, block_class):
-    extract_create_assert_serialization(resources_block, block_class)
-
-
-def test_file_structure(file_block):
-    extract_create_assert_structure(file_block, File, assert_file_data_is_correct)
-
-
-def test_file_serialization(file_block):
-    extract_create_assert_serialization(file_block, File)
+@pytest.mark.parametrize(
+    "block_fixture, block_class", [
+        ("resources_block", Image),
+        ("resources_block", Pdf),
+        ("resources_block", Video),
+        ("file_block", File),
+    ]
+)
+def test_block_serialization(request, block_fixture, block_class):
+    block_data = request.getfixturevalue(block_fixture)
+    extract_create_assert_serialization(block_data, block_class)

@@ -1,68 +1,75 @@
-# Standard Library
-from datetime import datetime
-from typing import Literal, Optional
+import pytest
 
-# Third Party
-from _properties.property import DatabaseProperty, PageProperty
-from pydantic import BaseModel
+from .helper import extract_create_assert_structure, extract_create_assert_serialization
+from .assertions import assert_properties_data_is_correct
+from notion_api.data.properties import FormulaPage, FormulaDatabase
 
-from _properties.type_ import PropertyType
-
-
-class FormulaStructure(BaseModel):
-    """
-    A model representing a formula structure with a type and optional number, boolean, date, and string fields.
-
-    Attributes:
-        type (Literal['boolean', 'date', 'number', 'string']): The type of the formula.
-        number (Optional[float]): The optional number value of the formula.
-        boolean (Optional[bool]): The optional boolean value of the formula.
-        date (Optional[datetime]): The optional date value of the formula.
-        string (Optional[str]): The optional string value of the formula.
-    """
-    type: Literal['boolean', 'date', 'number', 'string']
-    number: Optional[float] = None
-    boolean: Optional[bool] = None
-    date: Optional[datetime] = None
-    string: Optional[str] = None
+# Constants for Formula Properties
+FORMULA_TYPE = "number"
+FORMULA_NUMBER = 123.45
+FORMULA_BOOLEAN = None
+FORMULA_DATE = None
+FORMULA_STRING = None
+FORMULA_EXPRESSION = "2 + 2"
 
 
-class FormulaPage(PageProperty):
-    """
-    A model representing a formula property for a page.
+@pytest.fixture
+def formula_page(property_data):
+    def create_formula_page(property_type):
+        FORMULA_PAGE_DATA = {
+            "type": FORMULA_TYPE,
+            "number": FORMULA_NUMBER,
+            "boolean": FORMULA_BOOLEAN,
+            "date": FORMULA_DATE,
+            "string": FORMULA_STRING,
+        }
+        return property_data(property_type, FORMULA_PAGE_DATA)
 
-    Attributes:
-        formula (FormulaStructure): The formula structure of the page property.
-    """
-    formula: FormulaStructure
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.FORMULA
-
-
-class FormulaDatabaseStructure(BaseModel):
-    """
-    A model representing the structure for a formula property in a database.
-
-    Attributes:
-        expression (str): The expression of the formula.
-    """
-    expression: str
+    return create_formula_page
 
 
-class FormulaDatabase(DatabaseProperty):
-    """
-    A model representing a formula property for a database.
+@pytest.fixture
+def formula_database(property_data):
+    def create_formula_database(property_type):
+        FORMULA_DATABASE_DATA = {
+            "expression": FORMULA_EXPRESSION,
+        }
+        return property_data(property_type, FORMULA_DATABASE_DATA)
 
-    Attributes:
-        formula (FormulaDatabaseStructure): The formula structure of the database property.
-    """
-    formula: FormulaDatabaseStructure
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.FORMULA
+    return create_formula_database
 
 
-__all__ = ['FormulaDatabase', 'FormulaPage']
+def assert_formula_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    expected_data = expected_data["formula"]
+    assert data.formula.type == expected_data["type"]
+    assert data.formula.number == expected_data["number"]
+    assert data.formula.boolean == expected_data["boolean"]
+    assert data.formula.date == expected_data["date"]
+    assert data.formula.string == expected_data["string"]
+
+
+def assert_formula_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    expected_data = expected_data["formula"]
+    assert data.formula.expression == expected_data["expression"]
+
+
+@pytest.mark.parametrize(
+    "property_fixture, property_class, assert_func", [
+        ("formula_database", FormulaDatabase, assert_formula_database_is_correct),
+        ("formula_page", FormulaPage, assert_formula_page_is_correct),
+    ]
+)
+def test_formula_structure(request, property_fixture, property_class, assert_func):
+    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+
+
+@pytest.mark.parametrize(
+    "property_fixture, property_class", [
+        ("formula_database", FormulaDatabase),
+        ("formula_page", FormulaPage),
+    ]
+)
+def test_formula_serialization(request, property_fixture, property_class):
+    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)

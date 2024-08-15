@@ -1,71 +1,85 @@
-# Standard Library
-from datetime import datetime
-from typing import Any
+import pytest
+from datetime import datetime, timezone
+from .helper import extract_create_assert_structure, extract_create_assert_serialization
+from .assertions import assert_properties_data_is_correct
+from notion_api.data.properties import CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage, LastEditedTimeDatabase
 
-# Third Party
-from _properties.property import DatabaseProperty, PageProperty
-from _properties.type_ import PropertyType
-
-
-class CreatedTimePage(PageProperty):
-    """
-    A model representing a created time property for a page.
-
-    Attributes:
-        created_time (datetime): The created time of the page property.
-    """
-    created_time: datetime
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.CREATED_TIME
+# Constants for Created Time and Last Edited Time Properties
+CREATED_TIME_VALUE = datetime(2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+LAST_EDITED_TIME_VALUE = datetime(2022, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
 
 
-class CreatedTimeDatabase(DatabaseProperty):
-    """
-    A model representing a created time property for a database.
+@pytest.fixture
+def created_time_page(property_data):
+    def create_created_time_page(property_type):
+        return property_data(property_type, CREATED_TIME_VALUE)
 
-    Attributes:
-        created_time (dict[str, Any]): The dictionary representing the created time property for the database.
-    """
-    created_time: dict[str, Any]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.CREATED_TIME
+    return create_created_time_page
 
 
-class LastEditedTimePage(PageProperty):
-    """
-    A model representing a last edited time property for a page.
+@pytest.fixture
+def created_time_database(property_data):
+    def create_created_time_database(property_type):
+        return property_data(property_type, {})
 
-    Attributes:
-        last_edited_time (datetime): The last edited time of the page property.
-    """
-    last_edited_time: datetime
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.LAST_EDITED_TIME
+    return create_created_time_database
 
 
-class LastEditedTimeDatabase(DatabaseProperty):
-    """
-    A model representing a last edited time property for a database.
+@pytest.fixture
+def last_edited_time_page(property_data):
+    def create_last_edited_time_page(property_type):
+        return property_data(property_type, LAST_EDITED_TIME_VALUE)
 
-    Attributes:
-        last_edited_time (dict[str, Any]): The dictionary representing the last edited time property for the database.
-    """
-    last_edited_time: dict[str, Any]
-
-    @classmethod
-    def get_associated_property_type(cls) -> PropertyType:
-        return PropertyType.LAST_EDITED_TIME
+    return create_last_edited_time_page
 
 
-__all__ = [
-    "CreatedTimePage",
-    "CreatedTimeDatabase",
-    "LastEditedTimePage",
-    "LastEditedTimeDatabase"
-]
+@pytest.fixture
+def last_edited_time_database(property_data):
+    def create_last_edited_time_database(property_type):
+        return property_data(property_type, {})
+
+    return create_last_edited_time_database
+
+
+def assert_created_time_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.created_time == expected_data["created_time"]
+
+
+def assert_created_time_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.created_time == expected_data["created_time"]
+
+
+def assert_last_edited_time_page_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.last_edited_time == expected_data["last_edited_time"]
+
+
+def assert_last_edited_time_database_is_correct(data, expected_data):
+    assert_properties_data_is_correct(data, expected_data)
+    assert data.last_edited_time == expected_data["last_edited_time"]
+
+
+@pytest.mark.parametrize(
+    "property_fixture, property_class, assert_func", [
+        ("created_time_page", CreatedTimePage, assert_created_time_page_is_correct),
+        ("created_time_database", CreatedTimeDatabase, assert_created_time_database_is_correct),
+        ("last_edited_time_page", LastEditedTimePage, assert_last_edited_time_page_is_correct),
+        ("last_edited_time_database", LastEditedTimeDatabase, assert_last_edited_time_database_is_correct),
+    ]
+)
+def test_property_structure(request, property_fixture, property_class, assert_func):
+    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+
+
+@pytest.mark.parametrize(
+    "property_fixture, property_class", [
+        ("created_time_page", CreatedTimePage),
+        ("created_time_database", CreatedTimeDatabase),
+        ("last_edited_time_page", LastEditedTimePage),
+        ("last_edited_time_database", LastEditedTimeDatabase),
+    ]
+)
+def test_property_serialization(request, property_fixture, property_class):
+    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)

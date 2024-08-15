@@ -13,4 +13,4 @@ def extract_create_assert_structure(data_provider, block_class: Type[Block], ass
 def extract_create_assert_serialization(data_provider, class_type: Type[Block]):
     data = extract_block_data(data_provider, class_type)
     block = create_block_object(data, class_type)
-    assert_serialization_to_json(block, data[class_type.get_associated_block_type().value])
+    assert_serialization_to_json(block, data[class_type.get_payload_property_name()])

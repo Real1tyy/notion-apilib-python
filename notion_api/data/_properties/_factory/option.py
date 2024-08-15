@@ -1,7 +1,8 @@
 from data.database import Database
 from _properties._factory.general import _create_page_property, _create_database_property
 from data.page import Page
-from _properties._data.option import StatusPage, Option, SelectPage, OptionStructure, MultiSelectPage, CheckboxPage, \
+from _properties._data.option import StatusPage, OptionPage, SelectPage, OptionStructurePage, MultiSelectPage, \
+    CheckboxPage, \
     CheckboxDatabase, MultiSelectDatabase, SelectDatabase, Group, StatusDatabaseStructure, StatusDatabase
 
 
@@ -47,19 +48,19 @@ def create_checkbox_database(
 
 
 def create_multi_select_page(
-        parent: Page, name: str, options: list[Option]) -> MultiSelectPage:
+        parent: Page, name: str, options: list[OptionPage]) -> MultiSelectPage:
     """
     Factory method to create a MultiSelectPage object.
 
     Parameters:
         parent (Page): The parent page to which this multi-select property belongs.
         name (str): The name of the multi-select property.
-        options (list[Option]): A list of options for the multi-select property.
+        options (list[OptionPage]): A list of options for the multi-select property.
 
     Returns:
         MultiSelectPage: A new MultiSelectPage object.
     """
-    option_structure = OptionStructure(options=options)
+    option_structure = OptionStructurePage(options=options)
     return _create_page_property(
         MultiSelectPage,
         parent=parent,
@@ -69,19 +70,19 @@ def create_multi_select_page(
 
 
 def create_multi_select_database(
-        parent: Database, name: str, options: list[Option]) -> MultiSelectDatabase:
+        parent: Database, name: str, options: list[OptionPage]) -> MultiSelectDatabase:
     """
     Factory method to create a MultiSelectDatabase object.
 
     Parameters:
         parent (Database): The parent database to which this multi-select property belongs.
         name (str): The name of the multi-select property.
-        options (list[Option]): A list of options for the multi-select property.
+        options (list[OptionPage]): A list of options for the multi-select property.
 
     Returns:
         MultiSelectDatabase: A new MultiSelectDatabase object.
     """
-    option_structure = OptionStructure(options=options)
+    option_structure = OptionStructurePage(options=options)
     return _create_database_property(
         MultiSelectDatabase,
         parent=parent,
@@ -91,14 +92,14 @@ def create_multi_select_database(
 
 
 def create_select_page(
-        parent: Page, name: str, option: Option) -> SelectPage:
+        parent: Page, name: str, option: OptionPage) -> SelectPage:
     """
     Factory method to create a SelectPage object.
 
     Parameters:
         parent (Page): The parent page to which this select property belongs.
         name (str): The name of the select property.
-        option (Option): The option for the select property.
+        option (OptionPage): The option for the select property.
 
     Returns:
         SelectPage: A new SelectPage object.
@@ -112,7 +113,7 @@ def create_select_page(
 
 
 def create_select_database(
-        parent: Database, name: str, options: list[Option]) -> SelectDatabase:
+        parent: Database, name: str, options: list[OptionPage]) -> SelectDatabase:
     """
     Factory method to create a SelectDatabase object.
 
@@ -128,19 +129,19 @@ def create_select_database(
         SelectDatabase,
         parent=parent,
         name=name,
-        property_specific_params=OptionStructure(options=options)
+        property_specific_params=OptionStructurePage(options=options)
     )
 
 
 def create_status_page(
-        parent: Page, name: str, status: Option) -> StatusPage:
+        parent: Page, name: str, status: OptionPage) -> StatusPage:
     """
     Factory method to create a StatusPage object.
 
     Parameters:
         parent (Page): The parent page to which this status property belongs.
         name (str): The name of the status property.
-        status (Option): The status option for the property.
+        status (OptionPage): The status option for the property.
 
     Returns:
         StatusPage: A new StatusPage object.
@@ -154,14 +155,14 @@ def create_status_page(
 
 
 def create_status_database(
-        parent: Database, name: str, options: list[Option], groups: list[Group]) -> StatusDatabase:
+        parent: Database, name: str, options: list[OptionPage], groups: list[Group]) -> StatusDatabase:
     """
     Factory method to create a StatusDatabase object.
 
     Parameters:
         parent (Database): The parent database to which this status property belongs.
         name (str): The name of the status property.
-        options (list[Option]): A list of options for the status property.
+        options (list[OptionPage]): A list of options for the status property.
         groups (list[Group]): A list of groups for the status property.
 
     Returns:

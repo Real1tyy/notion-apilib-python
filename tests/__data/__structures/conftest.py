@@ -82,8 +82,18 @@ def create_external():
     }
 
 
+@pytest.fixture()
+def create_resource() -> dict:
+    return {
+        "type": "external",
+        "external": {
+            "url": ICON_URL,
+        }
+    }
+
+
 @pytest.fixture(params=RESOURCE_TYPE)
-def create_resource(request, create_emoji, create_file_object, create_external) -> dict:
+def create_extensive_resource(request, create_emoji, create_file_object, create_external) -> dict:
     basic_data = {
         "type": request.param,
     }
