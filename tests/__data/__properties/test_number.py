@@ -1,5 +1,4 @@
 import pytest
-from datetime import datetime
 from .helper import extract_create_assert_structure, extract_create_assert_serialization
 from .assertions import assert_properties_data_is_correct
 from notion_api.data.properties import NumberPage, NumberDatabase, UniqueIdPage, UniqueIdDatabase

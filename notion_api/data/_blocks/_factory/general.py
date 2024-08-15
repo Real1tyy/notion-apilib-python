@@ -1,7 +1,7 @@
 from typing import Type, TypeVar, Any, Optional
 
-from structures import Parent
-from _blocks.block import Block
+from notion_api.data.structures import Parent
+from notion_api.data._blocks.block import Block
 
 T = TypeVar('T', bound=Block)
 

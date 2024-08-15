@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 from typing import Any, Optional
 
-from _filter.general import Filter
+from notion_api.data._properties.filter import Filter
 
 from pydantic import Field
 
-from data.configuration import ExtraConfiguration
+from notion_api.data.configuration import ExtraConfiguration
 
 
 class QueryFilter(ExtraConfiguration, ABC):

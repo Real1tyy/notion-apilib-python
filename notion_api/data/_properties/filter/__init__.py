@@ -79,27 +79,27 @@ Concrete Filter Objects and their factory methods:
 - Filter
 """
 
-from _properties._filter.date import *
-from _properties._filter.formula import *
-from _properties._filter.number import *
-from _properties._filter.option import *
-from _properties._filter.relation import *
-from _properties._filter.resources import *
-from _properties._filter.text import *
-from _properties._filter.time import *
-from _properties._filter.user import *
-from _properties._filter.general import *
+from notion_api.data._properties._filter.date import *
+from notion_api.data._properties._filter.formula import *
+from notion_api.data._properties._filter.number import *
+from notion_api.data._properties._filter.option import *
+from notion_api.data._properties._filter.relation import *
+from notion_api.data._properties._filter.resources import *
+from notion_api.data._properties._filter.text import *
+from notion_api.data._properties._filter.time import *
+from notion_api.data._properties._filter.user import *
+from notion_api.data._properties._filter.general import *
 
-from _properties._filter.date import __all__ as __date_all__
-from _properties._filter.formula import __all__ as __formula_all__
-from _properties._filter.number import __all__ as __number_all__
-from _properties._filter.option import __all__ as __option_all__
-from _properties._filter.relation import __all__ as __relation_all__
-from _properties._filter.resources import __all__ as __resources_all__
-from _properties._filter.text import __all__ as __text_all__
-from _properties._filter.time import __all__ as __time_all__
-from _properties._filter.user import __all__ as __user_all__
-from _properties._filter.general import __all__ as __general_all__
+from notion_api.data._properties._filter.date import __all__ as __date_all__
+from notion_api.data._properties._filter.formula import __all__ as __formula_all__
+from notion_api.data._properties._filter.number import __all__ as __number_all__
+from notion_api.data._properties._filter.option import __all__ as __option_all__
+from notion_api.data._properties._filter.relation import __all__ as __relation_all__
+from notion_api.data._properties._filter.resources import __all__ as __resources_all__
+from notion_api.data._properties._filter.text import __all__ as __text_all__
+from notion_api.data._properties._filter.time import __all__ as __time_all__
+from notion_api.data._properties._filter.user import __all__ as __user_all__
+from notion_api.data._properties._filter.general import __all__ as __general_all__
 
 __all__ = (__date_all__ + __formula_all__ + __number_all__ + __option_all__ + __relation_all__ +
            __resources_all__ + __text_all__ + __time_all__ + __user_all__ + __general_all__)

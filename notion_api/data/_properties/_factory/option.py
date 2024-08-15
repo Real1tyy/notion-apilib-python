@@ -1,13 +1,13 @@
-from data.database import Database
-from _properties._factory.general import _create_page_property, _create_database_property
-from data.page import Page
-from _properties._data.option import StatusPage, OptionPage, SelectPage, OptionStructurePage, MultiSelectPage, \
-    CheckboxPage, \
-    CheckboxDatabase, MultiSelectDatabase, SelectDatabase, Group, StatusDatabaseStructure, StatusDatabase
+from .general import _create_page_property, _create_database_property
+from notion_api.data._properties._data.option import (StatusPage, OptionPage, SelectPage, OptionStructurePage,
+                                                      MultiSelectPage, \
+                                                      CheckboxPage, \
+                                                      CheckboxDatabase, MultiSelectDatabase, SelectDatabase, Group,
+                                                      StatusDatabaseStructure, StatusDatabase)
 
 
 def create_checkbox_page(
-        parent: Page, name: str, checkbox: bool) -> CheckboxPage:
+        parent: 'Page', name: str, checkbox: bool) -> CheckboxPage:
     """
     Factory method to create a CheckboxPage object.
 
@@ -28,7 +28,7 @@ def create_checkbox_page(
 
 
 def create_checkbox_database(
-        parent: Database, name: str) -> CheckboxDatabase:
+        parent: 'Database', name: str) -> CheckboxDatabase:
     """
     Factory method to create a CheckboxDatabase object.
 
@@ -48,7 +48,7 @@ def create_checkbox_database(
 
 
 def create_multi_select_page(
-        parent: Page, name: str, options: list[OptionPage]) -> MultiSelectPage:
+        parent: 'Page', name: str, options: list[OptionPage]) -> MultiSelectPage:
     """
     Factory method to create a MultiSelectPage object.
 
@@ -70,7 +70,7 @@ def create_multi_select_page(
 
 
 def create_multi_select_database(
-        parent: Database, name: str, options: list[OptionPage]) -> MultiSelectDatabase:
+        parent: 'Database', name: str, options: list[OptionPage]) -> MultiSelectDatabase:
     """
     Factory method to create a MultiSelectDatabase object.
 
@@ -92,7 +92,7 @@ def create_multi_select_database(
 
 
 def create_select_page(
-        parent: Page, name: str, option: OptionPage) -> SelectPage:
+        parent: 'Page', name: str, option: OptionPage) -> SelectPage:
     """
     Factory method to create a SelectPage object.
 
@@ -113,7 +113,7 @@ def create_select_page(
 
 
 def create_select_database(
-        parent: Database, name: str, options: list[OptionPage]) -> SelectDatabase:
+        parent: 'Database', name: str, options: list[OptionPage]) -> SelectDatabase:
     """
     Factory method to create a SelectDatabase object.
 
@@ -134,7 +134,7 @@ def create_select_database(
 
 
 def create_status_page(
-        parent: Page, name: str, status: OptionPage) -> StatusPage:
+        parent: 'Page', name: str, status: OptionPage) -> StatusPage:
     """
     Factory method to create a StatusPage object.
 
@@ -155,7 +155,7 @@ def create_status_page(
 
 
 def create_status_database(
-        parent: Database, name: str, options: list[OptionPage], groups: list[Group]) -> StatusDatabase:
+        parent: 'Database', name: str, options: list[OptionPage], groups: list[Group]) -> StatusDatabase:
     """
     Factory method to create a StatusDatabase object.
 

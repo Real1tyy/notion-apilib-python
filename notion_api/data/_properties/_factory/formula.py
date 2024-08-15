@@ -1,14 +1,13 @@
 from datetime import datetime
 from typing import Literal, Optional
 
-from data.database import Database
-from _properties._data.formula import FormulaPage, FormulaStructure, FormulaDatabase, FormulaDatabaseStructure
-from _properties._factory.general import _create_page_property, _create_database_property
-from data.page import Page
+from notion_api.data._properties._data.formula import (FormulaPage, FormulaStructure, FormulaDatabase,
+                                                       FormulaDatabaseStructure)
+from .general import _create_page_property, _create_database_property
 
 
 def create_formula_page(
-        parent: Page, name: str, type_: Literal['boolean', 'date', 'number', 'string'],
+        parent: 'Page', name: str, type_: Literal['boolean', 'date', 'number', 'string'],
         number: Optional[float] = None, boolean: Optional[bool] = None,
         date: Optional[datetime] = None, string: Optional[str] = None) -> FormulaPage:
     """
@@ -35,7 +34,7 @@ def create_formula_page(
 
 
 def create_formula_database(
-        parent: Database, name: str, expression: str) -> FormulaDatabase:
+        parent: 'Database', name: str, expression: str) -> FormulaDatabase:
     """
     Factory method to create a FormulaDatabase object.
 

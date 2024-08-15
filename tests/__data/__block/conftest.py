@@ -1,6 +1,6 @@
 import pytest
 from typing import Dict, Any
-from __block.constants import *
+from tests.__data.__block.constants import *
 
 
 @pytest.fixture

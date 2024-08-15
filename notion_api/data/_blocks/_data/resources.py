@@ -1,8 +1,8 @@
 # Standard Library
 
 # Third Party
-from _blocks.block import Block, BlockType
-from structures import FileAttributes, ResourcesAttributes
+from notion_api.data._blocks.block import Block, BlockType
+from notion_api.data.structures import FileAttributes, ResourcesAttributes
 
 
 class File(Block):

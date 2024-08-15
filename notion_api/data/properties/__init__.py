@@ -183,8 +183,6 @@ __all__:
       - `create_id_filter(property_name: str, filter_type: Literal['equals', 'does_not_equal', 'greater_than', 'greater_than_or_equal_to', 'less_than', 'less_than_or_equal_to'], value: int) -> IDFilter`
 """
 
-from notion_api.data.structures import *
-
 from notion_api.data._properties.data import *
 from notion_api.data._properties.factory import *
 from notion_api.data._properties.property_factory import *

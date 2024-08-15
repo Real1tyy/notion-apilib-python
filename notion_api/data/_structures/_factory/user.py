@@ -3,7 +3,7 @@
 from typing import Optional, Literal
 from uuid import UUID
 
-from _structures.data import User, PeopleStructure, People, OwnerStructure, BotStructure, Bot
+from notion_api.data._structures.data import User, PeopleStructure, People, OwnerStructure, BotStructure, Bot
 
 
 def create_user(

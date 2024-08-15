@@ -3,15 +3,11 @@ import json
 from dataclasses import dataclass
 from typing import Optional, Any
 
-from requests import Response
-
 # Third Party
-from client._api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
-from data import Database, deserialize_database
-from notion_api.data import QueryFilter
-from page import deserialize_page
-from data.properties import Sort
-from client.utils import _get_children_from_json, _handle_pagination, _prepare_query_data
+from notion_api.client._api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
+from notion_api.data import Database, deserialize_database, deserialize_page
+from notion_api.data.properties import QueryFilter, Sort
+from notion_api.client._utils import _get_children_from_json, _handle_pagination, _prepare_query_data
 
 
 @dataclass

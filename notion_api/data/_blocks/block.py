@@ -4,9 +4,9 @@ from typing import Any
 
 from pydantic import Field
 
-from object import Object
+from notion_api.data.object import Object
 # Third Party
-from _blocks.type_ import BlockType
+from notion_api.data._blocks.type_ import BlockType
 
 
 class Block(Object, ABC):

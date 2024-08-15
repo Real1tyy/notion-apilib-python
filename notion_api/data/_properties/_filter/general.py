@@ -2,7 +2,7 @@ from abc import ABC
 
 from pydantic import BaseModel
 
-from data.configuration import BasicConfiguration
+from notion_api.data.configuration import BasicConfiguration
 
 
 class FilterStructure(BaseModel, extra='allow'):

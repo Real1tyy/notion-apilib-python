@@ -4,7 +4,7 @@ from typing import Optional
 # Third Party
 from pydantic import BaseModel
 
-from types_ import file_type
+from notion_api.data._structures.types_ import file_type
 
 
 class Emoji(BaseModel):

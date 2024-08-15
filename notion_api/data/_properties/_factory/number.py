@@ -1,14 +1,12 @@
 from typing import Optional
 
-from data.database import Database
-from _properties._factory.general import _create_page_property, _create_database_property
-from _properties._data.number import UniqueIdPage, UniqueIdPageStructure, NumberPage, UniqueIdDatabase, NumberDatabase, \
-    NumberStructure
-from data.page import Page
+from .general import _create_page_property, _create_database_property
+from notion_api.data._properties._data.number import (UniqueIdPage, UniqueIdPageStructure, NumberPage,
+                                                      UniqueIdDatabase, NumberDatabase, NumberStructure)
 
 
 def create_number_page(
-        parent: Page, name: str, number: float) -> NumberPage:
+        parent: 'Page', name: str, number: float) -> NumberPage:
     """
     Factory method to create a NumberPage object.
 
@@ -29,7 +27,7 @@ def create_number_page(
 
 
 def create_number_database(
-        parent: Database, name: str, format_: str) -> NumberDatabase:
+        parent: 'Database', name: str, format_: str) -> NumberDatabase:
     """
     Factory method to create a NumberDatabase object.
 
@@ -50,7 +48,7 @@ def create_number_database(
 
 
 def create_unique_id_page(
-        parent: Page, name: str, number: float, prefix: Optional[str] = None) -> UniqueIdPage:
+        parent: 'Page', name: str, number: float, prefix: Optional[str] = None) -> UniqueIdPage:
     """
     Factory method to create a UniqueIdPage object.
 
@@ -72,7 +70,7 @@ def create_unique_id_page(
 
 
 def create_unique_id_database(
-        parent: Database, name: str) -> UniqueIdDatabase:
+        parent: 'Database', name: str) -> UniqueIdDatabase:
     """
     Factory method to create a UniqueIdDatabase object.
 

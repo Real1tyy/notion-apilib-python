@@ -1,7 +1,7 @@
 # Third Party
 from pydantic import BaseModel
 
-from _blocks.block import Block, BlockType
+from notion_api.data._blocks.block import Block, BlockType
 
 
 class EquationAttributes(BaseModel):

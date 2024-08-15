@@ -66,24 +66,24 @@ Data Models:
     - PeopleDatabase
 """
 
-from _properties._data.date import *
-from _properties._data.formula import *
-from _properties._data.number import *
-from _properties._data.option import *
-from _properties._data.relation import *
-from _properties._data.resource import *
-from _properties._data.text import *
-from _properties._data.time import *
-from _properties._data.user import *
+from notion_api.data._properties._data.date import *
+from notion_api.data._properties._data.formula import *
+from notion_api.data._properties._data.number import *
+from notion_api.data._properties._data.option import *
+from notion_api.data._properties._data.relation import *
+from notion_api.data._properties._data.resource import *
+from notion_api.data._properties._data.text import *
+from notion_api.data._properties._data.time import *
+from notion_api.data._properties._data.user import *
 
-from _properties._data.date import __all__ as date
-from _properties._data.formula import __all__ as formula
-from _properties._data.number import __all__ as number
-from _properties._data.option import __all__ as option
-from _properties._data.relation import __all__ as relation
-from _properties._data.resource import __all__ as resources
-from _properties._data.text import __all__ as text
-from _properties._data.time import __all__ as time
-from _properties._data.user import __all__ as users
+from notion_api.data._properties._data.date import __all__ as date
+from notion_api.data._properties._data.formula import __all__ as formula
+from notion_api.data._properties._data.number import __all__ as number
+from notion_api.data._properties._data.option import __all__ as option
+from notion_api.data._properties._data.relation import __all__ as relation
+from notion_api.data._properties._data.resource import __all__ as resources
+from notion_api.data._properties._data.text import __all__ as text
+from notion_api.data._properties._data.time import __all__ as time
+from notion_api.data._properties._data.user import __all__ as users
 
 __all__ = date + formula + number + option + relation + resources + text + time + users

@@ -1,10 +1,11 @@
 from typing import Type, Optional, TypeVar
 
-from structures import RichText, Parent, create_basic_rich_text
-from _blocks.block import Block
-from _blocks._factory.general import _create_block
-from _blocks._data.children.items import (Items, BulletedListItem, NumberedListItem, Paragraph, Quote, ToDoAttributes,
-                                          ToDo, Toggle)
+from notion_api.data.structures import RichText, Parent, create_basic_rich_text
+from notion_api.data._blocks.block import Block
+from notion_api.data._blocks._factory.general import _create_block
+from notion_api.data._blocks._data.children.items import (Items, BulletedListItem, NumberedListItem, Paragraph, Quote,
+                                                          ToDoAttributes,
+                                                          ToDo, Toggle)
 
 T = TypeVar('T', ToDoAttributes, BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle)
 

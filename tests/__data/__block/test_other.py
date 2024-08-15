@@ -1,8 +1,8 @@
 import pytest
 
 from notion_api.data.blocks import Divider, ColumnList, Breadcrumb, Unsupported, Block
-from __block.helper import extract_create_assert_structure, extract_create_assert_serialization
-from __block.assertions import assert_block_data_is_correct
+from tests.__data.__block.helper import extract_create_assert_structure, extract_create_assert_serialization
+from tests.__data.__block.assertions import assert_block_data_is_correct
 
 # No specific data required as these blocks are empty
 EMPTY_DATA = {}

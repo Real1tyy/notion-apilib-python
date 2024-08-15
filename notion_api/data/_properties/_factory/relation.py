@@ -2,15 +2,15 @@ from datetime import datetime
 from typing import Optional, Literal, Any
 from uuid import UUID
 
-from data.database import Database
-from _properties._factory.general import _create_page_property, _create_database_property
-from data.page import Page
-from _properties._data.relation import RelationPage, RelationStructure, RollupPage, RollupStructure, RelationDatabase, \
-    RollupDatabase, RollupDatabaseStructure, RelationDatabaseStructure
+from .general import _create_page_property, _create_database_property
+from notion_api.data._properties._data.relation import (RelationPage, RelationStructure, RollupPage, RollupStructure,
+                                                        RelationDatabase, \
+                                                        RollupDatabase, RollupDatabaseStructure,
+                                                        RelationDatabaseStructure)
 
 
 def create_relation_page(
-        parent: Page, name: str, relation_ids: list[UUID]) -> RelationPage:
+        parent: 'Page', name: str, relation_ids: list[UUID]) -> RelationPage:
     """
     Factory method to create a RelationPage object.
 
@@ -32,7 +32,7 @@ def create_relation_page(
 
 
 def create_relation_database(
-        parent: Database, name: str, database_id: UUID,
+        parent: 'Database', name: str, database_id: UUID,
         synced_property_id: Optional[str] = None,
         synced_property_name: Optional[str] = None) -> RelationDatabase:
     """
@@ -72,7 +72,7 @@ def create_relation_database(
 
 
 def create_rollup_page(
-        parent: Page, name: str, type_: Literal['array', 'date', 'number', 'incomplete', 'unsupported'],
+        parent: 'Page', name: str, type_: Literal['array', 'date', 'number', 'incomplete', 'unsupported'],
         function: str, array: Optional[list[Any]] = None, date: Optional[datetime] = None,
         number: Optional[float] = None, incomplete: Optional[Any] = None,
         unsupported: Optional[Any] = None) -> RollupPage:
@@ -104,7 +104,7 @@ def create_rollup_page(
 
 
 def create_rollup_database(
-        parent: Database, name: str, relation_property_id: str, relation_property_name: str,
+        parent: 'Database', name: str, relation_property_id: str, relation_property_name: str,
         rollup_property_name: str, rollup_property_id: str, function: str) -> RollupDatabase:
     """
     Factory method to create a RollupDatabase object.

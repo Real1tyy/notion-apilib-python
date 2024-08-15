@@ -1,9 +1,9 @@
 from typing import Type, Optional, TypeVar
 
-from structures import Parent, RichText, create_basic_rich_text
-from _blocks.block import Block
-from _blocks._data.children.heading import HeadingsAttributes, Heading1, Heading2, Heading3
-from _blocks._factory.general import _create_block
+from notion_api.data.structures import Parent, RichText, create_basic_rich_text
+from notion_api.data._blocks.block import Block
+from notion_api.data._blocks._data.children.heading import HeadingsAttributes, Heading1, Heading2, Heading3
+from notion_api.data._blocks._factory.general import _create_block
 
 T = TypeVar('T', Heading1, Heading2, Heading3)
 

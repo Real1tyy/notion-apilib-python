@@ -3,8 +3,8 @@
 from datetime import datetime
 from typing import Optional, List
 
-from _structures.data import FileObject, External, ResourcesAttributes, FileAttributes, RichText
-from types_ import file_type
+from notion_api.data._structures.data import FileObject, External, ResourcesAttributes, FileAttributes, RichText
+from notion_api.data._structures.types_ import file_type
 
 
 def create_file_object(url: str, expiry_time: datetime) -> FileObject:

@@ -1,12 +1,10 @@
 from structures import RichText
-from data.database import Database
-from _properties._factory.general import _create_page_property, _create_database_property
-from data.page import Page
-from _properties.data import TitlePage, RichTextPage, RichTextDatabase, TitleDatabase
+from .general import _create_page_property, _create_database_property
+from notion_api.data._properties.data import TitlePage, RichTextPage, RichTextDatabase, TitleDatabase
 
 
 def create_rich_text_page(
-        parent: Page, name: str, rich_text: list[RichText]) -> RichTextPage:
+        parent: 'Page', name: str, rich_text: list[RichText]) -> RichTextPage:
     """
     Factory method to create a RichTextPage object.
 
@@ -27,7 +25,7 @@ def create_rich_text_page(
 
 
 def create_rich_text_database(
-        parent: Database, name: str, rich_text: list[RichText]) -> RichTextDatabase:
+        parent: 'Database', name: str, rich_text: list[RichText]) -> RichTextDatabase:
     """
     Factory method to create a RichTextDatabase object.
 
@@ -48,7 +46,7 @@ def create_rich_text_database(
 
 
 def create_title_page(
-        parent: Page, name: str, title: list[RichText]) -> TitlePage:
+        parent: 'Page', name: str, title: list[RichText]) -> TitlePage:
     """
     Factory method to create a TitlePage object.
 
@@ -69,7 +67,7 @@ def create_title_page(
 
 
 def create_title_database(
-        parent: Database, name: str) -> TitleDatabase:
+        parent: 'Database', name: str) -> TitleDatabase:
     """
     Factory method to create a TitleDatabase object.
 

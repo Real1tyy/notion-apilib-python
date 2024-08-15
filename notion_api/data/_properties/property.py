@@ -6,9 +6,9 @@ from uuid import UUID
 from pydantic import BaseModel, Field
 
 # Third Party
-from _properties.type_ import PropertyType
-from configuration import BasicConfiguration
-from sort import PropertySort
+from notion_api.data._properties.type_ import PropertyType
+from notion_api.data.configuration import BasicConfiguration
+from notion_api.data._properties.sort import PropertySort
 
 
 class Property(BasicConfiguration, ABC):

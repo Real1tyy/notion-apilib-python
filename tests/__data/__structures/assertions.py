@@ -60,7 +60,6 @@ def assert_rich_text_value(rich_text, expected_rich_text: dict):
 
 def assert_icon_structure(icon, expected_icon: dict):
     assert icon.type == expected_icon["type"]
-    assert icon.emoji == expected_icon["emoji"]
     match icon.type:
         case "file_type":
             assert icon.file_type.url == expected_icon["file_type"]["url"]

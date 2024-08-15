@@ -2,10 +2,7 @@
 from typing import Type, TypeVar, Any, Optional
 
 # Third Party
-from data.database import Database
-from data.page import Page
-from _properties.property import PageProperty, DatabaseProperty, Property
-from data.object import MajorObject
+from notion_api.data._properties.property import PageProperty, DatabaseProperty, Property
 
 T = TypeVar('T', bound=Property)
 T2 = TypeVar('T2', bound=PageProperty)
@@ -13,12 +10,12 @@ T3 = TypeVar('T3', bound=DatabaseProperty)
 
 
 def _create_property(
-        cls: Type[T], parent: MajorObject, name: str, property_specific_params: Optional[Any] = None) -> T:
+        cls: Type[T], parent: 'MajorObject', name: str, property_specific_params: Optional[Any] = None) -> T:
     """
     Helper function to create property objects with common parameters pre-filled.
     Also adds the newly created property to the Page associated with it
     :param cls: The class of the property object to create
-    :param parent: The parent object
+    :param parent: The parent object - Page or Database
     :param name: The name of the property
     :param property_specific_params: Additional keyword arguments specific to the property type
     :return: A new property object of the specified class
@@ -37,7 +34,7 @@ def _create_property(
 
 
 def _create_page_property(
-        cls: Type[T2], parent: Page, name: str, property_specific_params: Optional[Any] = None) -> T2:
+        cls: Type[T2], parent: 'Page', name: str, property_specific_params: Optional[Any] = None) -> T2:
     """
     Helper function to create property objects with common parameters pre-filled.
     Also adds the newly created property to the Page associated with it
@@ -51,7 +48,7 @@ def _create_page_property(
 
 
 def _create_database_property(
-        cls: Type[T3], parent: Database, name: str, property_specific_params: Optional[Any] = None) -> T3:
+        cls: Type[T3], parent: 'Database', name: str, property_specific_params: Optional[Any] = None) -> T3:
     """
     Helper function to create property objects with common parameters pre-filled.
     Also adds the newly created property to the Page associated with it

@@ -1,13 +1,12 @@
 from structures import ResourcesAttributes
-from data.database import Database
-from _properties._factory.general import _create_page_property, _create_database_property
-from data.page import Page
-from _properties.data import EmailPage, UrlPage, PhoneNumberPage, FilesPage, EmailDatabase, FilesDatabase, \
-    PhoneNumberDatabase, UrlDatabase
+from .general import _create_page_property, _create_database_property
+from notion_api.data._properties.data import (EmailPage, UrlPage, PhoneNumberPage, FilesPage, EmailDatabase,
+                                              FilesDatabase, \
+                                              PhoneNumberDatabase, UrlDatabase)
 
 
 def create_email_page(
-        parent: Page, name: str, email: str) -> EmailPage:
+        parent: 'Page', name: str, email: str) -> EmailPage:
     """
     Factory method to create an EmailPage object.
 
@@ -28,7 +27,7 @@ def create_email_page(
 
 
 def create_email_database(
-        parent: Database, name: str) -> EmailDatabase:
+        parent: 'Database', name: str) -> EmailDatabase:
     """
     Factory method to create an EmailDatabase object.
 
@@ -48,7 +47,7 @@ def create_email_database(
 
 
 def create_files_page(
-        parent: Page, name: str, files: list[ResourcesAttributes]) -> FilesPage:
+        parent: 'Page', name: str, files: list[ResourcesAttributes]) -> FilesPage:
     """
     Factory method to create a FilesPage object.
 
@@ -69,7 +68,7 @@ def create_files_page(
 
 
 def create_files_database(
-        parent: Database, name: str) -> FilesDatabase:
+        parent: 'Database', name: str) -> FilesDatabase:
     """
     Factory method to create a FilesDatabase object.
 
@@ -89,7 +88,7 @@ def create_files_database(
 
 
 def create_phone_number_page(
-        parent: Page, name: str, phone_number: str) -> PhoneNumberPage:
+        parent: 'Page', name: str, phone_number: str) -> PhoneNumberPage:
     """
     Factory method to create a PhoneNumberPage object.
 
@@ -110,7 +109,7 @@ def create_phone_number_page(
 
 
 def create_phone_number_database(
-        parent: Database, name: str) -> PhoneNumberDatabase:
+        parent: 'Database', name: str) -> PhoneNumberDatabase:
     """
     Factory method to create a PhoneNumberDatabase object.
 
@@ -130,7 +129,7 @@ def create_phone_number_database(
 
 
 def create_url_page(
-        parent: Page, name: str, url: str) -> UrlPage:
+        parent: 'Page', name: str, url: str) -> UrlPage:
     """
     Factory method to create a UrlPage object.
 
@@ -151,7 +150,7 @@ def create_url_page(
 
 
 def create_url_database(
-        parent: Database, name: str) -> UrlDatabase:
+        parent: 'Database', name: str) -> UrlDatabase:
     """
     Factory method to create a UrlDatabase object.
 

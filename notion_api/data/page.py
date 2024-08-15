@@ -1,35 +1,23 @@
 # Standard Library
 from typing import Annotated, Any
 
-from pydantic import BaseModel, BeforeValidator, Field
+from pydantic import BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
 # Third Party
-from data.exceptions import catch_exceptions
-from data.object import MajorObject
-from data._properties.property import PageProperty
-from data._properties.property_factory import deserialize_page_property
-
-
-class PageProperties(BaseModel, extra="allow"):
-    properties: list = Field(exclude=True, default=[])
+from notion_api.data.exceptions import catch_exceptions
+from notion_api.data.object import MajorObject
+from notion_api.data.properties import PageProperty, deserialize_page_property
+from notion_api.data.properties_structure import PropertiesStructure, parse_properties
 
 
 @catch_exceptions
-def properties_validator(v: dict[str, Any], info: ValidationInfo) -> PageProperties:
-    properties = []
-    for key, value in v.items():
-        value['name'] = key
-        _class = deserialize_page_property(value)
-        properties.append(_class)
-        v[key] = _class
-
-    v['properties'] = properties
-    return v
+def properties_validator(v: dict[str, Any], info: ValidationInfo) -> PropertiesStructure:
+    return parse_properties(v, deserialize_page_property)
 
 
 class Page(MajorObject):
-    properties: Annotated[PageProperties, BeforeValidator(properties_validator)]
+    properties: Annotated[PropertiesStructure, BeforeValidator(properties_validator)]
     children: list['Block'] = Field(default=[])
 
     def get_properties(self) -> list[PageProperty]:
@@ -52,4 +40,4 @@ def deserialize_page(data: dict[str, Any]) -> Page:
     return Page(**data)
 
 
-__all__ = ["Page", "deserialize_page", "PageProperties"]
+__all__ = ["Page", "deserialize_page"]

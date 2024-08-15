@@ -5,7 +5,7 @@ from uuid import UUID
 # Third Party
 from pydantic import BaseModel
 
-from types_ import parents_types
+from notion_api.data._structures.types_ import parents_types
 
 
 class Parent(BaseModel):

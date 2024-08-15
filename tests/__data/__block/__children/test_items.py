@@ -1,9 +1,9 @@
 import pytest
 
 from ..helper import extract_create_assert_structure, extract_create_assert_serialization
-from ...__block.assertions import assert_block_data_is_correct
+from tests.__data.__block.assertions import assert_block_data_is_correct
 from notion_api.data.blocks import BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle, ToDo, BlockType
-from __structures.assertions import assert_rich_text_structure
+from tests.__data.__structures.assertions import assert_rich_text_structure
 
 # Constants
 IS_CHECKED = True

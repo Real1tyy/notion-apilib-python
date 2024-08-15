@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Optional
 from uuid import UUID
 
-from _structures.data import (
+from notion_api.data._structures.data import (
     DatabaseMention, DateMention, LinkPreviewMention, PageMention, TemplateMentionDate,
     TemplateMentionUser, TemplateMention, UserMention, Mention
 )

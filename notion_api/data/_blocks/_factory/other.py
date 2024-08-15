@@ -1,6 +1,6 @@
-from _blocks._data.other import Divider, ColumnList, Breadcrumb, Unsupported
-from _blocks._factory.general import _create_block
-from structures import Parent
+from notion_api.data._blocks._data.other import Divider, ColumnList, Breadcrumb, Unsupported
+from notion_api.data._blocks._factory.general import _create_block
+from notion_api.data.structures import Parent
 
 
 def create_divider(parent: Parent) -> Divider:

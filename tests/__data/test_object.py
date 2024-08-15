@@ -1,6 +1,6 @@
 from typing import Any
 
-from assertions import assert_object_data_is_correct
+from tests.__data.assertions import assert_object_data_is_correct
 from notion_api.data.object import MajorObject
 
 

@@ -2,8 +2,8 @@
 
 from typing import Optional
 
-from _structures.data import External, FileObject, Emoji, Icon
-from types_ import file_type
+from notion_api.data._structures.data import External, FileObject, Emoji, Icon
+from notion_api.data._structures.types_ import file_type
 
 
 def create_emoji(emoji: str, type_: str) -> Emoji:

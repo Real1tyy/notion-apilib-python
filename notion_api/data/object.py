@@ -6,8 +6,8 @@ from uuid import UUID
 
 from pydantic import Field
 
-from configuration import BasicConfiguration
-from structures import Icon, Parent, User
+from notion_api.data.configuration import BasicConfiguration
+from notion_api.data.structures import Icon, Parent, User
 
 
 # Third Party
@@ -32,7 +32,7 @@ class Object(BasicConfiguration, ABC):
 class MajorObject(Object, ABC):
     icon: Optional[Icon] = None
     cover: Optional[str] = None
-    url: Optional[str] = None
+    url: str
     public_url: Optional[str] = None
 
     @abstractmethod

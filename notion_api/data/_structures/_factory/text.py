@@ -1,6 +1,6 @@
 from typing import Optional
 
-from _structures.data import Annotations, Text, RichText, Link, Mention
+from notion_api.data._structures.data import Annotations, Text, RichText, Link, Mention
 
 
 def create_basic_annotations() -> Annotations:

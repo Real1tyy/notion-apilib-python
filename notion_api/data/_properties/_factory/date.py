@@ -1,14 +1,12 @@
 from datetime import datetime
 from typing import Optional
 
-from data.database import Database
-from _properties._data.date import DatePage, DateStructure, DateDatabase
-from _properties._factory.general import _create_page_property, _create_database_property
-from data.page import Page
+from notion_api.data._properties._data.date import DatePage, DateStructure, DateDatabase
+from .general import _create_page_property, _create_database_property
 
 
 def create_date_page(
-        parent: Page, name: str, start: datetime, end: Optional[datetime] = None, time_zone: Optional[
+        parent: 'Page', name: str, start: datetime, end: Optional[datetime] = None, time_zone: Optional[
             str] = None) -> DatePage:
     """
     Factory method to create a DatePage object.
@@ -32,7 +30,7 @@ def create_date_page(
 
 
 def create_date_database(
-        parent: Database, name: str) -> DateDatabase:
+        parent: 'Database', name: str) -> DateDatabase:
     """
     Factory method to create a DateDatabase object.
 

@@ -1,6 +1,6 @@
 from typing import TypeVar, Type, Callable
 
-from __data.utils.__serialization import transform_dictionary
+from tests.__data.utils.__serialization import transform_dictionary
 from notion_api.data.properties import Property
 
 

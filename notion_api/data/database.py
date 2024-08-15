@@ -4,38 +4,25 @@ from typing import Annotated, Any
 from pydantic import BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
-from data.configuration import ExtraConfiguration
-from structures import RichText
+from notion_api.data.properties_structure import PropertiesStructure, parse_properties
+from notion_api.data.structures import RichText
 # Third Party
-from data.exceptions import catch_exceptions
-from data.object import MajorObject
-from data.page import Page
-from data._properties.property import DatabaseProperty
-from data._properties.property_factory import deserialize_database_property
-
-
-class DatabaseProperties(ExtraConfiguration):
-    properties: list = Field(exclude=True, default=[])
+from notion_api.data.exceptions import catch_exceptions
+from notion_api.data.object import MajorObject
+from notion_api.data.page import Page
+from notion_api.data.properties import DatabaseProperty, deserialize_database_property
 
 
 @catch_exceptions
-def properties_validator(v: dict[str, Any], info: ValidationInfo) -> DatabaseProperties:
-    properties = []
-    for key, value in v.items():
-        value['name'] = key
-        _class = deserialize_database_property(value)
-        properties.append(_class)
-        v[key] = _class
-
-    v['properties'] = properties
-    return v
+def properties_validator(v: dict[str, Any], info: ValidationInfo) -> PropertiesStructure:
+    return parse_properties(v, deserialize_database_property)
 
 
 class Database(MajorObject):
     title: list[RichText]
     description: list[RichText]
     is_inline: bool
-    properties: Annotated[DatabaseProperties, BeforeValidator(properties_validator)]
+    properties: Annotated[PropertiesStructure, BeforeValidator(properties_validator)]
     pages: list[Page] = Field(default=[], exclude=True)
 
     def get_properties(self) -> list[DatabaseProperty]:
@@ -60,4 +47,4 @@ def deserialize_database(data: dict[str, Any]) -> Database:
     return Database(**data)
 
 
-__all__ = ["Database", "deserialize_database", "DatabaseProperties"]
+__all__ = ["Database", "deserialize_database"]

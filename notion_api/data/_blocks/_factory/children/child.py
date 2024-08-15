@@ -1,9 +1,9 @@
 from typing import TypeVar, Type, Optional
 
-from structures import Parent
-from _blocks.block import Block
-from _blocks._data.children.child import ChildDatabase, ChildAttributes, ChildPage
-from _blocks._factory.general import _create_block
+from notion_api.data.structures import Parent
+from notion_api.data._blocks.block import Block
+from notion_api.data._blocks._data.children.child import ChildDatabase, ChildAttributes, ChildPage
+from notion_api.data._blocks._factory.general import _create_block
 
 T = TypeVar('T', ChildDatabase, ChildPage)
 

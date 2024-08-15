@@ -2,9 +2,9 @@
 from typing import Any
 
 # Third Party
-from _properties.property import DatabaseProperty, PageProperty
-from structures import RichText
-from _properties.type_ import PropertyType
+from notion_api.data._properties.property import DatabaseProperty, PageProperty
+from notion_api.data.structures import RichText
+from notion_api.data._properties.type_ import PropertyType
 
 
 class RichTextPage(PageProperty):

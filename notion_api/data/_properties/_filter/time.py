@@ -1,10 +1,8 @@
-from typing import Literal, Dict, Optional
-from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel
 
-from _filter.date import DateFilter, create_relative_date_filter
-from _filter.general import FilterStructure
+from .date import DateFilter
 
 
 class TimestampFilter(BaseModel, extra='allow'):

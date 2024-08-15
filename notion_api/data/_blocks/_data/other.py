@@ -1,5 +1,5 @@
 # Third Party
-from _blocks.block import Block, BlockType
+from notion_api.data._blocks.block import Block, BlockType
 
 
 class Divider(Block):

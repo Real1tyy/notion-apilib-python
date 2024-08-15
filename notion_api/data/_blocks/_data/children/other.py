@@ -4,8 +4,8 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field
 
-from _blocks.block import Block, BlockType
-from structures import Emoji, RichText
+from notion_api.data._blocks.block import Block, BlockType
+from notion_api.data.structures import Emoji, RichText
 
 
 class CalloutAttributes(BaseModel):

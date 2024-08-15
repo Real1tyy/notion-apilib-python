@@ -1,6 +1,7 @@
-from _blocks._data.link import Bookmark, BookmarkAttributes, Embed, EmbedAttributes, LinkPreview, LinkPreviewAttributes
-from _blocks._factory.general import _create_block
-from structures import Parent, RichText
+from notion_api.data._blocks._data.link import (Bookmark, BookmarkAttributes, Embed, EmbedAttributes, LinkPreview,
+                                                LinkPreviewAttributes)
+from notion_api.data._blocks._factory.general import _create_block
+from notion_api.data.structures import Parent, RichText
 
 
 def create_bookmark(parent: Parent, url: str, caption: list[RichText]) -> Bookmark:

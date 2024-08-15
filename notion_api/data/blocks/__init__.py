@@ -111,8 +111,6 @@ Note:
     DSL block classes, facilitating seamless data integration.
 """
 
-from notion_api.data.structures import *
-
 from notion_api.data._blocks.data import *
 from notion_api.data._blocks.factory import *
 from notion_api.data._blocks.type_factory import *

@@ -1,7 +1,6 @@
 # Third Party
-from _properties.data import *
-from custom_types import json_
-from _properties.type_ import PropertyType
+from notion_api.data._properties.data import *
+from notion_api.data._properties.type_ import PropertyType
 
 PROPERTY_TYPE_MAP = {
     "checkbox": (CheckboxPage, CheckboxDatabase),
@@ -28,7 +27,7 @@ PROPERTY_TYPE_MAP = {
 }
 
 
-def deserialize_page_property(data: json_):
+def deserialize_page_property(data: dict):
     """
     Create an instance of a concrete page property type based on the given data.
 
@@ -46,7 +45,7 @@ def deserialize_page_property(data: json_):
     return PROPERTY_TYPE_MAP[property_type][0](**data)
 
 
-def deserialize_database_property(data: json_):
+def deserialize_database_property(data: dict):
     """
     Create an instance of a concrete database property type based on the given data.
 

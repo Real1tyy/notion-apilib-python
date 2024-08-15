@@ -1,12 +1,13 @@
 from typing import Optional
 
-from structures import Parent, RichText
-from _blocks.block import Block
-from _blocks._factory.general import _create_block
-from _blocks._data.children.tables import (TableRow, TableRowAttributes, TableOfContents, TableOfContentsAttributes,
-                                           Column,
-                                           Table, \
-                                           TableAttributes)
+from notion_api.data.structures import (Parent, RichText)
+from notion_api.data._blocks.block import Block
+from notion_api.data._blocks._factory.general import _create_block
+from notion_api.data._blocks._data.children.tables import (TableRow, TableRowAttributes, TableOfContents,
+                                                           TableOfContentsAttributes,
+                                                           Column,
+                                                           Table, \
+                                                           TableAttributes)
 
 
 def create_table(

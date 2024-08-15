@@ -1,9 +1,10 @@
 from typing import Optional
 
-from structures import Parent, RichText, Emoji
-from _blocks.block import Block
-from _blocks._factory.general import _create_block
-from _blocks._data.children.other import SyncedFrom, SyncedBlock, SyncedBlockAttributes, Callout, CalloutAttributes
+from notion_api.data.structures import Parent, RichText, Emoji
+from notion_api.data._blocks.block import Block
+from notion_api.data._blocks._factory.general import (_create_block)
+from notion_api.data._blocks._data.children.other import (SyncedFrom, SyncedBlock, SyncedBlockAttributes, Callout,
+                                                          CalloutAttributes)
 
 
 def create_callout(

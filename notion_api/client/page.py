@@ -3,9 +3,9 @@ from dataclasses import dataclass
 from typing import Optional, Any
 
 # Third Party
-from client.block import NotionBlockProvider
-from client._api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
-from data import Page, deserialize_page
+from notion_api.client.block import NotionBlockProvider
+from notion_api.client._api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
+from notion_api.data import Page, deserialize_page
 
 
 @dataclass

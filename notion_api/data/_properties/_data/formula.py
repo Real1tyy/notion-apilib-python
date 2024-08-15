@@ -3,10 +3,10 @@ from datetime import datetime
 from typing import Literal, Optional
 
 # Third Party
-from _properties.property import DatabaseProperty, PageProperty
+from notion_api.data._properties.property import DatabaseProperty, PageProperty
 from pydantic import BaseModel
 
-from _properties.type_ import PropertyType
+from notion_api.data._properties.type_ import PropertyType
 
 
 class FormulaStructure(BaseModel):

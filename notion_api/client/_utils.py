@@ -1,18 +1,13 @@
 # Standard Library
-from typing import Optional, Callable, TypeVar, Any
+from typing import Optional
 
-from notion_api.data import QueryFilter
-from data.blocks import Block
+from notion_api.data.properties import QueryFilter, Sort
+from notion_api.data.blocks import Block, deserialize_block
 # Third Party
-from custom_types import json_
 from requests import Response
-
-from data.blocks import deserialize_block
 
 from typing import TypeVar, Callable, Any
 import requests
-
-from sort import Sort
 
 T = TypeVar('T')
 
@@ -48,11 +43,11 @@ def _get_children_from_json(response: Response) -> list[dict[str, Any]]:
     return response.json()['results']
 
 
-def _get_child_id_from_json(child: json_) -> str:
+def _get_child_id_from_json(child: dict) -> str:
     return child['id']
 
 
-def _create_children_json_payload(children_blocks: list[Block], after_block_id: str) -> json_:
+def _create_children_json_payload(children_blocks: list[Block], after_block_id: str) -> dict:
     children = dict()
     children['children'] = [child.serialize_to_json() for child in children_blocks]
     if after_block_id:
@@ -60,7 +55,7 @@ def _create_children_json_payload(children_blocks: list[Block], after_block_id: 
     return children
 
 
-def _parse_and_serialize_result(response: json_) -> list[Block]:
+def _parse_and_serialize_result(response: dict) -> list[Block]:
     results = response['results']
     return [deserialize_block(block) for block in results]
 

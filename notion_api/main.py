@@ -34,6 +34,7 @@ if __name__ == "__main__":
     database_provider = notion.get_database_provider()
     page_provider = notion.get_page_provider()
     block = deserialize_block(DATA)
+    blocks_provider.create_block()
     # json = block.serialize_to_json()
     # print(json)
     # blocks_provider.create_block(block)

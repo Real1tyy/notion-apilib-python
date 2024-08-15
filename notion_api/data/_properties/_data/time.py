@@ -3,8 +3,8 @@ from datetime import datetime
 from typing import Any
 
 # Third Party
-from _properties.property import DatabaseProperty, PageProperty
-from _properties.type_ import PropertyType
+from notion_api.data._properties.property import DatabaseProperty, PageProperty
+from notion_api.data._properties.type_ import PropertyType
 
 
 class CreatedTimePage(PageProperty):

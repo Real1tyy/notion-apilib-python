@@ -1,5 +1,4 @@
-from _filter.general import FilterStructure
-from _properties.query_filter import Filter
+from .general import FilterStructure, Filter
 
 
 class PeopleFilter(Filter):

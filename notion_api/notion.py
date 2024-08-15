@@ -1,12 +1,12 @@
 # Third Party
-from client._api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
-from client._api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
-from client._api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
-from client._api_requests._utils.NotionHeaderProvider import NotionHeaderProvider
-from client._api_requests._utils.RequestsClient import RequestsClient
-from client.block import NotionBlockProvider
-from client.database import NotionDatabaseProvider
-from client.page import NotionPageProvider
+from notion_api.client._api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
+from notion_api.client._api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
+from notion_api.client._api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
+from notion_api.client._api_requests._utils.NotionHeaderProvider import NotionHeaderProvider
+from notion_api.client._api_requests._utils.RequestsClient import RequestsClient
+from notion_api.client.block import NotionBlockProvider
+from notion_api.client.database import NotionDatabaseProvider
+from notion_api.client.page import NotionPageProvider
 from dependency_injector import containers, providers
 
 

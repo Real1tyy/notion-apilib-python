@@ -1,8 +1,8 @@
 # Third Party
 from typing import Any
 
-from _blocks.data import *
-from _structures.data import Mention
+from notion_api.data._blocks.data import *
+from notion_api.data.structures import Mention
 
 BLOCK_TYPE_MAP = {
     "bookmark": Bookmark,

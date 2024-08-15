@@ -1,5 +1,5 @@
 from notion_api.data.object import Object, MajorObject
-from __structures.assertions import assert_icon_structure, assert_user_structure, assert_parent_structure
+from tests.__data.__structures.assertions import assert_icon_structure, assert_user_structure, assert_parent_structure
 
 
 def assert_object_data_is_correct(data: Object, expected_data: dict):
@@ -18,5 +18,5 @@ def assert_major_object_data_is_correct(data: MajorObject, expected_data: dict):
     assert_object_data_is_correct(data, expected_data)
     assert_icon_structure(data.icon, expected_data["icon"])
     assert data.cover == expected_data["cover"]
-    assert data.url == expected_data
+    assert data.url == expected_data["url"]
     assert data.public_url is None

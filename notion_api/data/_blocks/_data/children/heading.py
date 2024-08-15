@@ -2,8 +2,8 @@ from abc import ABC
 
 from pydantic import BaseModel
 
-from _blocks.block import Block, BlockType
-from structures import RichText
+from notion_api.data._blocks.block import Block, BlockType
+from notion_api.data.structures import RichText
 
 
 class HeadingsAttributes(BaseModel):

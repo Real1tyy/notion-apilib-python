@@ -1,8 +1,8 @@
 from typing import Any, Literal
 from uuid import UUID
 
-from _structures.data import Parent
-from types_ import parents_types
+from notion_api.data._structures.data import Parent
+from notion_api.data._structures.types_ import parents_types
 
 
 def create_parent_from_object(parent: Any) -> Parent:

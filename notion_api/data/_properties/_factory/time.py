@@ -1,13 +1,12 @@
 from datetime import datetime
 
-from _properties.data import CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage, LastEditedTimeDatabase
-from data.database import Database
-from _properties._factory.general import _create_page_property, _create_database_property
-from data.page import Page
+from notion_api.data._properties.data import (CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage,
+                                              LastEditedTimeDatabase)
+from .general import _create_page_property, _create_database_property
 
 
 def create_created_time_page(
-        parent: Page, name: str, created_time: datetime) -> CreatedTimePage:
+        parent: 'Page', name: str, created_time: datetime) -> CreatedTimePage:
     """
     Factory method to create a CreatedTimePage object.
 
@@ -28,7 +27,7 @@ def create_created_time_page(
 
 
 def create_created_time_database(
-        parent: Database, name: str) -> CreatedTimeDatabase:
+        parent: 'Database', name: str) -> CreatedTimeDatabase:
     """
     Factory method to create a CreatedTimeDatabase object.
 
@@ -48,7 +47,7 @@ def create_created_time_database(
 
 
 def create_last_edited_time_page(
-        parent: Page, name: str, last_edited_time: datetime) -> LastEditedTimePage:
+        parent: 'Page', name: str, last_edited_time: datetime) -> LastEditedTimePage:
     """
     Factory method to create a LastEditedTimePage object.
 
@@ -69,7 +68,7 @@ def create_last_edited_time_page(
 
 
 def create_last_edited_time_database(
-        parent: Database, name: str) -> LastEditedTimeDatabase:
+        parent: 'Database', name: str) -> LastEditedTimeDatabase:
     """
     Factory method to create a LastEditedTimeDatabase object.
 

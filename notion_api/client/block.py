@@ -4,9 +4,9 @@ from uuid import UUID
 
 # Third Party
 from notion_api.data.blocks import Block
-from client._api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
-from type_factory import deserialize_block
-from client.utils import _get_child_id_from_json, _get_children_from_json, _create_children_json_payload, \
+from notion_api.client._api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
+from notion_api.data.blocks import deserialize_block
+from notion_api.client._utils import _get_child_id_from_json, _get_children_from_json, _create_children_json_payload, \
     _parse_and_serialize_result, _handle_pagination
 
 

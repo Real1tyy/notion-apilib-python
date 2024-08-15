@@ -1,8 +1,7 @@
-from _filter.date import DateFilter
-from _filter.general import FilterStructure
-from _filter.number import NumberFilter
-from _filter.text import RichTextFilter
-from _properties.query_filter import Filter
+from .date import DateFilter
+from .general import FilterStructure, Filter
+from .number import NumberFilter
+from .text import RichTextFilter
 
 
 class FormulaFilter(Filter):

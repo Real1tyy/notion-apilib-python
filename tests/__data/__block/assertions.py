@@ -1,9 +1,9 @@
 from typing import TypeVar, Type, Callable
 
-from __block.constants import BLOCK_TYPE
-from __data.assertions import assert_object_data_is_correct
+from tests.__data.__block.constants import (BLOCK_TYPE)
+from tests.__data.assertions import assert_object_data_is_correct
 from notion_api.data.blocks import Block
-from __data.utils.__serialization import transform_dictionary
+from tests.__data.utils.__serialization import transform_dictionary
 
 
 def assert_block_data_is_correct(data: Block, expected_data: dict):

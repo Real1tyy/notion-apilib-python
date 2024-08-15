@@ -4,12 +4,12 @@ from .constants import *
 
 
 @pytest.fixture
-def property_data():
+def property_data(faker):
     def return_block_data(property_type, property_type_specific_data) -> Dict[str, Any]:
         return {
             "id": PROPERTY_ID,
             "type": property_type,
-            "name": PROPERTY_NAME,
+            "name": faker.unique.word(),
             property_type.value: property_type_specific_data,
         }
 

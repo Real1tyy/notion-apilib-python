@@ -1,13 +1,12 @@
 from structures import User
-from data.database import Database
-from _properties._factory.general import _create_page_property, _create_database_property
-from data.page import Page
-from _properties.data import PeoplePage, LastEditedByPage, CreatedByPage, CreatedByDatabase, LastEditedByDatabase, \
-    PeopleDatabase
+from .general import _create_page_property, _create_database_property
+from notion_api.data._properties.data import (PeoplePage, LastEditedByPage, CreatedByPage, CreatedByDatabase,
+                                              LastEditedByDatabase, \
+                                              PeopleDatabase)
 
 
 def create_created_by_page(
-        parent: Page, name: str, created_by: User) -> CreatedByPage:
+        parent: 'Page', name: str, created_by: User) -> CreatedByPage:
     """
     Factory method to create a CreatedByPage object.
 
@@ -28,7 +27,7 @@ def create_created_by_page(
 
 
 def create_created_by_database(
-        parent: Database, name: str) -> CreatedByDatabase:
+        parent: 'Database', name: str) -> CreatedByDatabase:
     """
     Factory method to create a CreatedByDatabase object.
 
@@ -48,7 +47,7 @@ def create_created_by_database(
 
 
 def create_last_edited_by_page(
-        parent: Page, name: str, last_edited_by: User) -> LastEditedByPage:
+        parent: 'Page', name: str, last_edited_by: User) -> LastEditedByPage:
     """
     Factory method to create a LastEditedByPage object.
 
@@ -69,7 +68,7 @@ def create_last_edited_by_page(
 
 
 def create_last_edited_by_database(
-        parent: Database, name: str) -> LastEditedByDatabase:
+        parent: 'Database', name: str) -> LastEditedByDatabase:
     """
     Factory method to create a LastEditedByDatabase object.
 
@@ -89,7 +88,7 @@ def create_last_edited_by_database(
 
 
 def create_people_page(
-        parent: Page, name: str, people: list[User]) -> PeoplePage:
+        parent: 'Page', name: str, people: list[User]) -> PeoplePage:
     """
     Factory method to create a PeoplePage object.
 
@@ -110,7 +109,7 @@ def create_people_page(
 
 
 def create_people_database(
-        parent: Database, name: str) -> PeopleDatabase:
+        parent: 'Database', name: str) -> PeopleDatabase:
     """
     Factory method to create a PeopleDatabase object.
 
