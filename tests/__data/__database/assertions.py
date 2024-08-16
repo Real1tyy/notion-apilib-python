@@ -10,7 +10,7 @@ def assert_database_structure(database, expected_database):
     assert_rich_text_structure(database.description, expected_database["description"])
     assert database.is_inline == expected_database["is_inline"]
 
-    for property_ in database.get_properties():
+    for property_ in database.properties():
         assert property_.name in expected_database["properties"]
         assertion_func = get_assertion_function(property_.__class__)
         assertion_func(property_, expected_database["properties"][property_.name])

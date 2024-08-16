@@ -1,33 +1,35 @@
 # Standard Library
-from typing import Annotated, Any
+from typing import Any
 
 # Third Party
-from pydantic import BeforeValidator, Field
-from pydantic_core.core_schema import ValidationInfo
+from pydantic import Field, field_validator
 
 # First Party
-from ._exceptions_ import catch_exceptions
 from .object_ import MajorObject
 from .properties_structure import PropertiesStructure, parse_properties
 from notion_api.data.properties import PageProperty, deserialize_page_property
 from notion_api.data.blocks import Block
 
 
-@catch_exceptions
-def properties_validator(
-    v: dict[str, Any], info: ValidationInfo
-) -> PropertiesStructure:
-    return parse_properties(v, deserialize_page_property)
-
-
 class Page(MajorObject):
-    properties: Annotated[PropertiesStructure, BeforeValidator(properties_validator)]
+    properties_attributes: PropertiesStructure[PageProperty] = Field(alias="properties")
     children: list[Block] = Field(default=[])
 
-    def get_properties(self) -> list[PageProperty]:
-        return self.properties.properties
+    @field_validator("properties_attributes", mode="before")
+    @classmethod
+    def validate_properties(cls, v: Any) -> PropertiesStructure:
+        return parse_properties(v, deserialize_page_property)
+
+    @property
+    def properties(self) -> list[PageProperty]:
+        return self.properties_attributes.properties
 
     def serialize_to_json(self) -> dict[str, Any]:
+        """
+        Serialize the page to JSON. Excludes the id, archived, and children properties. As well as properties that are
+        either rollup, formula, last_edited_time, created_time, or unique_id.
+        :return: The serialized page j.
+        """
         data = self.model_dump(
             mode="json", exclude_none=True, exclude={"id", "archived", "children"}
         )
@@ -46,10 +48,9 @@ class Page(MajorObject):
         ]
         return data
 
-    def add_property(self, property_: PageProperty) -> list[PageProperty]:
-        self.get_properties().append(property_)
+    def add_property(self, property_: PageProperty) -> None:
+        self.properties.append(property_)
         setattr(self.properties, property_.name, property_)
-        return self.get_properties()
 
 
 def deserialize_page(data: dict[str, Any]) -> Page:

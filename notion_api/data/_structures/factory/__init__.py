@@ -61,7 +61,7 @@ from .file_ import (
     create_resources_attributes,
     create_file_attributes,
 )
-from .icon_ import create_icon, create_emoji
+from .icon_ import create_emoji
 from .mention_ import (
     create_mention,
     create_template_mention_date,
@@ -96,7 +96,6 @@ __all__ = [
     "create_external",
     "create_resources_attributes",
     "create_file_attributes",
-    "create_icon",
     "create_emoji",
     "create_mention",
     "create_template_mention_date",

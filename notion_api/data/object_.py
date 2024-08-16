@@ -7,16 +7,16 @@ from uuid import UUID
 # Third Party
 from pydantic import Field
 
-# First Party
+from .properties import Property
 from .configuration_ import BasicConfiguration
-from notion_api.data.structures import Icon, Parent, User
+from notion_api.data.structures import Parent, User, ResourcesAttributes
 
 
 class Object(BasicConfiguration, ABC):
     id: UUID = Field(default=None)
     object: Literal["block", "database", "page", "workspace"]
-    created_time: datetime = Field(exclude=True, default=None)
-    last_edited_time: datetime = Field(exclude=True, default=None)
+    created_time: datetime = Field(exclude=True)
+    last_edited_time: datetime = Field(exclude=True)
     created_by: User = Field(exclude=True)
     last_edited_by: User = Field(exclude=True)
     parent: Parent
@@ -25,19 +25,30 @@ class Object(BasicConfiguration, ABC):
 
     @abstractmethod
     def serialize_to_json(self) -> dict[str, Any]:
-        pass
+        """
+        Serialize the object to a JSON serializable dictionary.
+        :return: The serialized object.
+        """
 
 
 class MajorObject(Object, ABC):
-    icon: Optional[Icon] = None
-    cover: Optional[str] = None
+    icon: Optional[ResourcesAttributes] = None
+    cover: Optional[ResourcesAttributes] = None
     url: str
     public_url: Optional[str] = None
 
+    @property
     @abstractmethod
-    def get_properties(self):
-        pass
+    def properties(self) -> list[Property]:
+        """
+        Get the properties of the object.
+        :return:
+        """
 
     @abstractmethod
-    def add_property(self, property_):
-        pass
+    def add_property(self, property_: Property) -> None:
+        """
+        Add a property to the object properties.
+        :param property_: Property to add.
+        :return:
+        """

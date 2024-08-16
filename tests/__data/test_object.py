@@ -8,7 +8,7 @@ from tests.__data.assertions import assert_object_data_is_correct
 
 class TestObject(MajorObject):
 
-    def get_properties(self):
+    def properties(self):
         # just for testing
         pass
 

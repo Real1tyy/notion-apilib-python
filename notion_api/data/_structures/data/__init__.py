@@ -52,7 +52,7 @@ Note:
 """
 
 from .file_ import FileObject, External, FileAttributes, ResourcesAttributes
-from .icon_ import Emoji, Icon
+from .icon_ import Emoji
 from .mention_ import (
     Mention,
     DatabaseMention,
@@ -74,7 +74,6 @@ __all__ = [
     "FileAttributes",
     "ResourcesAttributes",
     "Emoji",
-    "Icon",
     "Mention",
     "DatabaseMention",
     "DateMention",

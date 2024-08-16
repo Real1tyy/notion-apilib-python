@@ -34,9 +34,9 @@ The `notion-api` package is organized into several key components:
     With the `NotionApi` instance, you can easily access the providers for blocks, pages, and databases:
 
     ```python
-    block_provider = notion_api.get_block_provider()
-    page_provider = notion_api.get_page_provider()
-    database_provider = notion_api.get_database_provider()
+    block_provider = notion_api.block_provider()
+    page_provider = notion_api.page_provider()
+    database_provider = notion_api.database_provider()
     ```
 
     These providers should not be instantiated directly. The `NotionApi` container ensures that all dependencies are correctly injected and managed.

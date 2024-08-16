@@ -42,7 +42,7 @@ class NotionDatabaseProvider:
     def query_database(
         self,
         database: Database,
-        filter: Optional[QueryFilter] = None,
+        filter_: Optional[QueryFilter] = None,
         sort: Optional[list[Sort]] = None,
     ) -> Database:
         """
@@ -50,7 +50,7 @@ class NotionDatabaseProvider:
 
         Args:
             database (Database): The database object to query.
-            filter (Optional[str]): Optional filter string for the query.
+            filter_ (Optional[str]): Optional filter string for the query.
             sort (Optional[str]): Optional sorting criteria for the query.
 
         Returns:
@@ -61,19 +61,23 @@ class NotionDatabaseProvider:
             ResponseException: If the Notion API returns an error status code.
         """
         database.pages = []
-        data = _prepare_query_data(sort=sort, filter=filter)
+        data = _prepare_query_data(sort=sort, filter=filter_)
         response = self.notion_client.query_database(database.id.hex, data)
         children = _get_children_from_json(response)
         database.pages.extend(map(deserialize_page, children))
         return _handle_pagination(
-            database, response, self._query_paginated_database, filter=filter, sort=sort
+            database,
+            response,
+            self._query_paginated_database,
+            filter=filter_,
+            sort=sort,
         )
 
     def _query_paginated_database(
         self,
         database: Database,
         next_cursor: str,
-        filter: Optional[QueryFilter] = None,
+        filter_: Optional[QueryFilter] = None,
         sort: dict[str, Any] = None,
     ) -> Database:
         """
@@ -82,7 +86,7 @@ class NotionDatabaseProvider:
         Args:
             database (Database): The database object to query.
             next_cursor (str): The cursor to start the next page of results.
-            filter (Optional[str]): Optional filter string for the query.
+            filter_ (Optional[str]): Optional filter string for the query.
             sort (Optional[str]): Optional sorting criteria for the query.
 
         Returns:
@@ -92,7 +96,7 @@ class NotionDatabaseProvider:
             ValueError: If the deserialization of the response fails due to an invalid schema.
             ResponseException: If the Notion API returns an error status code.
         """
-        data = _prepare_query_data(next_cursor, sort, filter)
+        data = _prepare_query_data(next_cursor, sort, filter_)
         response = self.notion_client.query_database(database.id.hex, data, None)
         children = _get_children_from_json(response)
 
@@ -104,7 +108,11 @@ class NotionDatabaseProvider:
             database.pages.append(page)
 
         return _handle_pagination(
-            database, response, self._query_paginated_database, filter=filter, sort=sort
+            database,
+            response,
+            self._query_paginated_database,
+            filter=filter_,
+            sort=sort,
         )
 
     def retrieve_database(self, database_id: str) -> Database:
@@ -122,6 +130,7 @@ class NotionDatabaseProvider:
             ResponseException: If the Notion API returns an error status code.
         """
         response = self.notion_client.retrieve_database(database_id)
+        print(response.json())
         return deserialize_database(response.json())
 
     def update_database(self, database: Database) -> Database:

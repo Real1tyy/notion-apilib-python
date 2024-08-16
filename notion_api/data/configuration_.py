@@ -6,7 +6,7 @@ from abc import ABC
 from pydantic import BaseModel
 
 
-class BasicConfiguration(ABC, BaseModel, use_enum_values=True, from_attributes=True, arbitrary_types_allowed=True):
+class BasicConfiguration(BaseModel, ABC, use_enum_values=True, from_attributes=True, arbitrary_types_allowed=True):
     """
     Abstract model class used for basic pydantic configuration to be reused by other classes
     """

@@ -1,4 +1,5 @@
 # First Party
+from .property import PageProperty, DatabaseProperty
 from .data import *
 from .type_ import PropertyType
 
@@ -27,7 +28,7 @@ PROPERTY_TYPE_MAP = {
 }
 
 
-def deserialize_page_property(data: dict):
+def deserialize_page_property(data: dict) -> PageProperty:
     """
     Create an instance of a concrete page property type based on the given data.
 
@@ -45,7 +46,7 @@ def deserialize_page_property(data: dict):
     return PROPERTY_TYPE_MAP[property_type][0](**data)
 
 
-def deserialize_database_property(data: dict):
+def deserialize_database_property(data: dict) -> DatabaseProperty:
     """
     Create an instance of a concrete database property type based on the given data.
 

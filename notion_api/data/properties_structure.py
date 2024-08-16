@@ -1,5 +1,5 @@
 # Standard Library
-from typing import Callable
+from typing import Callable, TypeVar, Generic
 
 # Third Party
 from pydantic import Field
@@ -8,13 +8,15 @@ from pydantic import Field
 from .configuration_ import ExtraConfiguration
 from notion_api.data.properties import Property
 
+T = TypeVar("T", bound=Property)
 
-class PropertiesStructure(ExtraConfiguration):
-    properties: list = Field(exclude=True, default=[])
+
+class PropertiesStructure(ExtraConfiguration, Generic[T]):
+    properties: list[T] = Field(exclude=True, default=[])
 
 
 def parse_properties(
-    v: dict, deserialization_func: Callable[[dict], Property]
+        v: dict, deserialization_func: Callable[[dict], Property]
 ) -> PropertiesStructure:
     properties = []
     for key, value in v.items():

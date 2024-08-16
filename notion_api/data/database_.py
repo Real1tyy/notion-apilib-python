@@ -2,11 +2,10 @@
 from typing import Annotated, Any
 
 # Third Party
-from pydantic import BeforeValidator, Field
+from pydantic import BeforeValidator, Field, field_validator
 from pydantic_core.core_schema import ValidationInfo
 
 # First Party
-from ._exceptions_ import catch_exceptions
 from .object_ import MajorObject
 from .page_ import Page
 from .properties_structure import PropertiesStructure, parse_properties
@@ -14,23 +13,21 @@ from notion_api.data.properties import DatabaseProperty, deserialize_database_pr
 from notion_api.data.structures import RichText
 
 
-@catch_exceptions
-def properties_validator(
-    v: dict[str, Any], info: ValidationInfo
-) -> PropertiesStructure:
-    return parse_properties(v, deserialize_database_property)
-
-
 class Database(MajorObject):
     title: list[RichText]
     description: list[RichText]
     is_inline: bool
-    properties: Annotated[PropertiesStructure, BeforeValidator(properties_validator)]
+    properties_attributes: PropertiesStructure[DatabaseProperty] = Field(alias="properties")
     pages: list[Page] = Field(default=[], exclude=True)
 
-    def get_properties(self) -> list[DatabaseProperty]:
-        props = self.properties
-        return props.properties
+    @field_validator("properties_attributes", mode="before")
+    @classmethod
+    def validate_properties(cls, v: Any) -> PropertiesStructure:
+        return parse_properties(v, deserialize_database_property)
+
+    @property
+    def properties(self) -> list[DatabaseProperty]:
+        return self.properties_attributes.properties
 
     def serialize_to_json(self) -> dict[str, Any]:
         data = self.model_dump(
@@ -47,10 +44,9 @@ class Database(MajorObject):
         ]
         return data
 
-    def add_property(self, property_: DatabaseProperty) -> list[DatabaseProperty]:
-        self.get_properties().append(property_)
+    def add_property(self, property_: DatabaseProperty) -> None:
+        self.properties.append(property_)
         setattr(self.properties, property_.name, property_)
-        return self.get_properties()
 
 
 def deserialize_database(data: dict[str, Any]) -> Database:

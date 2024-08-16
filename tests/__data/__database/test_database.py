@@ -16,7 +16,7 @@ def test_database(create_database):
 
 
 def test_database_properties(database_object, date_database):
-    amount = len(database_object.get_properties())
+    amount = len(database_object.properties())
     property_ = DateDatabase(**date_database(DateDatabase.get_associated_property_type()))
     database_object.add_property(property_)
-    assert amount + 1 == len(database_object.get_properties())
+    assert amount + 1 == len(database_object.properties())

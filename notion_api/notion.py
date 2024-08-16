@@ -64,13 +64,16 @@ class NotionApi:
         self.container.config.api_key.from_value(api_key)
         self.container.init_resources()
 
-    def get_page_provider(self):
+    @property
+    def page_provider(self):
         return self.container._notion_page_provider()
 
-    def get_block_provider(self):
+    @property
+    def block_provider(self):
         return self.container._notion_block_provider()
 
-    def get_database_provider(self):
+    @property
+    def database_provider(self):
         return self.container._notion_database_provider()
 
 
