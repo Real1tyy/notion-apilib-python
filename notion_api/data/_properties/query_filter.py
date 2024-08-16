@@ -1,10 +1,12 @@
+# Standard Library
 from abc import ABC, abstractmethod
 from typing import Any, Optional
 
-from notion_api.data._properties.filter import Filter
-
+# Third Party
 from pydantic import Field
 
+# First Party
+from notion_api.data._properties.filter import Filter
 from notion_api.data.configuration import ExtraConfiguration
 
 

@@ -1,7 +1,10 @@
+# Standard Library
 from abc import ABC
 
+# Third Party
 from pydantic import BaseModel
 
+# First Party
 from notion_api.data.configuration import BasicConfiguration
 
 

@@ -1,12 +1,21 @@
 # mention_factory.py
 
+# Standard Library
 from datetime import datetime
 from typing import Optional
 from uuid import UUID
 
+# First Party
 from notion_api.data._structures.data import (
-    DatabaseMention, DateMention, LinkPreviewMention, PageMention, TemplateMentionDate,
-    TemplateMentionUser, TemplateMention, UserMention, Mention
+    DatabaseMention,
+    DateMention,
+    LinkPreviewMention,
+    Mention,
+    PageMention,
+    TemplateMention,
+    TemplateMentionDate,
+    TemplateMentionUser,
+    UserMention,
 )
 
 

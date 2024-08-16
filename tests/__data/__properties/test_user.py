@@ -1,10 +1,19 @@
+# Third Party
 import pytest
 
+# First Party
+from notion_api.data.properties import (
+    CreatedByDatabase,
+    CreatedByPage,
+    LastEditedByDatabase,
+    LastEditedByPage,
+    PeopleDatabase,
+    PeoplePage,
+)
 from tests.__data.__structures.assertions import assert_user_structure
-from .helper import extract_create_assert_structure, extract_create_assert_serialization
+
 from .assertions import assert_properties_data_is_correct
-from notion_api.data.properties import CreatedByPage, CreatedByDatabase, LastEditedByPage, LastEditedByDatabase, \
-    PeoplePage, PeopleDatabase
+from .helper import extract_create_assert_serialization, extract_create_assert_structure
 
 
 @pytest.fixture

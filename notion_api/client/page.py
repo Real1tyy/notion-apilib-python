@@ -1,10 +1,10 @@
 # Standard Library
 from dataclasses import dataclass
-from typing import Optional, Any
+from typing import Any, Optional
 
-# Third Party
-from notion_api.client.block import NotionBlockProvider
+# First Party
 from notion_api.client._api_requests.api.NotionAPIPagesClient import NotionAPIPagesClient
+from notion_api.client.block import NotionBlockProvider
 from notion_api.data import Page, deserialize_page
 
 

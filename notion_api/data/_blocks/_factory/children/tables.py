@@ -1,13 +1,19 @@
+# Standard Library
 from typing import Optional
 
-from notion_api.data.structures import (Parent, RichText)
-from notion_api.data._blocks.block import Block
+# First Party
+from notion_api.data._blocks._data.children.tables import (
+    Column,
+    Table,
+    TableAttributes,
+    TableOfContents,
+    TableOfContentsAttributes,
+    TableRow,
+    TableRowAttributes,
+)
 from notion_api.data._blocks._factory.general import _create_block
-from notion_api.data._blocks._data.children.tables import (TableRow, TableRowAttributes, TableOfContents,
-                                                           TableOfContentsAttributes,
-                                                           Column,
-                                                           Table, \
-                                                           TableAttributes)
+from notion_api.data._blocks.block import Block
+from notion_api.data.structures import Parent, RichText
 
 
 def create_table(

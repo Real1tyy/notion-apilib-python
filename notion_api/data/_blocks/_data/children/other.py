@@ -1,9 +1,11 @@
-# Third Party
+# Standard Library
 from typing import Optional
 from uuid import UUID
 
+# Third Party
 from pydantic import BaseModel, Field
 
+# First Party
 from notion_api.data._blocks.block import Block, BlockType
 from notion_api.data.structures import Emoji, RichText
 

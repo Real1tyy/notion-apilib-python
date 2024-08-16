@@ -1,11 +1,24 @@
+# Third Party
 import pytest
+
+# First Party
+from tests.__data.__structures.conftest import (
+    create_emoji,
+    create_equation,
+    create_extensive_parent_data,
+    create_extensive_resource,
+    create_extensive_user_data,
+    create_external,
+    create_file_object,
+    create_href,
+    create_mention,
+    create_parent_data,
+    create_resource,
+    create_rich_text,
+    create_text,
+    create_user_data,
+)
 from tests.__data.constants import *
-from tests.__data.__structures.conftest import (create_parent_data, create_user_data, create_emoji, create_rich_text,
-                                                create_text, \
-                                                create_mention, create_equation, create_resource, create_external,
-                                                create_file_object, create_extensive_parent_data,
-                                                create_extensive_user_data,
-                                                create_href, create_extensive_resource)
 
 
 @pytest.fixture(params=OBJECT_TYPES)

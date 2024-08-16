@@ -3,8 +3,8 @@ from typing import Any
 
 # Third Party
 from _properties.property import DatabaseProperty, PageProperty
-from structures import ResourcesAttributes
 from _properties.type_ import PropertyType
+from structures import ResourcesAttributes
 
 
 class EmailPage(PageProperty):

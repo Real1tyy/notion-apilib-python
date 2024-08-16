@@ -1,9 +1,12 @@
+# Third Party
 import pytest
 
-from notion_api.data import Page
+from notion_api.data import Database, Page
+# First Party
+
 from ..__properties.conftest import property_data
-from ..__properties.test_date import date_database, DateDatabase
-from ..__properties.test_number import unique_id_database, number_database, NumberDatabase, UniqueIdDatabase
+from ..__properties.test_date import DateDatabase, date_database
+from ..__properties.test_number import NumberDatabase, UniqueIdDatabase, number_database, unique_id_database
 from .constants import *
 
 
@@ -31,4 +34,4 @@ def create_database(major_object_data, database_properties, create_rich_text):
 
 @pytest.fixture
 def database_object(create_database):
-    return Page(**create_database)
+    return Database(**create_database)

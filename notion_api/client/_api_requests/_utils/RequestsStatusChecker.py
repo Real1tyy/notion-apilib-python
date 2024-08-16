@@ -2,8 +2,10 @@
 import time
 
 # Third Party
-from notion_api.client._api_requests.constants.status_codes import RATE_LIMIT, SUCCESS
 from requests import Response
+
+# First Party
+from notion_api.client._api_requests.constants.status_codes import RATE_LIMIT, SUCCESS
 
 
 def check_response_status(response: Response) -> bool:

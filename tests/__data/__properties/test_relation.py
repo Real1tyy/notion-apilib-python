@@ -1,11 +1,16 @@
-import pytest
+# Standard Library
 from datetime import datetime, timezone
 from uuid import UUID
 
-from .constants import *
-from .helper import extract_create_assert_structure, extract_create_assert_serialization
+# Third Party
+import pytest
+
+# First Party
+from notion_api.data.properties import RelationDatabase, RelationPage, RollupDatabase, RollupPage
+
 from .assertions import assert_properties_data_is_correct
-from notion_api.data.properties import RelationPage, RelationDatabase, RollupPage, RollupDatabase
+from .constants import *
+from .helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants for Relation Properties
 RELATED_ITEM_ID = UUID("123e4567-e89b-12d3-a456-426614174000")

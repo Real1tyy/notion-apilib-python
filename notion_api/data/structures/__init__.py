@@ -82,12 +82,12 @@ Note:
     objects are validated and structured correctly. The additional factory methods enable the transformation of JSON
     payloads from the Notion API into our custom DSL properties, facilitating seamless data integration.
 """
+# First Party
 from notion_api.data._structures.data import *
-from notion_api.data._structures.factory import *
-from notion_api.data._structures.types_ import *
-
 from notion_api.data._structures.data import __all__ as data_all
+from notion_api.data._structures.factory import *
 from notion_api.data._structures.factory import __all__ as factory_all
+from notion_api.data._structures.types_ import *
 from notion_api.data._structures.types_ import __all__ as types_all
 
 __all__ = data_all + factory_all + types_all

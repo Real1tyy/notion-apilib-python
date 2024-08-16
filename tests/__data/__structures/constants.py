@@ -1,7 +1,8 @@
 # constants.py
 
-from datetime import datetime, timezone
+# Standard Library
 import uuid
+from datetime import datetime, timezone
 
 # Object constants
 USER_TYPES = ['person', 'bot']

@@ -7,10 +7,10 @@ from typing import Callable, Optional
 import requests
 from requests import Response
 
-from notion_api.client.exceptions import ResponseError
+# First Party
 from notion_api.client._api_requests.constants.notion import BASE_URL
-
-from notion_api.client._api_requests.constants.status_codes import SUCCESS, RATE_LIMIT
+from notion_api.client._api_requests.constants.status_codes import RATE_LIMIT, SUCCESS
+from notion_api.client.exceptions import ResponseError
 
 
 def verify_response(

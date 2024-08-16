@@ -1,6 +1,8 @@
+# Standard Library
 from typing import Optional
 
-from notion_api.data._structures.data import Annotations, Text, RichText, Link, Mention
+# First Party
+from notion_api.data._structures.data import Annotations, Link, Mention, RichText, Text
 
 
 def create_basic_annotations() -> Annotations:

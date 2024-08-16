@@ -1,9 +1,11 @@
 # file_factory.py
 
+# Standard Library
 from datetime import datetime
-from typing import Optional, List
+from typing import List, Optional
 
-from notion_api.data._structures.data import FileObject, External, ResourcesAttributes, FileAttributes, RichText
+# First Party
+from notion_api.data._structures.data import External, FileAttributes, FileObject, ResourcesAttributes, RichText
 from notion_api.data._structures.types_ import file_type
 
 

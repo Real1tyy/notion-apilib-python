@@ -1,4 +1,4 @@
-# Third Party
+# First Party
 from notion_api.data._properties.data import *
 from notion_api.data._properties.type_ import PropertyType
 

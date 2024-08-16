@@ -3,8 +3,10 @@ from dataclasses import dataclass
 from typing import Optional
 
 # Third Party
-from notion_api.client._api_requests._utils.RequestsClient import RequestsClient
 from requests import Response
+
+# First Party
+from notion_api.client._api_requests._utils.RequestsClient import RequestsClient
 
 
 @dataclass

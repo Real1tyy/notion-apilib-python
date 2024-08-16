@@ -2,11 +2,12 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
+# Third Party
 from pydantic import Field
 
-from notion_api.data.object import Object
-# Third Party
+# First Party
 from notion_api.data._blocks.type_ import BlockType
+from notion_api.data.object import Object
 
 
 class Block(Object, ABC):

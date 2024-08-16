@@ -1,7 +1,11 @@
+# Third Party
 import pytest
-from .helper import extract_create_assert_structure, extract_create_assert_serialization
+
+# First Party
+from notion_api.data.properties import NumberDatabase, NumberPage, UniqueIdDatabase, UniqueIdPage
+
 from .assertions import assert_properties_data_is_correct
-from notion_api.data.properties import NumberPage, NumberDatabase, UniqueIdPage, UniqueIdDatabase
+from .helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants for Number Properties
 NUMBER_VALUE = 123.45

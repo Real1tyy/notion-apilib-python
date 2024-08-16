@@ -1,5 +1,12 @@
-from notion_api.data._blocks._data.link import (Bookmark, BookmarkAttributes, Embed, EmbedAttributes, LinkPreview,
-                                                LinkPreviewAttributes)
+# First Party
+from notion_api.data._blocks._data.link import (
+    Bookmark,
+    BookmarkAttributes,
+    Embed,
+    EmbedAttributes,
+    LinkPreview,
+    LinkPreviewAttributes,
+)
 from notion_api.data._blocks._factory.general import _create_block
 from notion_api.data.structures import Parent, RichText
 

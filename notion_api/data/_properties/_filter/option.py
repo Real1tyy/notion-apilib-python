@@ -1,6 +1,7 @@
+# Third Party
 from pydantic import BaseModel
 
-from .general import FilterStructure, Filter
+from .general import Filter, FilterStructure
 
 
 class CheckboxFilterStructure(BaseModel):

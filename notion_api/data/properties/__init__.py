@@ -183,20 +183,20 @@ __all__:
       - `create_id_filter(property_name: str, filter_type: Literal['equals', 'does_not_equal', 'greater_than', 'greater_than_or_equal_to', 'less_than', 'less_than_or_equal_to'], value: int) -> IDFilter`
 """
 
+# First Party
 from notion_api.data._properties.data import *
-from notion_api.data._properties.factory import *
-from notion_api.data._properties.property_factory import *
-from notion_api.data._properties.property import *
-from notion_api.data._properties.sort import *
-from notion_api.data._properties.filter import *
-from notion_api.data._properties.query_filter import *
-
 from notion_api.data._properties.data import __all__ as data_all
+from notion_api.data._properties.factory import *
 from notion_api.data._properties.factory import __all__ as factory_all
-from notion_api.data._properties.property_factory import __all__ as property_factory_all
-from notion_api.data._properties.property import __all__ as property_all
-from notion_api.data._properties.sort import __all__ as sort_all
+from notion_api.data._properties.filter import *
 from notion_api.data._properties.filter import __all__ as filter_all
+from notion_api.data._properties.property import *
+from notion_api.data._properties.property import __all__ as property_all
+from notion_api.data._properties.property_factory import *
+from notion_api.data._properties.property_factory import __all__ as property_factory_all
+from notion_api.data._properties.query_filter import *
 from notion_api.data._properties.query_filter import __all__ as query_filter_all
+from notion_api.data._properties.sort import *
+from notion_api.data._properties.sort import __all__ as sort_all
 
 __all__ = data_all + factory_all + property_factory_all + property_all + sort_all + filter_all + query_filter_all

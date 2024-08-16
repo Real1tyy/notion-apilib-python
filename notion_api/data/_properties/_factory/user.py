@@ -1,8 +1,17 @@
+# Third Party
 from structures import User
-from .general import _create_page_property, _create_database_property
-from notion_api.data._properties.data import (PeoplePage, LastEditedByPage, CreatedByPage, CreatedByDatabase,
-                                              LastEditedByDatabase, \
-                                              PeopleDatabase)
+
+# First Party
+from notion_api.data._properties.data import (
+    CreatedByDatabase,
+    CreatedByPage,
+    LastEditedByDatabase,
+    LastEditedByPage,
+    PeopleDatabase,
+    PeoplePage,
+)
+
+from .general import _create_database_property, _create_page_property
 
 
 def create_created_by_page(

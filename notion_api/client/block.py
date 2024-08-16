@@ -2,12 +2,16 @@
 from dataclasses import dataclass
 from uuid import UUID
 
-# Third Party
-from notion_api.data.blocks import Block
+# First Party
 from notion_api.client._api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
-from notion_api.data.blocks import deserialize_block
-from notion_api.client._utils import _get_child_id_from_json, _get_children_from_json, _create_children_json_payload, \
-    _parse_and_serialize_result, _handle_pagination
+from notion_api.client._utils import (
+    _create_children_json_payload,
+    _get_child_id_from_json,
+    _get_children_from_json,
+    _handle_pagination,
+    _parse_and_serialize_result,
+)
+from notion_api.data.blocks import Block, deserialize_block
 
 
 @dataclass

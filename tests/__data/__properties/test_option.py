@@ -1,13 +1,25 @@
+# Standard Library
 from typing import Callable
 from uuid import UUID
 
+# Third Party
 import pytest
 
+# First Party
+from notion_api.data.properties import (
+    CheckboxDatabase,
+    CheckboxPage,
+    MultiSelectDatabase,
+    MultiSelectPage,
+    SelectDatabase,
+    SelectPage,
+    StatusDatabase,
+    StatusPage,
+)
+
 from ..utils.__serialization import transform_dictionary
-from .helper import extract_create_assert_structure, extract_create_assert_serialization
-from .assertions import assert_properties_data_is_correct, extract_property_data, create_property_object
-from notion_api.data.properties import CheckboxPage, CheckboxDatabase, MultiSelectPage, MultiSelectDatabase, SelectPage, \
-    SelectDatabase, StatusPage, StatusDatabase
+from .assertions import assert_properties_data_is_correct, create_property_object, extract_property_data
+from .helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants for Checkbox Properties
 CHECKBOX_VALUE = True

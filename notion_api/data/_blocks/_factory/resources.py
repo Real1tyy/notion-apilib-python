@@ -1,8 +1,10 @@
-from typing import TypeVar, Type, Optional
+# Standard Library
+from typing import Optional, Type, TypeVar
 
-from notion_api.data._blocks.data import File, Image, Pdf, Video
+# First Party
 from notion_api.data._blocks._factory.general import _create_block
-from notion_api.data.structures import Parent, External, FileObject, file_type, ResourcesAttributes
+from notion_api.data._blocks.data import File, Image, Pdf, Video
+from notion_api.data.structures import External, FileObject, Parent, ResourcesAttributes, file_type
 
 T = TypeVar('T', File, Image, Pdf, Video)
 

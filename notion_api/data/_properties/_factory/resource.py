@@ -1,8 +1,19 @@
+# Third Party
 from structures import ResourcesAttributes
-from .general import _create_page_property, _create_database_property
-from notion_api.data._properties.data import (EmailPage, UrlPage, PhoneNumberPage, FilesPage, EmailDatabase,
-                                              FilesDatabase, \
-                                              PhoneNumberDatabase, UrlDatabase)
+
+# First Party
+from notion_api.data._properties.data import (
+    EmailDatabase,
+    EmailPage,
+    FilesDatabase,
+    FilesPage,
+    PhoneNumberDatabase,
+    PhoneNumberPage,
+    UrlDatabase,
+    UrlPage,
+)
+
+from .general import _create_database_property, _create_page_property
 
 
 def create_email_page(

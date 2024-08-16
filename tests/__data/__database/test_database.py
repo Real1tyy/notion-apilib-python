@@ -1,8 +1,11 @@
+# Third Party
 import pytest
 
+# First Party
 import notion_api.data as notion
-from .assertions import assert_database_structure
 from notion_api.data.properties import DateDatabase
+
+from .assertions import assert_database_structure
 
 
 def test_database(create_database):

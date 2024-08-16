@@ -1,10 +1,11 @@
 # Standard Library
 from typing import Annotated, Any
 
+# Third Party
 from pydantic import BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
-# Third Party
+# First Party
 from notion_api.data.exceptions import catch_exceptions
 from notion_api.data.object import MajorObject
 from notion_api.data.properties import PageProperty, deserialize_page_property

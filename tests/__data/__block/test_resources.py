@@ -1,10 +1,14 @@
-import pytest
+# Standard Library
 from datetime import datetime, timezone
 
+# Third Party
+import pytest
+
+# First Party
 from notion_api.data.blocks import File, Image, Pdf, Video
-from tests.__data.__block.helper import extract_create_assert_structure, extract_create_assert_serialization
 from tests.__data.__block.assertions import assert_block_data_is_correct
-from tests.__data.__structures.assertions import assert_rich_text_structure, assert_resources_structure
+from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
+from tests.__data.__structures.assertions import assert_resources_structure, assert_rich_text_structure
 from tests.__data.__structures.conftest import create_rich_text
 
 # Constants

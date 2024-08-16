@@ -1,16 +1,15 @@
 # Standard Library
-from datetime import datetime
 from abc import ABC, abstractmethod
-from typing import Literal, Optional, Any
+from datetime import datetime
+from typing import Any, Literal, Optional
 from uuid import UUID
 
+# Third Party
 from pydantic import Field
 
+# First Party
 from notion_api.data.configuration import BasicConfiguration
 from notion_api.data.structures import Icon, Parent, User
-
-
-# Third Party
 
 
 class Object(BasicConfiguration, ABC):

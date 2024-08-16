@@ -1,12 +1,14 @@
-# Third Party
+# Standard Library
 import os
 
+# Third Party
 from dotenv import load_dotenv
-
-from notion_api import *
-from notion_api.data.properties import *
 from type_ import BlockType
 from type_factory import deserialize_block
+
+# First Party
+from notion_api import *
+from notion_api.data.properties import *
 
 
 def create_and_print(object, blocks_provider):

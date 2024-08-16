@@ -1,8 +1,11 @@
+# Third Party
 import pytest
 
-from .helper import extract_create_assert_structure, extract_create_assert_serialization
+# First Party
+from notion_api.data.properties import FormulaDatabase, FormulaPage
+
 from .assertions import assert_properties_data_is_correct
-from notion_api.data.properties import FormulaPage, FormulaDatabase
+from .helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants for Formula Properties
 FORMULA_TYPE = "number"

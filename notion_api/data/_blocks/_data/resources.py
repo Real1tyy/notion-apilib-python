@@ -1,6 +1,6 @@
 # Standard Library
 
-# Third Party
+# First Party
 from notion_api.data._blocks.block import Block, BlockType
 from notion_api.data.structures import FileAttributes, ResourcesAttributes
 

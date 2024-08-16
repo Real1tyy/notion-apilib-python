@@ -2,11 +2,12 @@
 from typing import Any
 from uuid import UUID
 
+# Third Party
 from pydantic import BaseModel, Field
 
-# Third Party
+# First Party
 from notion_api.data._properties.property import DatabaseProperty, PageProperty
-from notion_api.data._properties.type_ import (PropertyType)
+from notion_api.data._properties.type_ import PropertyType
 
 
 class CheckboxPage(PageProperty):

@@ -49,18 +49,18 @@ Note:
     facilitating data integrity and consistency.
 """
 
+# First Party
 from notion_api.data._structures._data.file import *
-from notion_api.data._structures._data.icon import *
-from notion_api.data._structures._data.mention import *
-from notion_api.data._structures._data.parent import *
-from notion_api.data._structures._data.text import *
-from notion_api.data._structures._data.user import *
-
 from notion_api.data._structures._data.file import __all__ as file_all
+from notion_api.data._structures._data.icon import *
 from notion_api.data._structures._data.icon import __all__ as icon_all
+from notion_api.data._structures._data.mention import *
 from notion_api.data._structures._data.mention import __all__ as mention_all
+from notion_api.data._structures._data.parent import *
 from notion_api.data._structures._data.parent import __all__ as parent_all
+from notion_api.data._structures._data.text import *
 from notion_api.data._structures._data.text import __all__ as text_all
+from notion_api.data._structures._data.user import *
 from notion_api.data._structures._data.user import __all__ as user_all
 
 FileAttributes.model_rebuild()

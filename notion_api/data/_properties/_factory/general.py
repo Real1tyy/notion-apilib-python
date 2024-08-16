@@ -1,8 +1,8 @@
 # Standard Library
-from typing import Type, TypeVar, Any, Optional
+from typing import Any, Optional, Type, TypeVar
 
-# Third Party
-from notion_api.data._properties.property import PageProperty, DatabaseProperty, Property
+# First Party
+from notion_api.data._properties.property import DatabaseProperty, PageProperty, Property
 
 T = TypeVar('T', bound=Property)
 T2 = TypeVar('T2', bound=PageProperty)

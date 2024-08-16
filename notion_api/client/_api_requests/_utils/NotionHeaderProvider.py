@@ -1,7 +1,7 @@
 # Standard Library
 from dataclasses import dataclass
 
-# Third Party
+# First Party
 from notion_api.client._api_requests.constants.notion import NOTION_VERSION
 
 

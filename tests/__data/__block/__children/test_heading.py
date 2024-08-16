@@ -1,8 +1,10 @@
+# Third Party
 import pytest
 
-from tests.__data.__block.assertions import assert_block_data_is_correct
-from tests.__data.__block.helper import extract_create_assert_structure, extract_create_assert_serialization
+# First Party
 from notion_api.data.blocks import Heading1, Heading2, Heading3
+from tests.__data.__block.assertions import assert_block_data_is_correct
+from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
 from tests.__data.__structures.assertions import assert_rich_text_structure
 
 IS_TOGGLEABLE = False

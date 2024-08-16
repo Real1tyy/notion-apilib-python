@@ -1,8 +1,10 @@
-# Third Party
+# Standard Library
 from abc import ABC
 
+# Third Party
 from pydantic import BaseModel
 
+# First Party
 from notion_api.data._blocks.block import Block, BlockType
 
 

@@ -1,8 +1,14 @@
-import pytest
+# Standard Library
 from datetime import datetime, timezone
-from .helper import extract_create_assert_structure, extract_create_assert_serialization
+
+# Third Party
+import pytest
+
+# First Party
+from notion_api.data.properties import CreatedTimeDatabase, CreatedTimePage, LastEditedTimeDatabase, LastEditedTimePage
+
 from .assertions import assert_properties_data_is_correct
-from notion_api.data.properties import CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage, LastEditedTimeDatabase
+from .helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants for Created Time and Last Edited Time Properties
 CREATED_TIME_VALUE = datetime(2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc)

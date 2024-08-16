@@ -1,5 +1,7 @@
-from .assertions import assert_rich_text_value
+# First Party
 from notion_api.data.structures import RichText
+
+from .assertions import assert_rich_text_value
 
 
 def test_rich_text_structure(create_extensive_rich_text):

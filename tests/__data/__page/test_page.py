@@ -1,7 +1,10 @@
+# Third Party
 import pytest
 
+# First Party
 from notion_api.data import Page
 from notion_api.data.properties import DatePage
+
 from .assertions import assert_page_structure
 
 

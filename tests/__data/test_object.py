@@ -1,7 +1,9 @@
+# Standard Library
 from typing import Any
 
-from tests.__data.assertions import assert_object_data_is_correct
+# First Party
 from notion_api.data.object import MajorObject
+from tests.__data.assertions import assert_object_data_is_correct
 
 
 class TestObject(MajorObject):

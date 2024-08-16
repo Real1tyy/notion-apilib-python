@@ -1,7 +1,10 @@
-from typing import Type, Callable
+# Standard Library
+from typing import Callable, Type
 
+# First Party
 from notion_api.data.properties import Property
-from .assertions import extract_property_data, create_property_object, assert_serialization_to_json
+
+from .assertions import assert_serialization_to_json, create_property_object, extract_property_data
 
 
 def extract_create_assert_structure(data_provider, property_class: Type[Property], assert_structure_func: Callable):

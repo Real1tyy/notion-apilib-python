@@ -1,8 +1,9 @@
 # Standard Library
 
+# Third Party
 from pydantic import BaseModel
 
-# Third Party
+# First Party
 from notion_api.data._blocks.block import Block, BlockType
 from notion_api.data.structures import RichText
 

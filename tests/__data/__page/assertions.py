@@ -1,5 +1,5 @@
-from ..assertions import assert_major_object_data_is_correct
 from ..__properties.assertion_assigner import get_assertion_function
+from ..assertions import assert_major_object_data_is_correct
 
 
 def assert_page_structure(page, expected_page):

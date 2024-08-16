@@ -1,10 +1,21 @@
+# Third Party
 import pytest
 
+# First Party
+from notion_api.data.properties import (
+    EmailDatabase,
+    EmailPage,
+    FilesDatabase,
+    FilesPage,
+    PhoneNumberDatabase,
+    PhoneNumberPage,
+    UrlDatabase,
+    UrlPage,
+)
 from tests.__data.__structures.assertions import assert_resources_structure
-from .helper import extract_create_assert_structure, extract_create_assert_serialization
+
 from .assertions import assert_properties_data_is_correct
-from notion_api.data.properties import EmailPage, EmailDatabase, FilesPage, FilesDatabase, PhoneNumberPage, \
-    PhoneNumberDatabase, UrlPage, UrlDatabase
+from .helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants for Email Properties
 EMAIL_VALUE = "example@example.com"

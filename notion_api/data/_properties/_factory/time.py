@@ -1,8 +1,15 @@
+# Standard Library
 from datetime import datetime
 
-from notion_api.data._properties.data import (CreatedTimePage, CreatedTimeDatabase, LastEditedTimePage,
-                                              LastEditedTimeDatabase)
-from .general import _create_page_property, _create_database_property
+# First Party
+from notion_api.data._properties.data import (
+    CreatedTimeDatabase,
+    CreatedTimePage,
+    LastEditedTimeDatabase,
+    LastEditedTimePage,
+)
+
+from .general import _create_database_property, _create_page_property
 
 
 def create_created_time_page(

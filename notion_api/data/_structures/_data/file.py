@@ -5,6 +5,7 @@ from typing import Optional
 # Third Party
 from pydantic import BaseModel
 
+# First Party
 from notion_api.data._structures.types_ import file_type
 
 

@@ -1,14 +1,15 @@
 # Standard Library
 from abc import ABC, abstractmethod
-from typing import Literal, Any
+from typing import Any, Literal
 from uuid import UUID
 
+# Third Party
 from pydantic import BaseModel, Field
 
-# Third Party
+# First Party
+from notion_api.data._properties.sort import PropertySort
 from notion_api.data._properties.type_ import PropertyType
 from notion_api.data.configuration import BasicConfiguration
-from notion_api.data._properties.sort import PropertySort
 
 
 class Property(BasicConfiguration, ABC):

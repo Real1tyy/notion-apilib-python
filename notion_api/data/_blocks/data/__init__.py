@@ -65,28 +65,28 @@ Note:
     correctly.
 """
 
-from notion_api.data._blocks.block import Block
+# First Party
 from notion_api.data._blocks._data.children.child import *
-from notion_api.data._blocks._data.children.heading import *
-from notion_api.data._blocks._data.children.items import *
-from notion_api.data._blocks._data.children.other import *
-from notion_api.data._blocks._data.children.tables import *
-from notion_api.data._blocks._data.code import *
-from notion_api.data._blocks._data.equation import *
-from notion_api.data._blocks._data.link import *
-from notion_api.data._blocks._data.other import *
-from notion_api.data._blocks._data.resources import *
-
 from notion_api.data._blocks._data.children.child import __all__ as child_all
+from notion_api.data._blocks._data.children.heading import *
 from notion_api.data._blocks._data.children.heading import __all__ as heading_all
+from notion_api.data._blocks._data.children.items import *
 from notion_api.data._blocks._data.children.items import __all__ as items_all
+from notion_api.data._blocks._data.children.other import *
 from notion_api.data._blocks._data.children.other import __all__ as other_all
+from notion_api.data._blocks._data.children.tables import *
 from notion_api.data._blocks._data.children.tables import __all__ as tables_all
+from notion_api.data._blocks._data.code import *
 from notion_api.data._blocks._data.code import __all__ as code_all
+from notion_api.data._blocks._data.equation import *
 from notion_api.data._blocks._data.equation import __all__ as equation_all
+from notion_api.data._blocks._data.link import *
 from notion_api.data._blocks._data.link import __all__ as link_all
+from notion_api.data._blocks._data.other import *
 from notion_api.data._blocks._data.other import __all__ as other_basic_all
+from notion_api.data._blocks._data.resources import *
 from notion_api.data._blocks._data.resources import __all__ as resources_all
+from notion_api.data._blocks.block import Block
 
 __all__ = (child_all + heading_all + items_all + other_all + tables_all + code_all + equation_all +
            link_all + other_basic_all + resources_all)

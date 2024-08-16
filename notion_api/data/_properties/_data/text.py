@@ -1,10 +1,10 @@
 # Standard Library
 from typing import Any
 
-# Third Party
+# First Party
 from notion_api.data._properties.property import DatabaseProperty, PageProperty
-from notion_api.data.structures import RichText
 from notion_api.data._properties.type_ import PropertyType
+from notion_api.data.structures import RichText
 
 
 class RichTextPage(PageProperty):

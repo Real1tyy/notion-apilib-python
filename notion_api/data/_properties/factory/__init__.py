@@ -64,24 +64,24 @@ Factory Methods:
     - create_last_edited_by_database
 """
 
+# First Party
 from notion_api.data._properties._factory.date import *
-from notion_api.data._properties._factory.formula import *
-from notion_api.data._properties._factory.number import *
-from notion_api.data._properties._factory.option import *
-from notion_api.data._properties._factory.relation import *
-from notion_api.data._properties._factory.resource import *
-from notion_api.data._properties._factory.text import *
-from notion_api.data._properties._factory.time import *
-from notion_api.data._properties._factory.user import *
-
 from notion_api.data._properties._factory.date import __all__ as date_all
+from notion_api.data._properties._factory.formula import *
 from notion_api.data._properties._factory.formula import __all__ as formula_all
+from notion_api.data._properties._factory.number import *
 from notion_api.data._properties._factory.number import __all__ as number_all
+from notion_api.data._properties._factory.option import *
 from notion_api.data._properties._factory.option import __all__ as option_all
+from notion_api.data._properties._factory.relation import *
 from notion_api.data._properties._factory.relation import __all__ as relation_all
+from notion_api.data._properties._factory.resource import *
 from notion_api.data._properties._factory.resource import __all__ as resource_all
+from notion_api.data._properties._factory.text import *
 from notion_api.data._properties._factory.text import __all__ as text_all
+from notion_api.data._properties._factory.time import *
 from notion_api.data._properties._factory.time import __all__ as time_all
+from notion_api.data._properties._factory.user import *
 from notion_api.data._properties._factory.user import __all__ as user_all
 
 __all__ = (date_all + formula_all + number_all + option_all + relation_all + resource_all + text_all +

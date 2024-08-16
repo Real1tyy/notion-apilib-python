@@ -1,10 +1,17 @@
+# Standard Library
 from typing import Optional
 
-from notion_api.data.structures import Parent, RichText, Emoji
+# First Party
+from notion_api.data._blocks._data.children.other import (
+    Callout,
+    CalloutAttributes,
+    SyncedBlock,
+    SyncedBlockAttributes,
+    SyncedFrom,
+)
+from notion_api.data._blocks._factory.general import _create_block
 from notion_api.data._blocks.block import Block
-from notion_api.data._blocks._factory.general import (_create_block)
-from notion_api.data._blocks._data.children.other import (SyncedFrom, SyncedBlock, SyncedBlockAttributes, Callout,
-                                                          CalloutAttributes)
+from notion_api.data.structures import Emoji, Parent, RichText
 
 
 def create_callout(

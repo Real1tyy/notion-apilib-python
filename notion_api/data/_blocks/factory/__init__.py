@@ -56,26 +56,26 @@ Note:
     This package is intended for use by developers to simplify the creation of Notion block objects.
     It provides factory methods that ensure all block objects are created consistently and correctly.
 """
-from notion_api.data._blocks._factory.children.heading import *
+# First Party
 from notion_api.data._blocks._factory.children.child import *
-from notion_api.data._blocks._factory.children.items import *
-from notion_api.data._blocks._factory.children.other import *
-from notion_api.data._blocks._factory.children.tables import *
-from notion_api.data._blocks._factory.code import *
-from notion_api.data._blocks._factory.equation import *
-from notion_api.data._blocks._factory.link import *
-from notion_api.data._blocks._factory.other import *
-from notion_api.data._blocks._factory.resources import *
-
-from notion_api.data._blocks._factory.children.heading import __all__ as heading_all
 from notion_api.data._blocks._factory.children.child import __all__ as child_all
+from notion_api.data._blocks._factory.children.heading import *
+from notion_api.data._blocks._factory.children.heading import __all__ as heading_all
+from notion_api.data._blocks._factory.children.items import *
 from notion_api.data._blocks._factory.children.items import __all__ as items_all
+from notion_api.data._blocks._factory.children.other import *
 from notion_api.data._blocks._factory.children.other import __all__ as other_all
+from notion_api.data._blocks._factory.children.tables import *
 from notion_api.data._blocks._factory.children.tables import __all__ as tables_all
+from notion_api.data._blocks._factory.code import *
 from notion_api.data._blocks._factory.code import __all__ as code_all
+from notion_api.data._blocks._factory.equation import *
 from notion_api.data._blocks._factory.equation import __all__ as equation_all
+from notion_api.data._blocks._factory.link import *
 from notion_api.data._blocks._factory.link import __all__ as link_all
+from notion_api.data._blocks._factory.other import *
 from notion_api.data._blocks._factory.other import __all__ as other_basic_all
+from notion_api.data._blocks._factory.resources import *
 from notion_api.data._blocks._factory.resources import __all__ as resources_all
 
 __all__ = (heading_all + child_all + items_all + other_all + tables_all + code_all + equation_all +

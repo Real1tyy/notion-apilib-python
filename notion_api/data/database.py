@@ -1,16 +1,17 @@
 # Standard Library
 from typing import Annotated, Any
 
+# Third Party
 from pydantic import BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
-from notion_api.data.properties_structure import PropertiesStructure, parse_properties
-from notion_api.data.structures import RichText
-# Third Party
+# First Party
 from notion_api.data.exceptions import catch_exceptions
 from notion_api.data.object import MajorObject
 from notion_api.data.page import Page
 from notion_api.data.properties import DatabaseProperty, deserialize_database_property
+from notion_api.data.properties_structure import PropertiesStructure, parse_properties
+from notion_api.data.structures import RichText
 
 
 @catch_exceptions

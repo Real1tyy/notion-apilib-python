@@ -1,9 +1,11 @@
 # user_factory.py
 
-from typing import Optional, Literal
+# Standard Library
+from typing import Literal, Optional
 from uuid import UUID
 
-from notion_api.data._structures.data import User, PeopleStructure, People, OwnerStructure, BotStructure, Bot
+# First Party
+from notion_api.data._structures.data import Bot, BotStructure, OwnerStructure, People, PeopleStructure, User
 
 
 def create_user(

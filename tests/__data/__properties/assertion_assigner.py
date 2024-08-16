@@ -1,36 +1,103 @@
+# First Party
 from notion_api.data.properties import (
-    DatePage, DateDatabase, FormulaPage, FormulaDatabase, NumberPage, NumberDatabase,
-    UniqueIdPage, UniqueIdDatabase, CheckboxPage, CheckboxDatabase, MultiSelectPage,
-    MultiSelectDatabase, SelectPage, SelectDatabase, StatusPage, StatusDatabase,
-    RelationPage, RelationDatabase, RollupPage, RollupDatabase, EmailPage, EmailDatabase,
-    FilesPage, FilesDatabase, PhoneNumberPage, PhoneNumberDatabase, RichTextPage, RichTextDatabase,
-    TitlePage, TitleDatabase, UrlPage, UrlDatabase, CreatedTimePage, CreatedTimeDatabase,
-    LastEditedTimePage, LastEditedTimeDatabase, CreatedByPage, CreatedByDatabase,
-    LastEditedByPage, LastEditedByDatabase, PeoplePage, PeopleDatabase
+    CheckboxDatabase,
+    CheckboxPage,
+    CreatedByDatabase,
+    CreatedByPage,
+    CreatedTimeDatabase,
+    CreatedTimePage,
+    DateDatabase,
+    DatePage,
+    EmailDatabase,
+    EmailPage,
+    FilesDatabase,
+    FilesPage,
+    FormulaDatabase,
+    FormulaPage,
+    LastEditedByDatabase,
+    LastEditedByPage,
+    LastEditedTimeDatabase,
+    LastEditedTimePage,
+    MultiSelectDatabase,
+    MultiSelectPage,
+    NumberDatabase,
+    NumberPage,
+    PeopleDatabase,
+    PeoplePage,
+    PhoneNumberDatabase,
+    PhoneNumberPage,
+    RelationDatabase,
+    RelationPage,
+    RichTextDatabase,
+    RichTextPage,
+    RollupDatabase,
+    RollupPage,
+    SelectDatabase,
+    SelectPage,
+    StatusDatabase,
+    StatusPage,
+    TitleDatabase,
+    TitlePage,
+    UniqueIdDatabase,
+    UniqueIdPage,
+    UrlDatabase,
+    UrlPage,
 )
-from .test_date import assert_date_page_is_correct, assert_date_database_is_correct
-from .test_formula import assert_formula_page_is_correct, assert_formula_database_is_correct
-from .test_number import (assert_number_page_is_correct, assert_number_database_is_correct,
-                          assert_unique_id_page_is_correct, assert_unique_id_database_is_correct)
-from .test_option import assert_checkbox_page_is_correct, assert_checkbox_database_is_correct, \
-    assert_multi_select_page_is_correct, assert_multi_select_database_is_correct, assert_select_page_is_correct, \
-    assert_select_database_is_correct, assert_status_database_is_correct, assert_status_page_is_correct
-from .test_relation import assert_relation_page_is_correct, assert_relation_database_is_correct, \
-    assert_rollup_page_is_correct, assert_rollup_database_is_correct
-from .test_resource import (assert_email_page_is_correct, assert_email_database_is_correct,
-                            assert_files_page_is_correct, \
-                            assert_files_database_is_correct, assert_phone_number_page_is_correct,
-                            assert_phone_number_database_is_correct,
-                            assert_url_database_is_correct, assert_url_page_is_correct)
-from .test_text import assert_rich_text_page_is_correct, assert_rich_text_database_is_correct, \
-    assert_title_page_is_correct, \
-    assert_title_database_is_correct
-from .test_time import (assert_created_time_page_is_correct, assert_created_time_database_is_correct,
-                        assert_last_edited_time_page_is_correct,
-                        assert_last_edited_time_database_is_correct)
-from .test_user import (assert_created_by_page_is_correct, assert_created_by_database_is_correct,
-                        assert_last_edited_by_page_is_correct, assert_last_edited_by_database_is_correct,
-                        assert_people_page_is_correct, assert_people_database_is_correct)
+
+from .test_date import assert_date_database_is_correct, assert_date_page_is_correct
+from .test_formula import assert_formula_database_is_correct, assert_formula_page_is_correct
+from .test_number import (
+    assert_number_database_is_correct,
+    assert_number_page_is_correct,
+    assert_unique_id_database_is_correct,
+    assert_unique_id_page_is_correct,
+)
+from .test_option import (
+    assert_checkbox_database_is_correct,
+    assert_checkbox_page_is_correct,
+    assert_multi_select_database_is_correct,
+    assert_multi_select_page_is_correct,
+    assert_select_database_is_correct,
+    assert_select_page_is_correct,
+    assert_status_database_is_correct,
+    assert_status_page_is_correct,
+)
+from .test_relation import (
+    assert_relation_database_is_correct,
+    assert_relation_page_is_correct,
+    assert_rollup_database_is_correct,
+    assert_rollup_page_is_correct,
+)
+from .test_resource import (
+    assert_email_database_is_correct,
+    assert_email_page_is_correct,
+    assert_files_database_is_correct,
+    assert_files_page_is_correct,
+    assert_phone_number_database_is_correct,
+    assert_phone_number_page_is_correct,
+    assert_url_database_is_correct,
+    assert_url_page_is_correct,
+)
+from .test_text import (
+    assert_rich_text_database_is_correct,
+    assert_rich_text_page_is_correct,
+    assert_title_database_is_correct,
+    assert_title_page_is_correct,
+)
+from .test_time import (
+    assert_created_time_database_is_correct,
+    assert_created_time_page_is_correct,
+    assert_last_edited_time_database_is_correct,
+    assert_last_edited_time_page_is_correct,
+)
+from .test_user import (
+    assert_created_by_database_is_correct,
+    assert_created_by_page_is_correct,
+    assert_last_edited_by_database_is_correct,
+    assert_last_edited_by_page_is_correct,
+    assert_people_database_is_correct,
+    assert_people_page_is_correct,
+)
 
 ASSERTIONS_MAP = {
     DatePage: assert_date_page_is_correct,

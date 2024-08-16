@@ -1,8 +1,10 @@
+# Third Party
 import pytest
 
-from notion_api.data.blocks import Divider, ColumnList, Breadcrumb, Unsupported, Block
-from tests.__data.__block.helper import extract_create_assert_structure, extract_create_assert_serialization
+# First Party
+from notion_api.data.blocks import Block, Breadcrumb, ColumnList, Divider, Unsupported
 from tests.__data.__block.assertions import assert_block_data_is_correct
+from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # No specific data required as these blocks are empty
 EMPTY_DATA = {}

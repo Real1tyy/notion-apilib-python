@@ -1,9 +1,16 @@
+# Standard Library
 from datetime import datetime
 from typing import Literal, Optional
 
-from notion_api.data._properties._data.formula import (FormulaPage, FormulaStructure, FormulaDatabase,
-                                                       FormulaDatabaseStructure)
-from .general import _create_page_property, _create_database_property
+# First Party
+from notion_api.data._properties._data.formula import (
+    FormulaDatabase,
+    FormulaDatabaseStructure,
+    FormulaPage,
+    FormulaStructure,
+)
+
+from .general import _create_database_property, _create_page_property
 
 
 def create_formula_page(

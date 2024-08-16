@@ -1,9 +1,20 @@
-from .general import _create_page_property, _create_database_property
-from notion_api.data._properties._data.option import (StatusPage, OptionPage, SelectPage, OptionStructurePage,
-                                                      MultiSelectPage, \
-                                                      CheckboxPage, \
-                                                      CheckboxDatabase, MultiSelectDatabase, SelectDatabase, Group,
-                                                      StatusDatabaseStructure, StatusDatabase)
+# First Party
+from notion_api.data._properties._data.option import (
+    CheckboxDatabase,
+    CheckboxPage,
+    Group,
+    MultiSelectDatabase,
+    MultiSelectPage,
+    OptionPage,
+    OptionStructurePage,
+    SelectDatabase,
+    SelectPage,
+    StatusDatabase,
+    StatusDatabaseStructure,
+    StatusPage,
+)
+
+from .general import _create_database_property, _create_page_property
 
 
 def create_checkbox_page(

@@ -1,10 +1,23 @@
+# Third Party
 import pytest
+
+from .__rich_text import (
+    create_equation,
+    create_extensive_mention,
+    create_mention,
+    create_rich_text,
+    create_template_mention,
+    create_template_mention_date,
+    create_template_mention_user,
+    create_text,
+    create_user_mention,
+    create_page_mention,
+    create_link_preview_mention,
+    create_date_mention,
+    create_database_mention,
+    create_extensive_rich_text
+)
 from .constants import *
-from .__rich_text import (create_rich_text, create_text, create_mention, create_equation, create_template_mention_date, \
-                          create_template_mention_user, create_template_mention, create_user_mention,
-                          create_extensive_mention,
-                          create_page_mention, create_link_preview_mention, create_date_mention,
-                          create_database_mention, create_extensive_rich_text)
 
 
 @pytest.fixture(params=HREF_OPTIONS)

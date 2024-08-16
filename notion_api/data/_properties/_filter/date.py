@@ -1,7 +1,8 @@
+# Standard Library
 from datetime import datetime
 from typing import Literal
 
-from .general import FilterStructure, Filter
+from .general import Filter, FilterStructure
 
 
 class DateFilter(Filter):

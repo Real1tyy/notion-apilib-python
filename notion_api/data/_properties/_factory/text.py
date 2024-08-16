@@ -1,6 +1,10 @@
+# Third Party
 from structures import RichText
-from .general import _create_page_property, _create_database_property
-from notion_api.data._properties.data import TitlePage, RichTextPage, RichTextDatabase, TitleDatabase
+
+# First Party
+from notion_api.data._properties.data import RichTextDatabase, RichTextPage, TitleDatabase, TitlePage
+
+from .general import _create_database_property, _create_page_property
 
 
 def create_rich_text_page(

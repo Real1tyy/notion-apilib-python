@@ -1,8 +1,10 @@
+# Third Party
 import pytest
 
+# First Party
 from notion_api.data.blocks import Equation
-from tests.__data.__block.helper import extract_create_assert_structure, extract_create_assert_serialization
 from tests.__data.__block.assertions import assert_block_data_is_correct
+from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants
 EQUATION_EXPRESSION = "E = mc^2"

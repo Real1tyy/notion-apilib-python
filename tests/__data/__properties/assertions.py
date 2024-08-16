@@ -1,7 +1,9 @@
-from typing import TypeVar, Type, Callable
+# Standard Library
+from typing import Callable, Type, TypeVar
 
-from tests.__data.utils.__serialization import transform_dictionary
+# First Party
 from notion_api.data.properties import Property
+from tests.__data.utils.__serialization import transform_dictionary
 
 
 def assert_properties_data_is_correct(data: Property, expected_data: dict):

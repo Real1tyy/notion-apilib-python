@@ -1,6 +1,7 @@
-# Third Party
+# Standard Library
 from typing import Any
 
+# First Party
 from notion_api.data._blocks.data import *
 from notion_api.data.structures import Mention
 

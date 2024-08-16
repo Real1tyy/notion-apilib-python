@@ -1,5 +1,7 @@
+# Standard Library
 from typing import Literal
-from .general import FilterStructure, Filter
+
+from .general import Filter, FilterStructure
 
 
 class NumberFilter(Filter):

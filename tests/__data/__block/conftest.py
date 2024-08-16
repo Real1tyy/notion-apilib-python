@@ -1,5 +1,10 @@
+# Standard Library
+from typing import Any, Dict
+
+# Third Party
 import pytest
-from typing import Dict, Any
+
+# First Party
 from tests.__data.__block.constants import *
 
 

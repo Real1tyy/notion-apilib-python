@@ -1,11 +1,20 @@
-from typing import Type, Optional, TypeVar
+# Standard Library
+from typing import Optional, Type, TypeVar
 
-from notion_api.data.structures import RichText, Parent, create_basic_rich_text
-from notion_api.data._blocks.block import Block
+# First Party
+from notion_api.data._blocks._data.children.items import (
+    BulletedListItem,
+    Items,
+    NumberedListItem,
+    Paragraph,
+    Quote,
+    ToDo,
+    ToDoAttributes,
+    Toggle,
+)
 from notion_api.data._blocks._factory.general import _create_block
-from notion_api.data._blocks._data.children.items import (Items, BulletedListItem, NumberedListItem, Paragraph, Quote,
-                                                          ToDoAttributes,
-                                                          ToDo, Toggle)
+from notion_api.data._blocks.block import Block
+from notion_api.data.structures import Parent, RichText, create_basic_rich_text
 
 T = TypeVar('T', ToDoAttributes, BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle)
 

@@ -1,9 +1,11 @@
-from typing import TypeVar, Type, Optional
+# Standard Library
+from typing import Optional, Type, TypeVar
 
-from notion_api.data.structures import Parent
-from notion_api.data._blocks.block import Block
-from notion_api.data._blocks._data.children.child import ChildDatabase, ChildAttributes, ChildPage
+# First Party
+from notion_api.data._blocks._data.children.child import ChildAttributes, ChildDatabase, ChildPage
 from notion_api.data._blocks._factory.general import _create_block
+from notion_api.data._blocks.block import Block
+from notion_api.data.structures import Parent
 
 T = TypeVar('T', ChildDatabase, ChildPage)
 

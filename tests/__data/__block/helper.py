@@ -1,7 +1,10 @@
-from typing import Type, Callable
+# Standard Library
+from typing import Callable, Type
 
-from .assertions import extract_block_data, create_block_object, assert_serialization_to_json
+# First Party
 from notion_api.data.blocks import Block
+
+from .assertions import assert_serialization_to_json, create_block_object, extract_block_data
 
 
 def extract_create_assert_structure(data_provider, block_class: Type[Block], assert_structure_func: Callable):

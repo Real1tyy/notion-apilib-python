@@ -1,9 +1,11 @@
-from typing import Type, Optional, TypeVar
+# Standard Library
+from typing import Optional, Type, TypeVar
 
-from notion_api.data.structures import Parent, RichText, create_basic_rich_text
-from notion_api.data._blocks.block import Block
-from notion_api.data._blocks._data.children.heading import HeadingsAttributes, Heading1, Heading2, Heading3
+# First Party
+from notion_api.data._blocks._data.children.heading import Heading1, Heading2, Heading3, HeadingsAttributes
 from notion_api.data._blocks._factory.general import _create_block
+from notion_api.data._blocks.block import Block
+from notion_api.data.structures import Parent, RichText, create_basic_rich_text
 
 T = TypeVar('T', Heading1, Heading2, Heading3)
 

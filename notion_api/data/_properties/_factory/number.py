@@ -1,8 +1,17 @@
+# Standard Library
 from typing import Optional
 
-from .general import _create_page_property, _create_database_property
-from notion_api.data._properties._data.number import (UniqueIdPage, UniqueIdPageStructure, NumberPage,
-                                                      UniqueIdDatabase, NumberDatabase, NumberStructure)
+# First Party
+from notion_api.data._properties._data.number import (
+    NumberDatabase,
+    NumberPage,
+    NumberStructure,
+    UniqueIdDatabase,
+    UniqueIdPage,
+    UniqueIdPageStructure,
+)
+
+from .general import _create_database_property, _create_page_property
 
 
 def create_number_page(

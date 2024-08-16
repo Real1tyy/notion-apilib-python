@@ -1,12 +1,21 @@
+# Standard Library
 from datetime import datetime
-from typing import Optional, Literal, Any
+from typing import Any, Literal, Optional
 from uuid import UUID
 
-from .general import _create_page_property, _create_database_property
-from notion_api.data._properties._data.relation import (RelationPage, RelationStructure, RollupPage, RollupStructure,
-                                                        RelationDatabase, \
-                                                        RollupDatabase, RollupDatabaseStructure,
-                                                        RelationDatabaseStructure)
+# First Party
+from notion_api.data._properties._data.relation import (
+    RelationDatabase,
+    RelationDatabaseStructure,
+    RelationPage,
+    RelationStructure,
+    RollupDatabase,
+    RollupDatabaseStructure,
+    RollupPage,
+    RollupStructure,
+)
+
+from .general import _create_database_property, _create_page_property
 
 
 def create_relation_page(

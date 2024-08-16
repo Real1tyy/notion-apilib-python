@@ -1,3 +1,4 @@
+# First Party
 from notion_api.data._blocks._data.equation import Equation, EquationAttributes
 from notion_api.data._blocks._factory.general import _create_block
 from notion_api.data.structures import Parent

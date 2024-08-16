@@ -1,8 +1,10 @@
 # icon_factory.py
 
+# Standard Library
 from typing import Optional
 
-from notion_api.data._structures.data import External, FileObject, Emoji, Icon
+# First Party
+from notion_api.data._structures.data import Emoji, External, FileObject, Icon
 from notion_api.data._structures.types_ import file_type
 
 

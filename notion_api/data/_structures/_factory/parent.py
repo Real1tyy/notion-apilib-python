@@ -1,6 +1,8 @@
+# Standard Library
 from typing import Any, Literal
 from uuid import UUID
 
+# First Party
 from notion_api.data._structures.data import Parent
 from notion_api.data._structures.types_ import parents_types
 

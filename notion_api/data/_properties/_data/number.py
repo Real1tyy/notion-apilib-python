@@ -1,9 +1,10 @@
 # Standard Library
 from typing import Any, Optional
 
+# Third Party
 from pydantic import BaseModel
 
-# Third Party
+# First Party
 from notion_api.data._properties.property import DatabaseProperty, PageProperty
 from notion_api.data._properties.type_ import PropertyType
 

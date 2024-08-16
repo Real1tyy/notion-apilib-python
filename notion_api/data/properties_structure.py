@@ -1,6 +1,10 @@
+# Standard Library
 from typing import Callable
 
+# Third Party
 from pydantic import Field
+
+# First Party
 from notion_api.data.configuration import ExtraConfiguration
 from notion_api.data.properties import Property
 

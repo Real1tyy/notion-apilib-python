@@ -1,13 +1,13 @@
 # Standard Library
-from typing import Optional
+from typing import Any, Callable, Optional, TypeVar
 
-from notion_api.data.properties import QueryFilter, Sort
-from notion_api.data.blocks import Block, deserialize_block
 # Third Party
+import requests
 from requests import Response
 
-from typing import TypeVar, Callable, Any
-import requests
+# First Party
+from notion_api.data.blocks import Block, deserialize_block
+from notion_api.data.properties import QueryFilter, Sort
 
 T = TypeVar('T')
 

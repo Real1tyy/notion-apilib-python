@@ -1,4 +1,4 @@
-# Third Party
+# First Party
 from notion_api.data._blocks.block import Block, BlockType
 
 
