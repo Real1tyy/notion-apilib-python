@@ -32,15 +32,30 @@ factory methods to deserialize json into our DSL data class:
 
 This package is essential for developers who want to interact with the Notion API without getting bogged down in its intricacies, providing a more intuitive and error-resistant way to build and manipulate Notion objects.
 """
-# First Party
+
 from notion_api.data.blocks import Block
 
-from .configuration import BasicConfiguration, ExtraConfiguration
-from .database import Database, DatabaseProperty, deserialize_database, deserialize_database_property
-from .page import Page, PageProperty, deserialize_page, deserialize_page_property
+from .configuration_ import BasicConfiguration, ExtraConfiguration
+from .database_ import (
+    Database,
+    DatabaseProperty,
+    deserialize_database,
+    deserialize_database_property,
+)
+from .page_ import Page, PageProperty, deserialize_page, deserialize_page_property
 
 Page.model_rebuild()
 Database.model_rebuild()
 
-__all__ = ["Page", "Database", "PageProperty", "DatabaseProperty", "ExtraConfiguration", "BasicConfiguration",
-           "deserialize_page", "deserialize_database", "deserialize_page_property", "deserialize_database_property"]
+__all__ = [
+    "Page",
+    "Database",
+    "PageProperty",
+    "DatabaseProperty",
+    "ExtraConfiguration",
+    "BasicConfiguration",
+    "deserialize_page",
+    "deserialize_database",
+    "deserialize_page_property",
+    "deserialize_database_property",
+]

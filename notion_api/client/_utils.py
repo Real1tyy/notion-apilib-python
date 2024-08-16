@@ -7,13 +7,15 @@ from requests import Response
 
 # First Party
 from notion_api.data.blocks import Block, deserialize_block
-from notion_api.data.properties import QueryFilter, Sort
+from notion_api.data.properties import Sort, QueryFilter
 
-T = TypeVar('T')
+
+T = TypeVar("T")
 
 
 def _handle_pagination(
-        result: T, response: Response, method_to_call: Callable[..., T], **kwargs: Any) -> T:
+    result: T, response: Response, method_to_call: Callable[..., T], **kwargs: Any
+) -> T:
     """
     Handles paginated API responses by recursively retrieving data from subsequent pages.
 
@@ -34,40 +36,44 @@ def _handle_pagination(
         T: The fully accumulated object after all pages of data have been retrieved.
     """
     data = response.json()
-    has_more = data['has_more']
-    next_cursor = data['next_cursor']
+    has_more = data["has_more"]
+    next_cursor = data["next_cursor"]
     return method_to_call(result, next_cursor, **kwargs) if has_more else result
 
 
 def _get_children_from_json(response: Response) -> list[dict[str, Any]]:
-    return response.json()['results']
+    return response.json()["results"]
 
 
 def _get_child_id_from_json(child: dict) -> str:
-    return child['id']
+    return child["id"]
 
 
-def _create_children_json_payload(children_blocks: list[Block], after_block_id: str) -> dict:
+def _create_children_json_payload(
+    children_blocks: list[Block], after_block_id: str
+) -> dict:
     children = dict()
-    children['children'] = [child.serialize_to_json() for child in children_blocks]
+    children["children"] = [child.serialize_to_json() for child in children_blocks]
     if after_block_id:
-        children['after'] = after_block_id
+        children["after"] = after_block_id
     return children
 
 
 def _parse_and_serialize_result(response: dict) -> list[Block]:
-    results = response['results']
+    results = response["results"]
     return [deserialize_block(block) for block in results]
 
 
 def _prepare_query_data(
-        next_cursor: Optional[str] = None, sort: Optional[list[Sort]] = None,
-        filter: Optional[QueryFilter] = None) -> dict[str, Any]:
+    next_cursor: Optional[str] = None,
+    sort: Optional[list[Sort]] = None,
+    filter: Optional[QueryFilter] = None,
+) -> dict[str, Any]:
     data = dict()
     if next_cursor:
-        data['start_cursor'] = next_cursor
+        data["start_cursor"] = next_cursor
     if sort:
-        data['sorts'] = [s.serialize_to_json() for s in sort]
+        data["sorts"] = [s.serialize_to_json() for s in sort]
     if filter:
-        data['filter'] = filter.serialize_to_json()
+        data["filter"] = filter.serialize_to_json()
     return data

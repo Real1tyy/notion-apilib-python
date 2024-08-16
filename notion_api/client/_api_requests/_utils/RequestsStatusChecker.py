@@ -1,5 +1,5 @@
 # Standard Library
-import time
+import time_
 
 # Third Party
 from requests import Response

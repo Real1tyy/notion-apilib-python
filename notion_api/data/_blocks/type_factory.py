@@ -2,7 +2,7 @@
 from typing import Any
 
 # First Party
-from notion_api.data._blocks.data import *
+from .data import *
 from notion_api.data.structures import Mention
 
 BLOCK_TYPE_MAP = {
@@ -36,7 +36,7 @@ BLOCK_TYPE_MAP = {
     "table": Table,
     "table_of_contents": TableOfContents,
     "table_row": TableRow,
-    "mention": Mention
+    "mention": Mention,
 }
 
 
@@ -54,5 +54,5 @@ def deserialize_block(data: dict[str, Any]):
 
 
 __all__ = [
-    'deserialize_block',
+    "deserialize_block",
 ]

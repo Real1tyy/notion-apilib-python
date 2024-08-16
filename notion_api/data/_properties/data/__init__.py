@@ -10,17 +10,6 @@ Purpose:
     - Support the higher-level API by providing validated property objects that can be used
       to interact with the Notion API.
 
-Modules included:
-    - date: Contains data models for date properties.
-    - formula: Contains data models for formula properties.
-    - number: Contains data models for number and unique ID properties.
-    - option: Contains data models for multi-select, select, status, and checkbox properties.
-    - relation: Contains data models for relation and rollup properties.
-    - resources: Contains data models for resource properties like email, files, phone number, and URL.
-    - text: Contains data models for rich text and title properties.
-    - time: Contains data models for time-related properties like created time and last edited time.
-    - users: Contains data models for user-related properties like people, created by, and last edited by.
-
 Data Models:
     - DatePage
     - DateDatabase
@@ -64,26 +53,96 @@ Data Models:
     - LastEditedByDatabase
     - PeoplePage
     - PeopleDatabase
+
+- property_structures: Module that makes available to import all the low level Pydantic model data models for the
+structures used inside the property objects.
 """
 
 # First Party
-from notion_api.data._properties._data.date import *
-from notion_api.data._properties._data.date import __all__ as date
-from notion_api.data._properties._data.formula import *
-from notion_api.data._properties._data.formula import __all__ as formula
-from notion_api.data._properties._data.number import *
-from notion_api.data._properties._data.number import __all__ as number
-from notion_api.data._properties._data.option import *
-from notion_api.data._properties._data.option import __all__ as option
-from notion_api.data._properties._data.relation import *
-from notion_api.data._properties._data.relation import __all__ as relation
-from notion_api.data._properties._data.resource import *
-from notion_api.data._properties._data.resource import __all__ as resources
-from notion_api.data._properties._data.text import *
-from notion_api.data._properties._data.text import __all__ as text
-from notion_api.data._properties._data.time import *
-from notion_api.data._properties._data.time import __all__ as time
-from notion_api.data._properties._data.user import *
-from notion_api.data._properties._data.user import __all__ as users
+from .date_ import DateDatabase, DatePage
+from .formula_ import FormulaDatabase, FormulaPage
+from .number_ import NumberPage, NumberDatabase, UniqueIdDatabase, UniqueIdPage
+from .option_ import (
+    MultiSelectPage,
+    MultiSelectDatabase,
+    SelectPage,
+    SelectDatabase,
+    CheckboxPage,
+    CheckboxDatabase,
+    StatusPage,
+    StatusDatabase,
+)
+from .relation_ import RelationPage, RelationDatabase, RollupPage, RollupDatabase
+from .resource_ import (
+    FilesPage,
+    FilesDatabase,
+    EmailPage,
+    EmailDatabase,
+    PhoneNumberDatabase,
+    PhoneNumberPage,
+    UrlPage,
+    UrlDatabase,
+)
+from .text_ import RichTextDatabase, RichTextPage, TitlePage, TitleDatabase
+from .time_ import (
+    CreatedTimePage,
+    CreatedTimeDatabase,
+    LastEditedTimePage,
+    LastEditedTimeDatabase,
+)
+from .user_ import (
+    CreatedByDatabase,
+    CreatedByPage,
+    LastEditedByPage,
+    LastEditedByDatabase,
+    PeopleDatabase,
+    PeoplePage,
+)
 
-__all__ = date + formula + number + option + relation + resources + text + time + users
+import notion_api.data._properties.data.structures as property_structures
+
+__all__ = [
+    "DateDatabase",
+    "DatePage",
+    "FormulaDatabase",
+    "FormulaPage",
+    "NumberPage",
+    "NumberDatabase",
+    "UniqueIdDatabase",
+    "UniqueIdPage",
+    "MultiSelectPage",
+    "MultiSelectDatabase",
+    "SelectPage",
+    "SelectDatabase",
+    "CheckboxPage",
+    "CheckboxDatabase",
+    "StatusPage",
+    "StatusDatabase",
+    "RelationPage",
+    "RelationDatabase",
+    "RollupPage",
+    "RollupDatabase",
+    "FilesPage",
+    "FilesDatabase",
+    "EmailPage",
+    "EmailDatabase",
+    "PhoneNumberDatabase",
+    "PhoneNumberPage",
+    "UrlPage",
+    "UrlDatabase",
+    "RichTextDatabase",
+    "RichTextPage",
+    "TitlePage",
+    "TitleDatabase",
+    "CreatedTimePage",
+    "CreatedTimeDatabase",
+    "LastEditedTimePage",
+    "LastEditedTimeDatabase",
+    "CreatedByDatabase",
+    "CreatedByPage",
+    "LastEditedByPage",
+    "LastEditedByDatabase",
+    "PeopleDatabase",
+    "PeoplePage",
+    "property_structures",
+]

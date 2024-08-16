@@ -17,18 +17,6 @@ Implementation Details:
     - The data models define the attributes and types for each block, ensuring that all required
       fields are present and correctly typed.
 
-Modules Included:
-    - children.child: Data models for child pages and databases.
-    - children.heading: Data models for headings (Heading1, Heading2, Heading3).
-    - children.items: Data models for list items (BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle).
-    - children.other: Data models for other child _blocks (Callout, SyncedBlock).
-    - children.tables: Data models for tables (Table, TableRow, TableOfContents).
-    - code: Data model for code _blocks.
-    - equation: Data model for equation _blocks.
-    - link: Data model for link previews.
-    - other: Data models for other _blocks (Divider, Unsupported, ColumnList, Breadcrumb).
-    - resources: Data models for resource _blocks (File, Image, Video, Pdf).
-
 Data Models:
     - ChildDatabase
     - ChildPage
@@ -47,9 +35,12 @@ Data Models:
     - Table
     - TableRow
     - TableOfContents
+    - Column
     - Code
     - Equation
     - LinkPreview
+    - Embed
+    - Bookmark
     - Divider
     - Unsupported
     - ColumnList
@@ -58,6 +49,7 @@ Data Models:
     - Image
     - Video
     - Pdf
+    - structures - module that contains all the lower level structures pydantic models used for validation.
 
 Note:
     This package is intended for use by end-users to create and interact with Notion block objects.
@@ -65,28 +57,55 @@ Note:
     correctly.
 """
 
-# First Party
-from notion_api.data._blocks._data.children.child import *
-from notion_api.data._blocks._data.children.child import __all__ as child_all
-from notion_api.data._blocks._data.children.heading import *
-from notion_api.data._blocks._data.children.heading import __all__ as heading_all
-from notion_api.data._blocks._data.children.items import *
-from notion_api.data._blocks._data.children.items import __all__ as items_all
-from notion_api.data._blocks._data.children.other import *
-from notion_api.data._blocks._data.children.other import __all__ as other_all
-from notion_api.data._blocks._data.children.tables import *
-from notion_api.data._blocks._data.children.tables import __all__ as tables_all
-from notion_api.data._blocks._data.code import *
-from notion_api.data._blocks._data.code import __all__ as code_all
-from notion_api.data._blocks._data.equation import *
-from notion_api.data._blocks._data.equation import __all__ as equation_all
-from notion_api.data._blocks._data.link import *
-from notion_api.data._blocks._data.link import __all__ as link_all
-from notion_api.data._blocks._data.other import *
-from notion_api.data._blocks._data.other import __all__ as other_basic_all
-from notion_api.data._blocks._data.resources import *
-from notion_api.data._blocks._data.resources import __all__ as resources_all
-from notion_api.data._blocks.block import Block
+from ._children.child_ import ChildDatabase, ChildPage
+from ._children.heading_ import Heading1, Heading2, Heading3
+from ._children.items_ import (
+    BulletedListItem,
+    NumberedListItem,
+    Paragraph,
+    Quote,
+    ToDo,
+    Toggle,
+)
+from ._children.other_ import Callout, SyncedBlock
+from ._children.tables_ import Table, TableRow, TableOfContents, Column
+from .code_ import Code
+from .equation_ import Equation
+from .link_ import LinkPreview, Embed, Bookmark
+from .other_ import Divider, Unsupported, Breadcrumb, ColumnList
+from .resources_ import File, Image, Video, Pdf
+import notion_api.data._blocks.data.structures as block_structures
 
-__all__ = (child_all + heading_all + items_all + other_all + tables_all + code_all + equation_all +
-           link_all + other_basic_all + resources_all)
+__all__ = [
+    "ChildDatabase",
+    "ChildPage",
+    "Heading1",
+    "Heading2",
+    "Heading3",
+    "BulletedListItem",
+    "NumberedListItem",
+    "Paragraph",
+    "Quote",
+    "ToDo",
+    "Toggle",
+    "Callout",
+    "SyncedBlock",
+    "Table",
+    "TableRow",
+    "TableOfContents",
+    "Column",
+    "Code",
+    "Equation",
+    "LinkPreview",
+    "Embed",
+    "Bookmark",
+    "Divider",
+    "Unsupported",
+    "Breadcrumb",
+    "ColumnList",
+    "File",
+    "Image",
+    "Video",
+    "Pdf",
+    "block_structures",
+]

@@ -1,6 +1,6 @@
 # First Party
-from notion_api.data._properties.data import *
-from notion_api.data._properties.type_ import PropertyType
+from .data import *
+from .type_ import PropertyType
 
 PROPERTY_TYPE_MAP = {
     "checkbox": (CheckboxPage, CheckboxDatabase),
@@ -23,7 +23,7 @@ PROPERTY_TYPE_MAP = {
     "url": (UrlPage, UrlDatabase),
     "select": (SelectPage, SelectDatabase),
     "title": (TitlePage, TitleDatabase),
-    "rich_text": (RichTextPage, RichTextDatabase)
+    "rich_text": (RichTextPage, RichTextDatabase),
 }
 
 
@@ -63,5 +63,4 @@ def deserialize_database_property(data: dict):
     return PROPERTY_TYPE_MAP[property_type][1](**data)
 
 
-__all__ = [
-    'deserialize_page_property', 'deserialize_database_property']
+__all__ = ["deserialize_page_property", "deserialize_database_property"]

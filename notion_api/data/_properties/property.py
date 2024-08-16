@@ -1,15 +1,15 @@
 # Standard Library
 from abc import ABC, abstractmethod
-from typing import Any, Literal
+from typing import Literal
 from uuid import UUID
 
 # Third Party
-from pydantic import BaseModel, Field
+from pydantic import Field
 
 # First Party
-from notion_api.data._properties.sort import PropertySort
-from notion_api.data._properties.type_ import PropertyType
-from notion_api.data.configuration import BasicConfiguration
+from .sort_ import PropertySort
+from .type_ import PropertyType
+from notion_api.data.configuration_ import BasicConfiguration
 
 
 class Property(BasicConfiguration, ABC):
@@ -25,6 +25,7 @@ class Property(BasicConfiguration, ABC):
     name : str
         The name of the property (excluded from serialization).
     """
+
     id: UUID = Field(exclude=True)
     type: PropertyType = Field(exclude=True)
     name: str = Field(exclude=True)
@@ -52,7 +53,7 @@ class Property(BasicConfiguration, ABC):
         return cls.get_associated_property_type().value
 
     def serialize_to_json(self):
-        return self.model_dump(mode='json', exclude_none=True)
+        return self.model_dump(mode="json", exclude_none=True)
 
 
 class PageProperty(Property, ABC):
@@ -66,7 +67,9 @@ class DatabaseProperty(Property, ABC):
     Class representing a database property in the Notion API.
     """
 
-    def create_sort_object(self, direction: Literal['ascending', 'descending']) -> PropertySort:
+    def create_sort_object(
+        self, direction: Literal["ascending", "descending"]
+    ) -> PropertySort:
         """
           Creates a sort object for the property with the specified sort direction.
         :param direction:
@@ -75,5 +78,4 @@ class DatabaseProperty(Property, ABC):
         return PropertySort(direction=direction, property=self.name)
 
 
-__all__ = [
-    'PageProperty', 'DatabaseProperty', 'PropertyType', 'Property']
+__all__ = ["PageProperty", "DatabaseProperty", "PropertyType", "Property"]

@@ -6,8 +6,8 @@ from typing import Any
 from pydantic import Field
 
 # First Party
-from notion_api.data._blocks.type_ import BlockType
-from notion_api.data.object import Object
+from .type_ import BlockType
+from notion_api.data.object_ import Object
 
 
 class Block(Object, ABC):
@@ -23,9 +23,10 @@ class Block(Object, ABC):
     children : list[Block]
         The list of children blocks.
     """
+
     type: BlockType
     has_children: bool
-    children: list['Block'] = Field(default=[], exclude=True)
+    children: list["Block"] = Field(default=[], exclude=True)
 
     def serialize_to_json(self) -> dict[str, Any]:
         """
@@ -40,8 +41,9 @@ class Block(Object, ABC):
         :rtype: dict
         """
         return self.model_dump(
-            mode='json', exclude_none=True,
-            exclude={'id', 'parent', 'archived', 'in_trash', 'has_children'}
+            mode="json",
+            exclude_none=True,
+            exclude={"id", "parent", "archived", "in_trash", "has_children"},
         )
 
     @classmethod
@@ -67,4 +69,4 @@ class Block(Object, ABC):
         return cls.get_associated_block_type().value
 
 
-__all__ = ['Block', 'BlockType']
+__all__ = ["Block", "BlockType"]
