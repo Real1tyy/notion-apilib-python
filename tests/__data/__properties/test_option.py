@@ -18,7 +18,11 @@ from notion_api.data.properties import (
 )
 
 from ..utils.__serialization import transform_dictionary
-from .assertions import assert_properties_data_is_correct, create_property_object, extract_property_data
+from .assertions import (
+    assert_properties_data_is_correct,
+    create_property_object,
+    extract_property_data,
+)
 from .helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants for Checkbox Properties
@@ -27,9 +31,12 @@ CHECKBOX_VALUE = True
 # Constants for Select and Multi-Select Options
 OPTION_NAME = "Option 1"
 OPTION_COLOR = "blue"
-OPTION_ID = UUID("c02fc1d3-db8b-45c5-a222-27595b15aea7")
+OPTION_ID = "c02fc1d3-db8b-45c5-a222-27595b15aea7"
 
-GROUP_OPTION_IDS = [UUID("c02fc1d3-db8b-45c5-a222-27595b15aea7"), UUID("c02fc1d3-db8b-45c5-a222-27595b15aea7")]
+GROUP_OPTION_IDS = [
+    "c02fc1d3-db8b-45c5-a222-27595b15aea7",
+    "c02fc1d3-db8b-45c5-a222-27595b15aea7",
+]
 
 # Constants for Status Properties
 STATUS_OPTION_NAME = "In Progress"
@@ -165,7 +172,9 @@ def assert_group_structure_is_correct(groups, expected_groups):
 
 def assert_multi_select_page_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
-    assert_option_structure_is_correct(data.multi_select.options, expected_data["multi_select"]["options"])
+    assert_option_structure_is_correct(
+        data.multi_select.options, expected_data["multi_select"]["options"]
+    )
 
 
 def assert_multi_select_database_is_correct(data, expected_data):
@@ -179,7 +188,9 @@ def assert_select_page_is_correct(data, expected_data):
 
 def assert_select_database_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
-    assert_option_structure_is_correct(data.select.options, expected_data["select"]["options"])
+    assert_option_structure_is_correct(
+        data.select.options, expected_data["select"]["options"]
+    )
 
 
 def assert_status_page_is_correct(data, expected_data):
@@ -189,8 +200,12 @@ def assert_status_page_is_correct(data, expected_data):
 
 def assert_status_database_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
-    assert_option_structure_is_correct(data.status.options, expected_data["status"]["options"])
-    assert_group_structure_is_correct(data.status.groups, expected_data["status"]["groups"])
+    assert_option_structure_is_correct(
+        data.status.options, expected_data["status"]["options"]
+    )
+    assert_group_structure_is_correct(
+        data.status.groups, expected_data["status"]["groups"]
+    )
 
 
 def transform_page_option(option: dict) -> dict:
@@ -220,19 +235,26 @@ def transform_options_groups_data(data, change_function: Callable):
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class, assert_func", [
+    "property_fixture, property_class, assert_func",
+    [
         ("checkbox_page", CheckboxPage, assert_checkbox_page_is_correct),
         ("checkbox_database", CheckboxDatabase, assert_checkbox_database_is_correct),
         ("multi_select_page", MultiSelectPage, assert_multi_select_page_is_correct),
-        ("multi_select_database", MultiSelectDatabase, assert_multi_select_database_is_correct),
+        (
+            "multi_select_database",
+            MultiSelectDatabase,
+            assert_multi_select_database_is_correct,
+        ),
         ("select_page", SelectPage, assert_select_page_is_correct),
         ("select_database", SelectDatabase, assert_select_database_is_correct),
         ("status_page", StatusPage, assert_status_page_is_correct),
         ("status_database", StatusDatabase, assert_status_database_is_correct),
-    ]
+    ],
 )
 def test_property_structure(request, property_fixture, property_class, assert_func):
-    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+    extract_create_assert_structure(
+        request.getfixturevalue(property_fixture), property_class, assert_func
+    )
 
 
 def serialization_options_tester(data_provider, property_class, transform_option):
@@ -240,37 +262,49 @@ def serialization_options_tester(data_provider, property_class, transform_option
     property_ = create_property_object(data, property_class)
     json = property_.serialize_to_json()
     property_data = transform_options_groups_data(
-        data[property_class.get_payload_property_name()], transform_option)
+        data[property_class.get_payload_property_name()], transform_option
+    )
     assert json[property_class.get_payload_property_name()] == property_data
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class", [
+    "property_fixture, property_class",
+    [
         ("multi_select_page", MultiSelectPage),
         ("select_page", SelectPage),
         ("status_page", StatusPage),
-    ]
+    ],
 )
 def test_page_serialization(request, property_fixture, property_class):
-    serialization_options_tester(request.getfixturevalue(property_fixture), property_class, transform_page_option)
+    serialization_options_tester(
+        request.getfixturevalue(property_fixture), property_class, transform_page_option
+    )
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class", [
+    "property_fixture, property_class",
+    [
         ("multi_select_database", MultiSelectDatabase),
         ("select_database", SelectDatabase),
         ("status_database", StatusDatabase),
-    ]
+    ],
 )
 def test_database_serialization(request, property_fixture, property_class):
-    serialization_options_tester(request.getfixturevalue(property_fixture), property_class, transform_database_option)
+    serialization_options_tester(
+        request.getfixturevalue(property_fixture),
+        property_class,
+        transform_database_option,
+    )
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class", [
+    "property_fixture, property_class",
+    [
         ("checkbox_page", CheckboxPage),
         ("checkbox_database", CheckboxDatabase),
-    ]
+    ],
 )
 def test_checkbox_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)
+    extract_create_assert_serialization(
+        request.getfixturevalue(property_fixture), property_class
+    )

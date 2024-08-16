@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from uuid import UUID
 
 # First Party
-from notion_api.client._api_requests.api.NotionAPIBlocksClient import NotionAPIBlocksClient
-from notion_api.client._utils import (
+from ._api_requests.api.blocks_ import NotionAPIBlocksClient
+from ._utils import (
     _create_children_json_payload,
     _get_child_id_from_json,
     _get_children_from_json,
@@ -41,7 +41,9 @@ class NotionBlockProvider:
         """
         return self.append_block_children(block.parent.get_parent_id(), [block])
 
-    def append_block_children(self, object_id: str, children_blocks: list[Block], after_block_id: str = '') -> Block:
+    def append_block_children(
+        self, object_id: str, children_blocks: list[Block], after_block_id: str = ""
+    ) -> Block:
         """
         Appends children blocks to an existing block in the Notion API. By default, appends the children at the end
         of the children block list or after the id of the block specified in the after_block_id parameter. The id of
@@ -148,14 +150,26 @@ class NotionBlockProvider:
         """
         response = self.notion_client.retrieve_block_children(id_.hex, {})
         children_data = _get_children_from_json(response)
-        new_children = [self.retrieve_block(_get_child_id_from_json(child), recursively)
-                        for child in children_data]
+        new_children = [
+            self.retrieve_block(_get_child_id_from_json(child), recursively)
+            for child in children_data
+        ]
         return _handle_pagination(
-            new_children, response, self._retrieve_children_paginated, id_=id_,
-            recursively=recursively, children=new_children)
+            new_children,
+            response,
+            self._retrieve_children_paginated,
+            id_=id_,
+            recursively=recursively,
+            children=new_children,
+        )
 
     def _retrieve_children_paginated(
-            self, id_: UUID, next_cursor: str, children: list[Block], recursively: bool = True) -> list[Block]:
+        self,
+        id_: UUID,
+        next_cursor: str,
+        children: list[Block],
+        recursively: bool = True,
+    ) -> list[Block]:
         """
         Helper function to handle paginated retrieval of children blocks.
 
@@ -172,15 +186,23 @@ class NotionBlockProvider:
             ValueError: If the deserialization of the response fails due to an invalid schema.
             ResponseException: If the Notion API returns an error status code.
         """
-        data = {'start_cursor': next_cursor}
+        data = {"start_cursor": next_cursor}
         response = self.notion_client.retrieve_block_children(id_.hex, data)
         children_data = _get_children_from_json(response)
         children.extend(
-            [self.retrieve_block(_get_child_id_from_json(child), recursively)
-             for child in children_data])
+            [
+                self.retrieve_block(_get_child_id_from_json(child), recursively)
+                for child in children_data
+            ]
+        )
         return _handle_pagination(
-            children, response, self._retrieve_children_paginated, id_=id_,
-            recursively=recursively, children=children)
+            children,
+            response,
+            self._retrieve_children_paginated,
+            id_=id_,
+            recursively=recursively,
+            children=children,
+        )
 
     def update_block(self, block: Block) -> Block:
         """
@@ -197,7 +219,7 @@ class NotionBlockProvider:
             ValueError: If the deserialization of the response fails due to an invalid schema.
             ResponseException: If the Notion API returns an error status code.
         """
-        data = block.model_dump(mode='json', exclude_none=True)
+        data = block.model_dump(mode="json", exclude_none=True)
         response = self.notion_client.update_block(block.id.hex, data)
         return deserialize_block(response.json())
 

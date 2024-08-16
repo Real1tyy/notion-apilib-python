@@ -4,8 +4,12 @@ from dataclasses import dataclass
 from typing import Any, Optional
 
 # First Party
-from notion_api.client._api_requests.api.NotionAPIDatabasesClient import NotionAPIDatabasesClient
-from notion_api.client._utils import _get_children_from_json, _handle_pagination, _prepare_query_data
+from _api_requests.api.database_ import NotionAPIDatabasesClient
+from ._utils import (
+    _get_children_from_json,
+    _handle_pagination,
+    _prepare_query_data,
+)
 from notion_api.data import Database, deserialize_database, deserialize_page
 from notion_api.data.properties import QueryFilter, Sort
 
@@ -13,8 +17,9 @@ from notion_api.data.properties import QueryFilter, Sort
 @dataclass
 class NotionDatabaseProvider:
     """
-        Provides API methods to interact with Notion API database endpoints using and returning DSL database objects.
+    Provides API methods to interact with Notion API database endpoints using and returning DSL database objects.
     """
+
     notion_client: NotionAPIDatabasesClient
 
     def create_database(self, database: Database) -> Database:
@@ -35,9 +40,11 @@ class NotionDatabaseProvider:
         return deserialize_database(response.json())
 
     def query_database(
-            self, database: Database, filter: Optional[QueryFilter] = None, sort: Optional[list[Sort]] =
-            None) -> (
-            Database):
+        self,
+        database: Database,
+        filter: Optional[QueryFilter] = None,
+        sort: Optional[list[Sort]] = None,
+    ) -> Database:
         """
         Queries a Notion database and retrieves its pages based on optional filters and sorting.
 
@@ -59,12 +66,16 @@ class NotionDatabaseProvider:
         children = _get_children_from_json(response)
         database.pages.extend(map(deserialize_page, children))
         return _handle_pagination(
-            database, response, self._query_paginated_database,
-            filter=filter, sort=sort)
+            database, response, self._query_paginated_database, filter=filter, sort=sort
+        )
 
     def _query_paginated_database(
-            self, database: Database, next_cursor: str, filter: Optional[QueryFilter] = None,
-            sort: dict[str, Any] = None) -> Database:
+        self,
+        database: Database,
+        next_cursor: str,
+        filter: Optional[QueryFilter] = None,
+        sort: dict[str, Any] = None,
+    ) -> Database:
         """
         Handles paginated queries to a Notion database.
 
@@ -89,13 +100,12 @@ class NotionDatabaseProvider:
             try:
                 page = deserialize_page(page_json)
             except Exception as e:
-                print(page_json['_properties'])
                 raise e
             database.pages.append(page)
 
         return _handle_pagination(
-            database, response, self._query_paginated_database,
-            filter=filter, sort=sort)
+            database, response, self._query_paginated_database, filter=filter, sort=sort
+        )
 
     def retrieve_database(self, database_id: str) -> Database:
         """
@@ -112,7 +122,6 @@ class NotionDatabaseProvider:
             ResponseException: If the Notion API returns an error status code.
         """
         response = self.notion_client.retrieve_database(database_id)
-        print(json.dumps(response.json(), indent=4))
         return deserialize_database(response.json())
 
     def update_database(self, database: Database) -> Database:
@@ -132,6 +141,7 @@ class NotionDatabaseProvider:
         data = database.serialize_to_json()
         response = self.notion_client.update_database(database.id.hex, data)
         return deserialize_database(response.json())
+
 
 # how to retrieve the latest results from a Notion database
 # {

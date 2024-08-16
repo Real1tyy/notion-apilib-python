@@ -13,7 +13,7 @@ from ..data import (
     UrlPage,
 )
 
-from .general_ import _create_database_property, _create_page_property
+from ._general import _create_database_property, _create_page_property
 
 
 def create_email_page(parent: "Page", name: str, email: str) -> EmailPage:

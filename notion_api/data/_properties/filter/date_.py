@@ -2,7 +2,7 @@
 from datetime import datetime
 from typing import Literal
 
-from .general_ import Filter, FilterStructure
+from ._general import Filter, FilterStructure
 
 
 class DateFilter(Filter):

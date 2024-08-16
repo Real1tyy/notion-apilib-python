@@ -3,7 +3,7 @@ from typing import Optional, Type, TypeVar
 
 # First Party
 from ...data import ChildDatabase, ChildPage, block_structures
-from ..general_ import _create_block
+from .._general import _create_block
 from ...block import Block
 from notion_api.data.structures import Parent
 

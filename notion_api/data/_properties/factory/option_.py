@@ -16,7 +16,7 @@ from ..data.structures import (
     Group,
 )
 
-from .general_ import _create_database_property, _create_page_property
+from ._general import _create_database_property, _create_page_property
 
 
 def create_checkbox_page(parent: "Page", name: str, checkbox: bool) -> CheckboxPage:

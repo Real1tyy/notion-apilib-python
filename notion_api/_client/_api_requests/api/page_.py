@@ -6,7 +6,7 @@ from typing import Optional
 from requests import Response
 
 # First Party
-from notion_api.client._api_requests._utils.RequestsClient import RequestsClient
+from notion_api.client._api_requests._utils.requests_ import RequestsClient
 
 
 @dataclass
@@ -16,12 +16,15 @@ class NotionAPIPagesClient:
     def create_page(self, data: dict) -> Response:
         return self.requests_provider.perform_post_request("pages", data)
 
-    def retrieve_page(self, page_id: str, query_params: Optional[str] = None) -> Response:
+    def retrieve_page(
+        self, page_id: str, query_params: Optional[str] = None
+    ) -> Response:
         url = f"pages/{page_id}{query_params if query_params else ''}"
         return self.requests_provider.perform_get_request(url)
 
-    def retrieve_page_property_item(self, page_id: str, property_id: str, query_params: Optional[str] = None) \
-            -> Response:
+    def retrieve_page_property_item(
+        self, page_id: str, property_id: str, query_params: Optional[str] = None
+    ) -> Response:
         url = f"pages/{page_id}/properties/{property_id}{query_params if query_params else ''}"
         return self.requests_provider.perform_get_request(url)
 

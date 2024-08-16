@@ -73,7 +73,7 @@ from .formula_ import (
     create_formula_number_filter,
     create_formula_string_filter,
 )
-from .general_ import Filter, FilterStructure
+from ._general import Filter, FilterStructure
 from .number_ import (
     NumberFilter,
     create_concrete_number_filter,

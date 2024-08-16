@@ -1,5 +1,5 @@
 # First Party
-from .general_ import _create_block
+from ._general import _create_block
 from notion_api.data.structures import Parent
 from ..data import Breadcrumb, ColumnList, Divider, Unsupported
 

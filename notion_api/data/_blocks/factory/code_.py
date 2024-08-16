@@ -1,6 +1,6 @@
 # First Party
 from ..data import Code, block_structures
-from .general_ import _create_block
+from ._general import _create_block
 from notion_api.data.structures import Parent, RichText
 
 

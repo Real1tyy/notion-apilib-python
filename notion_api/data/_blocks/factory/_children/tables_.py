@@ -1,7 +1,7 @@
 # Standard Library
 from typing import Optional
 
-from ..general_ import _create_block
+from .._general import _create_block
 from ...block import Block
 from notion_api.data.structures import Parent, RichText
 

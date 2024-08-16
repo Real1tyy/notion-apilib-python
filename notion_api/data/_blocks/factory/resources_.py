@@ -2,7 +2,7 @@
 from typing import Optional, Type, TypeVar
 
 # First Party
-from .general_ import _create_block
+from ._general import _create_block
 from ..data import File, Image, Pdf, Video
 from notion_api.data.structures import (
     External,

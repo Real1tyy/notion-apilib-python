@@ -2,17 +2,17 @@
 from dependency_injector import containers, providers
 
 # First Party
-from notion_api.client._api_requests._utils.NotionHeaderProvider import (
+from notion_api.client._api_requests._utils.header_ import (
     NotionHeaderProvider,
 )
-from notion_api.client._api_requests._utils.RequestsClient import RequestsClient
-from notion_api.client._api_requests.api.NotionAPIBlocksClient import (
+from notion_api.client._api_requests._utils.requests_ import RequestsClient
+from notion_api.client._api_requests.api.blocks_ import (
     NotionAPIBlocksClient,
 )
-from notion_api.client._api_requests.api.NotionAPIDatabasesClient import (
+from notion_api.client._api_requests.api.database_ import (
     NotionAPIDatabasesClient,
 )
-from notion_api.client._api_requests.api.NotionAPIPagesClient import (
+from notion_api.client._api_requests.api.page_ import (
     NotionAPIPagesClient,
 )
 from notion_api.client.block_ import NotionBlockProvider

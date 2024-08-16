@@ -6,10 +6,11 @@ from pydantic import BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
 # First Party
-from .exceptions_ import catch_exceptions
+from ._exceptions_ import catch_exceptions
 from .object_ import MajorObject
 from .properties_structure import PropertiesStructure, parse_properties
 from notion_api.data.properties import PageProperty, deserialize_page_property
+from notion_api.data.blocks import Block
 
 
 @catch_exceptions
@@ -21,7 +22,7 @@ def properties_validator(
 
 class Page(MajorObject):
     properties: Annotated[PropertiesStructure, BeforeValidator(properties_validator)]
-    children: list["Block"] = Field(default=[])
+    children: list[Block] = Field(default=[])
 
     def get_properties(self) -> list[PageProperty]:
         return self.properties.properties

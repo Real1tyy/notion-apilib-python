@@ -3,10 +3,10 @@ from dataclasses import dataclass
 from typing import Any, Optional
 
 # First Party
-from notion_api.client._api_requests.api.NotionAPIPagesClient import (
+from ._api_requests.api.page_ import (
     NotionAPIPagesClient,
 )
-from notion_api.client.block_ import NotionBlockProvider
+from .block_ import NotionBlockProvider
 from notion_api.data import Page, deserialize_page
 
 

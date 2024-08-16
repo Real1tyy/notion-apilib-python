@@ -1,5 +1,5 @@
 # First Party
-from .general_ import _create_block
+from ._general import _create_block
 from ..data import Bookmark, Embed, LinkPreview, block_structures
 from notion_api.data.structures import Parent, RichText
 

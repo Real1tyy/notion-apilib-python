@@ -6,7 +6,7 @@ from pydantic import BeforeValidator, Field
 from pydantic_core.core_schema import ValidationInfo
 
 # First Party
-from .exceptions_ import catch_exceptions
+from ._exceptions_ import catch_exceptions
 from .object_ import MajorObject
 from .page_ import Page
 from .properties_structure import PropertiesStructure, parse_properties

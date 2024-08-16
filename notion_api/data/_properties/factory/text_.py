@@ -3,7 +3,7 @@ from notion_api.data.structures import RichText
 
 # First Party
 from ..data import RichTextDatabase, RichTextPage, TitleDatabase, TitlePage
-from .general_ import _create_database_property, _create_page_property
+from ._general import _create_database_property, _create_page_property
 
 
 def create_rich_text_page(

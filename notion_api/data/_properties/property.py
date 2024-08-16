@@ -26,7 +26,7 @@ class Property(BasicConfiguration, ABC):
         The name of the property (excluded from serialization).
     """
 
-    id: UUID = Field(exclude=True)
+    id: str = Field(exclude=True)
     type: PropertyType = Field(exclude=True)
     name: str = Field(exclude=True)
 

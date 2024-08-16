@@ -1,7 +1,7 @@
 # Standard Library
 from typing import Optional, Type, TypeVar
 
-from ..general_ import _create_block
+from .._general import _create_block
 
 # First Party
 from ...data import Heading1, Heading2, Heading3, block_structures

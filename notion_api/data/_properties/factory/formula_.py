@@ -8,7 +8,7 @@ from ..data import (
     FormulaPage,
 )
 
-from .general_ import _create_database_property, _create_page_property
+from ._general import _create_database_property, _create_page_property
 
 
 def create_formula_page(

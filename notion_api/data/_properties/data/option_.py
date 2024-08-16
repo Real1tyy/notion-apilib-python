@@ -1,6 +1,5 @@
 # Standard Library
 from typing import Any
-from uuid import UUID
 
 # Third Party
 from pydantic import BaseModel, Field
@@ -50,7 +49,7 @@ class OptionPage(BaseModel):
         color (str): The color of the option.
     """
 
-    id: UUID = Field(exclude=True)
+    id: str = Field(exclude=True)
     name: str
     color: str = Field(exclude=True)
 
@@ -65,7 +64,7 @@ class OptionDatabase(BaseModel):
         color (str): The color of the option.
     """
 
-    id: UUID = Field(exclude=True)
+    id: str = Field(exclude=True)
     name: str
     color: str
 
@@ -160,7 +159,7 @@ class Group(OptionDatabase):
         option_ids (list[str]): A list of option IDs in the group.
     """
 
-    option_ids: list[UUID]
+    option_ids: list[str]
 
 
 class StatusDatabaseStructure(BaseModel):

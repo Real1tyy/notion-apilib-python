@@ -1,4 +1,4 @@
-from .general_ import Filter, FilterStructure
+from ._general import Filter, FilterStructure
 
 
 class FilesFilter(Filter):
