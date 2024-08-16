@@ -20,10 +20,10 @@ def database_properties(date_database, unique_id_database, number_database):
 
 
 @pytest.fixture
-def create_database(major_object_data, database_properties):
+def create_database(major_object_data, database_properties, create_rich_text):
     data = major_object_data('database')
-    data["title"] = DATABASE_TITLE
-    data["description"] = DATABASE_DESCRIPTION
+    data["title"] = create_rich_text
+    data["description"] = create_rich_text
     data["is_inline"] = False
     data["properties"] = database_properties
     return data

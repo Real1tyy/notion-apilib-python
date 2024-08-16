@@ -13,7 +13,7 @@ TIME_ZONE_OPTIONS = ["America/New_York", None]
 
 
 @pytest.fixture(params=[(end, tz) for end in END_OPTIONS for tz in TIME_ZONE_OPTIONS])
-def date_database(request, property_data):
+def date_page(request, property_data):
     def create_page_database(property_type):
         end, time_zone = request.param
         PAGE_DATA = {
@@ -51,13 +51,13 @@ def test_date_database_structure(date_database):
     extract_create_assert_structure(date_database, DateDatabase, assert_date_database_is_correct)
 
 
-def test_date_page_structure(date_database):
-    extract_create_assert_structure(date_database, DatePage, assert_date_page_is_correct)
+def test_date_page_structure(date_page):
+    extract_create_assert_structure(date_page, DatePage, assert_date_page_is_correct)
 
 
 def test_date_database_serialization(date_database):
     extract_create_assert_serialization(date_database, DateDatabase)
 
 
-def test_date_page_serialization(date_database):
-    extract_create_assert_serialization(date_database, DatePage)
+def test_date_page_serialization(date_page):
+    extract_create_assert_serialization(date_page, DatePage)

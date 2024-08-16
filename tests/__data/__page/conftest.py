@@ -2,13 +2,13 @@ import pytest
 
 from notion_api.data import Page
 from ..__properties.conftest import property_data
-from ..__properties.test_date import date_database, DatePage
+from ..__properties.test_date import date_page, DatePage
 from ..__properties.test_number import unique_id_page, number_page, NumberPage, UniqueIdPage
 
 
 @pytest.fixture
-def page_properties(date_database, unique_id_page, number_page):
-    date_data = date_database(DatePage.get_associated_property_type())
+def page_properties(date_page, unique_id_page, number_page):
+    date_data = date_page(DatePage.get_associated_property_type())
     unique_id_data = unique_id_page(UniqueIdPage.get_associated_property_type())
     number_data = number_page(NumberPage.get_associated_property_type())
     return {
