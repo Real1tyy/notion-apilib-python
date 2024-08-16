@@ -6,7 +6,7 @@ from typing import Optional
 from requests import Response
 
 # First Party
-from notion_api.client._api_requests._utils.requests_ import RequestsClient
+from .._utils.requests_ import RequestsClient
 
 
 @dataclass

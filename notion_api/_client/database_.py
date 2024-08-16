@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Any, Optional
 
 # First Party
-from _api_requests.api.database_ import NotionAPIDatabasesClient
+from ._api_requests import NotionAPIDatabasesClient
 from ._utils import (
     _get_children_from_json,
     _handle_pagination,

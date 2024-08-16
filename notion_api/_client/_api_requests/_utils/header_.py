@@ -2,7 +2,7 @@
 from dataclasses import dataclass
 
 # First Party
-from notion_api.client._api_requests.constants.notion import NOTION_VERSION
+from ..constants.notion import NOTION_VERSION
 
 
 @dataclass
@@ -13,5 +13,5 @@ class NotionHeaderProvider:
         return {
             "Authorization": f"Bearer {self.api_key}",
             "Notion-Version": NOTION_VERSION,
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         }

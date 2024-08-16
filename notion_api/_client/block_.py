@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from uuid import UUID
 
 # First Party
-from ._api_requests.api.blocks_ import NotionAPIBlocksClient
+from ._api_requests import NotionAPIBlocksClient
 from ._utils import (
     _create_children_json_payload,
     _get_child_id_from_json,

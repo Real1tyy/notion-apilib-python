@@ -5,10 +5,6 @@ import os
 from dotenv import load_dotenv
 
 from notion_api import *
-from notion_api.data import *
-from notion_api.data.properties import *
-from notion_api.data.structures import *
-from notion_api.data.blocks import *
 
 
 if __name__ == "__main__":
