@@ -64,46 +64,36 @@ Note:
     It provides factory methods that ensure all block objects are created consistently and correctly.
 """
 
-from ._children.child_ import create_child_page, create_child_database
+from ._children.child_ import create_child_database, create_child_page
 from ._children.heading_ import (
-    create_heading1,
-    create_heading2,
-    create_heading3,
     create_basic_heading1,
     create_basic_heading2,
     create_basic_heading3,
+    create_heading1,
+    create_heading2,
+    create_heading3,
 )
 from ._children.items_ import (
-    create_bulleted_list_item,
-    create_numbered_list_item,
-    create_to_do,
-    create_quote,
-    create_toggle,
-    create_paragraph,
     create_basic_bulleted_list_item,
     create_basic_numbered_list_item,
-    create_basic_quote,
-    create_basic_toggle,
-    create_basic_to_do,
     create_basic_paragraph,
+    create_basic_quote,
+    create_basic_to_do,
+    create_basic_toggle,
+    create_bulleted_list_item,
+    create_numbered_list_item,
+    create_paragraph,
+    create_quote,
+    create_to_do,
+    create_toggle,
 )
-from ._children.other_ import create_synced_block, create_callout
-from ._children.tables_ import (
-    create_table,
-    create_table_row,
-    create_column,
-    create_table_of_contents,
-)
+from ._children.other_ import create_callout, create_synced_block
+from ._children.tables_ import create_column, create_table, create_table_of_contents, create_table_row
 from .code_ import create_code
 from .equation_ import create_equation
-from .link_ import create_link_preview, create_embed, create_bookmark
-from .other_ import (
-    create_divider,
-    create_breadcrumb,
-    create_unsupported,
-    create_column_list,
-)
-from .resources_ import create_pdf, create_video, create_file, create_image
+from .link_ import create_bookmark, create_embed, create_link_preview
+from .other_ import create_breadcrumb, create_column_list, create_divider, create_unsupported
+from .resources_ import create_file, create_image, create_pdf, create_video
 
 __all__ = [
     "create_child_page",

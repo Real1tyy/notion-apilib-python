@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 
 # First Party
 from notion_apilib.data.structures import RichText
+
 from ...block import Block, BlockType
 
 

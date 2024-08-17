@@ -5,6 +5,7 @@ from typing import Literal
 # Third Party
 from pydantic import BaseModel
 
+# First Party
 from notion_apilib.data import BasicConfiguration
 
 

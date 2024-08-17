@@ -1,11 +1,13 @@
 # Standard Library
-from typing import Optional, Any
+from typing import Any, Optional
 
 # Third Party
-from pydantic import BaseModel, model_validator, model_serializer
+from pydantic import BaseModel, model_serializer, model_validator
 
+# First Party
 import notion_apilib.data._structures.factory as factory
 from notion_apilib.data import BasicConfiguration
+
 from .mention_ import Mention
 
 

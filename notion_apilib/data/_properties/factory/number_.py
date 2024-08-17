@@ -1,15 +1,8 @@
 # Standard Library
 from typing import Optional
 
-# First Party
-from ..data import (
-    NumberDatabase,
-    NumberPage,
-    UniqueIdDatabase,
-    UniqueIdPage,
-)
+from ..data import NumberDatabase, NumberPage, UniqueIdDatabase, UniqueIdPage
 from ..data.structures import NumberStructure, UniqueIdPageStructure
-
 from ._general import _create_database_property, _create_page_property
 
 

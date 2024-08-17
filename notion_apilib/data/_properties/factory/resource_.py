@@ -1,7 +1,6 @@
-# Third Party
+# First Party
 from notion_apilib.data.structures import ResourcesAttributes
 
-# First Party
 from ..data import (
     EmailDatabase,
     EmailPage,
@@ -12,7 +11,6 @@ from ..data import (
     UrlDatabase,
     UrlPage,
 )
-
 from ._general import _create_database_property, _create_page_property
 
 

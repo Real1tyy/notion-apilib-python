@@ -4,13 +4,14 @@ from typing import Any
 # Third Party
 from pydantic import Field
 
-from ._util import remove_forbidden_properties_from_data
-from .structures import RichText
 # First Party
+from notion_apilib.data.blocks import Block
+from notion_apilib.data.properties import PageProperty
+
+from ._util import remove_forbidden_properties_from_data
 from .object_ import MajorObject
 from .properties_structure import PagePropertiesStructure
-from notion_apilib.data.properties import PageProperty
-from notion_apilib.data.blocks import Block
+from .structures import RichText
 
 
 class Page(MajorObject):

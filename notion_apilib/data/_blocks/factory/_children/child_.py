@@ -2,10 +2,11 @@
 from typing import Optional, Type, TypeVar
 
 # First Party
+from notion_apilib.data.structures import Parent
+
+from ...block import Block
 from ...data import ChildDatabase, ChildPage, block_structures
 from .._general import _create_block
-from ...block import Block
-from notion_apilib.data.structures import Parent
 
 T = TypeVar("T", ChildDatabase, ChildPage)
 

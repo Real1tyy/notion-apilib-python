@@ -3,6 +3,8 @@ from dataclasses import dataclass
 from uuid import UUID
 
 # First Party
+from notion_apilib.data.blocks import Block, deserialize_block
+
 from ._api_requests import NotionAPIBlocksClient
 from ._utils import (
     _create_children_json_payload,
@@ -11,7 +13,6 @@ from ._utils import (
     _handle_pagination,
     _parse_and_serialize_result,
 )
-from notion_apilib.data.blocks import Block, deserialize_block
 
 
 @dataclass

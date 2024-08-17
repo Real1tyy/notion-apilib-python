@@ -2,15 +2,10 @@
 from typing import Optional, Type, TypeVar
 
 # First Party
-from ._general import _create_block
+from notion_apilib.data.structures import External, FileObject, Parent, ResourcesAttributes, file_type
+
 from ..data import File, Image, Pdf, Video
-from notion_apilib.data.structures import (
-    External,
-    FileObject,
-    Parent,
-    ResourcesAttributes,
-    file_type,
-)
+from ._general import _create_block
 
 T = TypeVar("T", File, Image, Pdf, Video)
 

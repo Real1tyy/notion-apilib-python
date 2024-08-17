@@ -7,10 +7,9 @@ from typing import Callable, Optional
 import requests
 from requests import Response
 
-# First Party
+from ...exceptions_ import ResponseError
 from ..constants.notion import BASE_URL
 from ..constants.status_codes import RATE_LIMIT, SUCCESS
-from ...exceptions_ import ResponseError
 
 
 def verify_response(

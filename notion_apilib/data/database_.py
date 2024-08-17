@@ -5,12 +5,13 @@ from typing import Any
 from pydantic import Field
 
 # First Party
-from .object_ import MajorObject
-from .page_ import Page
-from ._util import remove_forbidden_properties_from_data
-from .properties_structure import DatabasePropertiesStructure
 from notion_apilib.data.properties import DatabaseProperty
 from notion_apilib.data.structures import FormatedText
+
+from ._util import remove_forbidden_properties_from_data
+from .object_ import MajorObject
+from .page_ import Page
+from .properties_structure import DatabasePropertiesStructure
 
 
 class Database(MajorObject):

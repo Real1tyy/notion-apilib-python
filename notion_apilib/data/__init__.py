@@ -31,13 +31,10 @@ This package is ideal for developers looking to interact with the Notion API in 
 """
 
 from .configuration_ import BasicConfiguration, ExtraConfiguration
-from .object_ import Object, MajorObject
-from .properties_structure import PropertiesStructure
-from .database_ import (
-    Database,
-    deserialize_database,
-)
+from .database_ import Database, deserialize_database
+from .object_ import MajorObject, Object
 from .page_ import Page, deserialize_page
+from .properties_structure import PropertiesStructure
 
 __all__ = [
     "Page",

@@ -2,7 +2,6 @@
 from datetime import datetime
 from typing import Any
 
-# First Party
 from ..property import DatabaseProperty, PageProperty
 from ..type_ import PropertyType
 

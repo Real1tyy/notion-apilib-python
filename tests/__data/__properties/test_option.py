@@ -18,11 +18,7 @@ from notion_apilib.data.properties import (
 )
 
 from ..utils.__serialization import transform_dictionary
-from .assertions import (
-    assert_properties_data_is_correct,
-    create_property_object,
-    extract_property_data,
-)
+from .assertions import assert_properties_data_is_correct, create_property_object, extract_property_data
 from .helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants for Checkbox Properties

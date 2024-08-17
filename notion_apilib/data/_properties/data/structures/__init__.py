@@ -23,23 +23,23 @@ Imported Structures:
 """
 
 from ..date_ import DateStructure
-from ..formula_ import FormulaStructure, FormulaDatabaseStructure
-from ..number_ import NumberStructure, UniqueIdPageStructure, UniqueIdDatabaseStructure
+from ..formula_ import FormulaDatabaseStructure, FormulaStructure
+from ..number_ import NumberStructure, UniqueIdDatabaseStructure, UniqueIdPageStructure
 from ..option_ import (
+    Group,
+    OptionDatabase,
+    OptionPage,
     OptionStructureDatabase,
     OptionStructurePage,
-    Group,
     StatusDatabaseStructure,
-    OptionPage,
-    OptionDatabase,
 )
 from ..relation_ import (
-    RelationStructure,
-    RollupStructure,
-    SingleProperty,
     DualProperty,
     RelationDatabaseStructure,
+    RelationStructure,
     RollupDatabaseStructure,
+    RollupStructure,
+    SingleProperty,
 )
 
 __all__ = [

@@ -1,7 +1,8 @@
 # First Party
+from notion_apilib.data.structures import Parent
+
 from ..data import Equation, block_structures
 from ._general import _create_block
-from notion_apilib.data.structures import Parent
 
 
 def create_equation(parent: Parent, expression: str) -> Equation:

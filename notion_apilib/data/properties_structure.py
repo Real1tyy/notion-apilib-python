@@ -1,15 +1,22 @@
 # Standard Library
-from typing import Callable, TypeVar, Generic, Any, Type
+from typing import Any, Callable, Generic, Type, TypeVar
 
 # Third Party
 from pydantic import Field, model_validator
 
-from .structures import RichText
-from .properties import PageProperty, DatabaseProperty, deserialize_page_property, deserialize_database_property, \
-    TitlePage, TitleDatabase
 # First Party
-from .configuration_ import ExtraConfiguration
 from notion_apilib.data.properties import Property
+
+from .configuration_ import ExtraConfiguration
+from .properties import (
+    DatabaseProperty,
+    PageProperty,
+    TitleDatabase,
+    TitlePage,
+    deserialize_database_property,
+    deserialize_page_property,
+)
+from .structures import RichText
 
 T = TypeVar("T", bound=Property)
 

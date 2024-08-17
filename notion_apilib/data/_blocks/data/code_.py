@@ -2,8 +2,9 @@
 from pydantic import BaseModel
 
 # First Party
-from ..block import Block, BlockType
 from notion_apilib.data.structures import RichText
+
+from ..block import Block, BlockType
 
 
 class CodeAttributes(BaseModel):

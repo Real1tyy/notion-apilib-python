@@ -1,7 +1,6 @@
 # Standard Library
 from dataclasses import dataclass
 
-# First Party
 from ..constants.notion import NOTION_VERSION
 
 

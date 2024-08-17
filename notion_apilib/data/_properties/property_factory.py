@@ -1,6 +1,5 @@
-# First Party
-from .property import PageProperty, DatabaseProperty
 from .data import *
+from .property import DatabaseProperty, PageProperty
 from .type_ import PropertyType
 
 PROPERTY_TYPE_MAP = {

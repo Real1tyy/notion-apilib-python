@@ -57,24 +57,19 @@ Note:
     correctly.
 """
 
+# First Party
+import notion_apilib.data._blocks.data.structures as block_structures
+
 from ._children.child_ import ChildDatabase, ChildPage
 from ._children.heading_ import Heading1, Heading2, Heading3
-from ._children.items_ import (
-    BulletedListItem,
-    NumberedListItem,
-    Paragraph,
-    Quote,
-    ToDo,
-    Toggle,
-)
+from ._children.items_ import BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle
 from ._children.other_ import Callout, SyncedBlock
-from ._children.tables_ import Table, TableRow, TableOfContents, Column
+from ._children.tables_ import Column, Table, TableOfContents, TableRow
 from .code_ import Code
 from .equation_ import Equation
-from .link_ import LinkPreview, Embed, Bookmark
-from .other_ import Divider, Unsupported, Breadcrumb, ColumnList
-from .resources_ import File, Image, Video, Pdf
-import notion_apilib.data._blocks.data.structures as block_structures
+from .link_ import Bookmark, Embed, LinkPreview
+from .other_ import Breadcrumb, ColumnList, Divider, Unsupported
+from .resources_ import File, Image, Pdf, Video
 
 __all__ = [
     "ChildDatabase",

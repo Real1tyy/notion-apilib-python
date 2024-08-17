@@ -1,5 +1,5 @@
-from .date_ import DateFilter
 from ._general import Filter, FilterStructure
+from .date_ import DateFilter
 from .number_ import NumberFilter
 from .text_ import RichTextFilter
 

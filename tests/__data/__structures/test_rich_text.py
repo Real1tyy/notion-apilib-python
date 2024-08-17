@@ -1,5 +1,5 @@
 # First Party
-from notion_apilib.data.structures import RichText, FormatedText
+from notion_apilib.data.structures import FormatedText, RichText
 
 from .assertions import assert_rich_text_value
 

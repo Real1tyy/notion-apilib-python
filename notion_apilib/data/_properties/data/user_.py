@@ -2,9 +2,10 @@
 from typing import Any
 
 # First Party
+from notion_apilib.data.structures import User
+
 from ..property import DatabaseProperty, PageProperty
 from ..type_ import PropertyType
-from notion_apilib.data.structures import User
 
 
 class CreatedByPage(PageProperty):

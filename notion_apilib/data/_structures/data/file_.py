@@ -6,8 +6,9 @@ from typing import Optional
 from pydantic import BaseModel
 
 # First Party
-from ..types_ import file_type
 import notion_apilib.data._structures.data.text_ as text
+
+from ..types_ import file_type
 
 
 class FileObject(BaseModel):

@@ -5,8 +5,9 @@ from uuid import UUID
 # Third Party
 from pydantic import BaseModel, Field
 
-from notion_apilib.data.structures import Emoji, RichText
 # First Party
+from notion_apilib.data.structures import Emoji, RichText
+
 from ...block import Block, BlockType
 
 

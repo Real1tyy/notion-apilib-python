@@ -4,7 +4,6 @@
 from datetime import datetime
 from typing import List, Optional
 
-# First Party
 from ..data import External, FileAttributes, FileObject, ResourcesAttributes, RichText
 from ..types_ import file_type
 

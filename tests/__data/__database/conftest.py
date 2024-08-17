@@ -1,13 +1,13 @@
 # Third Party
 import pytest
 
-from notion_apilib.data import Database, Page
 # First Party
+from notion_apilib.data import Database, Page
 
 from ..__properties.conftest import property_data
 from ..__properties.test_date import DateDatabase, date_database
 from ..__properties.test_number import NumberDatabase, UniqueIdDatabase, number_database, unique_id_database
-from ..__properties.test_text import title_database, TitleDatabase
+from ..__properties.test_text import TitleDatabase, title_database
 from .constants import *
 
 

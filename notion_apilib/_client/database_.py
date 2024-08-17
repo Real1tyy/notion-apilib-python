@@ -4,14 +4,11 @@ from dataclasses import dataclass
 from typing import Any, Optional
 
 # First Party
-from ._api_requests import NotionAPIDatabasesClient
-from ._utils import (
-    _get_children_from_json,
-    _handle_pagination,
-    _prepare_query_data,
-)
 from notion_apilib.data import Database, deserialize_database, deserialize_page
 from notion_apilib.data.properties import QueryFilter, Sort
+
+from ._api_requests import NotionAPIDatabasesClient
+from ._utils import _get_children_from_json, _handle_pagination, _prepare_query_data
 
 
 @dataclass

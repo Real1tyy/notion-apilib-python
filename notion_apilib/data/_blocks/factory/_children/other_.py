@@ -1,12 +1,12 @@
 # Standard Library
 from typing import Optional
 
-from .._general import _create_block
-from ...block import Block
+# First Party
 from notion_apilib.data.structures import Emoji, Parent, RichText
 
-# First Party
+from ...block import Block
 from ...data import Callout, SyncedBlock, block_structures
+from .._general import _create_block
 
 
 def create_callout(

@@ -7,9 +7,11 @@ from uuid import UUID
 # Third Party
 from pydantic import Field
 
-from .properties import Property
+# First Party
+from notion_apilib.data.structures import Parent, ResourcesAttributes, User
+
 from .configuration_ import BasicConfiguration
-from notion_apilib.data.structures import Parent, User, ResourcesAttributes
+from .properties import Property
 
 
 class Object(BasicConfiguration, ABC):

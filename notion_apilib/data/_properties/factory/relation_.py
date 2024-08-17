@@ -3,20 +3,8 @@ from datetime import datetime
 from typing import Any, Literal, Optional
 from uuid import UUID
 
-# First Party
-from ..data import (
-    RelationDatabase,
-    RelationPage,
-    RollupDatabase,
-    RollupPage,
-)
-from ..data.structures import (
-    RelationDatabaseStructure,
-    RelationStructure,
-    RollupDatabaseStructure,
-    RollupStructure,
-)
-
+from ..data import RelationDatabase, RelationPage, RollupDatabase, RollupPage
+from ..data.structures import RelationDatabaseStructure, RelationStructure, RollupDatabaseStructure, RollupStructure
 from ._general import _create_database_property, _create_page_property
 
 

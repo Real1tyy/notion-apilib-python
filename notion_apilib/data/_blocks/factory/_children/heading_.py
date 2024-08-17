@@ -1,12 +1,12 @@
 # Standard Library
 from typing import Optional, Type, TypeVar
 
-from .._general import _create_block
-
 # First Party
-from ...data import Heading1, Heading2, Heading3, block_structures
-from ...block import Block
 from notion_apilib.data.structures import Parent, RichText, create_basic_rich_text
+
+from ...block import Block
+from ...data import Heading1, Heading2, Heading3, block_structures
+from .._general import _create_block
 
 T = TypeVar("T", Heading1, Heading2, Heading3)
 

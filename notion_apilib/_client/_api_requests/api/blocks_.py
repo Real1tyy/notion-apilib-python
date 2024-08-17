@@ -5,7 +5,6 @@ from typing import Optional
 # Third Party
 from requests import Response
 
-# First Party
 from .._utils.requests_ import RequestsClient
 
 

@@ -2,12 +2,8 @@
 from datetime import datetime
 from typing import Literal, Optional
 
-from ..data.structures import FormulaStructure, FormulaDatabaseStructure
-from ..data import (
-    FormulaDatabase,
-    FormulaPage,
-)
-
+from ..data import FormulaDatabase, FormulaPage
+from ..data.structures import FormulaDatabaseStructure, FormulaStructure
 from ._general import _create_database_property, _create_page_property
 
 

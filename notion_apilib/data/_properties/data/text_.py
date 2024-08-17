@@ -1,12 +1,14 @@
 # Standard Library
 from typing import Any
 
+# Third Party
 from pydantic import Field
 
 # First Party
+from notion_apilib.data.structures import RichText, create_basic_rich_text
+
 from ..property import DatabaseProperty, PageProperty
 from ..type_ import PropertyType
-from notion_apilib.data.structures import RichText, create_basic_rich_text
 
 
 class RichTextPage(PageProperty):

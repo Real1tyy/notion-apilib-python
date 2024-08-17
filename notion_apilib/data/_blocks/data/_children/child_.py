@@ -4,7 +4,6 @@ from abc import ABC
 # Third Party
 from pydantic import BaseModel
 
-# First Party
 from ...block import Block, BlockType
 
 

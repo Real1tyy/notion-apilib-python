@@ -1,18 +1,12 @@
 # Standard Library
 from typing import Optional
 
-from .._general import _create_block
-from ...block import Block
+# First Party
 from notion_apilib.data.structures import Parent, RichText
 
-# First Party
-from ...data import (
-    Column,
-    Table,
-    TableOfContents,
-    TableRow,
-    block_structures,
-)
+from ...block import Block
+from ...data import Column, Table, TableOfContents, TableRow, block_structures
+from .._general import _create_block
 
 
 def create_table(

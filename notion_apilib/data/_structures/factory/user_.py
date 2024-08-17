@@ -4,7 +4,6 @@
 from typing import Literal, Optional
 from uuid import UUID
 
-# First Party
 from ..data import Bot, BotStructure, OwnerStructure, People, PeopleStructure, User
 
 

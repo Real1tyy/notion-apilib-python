@@ -4,7 +4,6 @@ from typing import Any
 # Third Party
 from pydantic import BaseModel, Field
 
-# First Party
 from ..property import DatabaseProperty, PageProperty
 from ..type_ import PropertyType
 

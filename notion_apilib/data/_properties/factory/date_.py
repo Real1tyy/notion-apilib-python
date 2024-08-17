@@ -2,7 +2,6 @@
 from datetime import datetime
 from typing import Optional
 
-# First Party
 from ..data import DateDatabase, DatePage
 from ..data.structures import DateStructure
 from ._general import _create_database_property, _create_page_property

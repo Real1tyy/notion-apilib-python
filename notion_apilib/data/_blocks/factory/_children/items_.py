@@ -1,20 +1,12 @@
 # Standard Library
 from typing import Optional, Type, TypeVar
 
-from .._general import _create_block
-
 # First Party
-from ...data import (
-    BulletedListItem,
-    NumberedListItem,
-    Paragraph,
-    Quote,
-    ToDo,
-    Toggle,
-    block_structures,
-)
-from ...block import Block
 from notion_apilib.data.structures import Parent, RichText, create_basic_rich_text
+
+from ...block import Block
+from ...data import BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle, block_structures
+from .._general import _create_block
 
 T = TypeVar("T", BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle)
 

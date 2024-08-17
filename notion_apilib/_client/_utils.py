@@ -7,7 +7,7 @@ from requests import Response
 
 # First Party
 from notion_apilib.data.blocks import Block, deserialize_block
-from notion_apilib.data.properties import Sort, QueryFilter
+from notion_apilib.data.properties import QueryFilter, Sort
 
 T = TypeVar("T")
 

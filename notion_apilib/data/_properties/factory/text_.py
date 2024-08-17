@@ -1,7 +1,6 @@
-# Third Party
+# First Party
 from notion_apilib.data.structures import RichText
 
-# First Party
 from ..data import RichTextDatabase, RichTextPage, TitleDatabase, TitlePage
 from ._general import _create_database_property, _create_page_property
 

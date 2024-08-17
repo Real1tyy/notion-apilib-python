@@ -1,10 +1,11 @@
 # Standard Library
 from typing import Any
 
-# Third Party
+# First Party
+import notion_apilib.data.structures as resources
+
 from ..property import DatabaseProperty, PageProperty
 from ..type_ import PropertyType
-import notion_apilib.data.structures as resources
 
 
 class EmailPage(PageProperty):

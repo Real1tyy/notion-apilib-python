@@ -6,8 +6,9 @@ from typing import Any, Optional
 from pydantic import Field
 
 # First Party
-from ._general import Filter
 from notion_apilib.data.configuration_ import ExtraConfiguration
+
+from ._general import Filter
 
 
 class QueryFilter(ExtraConfiguration, ABC):

@@ -1,7 +1,6 @@
 # Standard Library
 from typing import Any, Optional, Type, TypeVar
 
-# First Party
 from ..property import DatabaseProperty, PageProperty, Property
 
 T = TypeVar("T", bound=Property)

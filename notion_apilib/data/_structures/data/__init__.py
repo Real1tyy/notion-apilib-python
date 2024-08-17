@@ -51,22 +51,22 @@ Note:
     facilitating data integrity and consistency.
 """
 
-from .file_ import FileObject, External, FileAttributes, ResourcesAttributes
+from .file_ import External, FileAttributes, FileObject, ResourcesAttributes
 from .icon_ import Emoji
 from .mention_ import (
-    Mention,
     DatabaseMention,
     DateMention,
     LinkPreviewMention,
-    UserMention,
+    Mention,
+    PageMention,
     TemplateMention,
     TemplateMentionDate,
     TemplateMentionUser,
-    PageMention,
+    UserMention,
 )
 from .parent_ import Parent
-from .text_ import RichText, Text, Link, Annotations, EquationStructure, FormatedText
-from .user_ import User, OwnerStructure, PeopleStructure, People, BotStructure, Bot
+from .text_ import Annotations, EquationStructure, FormatedText, Link, RichText, Text
+from .user_ import Bot, BotStructure, OwnerStructure, People, PeopleStructure, User
 
 __all__ = [
     "FileObject",

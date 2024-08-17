@@ -3,8 +3,6 @@
 # Third Party
 from pydantic import BaseModel
 
-# First Party
-
 
 class Emoji(BaseModel):
     """

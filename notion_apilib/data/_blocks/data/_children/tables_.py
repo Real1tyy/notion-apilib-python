@@ -3,8 +3,9 @@
 # Third Party
 from pydantic import BaseModel
 
-from notion_apilib.data.structures import RichText
 # First Party
+from notion_apilib.data.structures import RichText
+
 from ...block import Block, BlockType
 
 

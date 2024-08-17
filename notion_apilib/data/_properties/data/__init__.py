@@ -59,47 +59,35 @@ structures used inside the property objects.
 """
 
 # First Party
+import notion_apilib.data._properties.data.structures as property_structures
+
 from .date_ import DateDatabase, DatePage
 from .formula_ import FormulaDatabase, FormulaPage
-from .number_ import NumberPage, NumberDatabase, UniqueIdDatabase, UniqueIdPage
+from .number_ import NumberDatabase, NumberPage, UniqueIdDatabase, UniqueIdPage
 from .option_ import (
-    MultiSelectPage,
-    MultiSelectDatabase,
-    SelectPage,
-    SelectDatabase,
-    CheckboxPage,
     CheckboxDatabase,
-    StatusPage,
+    CheckboxPage,
+    MultiSelectDatabase,
+    MultiSelectPage,
+    SelectDatabase,
+    SelectPage,
     StatusDatabase,
+    StatusPage,
 )
-from .relation_ import RelationPage, RelationDatabase, RollupPage, RollupDatabase
+from .relation_ import RelationDatabase, RelationPage, RollupDatabase, RollupPage
 from .resource_ import (
-    FilesPage,
-    FilesDatabase,
-    EmailPage,
     EmailDatabase,
+    EmailPage,
+    FilesDatabase,
+    FilesPage,
     PhoneNumberDatabase,
     PhoneNumberPage,
-    UrlPage,
     UrlDatabase,
+    UrlPage,
 )
-from .text_ import RichTextDatabase, RichTextPage, TitlePage, TitleDatabase
-from .time_ import (
-    CreatedTimePage,
-    CreatedTimeDatabase,
-    LastEditedTimePage,
-    LastEditedTimeDatabase,
-)
-from .user_ import (
-    CreatedByDatabase,
-    CreatedByPage,
-    LastEditedByPage,
-    LastEditedByDatabase,
-    PeopleDatabase,
-    PeoplePage,
-)
-
-import notion_apilib.data._properties.data.structures as property_structures
+from .text_ import RichTextDatabase, RichTextPage, TitleDatabase, TitlePage
+from .time_ import CreatedTimeDatabase, CreatedTimePage, LastEditedTimeDatabase, LastEditedTimePage
+from .user_ import CreatedByDatabase, CreatedByPage, LastEditedByDatabase, LastEditedByPage, PeopleDatabase, PeoplePage
 
 __all__ = [
     "DateDatabase",

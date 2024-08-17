@@ -2,8 +2,9 @@
 from typing import Any, Optional, Type, TypeVar
 
 # First Party
-from ..block import Block
 from notion_apilib.data.structures import Parent
+
+from ..block import Block
 
 T = TypeVar("T", bound=Block)
 

@@ -1,7 +1,8 @@
 # Standard Library
 
-from notion_apilib.data.structures import FileAttributes, ResourcesAttributes
 # First Party
+from notion_apilib.data.structures import FileAttributes, ResourcesAttributes
+
 from ..block import Block, BlockType
 
 

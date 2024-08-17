@@ -7,9 +7,10 @@ from uuid import UUID
 from pydantic import Field
 
 # First Party
+from notion_apilib.data.configuration_ import BasicConfiguration
+
 from .sort_ import PropertySort
 from .type_ import PropertyType
-from notion_apilib.data.configuration_ import BasicConfiguration
 
 
 class Property(BasicConfiguration, ABC):

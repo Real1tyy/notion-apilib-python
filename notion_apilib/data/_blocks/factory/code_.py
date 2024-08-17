@@ -1,7 +1,8 @@
 # First Party
+from notion_apilib.data.structures import Parent, RichText
+
 from ..data import Code, block_structures
 from ._general import _create_block
-from notion_apilib.data.structures import Parent, RichText
 
 
 def create_code(

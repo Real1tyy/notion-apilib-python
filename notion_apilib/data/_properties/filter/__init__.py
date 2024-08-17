@@ -60,12 +60,8 @@ Factory Methods:
     - QueryFilter
 """
 
-from .date_ import (
-    DateFilter,
-    create_concrete_date_filter,
-    create_date_filter_is_empty,
-    create_relative_date_filter,
-)
+from ._general import Filter, FilterStructure
+from .date_ import DateFilter, create_concrete_date_filter, create_date_filter_is_empty, create_relative_date_filter
 from .formula_ import (
     FormulaFilter,
     create_formula_checkbox_filter,
@@ -73,44 +69,39 @@ from .formula_ import (
     create_formula_number_filter,
     create_formula_string_filter,
 )
-from ._general import Filter, FilterStructure
 from .number_ import (
+    IDFilter,
     NumberFilter,
     create_concrete_number_filter,
-    create_number_filter_is_empty,
-    IDFilter,
     create_id_filter,
+    create_number_filter_is_empty,
 )
 from .option_ import (
-    MultiSelectFilter,
-    create_multi_select_filter_contains,
-    create_multi_select_filter_is_empty,
     CheckboxFilter,
-    create_checkbox_filter,
+    MultiSelectFilter,
     SelectFilter,
+    StatusFilter,
+    create_checkbox_filter,
+    create_multi_select_filter_contains,
+    create_multi_select_filter_does_not_contains,
+    create_multi_select_filter_is_empty,
+    create_select_filter_does_not_equal,
     create_select_filter_equals,
     create_select_filter_is_empty,
-    create_multi_select_filter_does_not_contains,
-    create_status_filter_equals,
     create_status_filter_does_not_equal,
+    create_status_filter_equals,
     create_status_filter_is_empty,
-    StatusFilter,
-    create_select_filter_does_not_equal,
 )
+from .query_filter_ import AndFilter, OrFilter, QueryFilter
 from .relation_ import (
     RelationFilter,
     create_relation_filter_contains,
     create_relation_filter_does_not_contain,
     create_relation_filter_is_empty,
-    RelationFilter,
     create_rollup_filter,
 )
-from .resources_ import create_files_filter_is_empty, FilesFilter
-from .text_ import (
-    RichTextFilter,
-    create_rich_text_filter,
-    create_rich_text_filter_is_empty,
-)
+from .resources_ import FilesFilter, create_files_filter_is_empty
+from .text_ import RichTextFilter, create_rich_text_filter, create_rich_text_filter_is_empty
 from .time_ import TimestampFilter, create_timestamp_filter
 from .user_ import (
     PeopleFilter,
@@ -118,7 +109,6 @@ from .user_ import (
     create_people_filter_does_not_contain,
     create_people_filter_is_empty,
 )
-from .query_filter_ import AndFilter, OrFilter, QueryFilter
 
 __all__ = [
     "DateFilter",

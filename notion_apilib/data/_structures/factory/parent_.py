@@ -2,7 +2,6 @@
 from typing import Any, Literal
 from uuid import UUID
 
-# First Party
 from ..data import Parent
 from ..types_ import parents_types
 

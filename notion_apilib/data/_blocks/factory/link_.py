@@ -1,7 +1,8 @@
 # First Party
-from ._general import _create_block
-from ..data import Bookmark, Embed, LinkPreview, block_structures
 from notion_apilib.data.structures import Parent, RichText
+
+from ..data import Bookmark, Embed, LinkPreview, block_structures
+from ._general import _create_block
 
 
 def create_bookmark(parent: Parent, url: str, caption: list[RichText]) -> Bookmark:

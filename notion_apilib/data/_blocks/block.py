@@ -6,8 +6,9 @@ from typing import Any
 from pydantic import Field
 
 # First Party
-from .type_ import BlockType
 from notion_apilib.data.object_ import Object
+
+from .type_ import BlockType
 
 
 class Block(Object, ABC):

@@ -2,7 +2,6 @@
 
 # Standard Library
 
-# First Party
 from ..data import Emoji
 
 

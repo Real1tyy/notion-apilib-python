@@ -2,8 +2,9 @@
 from typing import Any
 
 # First Party
-from .data import *
 from notion_apilib.data.structures import Mention
+
+from .data import *
 
 BLOCK_TYPE_MAP = {
     "bookmark": Bookmark,

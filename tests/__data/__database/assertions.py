@@ -1,5 +1,6 @@
-# Third Party
+# First Party
 from tests.__data.__structures.assertions import assert_rich_text_structure
+
 from ..__properties.assertion_assigner import get_assertion_function
 from ..assertions import assert_major_object_data_is_correct
 
