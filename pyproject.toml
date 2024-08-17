@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "notion-apilib"
-version = "0.0.2-alpha"
-description = "This library allows developers to call Notion API using Python Pydantic-validated classes using a custom DSL API methods"
+version = "0.0.5"
+description = "This library allows developers to call Notion API using custom DSL Pydantic-validated classes and API methods"
 authors = ["Real1ty <vavro.matej3@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/Real1tyy/notion-apilib-python"
-repository = "https://github.com/Real1ty/notion-apilib-python"
-documentation = "https://real1ty.github.io/notion-apilib-python/wiki"
+repository = "https://github.com/Real1tyy/notion-apilib-python"
+documentation = "https://github.com/Real1tyy/notion-apilib-python/wiki"
 keywords = ["notion", "api", "pydantic", "dsl", "python"]
 classifiers = [
     "Development Status :: 4 - Beta",
