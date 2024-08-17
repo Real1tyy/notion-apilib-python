@@ -2,7 +2,7 @@
 from typing import Callable, Type
 
 # First Party
-from notion_api.data.blocks import (
+from notion_apilib.data.blocks import (
     Block,
     Bookmark,
     Breadcrumb,

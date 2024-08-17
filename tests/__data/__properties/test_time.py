@@ -5,7 +5,8 @@ from datetime import datetime, timezone
 import pytest
 
 # First Party
-from notion_api.data.properties import CreatedTimeDatabase, CreatedTimePage, LastEditedTimeDatabase, LastEditedTimePage
+from notion_apilib.data.properties import CreatedTimeDatabase, CreatedTimePage, LastEditedTimeDatabase, \
+    LastEditedTimePage
 
 from .assertions import assert_properties_data_is_correct
 from .helper import extract_create_assert_serialization, extract_create_assert_structure

@@ -2,8 +2,8 @@
 import pytest
 
 # First Party
-import notion_api.data as notion
-from notion_api.data.properties import DateDatabase
+import notion_apilib.data as notion
+from notion_apilib.data.properties import DateDatabase
 
 from .assertions import assert_database_structure
 

@@ -2,7 +2,7 @@
 from typing import Any
 
 # First Party
-from notion_api.data.object_ import MajorObject
+from notion_apilib.data.object_ import MajorObject
 from tests.__data.assertions import assert_object_data_is_correct
 
 

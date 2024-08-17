@@ -2,7 +2,7 @@
 from typing import Callable, Type, TypeVar
 
 # First Party
-from notion_api.data.blocks import Block
+from notion_apilib.data.blocks import Block
 from tests.__data.__block.constants import BLOCK_TYPE
 from tests.__data.assertions import assert_object_data_is_correct
 from tests.__data.utils.__serialization import transform_dictionary

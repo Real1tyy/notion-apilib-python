@@ -2,7 +2,7 @@
 from typing import Callable, Type
 
 # First Party
-from notion_api.data.blocks import Block
+from notion_apilib.data.blocks import Block
 
 from .assertions import assert_serialization_to_json, create_block_object, extract_block_data
 

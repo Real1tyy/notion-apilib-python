@@ -2,7 +2,7 @@
 import pytest
 
 # First Party
-from notion_api.data import Page
+from notion_apilib.data import Page
 
 from ..__properties.conftest import property_data
 from ..__properties.test_date import DatePage, date_page

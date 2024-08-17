@@ -6,7 +6,7 @@ from uuid import UUID
 import pytest
 
 # First Party
-from notion_api.data.properties import RelationDatabase, RelationPage, RollupDatabase, RollupPage
+from notion_apilib.data.properties import RelationDatabase, RelationPage, RollupDatabase, RollupPage
 
 from .assertions import assert_properties_data_is_correct
 from .constants import *

@@ -2,7 +2,7 @@
 from typing import Callable, Type
 
 # First Party
-from notion_api.data.properties import Property
+from notion_apilib.data.properties import Property
 
 from .assertions import assert_serialization_to_json, create_property_object, extract_property_data
 

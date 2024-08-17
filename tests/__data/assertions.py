@@ -1,5 +1,5 @@
 # First Party
-from notion_api.data.object_ import MajorObject, Object
+from notion_apilib.data.object_ import MajorObject, Object
 from tests.__data.__structures.assertions import (
     assert_icon_structure,
     assert_parent_structure,

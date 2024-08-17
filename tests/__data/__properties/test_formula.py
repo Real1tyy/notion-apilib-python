@@ -2,7 +2,7 @@
 import pytest
 
 # First Party
-from notion_api.data.properties import FormulaDatabase, FormulaPage
+from notion_apilib.data.properties import FormulaDatabase, FormulaPage
 
 from .assertions import assert_properties_data_is_correct
 from .helper import extract_create_assert_serialization, extract_create_assert_structure

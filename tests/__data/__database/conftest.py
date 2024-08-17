@@ -1,7 +1,7 @@
 # Third Party
 import pytest
 
-from notion_api.data import Database, Page
+from notion_apilib.data import Database, Page
 # First Party
 
 from ..__properties.conftest import property_data

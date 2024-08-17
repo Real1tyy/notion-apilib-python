@@ -2,7 +2,7 @@
 import pytest
 
 # First Party
-from notion_api.data.properties import (
+from notion_apilib.data.properties import (
     EmailDatabase,
     EmailPage,
     FilesDatabase,

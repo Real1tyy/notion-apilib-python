@@ -2,7 +2,7 @@
 from typing import Callable, Type, TypeVar
 
 # First Party
-from notion_api.data.properties import Property
+from notion_apilib.data.properties import Property
 from tests.__data.utils.__serialization import transform_dictionary
 
 
