@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "notion-apilib"
 version = "0.0.1"
-description = "This is a custom DSL library that acts as a wrapper for communicating with Notion API, it abstracts away the json structure complexity and instead provides clean API to communicate with Notion using Pydantic models, so you work with objects instead of json"
+description = "This is a custom DSL library that acts as a wrapper for communicating with Notion API, it abstracts away the json structure complexity and instead provides clean API to communicate with Notion using Pydantic models"
 authors = ["Real1ty <vavro.matej3@gmail.com>"]
 license = "MIT"
 readme = "README.md"
