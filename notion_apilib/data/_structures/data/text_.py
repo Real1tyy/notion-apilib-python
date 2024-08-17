@@ -2,8 +2,9 @@
 from typing import Optional, Any
 
 # Third Party
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel, model_validator, model_serializer
 
+import notion_apilib.data._structures.factory as factory
 from notion_apilib.data import BasicConfiguration
 from .mention_ import Mention
 
@@ -78,7 +79,7 @@ class EquationStructure(BaseModel):
     expression: str
 
 
-class RichText(BaseModel, arbitrary_types_allowed=True):
+class RichText(BasicConfiguration):
     """
     Represents a rich text object in the Notion API.
 
@@ -134,10 +135,40 @@ class FormatedText(BasicConfiguration):
     rich_text: list[RichText]
 
     @model_validator(mode="before")
-    def parse_properties(cls, v: Any):
+    def parse_rich_text(cls, v: Any):
         result = dict()
         result["rich_text"] = v
         return result
 
+    @model_serializer
+    def serialize_rich_text(self) -> list[dict]:
+        return [rich_text.json_dump() for rich_text in self.rich_text]
 
-__all__ = ["RichText", "Text", "Annotations", "Link", "EquationStructure"]
+    @property
+    def text(self) -> str:
+        """
+        gets the value of the plain text property, note that the value is returned as a plain text, so any formatting
+        is ignored, if you want specific formatting, you should use the title_structure attribute
+        :return: plain text value of the title
+        """
+        return "".join([rich_text.plain_text for rich_text in self.rich_text])
+
+    @text.setter
+    def text(self, value: str) -> None:
+        """
+        sets the value of the text property, note that the value is expected string so plain text,
+        meaning no formatting is possible, if you want specific formatting, you should use the rich_text
+        attribute directly, also note that any previous value or formatting will be overwritten to plain text
+        :param value: value to set - plain text
+        :return: None
+        """
+        self.rich_text = [factory.create_basic_rich_text(value)]
+
+    def __len__(self):
+        return len(self.rich_text)
+
+    def __iter__(self):
+        return iter(self.rich_text)
+
+
+__all__ = ["RichText", "Text", "Annotations", "Link", "EquationStructure", "FormatedText"]

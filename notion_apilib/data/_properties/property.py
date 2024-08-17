@@ -53,7 +53,7 @@ class Property(BasicConfiguration, ABC):
         return cls.get_associated_property_type().value
 
     def serialize_to_json(self):
-        return self.model_dump(mode="json", exclude_none=True)
+        return self.json_dump()
 
 
 class PageProperty(Property, ABC):

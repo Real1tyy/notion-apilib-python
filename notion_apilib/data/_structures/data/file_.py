@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 # First Party
 from ..types_ import file_type
-from .text_ import RichText
+import notion_apilib.data._structures.data.text_ as text
 
 
 class FileObject(BaseModel):
@@ -70,7 +70,7 @@ class FileAttributes(ResourcesAttributes):
         The name of the file.
     """
 
-    caption: list[RichText]
+    caption: list[text.RichText]
     name: str
 
 

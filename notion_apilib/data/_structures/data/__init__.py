@@ -65,7 +65,7 @@ from .mention_ import (
     PageMention,
 )
 from .parent_ import Parent
-from .text_ import RichText, Text, Link, Annotations, EquationStructure
+from .text_ import RichText, Text, Link, Annotations, EquationStructure, FormatedText
 from .user_ import User, OwnerStructure, PeopleStructure, People, BotStructure, Bot
 
 __all__ = [
@@ -86,6 +86,7 @@ __all__ = [
     "Parent",
     "RichText",
     "Text",
+    "FormatedText",
     "Link",
     "Annotations",
     "EquationStructure",

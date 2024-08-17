@@ -6,7 +6,7 @@ from typing import Any, Optional
 from pydantic import Field
 
 # First Party
-from filter import Filter
+from ._general import Filter
 from notion_apilib.data.configuration_ import ExtraConfiguration
 
 
@@ -32,7 +32,7 @@ class QueryFilter(ExtraConfiguration, ABC):
         pass
 
     def serialize_to_json(self) -> dict[str, Any]:
-        return self.model_dump(mode="json", by_alias=True)
+        return self.json_dump()
 
 
 class AndFilter(QueryFilter):

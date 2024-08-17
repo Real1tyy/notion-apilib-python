@@ -40,11 +40,7 @@ class Block(Object, ABC):
         :return: The JSON representation of the block.
         :rtype: dict
         """
-        return self.model_dump(
-            mode="json",
-            exclude_none=True,
-            exclude={"id", "parent", "archived", "in_trash", "has_children"},
-        )
+        return self.json_dump({"id", "parent", "archived", "in_trash", "has_children"})
 
     @classmethod
     @abstractmethod

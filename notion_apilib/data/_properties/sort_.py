@@ -1,11 +1,14 @@
 # Standard Library
+from abc import ABC
 from typing import Literal
 
 # Third Party
 from pydantic import BaseModel
 
+from notion_apilib.data import BasicConfiguration
 
-class Sort(BaseModel):
+
+class Sort(BasicConfiguration, ABC):
     """
     Base class for sorting options in a Notion database query.
 
@@ -22,7 +25,7 @@ class Sort(BaseModel):
         Returns:
             dict[str, str]: The serialized dictionary of the sort object.
         """
-        return self.model_dump(mode='json')
+        return self.json_dump()
 
 
 class PropertySort(Sort):

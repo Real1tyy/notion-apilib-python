@@ -2,11 +2,11 @@
 from typing import Optional
 
 # First Party
-from ..data import Annotations, Link, Mention, RichText, Text
+import notion_apilib.data._structures.data.text_ as data
 
 
-def create_basic_annotations() -> Annotations:
-    return Annotations(
+def create_basic_annotations() -> data.Annotations:
+    return data.Annotations(
         bold=False,
         italic=False,
         strikethrough=False,
@@ -16,8 +16,8 @@ def create_basic_annotations() -> Annotations:
     )
 
 
-def create_basic_rich_text(text: str) -> RichText:
-    return RichText(
+def create_basic_rich_text(text: str) -> data.RichText:
+    return data.RichText(
         type="text",
         text=create_text(text),
         annotations=create_basic_annotations(),
@@ -26,7 +26,7 @@ def create_basic_rich_text(text: str) -> RichText:
     )
 
 
-def create_link(url: str) -> Link:
+def create_link(url: str) -> data.Link:
     """
     Factory method to create a Link.
 
@@ -40,10 +40,10 @@ def create_link(url: str) -> Link:
     Link
         A new Link instance.
     """
-    return Link(url=url)
+    return data.Link(url=url)
 
 
-def create_text(content: str, link: Optional[Link] = None) -> Text:
+def create_text(content: str, link: Optional[data.Link] = None) -> data.Text:
     """
     Factory method to create a Text object.
 
@@ -59,17 +59,17 @@ def create_text(content: str, link: Optional[Link] = None) -> Text:
     Text
         A new Text instance.
     """
-    return Text(content=content, link=link)
+    return data.Text(content=content, link=link)
 
 
 def create_annotations(
-    bold: bool,
-    italic: bool,
-    strikethrough: bool,
-    underline: bool,
-    code: bool,
-    color: str,
-) -> Annotations:
+        bold: bool,
+        italic: bool,
+        strikethrough: bool,
+        underline: bool,
+        code: bool,
+        color: str,
+) -> data.Annotations:
     """
     Factory method to create an Annotations object.
 
@@ -93,7 +93,7 @@ def create_annotations(
     Annotations
         A new Annotations instance.
     """
-    return Annotations(
+    return data.Annotations(
         bold=bold,
         italic=italic,
         strikethrough=strikethrough,
@@ -104,14 +104,14 @@ def create_annotations(
 
 
 def create_rich_text(
-    type_: str,
-    annotations: Annotations,
-    plain_text: str,
-    text: Optional[Text] = None,
-    mention: Optional[Mention] = None,
-    equation: Optional["Equation"] = None,
-    href: Optional[str] = None,
-) -> RichText:
+        type_: str,
+        annotations: data.Annotations,
+        plain_text: str,
+        text: Optional[data.Text] = None,
+        mention: Optional[data.Mention] = None,
+        equation: Optional['Equation'] = None,
+        href: Optional[str] = None,
+) -> data.RichText:
     """
     Factory method to create a RichText object.
 
@@ -137,7 +137,7 @@ def create_rich_text(
     RichText
         A new RichText instance.
     """
-    return RichText(
+    return data.RichText(
         type=type_,
         text=text,
         mention=mention,

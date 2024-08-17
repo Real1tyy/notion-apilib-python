@@ -4,7 +4,7 @@ from typing import Any
 # Third Party
 from ..property import DatabaseProperty, PageProperty
 from ..type_ import PropertyType
-from notion_apilib.data.structures import ResourcesAttributes
+import notion_apilib.data.structures as resources
 
 
 class EmailPage(PageProperty):
@@ -45,7 +45,7 @@ class FilesPage(PageProperty):
         files (list[ResourcesAttributes]): The list of files for the page property.
     """
 
-    files: list[ResourcesAttributes]
+    files: list[resources.ResourcesAttributes]
 
     @classmethod
     def get_associated_property_type(cls) -> PropertyType:
