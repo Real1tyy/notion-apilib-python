@@ -1,8 +1,10 @@
 # Standard Library
-from typing import Optional
+from typing import Optional, Any
 
 # Third Party
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
+
+from notion_api.data import BasicConfiguration
 from .mention_ import Mention
 
 
@@ -118,6 +120,24 @@ class RichText(BaseModel, arbitrary_types_allowed=True):
         self.plain_text = text
         if self.text:
             self.text.content = text
+
+
+class FormatedText(BasicConfiguration):
+    """
+    Represents a formatted text object in the Notion API.
+
+    Attributes
+    ----------
+    rich_text : list[RichText]
+        The rich text content.
+    """
+    rich_text: list[RichText]
+
+    @model_validator(mode="before")
+    def parse_properties(cls, v: Any):
+        result = dict()
+        result["rich_text"] = v
+        return result
 
 
 __all__ = ["RichText", "Text", "Annotations", "Link", "EquationStructure"]

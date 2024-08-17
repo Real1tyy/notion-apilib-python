@@ -18,7 +18,6 @@ if __name__ == "__main__":
     database_provider = notion.database_provider
     page_provider = notion.page_provider
     data = database_provider.retrieve_database("97b48d4fece741b395ce37ec64e93346")
-    print(data.icon)
-    print(data.cover)
-    print(data.properties)
-    print(data.to_json_string())
+    print(data.properties_attributes)
+    page = page_provider.retrieve_page("53cf47b5f1e54b29a0f8bf8da5f66b0d")
+    print(page.properties_attributes)

@@ -6,7 +6,7 @@ from ..assertions import assert_major_object_data_is_correct
 
 def assert_database_structure(database, expected_database):
     assert_major_object_data_is_correct(database, expected_database)
-    assert_rich_text_structure(database.title, expected_database["title"])
+    assert_rich_text_structure(database.title_structure_model, expected_database["title"])
     assert_rich_text_structure(database.description, expected_database["description"])
     assert database.is_inline == expected_database["is_inline"]
 

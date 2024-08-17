@@ -24,7 +24,7 @@ def assert_child_data_is_correct(data, expected_data):
     assert_block_data_is_correct(data, expected_data)
     block_type = data.__class__.get_associated_block_type()
     child_data = getattr(data, f"{block_type.value}")
-    assert child_data.title == expected_data[block_type.value]["title"]
+    assert child_data.title_structure_model == expected_data[block_type.value]["title"]
 
 
 @pytest.mark.parametrize("child_class", [ChildPage, ChildDatabase])

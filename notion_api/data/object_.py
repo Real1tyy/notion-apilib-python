@@ -24,10 +24,10 @@ class Object(BasicConfiguration, ABC):
     in_trash: bool
 
     @abstractmethod
-    def serialize_to_json(self) -> dict[str, Any]:
+    def serialize_to_json(self) -> dict:
         """
-        Serialize the object to a JSON serializable dictionary.
-        :return: The serialized object.
+        Serialize the object to a JSON dictionary
+        :return: The serialized object
         """
 
 
