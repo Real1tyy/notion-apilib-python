@@ -53,12 +53,14 @@ def assert_rich_text_database_is_correct(data, expected_data):
 
 def assert_title_page_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
-    assert_rich_text_structure(data.title_structure_model, expected_data["title"])
+    print(data)
+    print(expected_data)
+    assert_rich_text_structure(data.title_structure, expected_data["title"])
 
 
 def assert_title_database_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
-    assert data.title_structure_model == expected_data["title"]
+    assert data.title == expected_data["title"]
 
 
 @pytest.mark.parametrize(

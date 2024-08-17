@@ -30,5 +30,8 @@ def assert_serialization_to_json(property_, property_type_specific_data):
     property_data = transform_dictionary(property_type_specific_data)
     json = property_.serialize_to_json()
     property_name = property_.__class__.get_payload_property_name()
+    print(property_name)
+    print(property_data)
+    print(json)
     if property_type_specific_data != {}:
         assert json[property_name] == property_data

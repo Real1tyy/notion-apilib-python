@@ -16,7 +16,7 @@ def test_page(create_page):
 
 
 def test_page_properties(page_object, date_page):
-    amount = len(page_object.properties())
+    amount = len(page_object.properties)
     property_ = DatePage(**date_page(DatePage.get_associated_property_type()))
     page_object.add_property(property_)
-    assert amount + 1 == len(page_object.properties())
+    assert amount + 1 == len(page_object.properties)
