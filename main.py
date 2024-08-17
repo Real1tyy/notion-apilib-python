@@ -4,11 +4,11 @@ import os
 # Third Party
 from dotenv import load_dotenv
 
-from notion_api import *
-from notion_api.data import *
-from notion_api.data.blocks import *
-from notion_api.data.properties import *
-from notion_api.data.structures import *
+from notion_apilib import *
+from notion_apilib.data import *
+from notion_apilib.data.blocks import *
+from notion_apilib.data.properties import *
+from notion_apilib.data.structures import *
 
 if __name__ == "__main__":
     load_dotenv()
