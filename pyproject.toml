@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "notion-apilib"
-version = "0.0.5"
+version = "0.0.1-alpha"
 description = "This library allows developers to call Notion API using custom DSL Pydantic-validated classes and API methods"
 authors = ["Real1ty <vavro.matej3@gmail.com>"]
 license = "MIT"
