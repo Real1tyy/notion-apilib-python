@@ -1,7 +1,14 @@
 # First Party
 from notion_apilib.data.structures import User
 
-from ..data import CreatedByDatabase, CreatedByPage, LastEditedByDatabase, LastEditedByPage, PeopleDatabase, PeoplePage
+from ..data import (
+    CreatedByDatabase,
+    CreatedByPage,
+    LastEditedByDatabase,
+    LastEditedByPage,
+    PeopleDatabase,
+    PeoplePage,
+)
 from ._general import _create_database_property, _create_page_property
 
 

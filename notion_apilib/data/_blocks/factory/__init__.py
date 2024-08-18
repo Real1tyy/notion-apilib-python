@@ -88,11 +88,21 @@ from ._children.items_ import (
     create_toggle,
 )
 from ._children.other_ import create_callout, create_synced_block
-from ._children.tables_ import create_column, create_table, create_table_of_contents, create_table_row
+from ._children.tables_ import (
+    create_column,
+    create_table,
+    create_table_of_contents,
+    create_table_row,
+)
 from .code_ import create_code
 from .equation_ import create_equation
 from .link_ import create_bookmark, create_embed, create_link_preview
-from .other_ import create_breadcrumb, create_column_list, create_divider, create_unsupported
+from .other_ import (
+    create_breadcrumb,
+    create_column_list,
+    create_divider,
+    create_unsupported,
+)
 from .resources_ import create_file, create_image, create_pdf, create_video
 
 __all__ = [

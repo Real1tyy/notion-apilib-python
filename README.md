@@ -1,4 +1,11 @@
-# notion-apilib-python
+# notion-apilib-python    
+![GitHub last commit](https://img.shields.io/github/last-commit/Real1tyy/notion-apilib-python?logo=github&logoColor=white&labelColor=black&color=black&label=Last%20Commit)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Real1tyy/notion-apilib-python?labelColor=black&color=black&logo=github&logoColor=white&label=Commit%20Activity)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Real1tyy/notion-apilib-python?labelColor=black&color=black&logo=github&logoColor=white&label=Code%20Size)
+![GitHub repo size](https://img.shields.io/github/repo-size/Real1tyy/notion-apilib-python?labelColor=black&color=black&logo=github&logoColor=white&label=Repo%20Size) \
+![PyPI - Version](https://img.shields.io/pypi/v/notion-apilib?logo=python&logoColor=yellow&logoSize=auto&label=Version&labelColor=black&color=black)
+![PyPI - Status](https://img.shields.io/pypi/status/notion-apilib?logo=python&logoColor=yellow&logoSize=auto&labelColor=black&color=black&label=Status)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/notion-apilib?logo=python&logoColor=yellow&logoSize=auto&label=Python%20Versions&labelColor=black&color=black)
 
 This library allows developers to work with Notion API using custom DSL Pydantic models, removing the need to manually
 construct json payloads and API requests or handle JSON responses. The library wraps the Notion REST API, transforming

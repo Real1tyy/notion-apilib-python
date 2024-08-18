@@ -86,8 +86,20 @@ from .resource_ import (
     UrlPage,
 )
 from .text_ import RichTextDatabase, RichTextPage, TitleDatabase, TitlePage
-from .time_ import CreatedTimeDatabase, CreatedTimePage, LastEditedTimeDatabase, LastEditedTimePage
-from .user_ import CreatedByDatabase, CreatedByPage, LastEditedByDatabase, LastEditedByPage, PeopleDatabase, PeoplePage
+from .time_ import (
+    CreatedTimeDatabase,
+    CreatedTimePage,
+    LastEditedTimeDatabase,
+    LastEditedTimePage,
+)
+from .user_ import (
+    CreatedByDatabase,
+    CreatedByPage,
+    LastEditedByDatabase,
+    LastEditedByPage,
+    PeopleDatabase,
+    PeoplePage,
+)
 
 __all__ = [
     "DateDatabase",

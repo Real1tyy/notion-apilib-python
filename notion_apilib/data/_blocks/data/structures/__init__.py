@@ -25,7 +25,11 @@ from .._children.child_ import ChildAttributes
 from .._children.heading_ import HeadingsAttributes
 from .._children.items_ import Items, ToDoAttributes
 from .._children.other_ import CalloutAttributes, SyncedBlockAttributes, SyncedFrom
-from .._children.tables_ import TableAttributes, TableOfContentsAttributes, TableRowAttributes
+from .._children.tables_ import (
+    TableAttributes,
+    TableOfContentsAttributes,
+    TableRowAttributes,
+)
 from ..code_ import CodeAttributes
 from ..equation_ import EquationAttributes
 from ..link_ import BookmarkAttributes, EmbedAttributes, LinkPreviewAttributes

@@ -2,7 +2,13 @@
 from typing import Optional, Type, TypeVar
 
 # First Party
-from notion_apilib.data.structures import External, FileObject, Parent, ResourcesAttributes, file_type
+from notion_apilib.data.structures import (
+    External,
+    FileObject,
+    Parent,
+    ResourcesAttributes,
+    file_type,
+)
 
 from ..data import File, Image, Pdf, Video
 from ._general import _create_block

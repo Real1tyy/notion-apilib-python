@@ -38,8 +38,14 @@ from notion_apilib.data.blocks import (
 
 from .__children.test_child import assert_child_data_is_correct
 from .__children.test_heading import assert_heading_data_is_correct
-from .__children.test_items import assert_item_data_is_correct, assert_todo_data_is_correct
-from .__children.test_other import assert_callout_data_is_correct, assert_synced_block_data_is_correct
+from .__children.test_items import (
+    assert_item_data_is_correct,
+    assert_todo_data_is_correct,
+)
+from .__children.test_other import (
+    assert_callout_data_is_correct,
+    assert_synced_block_data_is_correct,
+)
 from .__children.test_tables import (
     assert_column_data_is_correct,
     assert_table_data_is_correct,
@@ -48,9 +54,15 @@ from .__children.test_tables import (
 )
 from .test_code import assert_code_data_is_correct
 from .test_equation import assert_equation_data_is_correct
-from .test_link import assert_bookmark_data_is_correct, assert_embed_or_link_preview_data_is_correct
+from .test_link import (
+    assert_bookmark_data_is_correct,
+    assert_embed_or_link_preview_data_is_correct,
+)
 from .test_other import assert_empty_block_data_is_correct
-from .test_resources import assert_file_data_is_correct, assert_resources_data_is_correct
+from .test_resources import (
+    assert_file_data_is_correct,
+    assert_resources_data_is_correct,
+)
 
 ASSERTIONS_MAP = {
     ChildPage: assert_child_data_is_correct,

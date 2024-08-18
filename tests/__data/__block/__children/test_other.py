@@ -7,8 +7,14 @@ import pytest
 # First Party
 from notion_apilib.data.blocks import Callout, SyncedBlock
 from tests.__data.__block.assertions import assert_block_data_is_correct
-from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
-from tests.__data.__structures.assertions import assert_icon_structure, assert_rich_text_structure
+from tests.__data.__block.helper import (
+    extract_create_assert_serialization,
+    extract_create_assert_structure,
+)
+from tests.__data.__structures.assertions import (
+    assert_icon_structure,
+    assert_rich_text_structure,
+)
 from tests.__data.__structures.conftest import create_emoji
 
 BLOCK_ID = UUID("123e4567-e89b-12d3-a456-426614174000")
