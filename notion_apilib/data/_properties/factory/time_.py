@@ -1,12 +1,7 @@
 # Standard Library
 from datetime import datetime
 
-from ..data import (
-    CreatedTimeDatabase,
-    CreatedTimePage,
-    LastEditedTimeDatabase,
-    LastEditedTimePage,
-)
+from ..data import CreatedTimeDatabase, CreatedTimePage, LastEditedTimeDatabase, LastEditedTimePage
 from ._general import _create_database_property, _create_page_property
 
 

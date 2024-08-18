@@ -6,12 +6,7 @@ from notion_apilib.data import Page
 
 from ..__properties.conftest import property_data
 from ..__properties.test_date import DatePage, date_page
-from ..__properties.test_number import (
-    NumberPage,
-    UniqueIdPage,
-    number_page,
-    unique_id_page,
-)
+from ..__properties.test_number import NumberPage, UniqueIdPage, number_page, unique_id_page
 from ..__properties.test_text import TitlePage, title_page
 
 

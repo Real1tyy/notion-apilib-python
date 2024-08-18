@@ -2,18 +2,9 @@
 import pytest
 
 # First Party
-from notion_apilib.data.blocks import (
-    Block,
-    Breadcrumb,
-    ColumnList,
-    Divider,
-    Unsupported,
-)
+from notion_apilib.data.blocks import Block, Breadcrumb, ColumnList, Divider, Unsupported
 from tests.__data.__block.assertions import assert_block_data_is_correct
-from tests.__data.__block.helper import (
-    extract_create_assert_serialization,
-    extract_create_assert_structure,
-)
+from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # No specific data required as these blocks are empty
 EMPTY_DATA = {}
