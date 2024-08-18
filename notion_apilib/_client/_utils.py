@@ -2,7 +2,6 @@
 from typing import Any, Callable, Optional, TypeVar
 
 # Third Party
-import requests
 from requests import Response
 
 # First Party
