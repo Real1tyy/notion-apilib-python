@@ -1,0 +1,70 @@
+\hypertarget{namespacenotion__apilib_1_1data_1_1__blocks_1_1data}{}\doxysection{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data Namespace Reference}
+\label{namespacenotion__apilib_1_1data_1_1__blocks_1_1data}\index{notion\_apilib.data.\_blocks.data@{notion\_apilib.data.\_blocks.data}}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacenotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children}{\+\_\+children}}
+\item 
+ \mbox{\hyperlink{namespacenotion__apilib_1_1data_1_1__blocks_1_1data_1_1structures}{structures}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}This package contains all the Pydantic models
+for validating various types of _blocks in the Notion API. Each block type has its own data model
+that defines the structure and validation rules, ensuring data integrity and consistency when
+interacting with the Notion API.
+
+Purpose:
+    - Define the data models for Notion _blocks using Pydantic.
+    - Enforce validation rules to ensure block objects adhere to the expected structure and data types.
+    - Provide a user-friendly interface for creating and interacting with block objects in the Notion API.
+
+Implementation Details:
+    - The package includes data models for various block types, including child _blocks, headings,
+      list items, other types of _blocks (e.g., callouts, synced _blocks), tables, code _blocks,
+      equations, link previews, and resource _blocks (e.g., files, images, videos, PDFs).
+    - Each data model is implemented as a Pydantic model, providing automatic validation and serialization.
+    - The data models define the attributes and types for each block, ensuring that all required
+      fields are present and correctly typed.
+
+Data Models:
+    - ChildDatabase
+    - ChildPage
+    - Heading1
+    - Heading2
+    - Heading3
+    - BulletedListItem
+    - NumberedListItem
+    - Paragraph
+    - Quote
+    - TodoAttributes
+    - ToDo
+    - Toggle
+    - Callout
+    - SyncedBlock
+    - Table
+    - TableRow
+    - TableOfContents
+    - Column
+    - Code
+    - Equation
+    - LinkPreview
+    - Embed
+    - Bookmark
+    - Divider
+    - Unsupported
+    - ColumnList
+    - Breadcrumb
+    - File
+    - Image
+    - Video
+    - Pdf
+    - structures - module that contains all the lower level structures pydantic models used for validation.
+
+Note:
+    This package is intended for use by end-users to create and interact with Notion block objects.
+    It provides a user-friendly interface and ensures that all block objects are validated and structured
+    correctly.
+\end{DoxyVerb}
+ 
