@@ -1,0 +1,186 @@
+\hypertarget{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider}{}\doxysection{notion\+\_\+apilib.\+\_\+client.\+block\+\_\+.\+Notion\+Block\+Provider Class Reference}
+\label{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider}\index{notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Block \mbox{\hyperlink{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a130835e5a49feef0e44e7bdaea61c574}{create\+\_\+block}} (self, Block block)
+\item 
+Block \mbox{\hyperlink{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_ad8bf93bbae2194f203935407f989fa57}{append\+\_\+block\+\_\+children}} (self, str object\+\_\+id, list\mbox{[}Block\mbox{]} children\+\_\+blocks, str after\+\_\+block\+\_\+id=\char`\"{}\char`\"{})
+\item 
+Block \mbox{\hyperlink{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a424a7035f2135b1efdf4b237bfc960ae}{set\+\_\+block\+\_\+children}} (self, Block block)
+\item 
+Block \mbox{\hyperlink{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a5dbd7b7b3b59d5e8e1e18fe5fc808b68}{retrieve\+\_\+block}} (self, str block\+\_\+id, bool retrieve\+\_\+children=True)
+\item 
+Block \mbox{\hyperlink{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_ae277ebd93268c5accaaa4f9bdbbce6d6}{retrieve\+\_\+block\+\_\+children}} (self, Block block, bool recursively=True)
+\item 
+Block \mbox{\hyperlink{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_afba572a78907fe1de5c6c9885a9fbf6d}{update\+\_\+block}} (self, Block block)
+\item 
+None \mbox{\hyperlink{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a28a1081fda5f174ab91a5fe6b6eb527b}{delete\+\_\+block\+\_\+with\+\_\+id}} (self, str block\+\_\+id)
+\item 
+None \mbox{\hyperlink{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_abdbeac46eb86e3246a02974214f5f14c}{delete\+\_\+block}} (self, Block block)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Provides API methods to interact with Notion API block endpoints using and returning DSL block objects.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_ad8bf93bbae2194f203935407f989fa57}\label{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_ad8bf93bbae2194f203935407f989fa57}} 
+\index{notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}!append\_block\_children@{append\_block\_children}}
+\index{append\_block\_children@{append\_block\_children}!notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}}
+\doxysubsubsection{\texorpdfstring{append\_block\_children()}{append\_block\_children()}}
+{\footnotesize\ttfamily  Block notion\+\_\+apilib.\+\_\+client.\+block\+\_\+.\+Notion\+Block\+Provider.\+append\+\_\+block\+\_\+children (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{str}]{object\+\_\+id,  }\item[{list\mbox{[}Block\mbox{]}}]{children\+\_\+blocks,  }\item[{str }]{after\+\_\+block\+\_\+id = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Appends children blocks to an existing block in the Notion API. By default, appends the children at the end
+of the children block list or after the id of the block specified in the after_block_id parameter. The id of
+the block objects in the children are ignored, as these are new block objects that will be created.
+
+Parameters:
+    object_id (str): The id of the block to which children will be appended.
+    children_blocks (list[Block]): The list of children blocks to append.
+    after_block_id (str): The ID of the block after which the children will be appended.
+                          If not provided, the children will be appended at the end of the parent block.
+
+Returns:
+    Block: The updated Block object with the new children.
+
+Raises:
+    ValueError: If the deserialization of the response fails due to an invalid schema.
+    ResponseException: If the Notion API returns an error status code.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a130835e5a49feef0e44e7bdaea61c574}\label{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a130835e5a49feef0e44e7bdaea61c574}} 
+\index{notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}!create\_block@{create\_block}}
+\index{create\_block@{create\_block}!notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}}
+\doxysubsubsection{\texorpdfstring{create\_block()}{create\_block()}}
+{\footnotesize\ttfamily  Block notion\+\_\+apilib.\+\_\+client.\+block\+\_\+.\+Notion\+Block\+Provider.\+create\+\_\+block (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{Block}]{block }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates a block in the Notion API with the values of the passed in block parameter. ID, archived, and in_trash
+attributes will be ignored, as they are redundant since the block has not even been created yet. The block will
+be attached to the parent specified in the parent attribute.
+
+Parameters:
+    block (Block): The block to create based on the values of the attributes passed in.
+
+Returns:
+    Block: The created Block object.
+
+Raises:
+    ValueError: If the deserialization of the response fails due to an invalid schema.
+    ResponseException: If the Notion API returns an error status code.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_abdbeac46eb86e3246a02974214f5f14c}\label{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_abdbeac46eb86e3246a02974214f5f14c}} 
+\index{notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}!delete\_block@{delete\_block}}
+\index{delete\_block@{delete\_block}!notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}}
+\doxysubsubsection{\texorpdfstring{delete\_block()}{delete\_block()}}
+{\footnotesize\ttfamily  None notion\+\_\+apilib.\+\_\+client.\+block\+\_\+.\+Notion\+Block\+Provider.\+delete\+\_\+block (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{Block}]{block }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Deletes a block from the Notion API using a Block object.
+
+Parameters:
+    block (Block): The block to delete.
+
+Raises:
+    ResponseException: If the Notion API returns an error status code.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a28a1081fda5f174ab91a5fe6b6eb527b}\label{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a28a1081fda5f174ab91a5fe6b6eb527b}} 
+\index{notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}!delete\_block\_with\_id@{delete\_block\_with\_id}}
+\index{delete\_block\_with\_id@{delete\_block\_with\_id}!notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}}
+\doxysubsubsection{\texorpdfstring{delete\_block\_with\_id()}{delete\_block\_with\_id()}}
+{\footnotesize\ttfamily  None notion\+\_\+apilib.\+\_\+client.\+block\+\_\+.\+Notion\+Block\+Provider.\+delete\+\_\+block\+\_\+with\+\_\+id (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{str}]{block\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Deletes a block from the Notion API with the specified ID.
+
+Parameters:
+    block_id (str): The ID of the block to delete.
+
+Raises:
+    ResponseException: If the Notion API returns an error status code.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a5dbd7b7b3b59d5e8e1e18fe5fc808b68}\label{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a5dbd7b7b3b59d5e8e1e18fe5fc808b68}} 
+\index{notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}!retrieve\_block@{retrieve\_block}}
+\index{retrieve\_block@{retrieve\_block}!notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}}
+\doxysubsubsection{\texorpdfstring{retrieve\_block()}{retrieve\_block()}}
+{\footnotesize\ttfamily  Block notion\+\_\+apilib.\+\_\+client.\+block\+\_\+.\+Notion\+Block\+Provider.\+retrieve\+\_\+block (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{str}]{block\+\_\+id,  }\item[{bool }]{retrieve\+\_\+children = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Retrieves a block from the Notion API. By default, automatically retrieves and adds the children blocks
+recursively to the children parameter of the resulting Block.
+
+Parameters:
+    block_id (str): The ID of the block to retrieve.
+    retrieve_children (bool): Whether to retrieve and add the children blocks to the resulting Block.
+                              If set to False, the children attribute will contain an empty list.
+
+Returns:
+    Block: The retrieved Block object.
+
+Raises:
+    ValueError: If the deserialization of the response fails due to an invalid schema.
+    ResponseException: If the Notion API returns an error status code.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_ae277ebd93268c5accaaa4f9bdbbce6d6}\label{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_ae277ebd93268c5accaaa4f9bdbbce6d6}} 
+\index{notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}!retrieve\_block\_children@{retrieve\_block\_children}}
+\index{retrieve\_block\_children@{retrieve\_block\_children}!notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}}
+\doxysubsubsection{\texorpdfstring{retrieve\_block\_children()}{retrieve\_block\_children()}}
+{\footnotesize\ttfamily  Block notion\+\_\+apilib.\+\_\+client.\+block\+\_\+.\+Notion\+Block\+Provider.\+retrieve\+\_\+block\+\_\+children (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{Block}]{block,  }\item[{bool }]{recursively = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Retrieves and appends children blocks to a given block's children attribute. Any objects in the children
+attribute of the block parameter will be overwritten and removed. By default, it is set to
+recursively retrieve the children of the children blocks as well.
+
+Parameters:
+    block (Block): The parent block whose children are to be retrieved.
+    recursively (bool): Whether to retrieve the children of the children blocks as well, by default True.
+
+Returns:
+    Block: The block with its children retrieved.
+
+Raises:
+    ValueError: If the deserialization of the response fails due to an invalid schema.
+    ResponseException: If the Notion API returns an error status code.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a424a7035f2135b1efdf4b237bfc960ae}\label{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_a424a7035f2135b1efdf4b237bfc960ae}} 
+\index{notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}!set\_block\_children@{set\_block\_children}}
+\index{set\_block\_children@{set\_block\_children}!notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}}
+\doxysubsubsection{\texorpdfstring{set\_block\_children()}{set\_block\_children()}}
+{\footnotesize\ttfamily  Block notion\+\_\+apilib.\+\_\+client.\+block\+\_\+.\+Notion\+Block\+Provider.\+set\+\_\+block\+\_\+children (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{Block}]{block }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sets the block parameter object children in the Notion API to the block objects in the children attribute.
+The ordering will be set based on the order of the children attribute list. Any children which are currently
+attached in Notion to the block and are not present in the list will be deleted. This first deletes all the
+children attached to the block in the Notion and afterward appends all the children in the children attribute.
+
+Parameters:
+    block (Block): The block whose children are to be set in the Notion API.
+
+Returns:
+    Block: The updated Block object with the new children.
+
+Raises:
+    ValueError: If the deserialization of the response fails due to an invalid schema.
+    ResponseException: If the Notion API returns an error status code.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_afba572a78907fe1de5c6c9885a9fbf6d}\label{classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider_afba572a78907fe1de5c6c9885a9fbf6d}} 
+\index{notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}!update\_block@{update\_block}}
+\index{update\_block@{update\_block}!notion\_apilib.\_client.block\_.NotionBlockProvider@{notion\_apilib.\_client.block\_.NotionBlockProvider}}
+\doxysubsubsection{\texorpdfstring{update\_block()}{update\_block()}}
+{\footnotesize\ttfamily  Block notion\+\_\+apilib.\+\_\+client.\+block\+\_\+.\+Notion\+Block\+Provider.\+update\+\_\+block (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{Block}]{block }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Updates a block in the Notion API with the values of the passed in block parameter. The ID of the block will be
+taken from the Block parameter.
+
+Parameters:
+    block (Block): The block to update. It will be updated based on the values of the parameters of this block.
+
+Returns:
+    Block: The updated Block object.
+
+Raises:
+    ValueError: If the deserialization of the response fails due to an invalid schema.
+    ResponseException: If the Notion API returns an error status code.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+notion\+\_\+apilib/\+\_\+client/block\+\_\+.\+py\end{DoxyCompactItemize}

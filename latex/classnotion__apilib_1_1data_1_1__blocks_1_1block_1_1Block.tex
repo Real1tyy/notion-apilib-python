@@ -1,0 +1,89 @@
+\hypertarget{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block}{}\doxysection{notion\+\_\+apilib.\+data.\+\_\+blocks.\+block.\+Block Class Reference}
+\label{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block}\index{notion\_apilib.data.\_blocks.block.Block@{notion\_apilib.data.\_blocks.block.Block}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+dict\mbox{[}str, Any\mbox{]} \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_a60ae634aacb7d02b9afd56b20a9c2fa8}{serialize\+\_\+to\+\_\+json}} (self)
+\item 
+\mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1type___1_1BlockType}{Block\+Type}} \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_aafce1f9943faeaf4c08d3183317b436d}{get\+\_\+associated\+\_\+block\+\_\+type}} (cls)
+\item 
+str \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_a379d9c87588e7787da0fcd6e766a30be}{get\+\_\+payload\+\_\+property\+\_\+name}} (cls)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_aed7155af2c3d07190a77cddd27127191}\label{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_aed7155af2c3d07190a77cddd27127191}} 
+{\bfseries default}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_adbebfabc91d22ce2d0c62ba7af5d9ba9}\label{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_adbebfabc91d22ce2d0c62ba7af5d9ba9}} 
+{\bfseries exclude}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Represents a Block in the Notion API.
+
+Attributes
+----------
+type : BlockType
+    The type of the block.
+has_children : bool
+    Whether the block has children.
+children : list[Block]
+    The list of children blocks.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_aafce1f9943faeaf4c08d3183317b436d}\label{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_aafce1f9943faeaf4c08d3183317b436d}} 
+\index{notion\_apilib.data.\_blocks.block.Block@{notion\_apilib.data.\_blocks.block.Block}!get\_associated\_block\_type@{get\_associated\_block\_type}}
+\index{get\_associated\_block\_type@{get\_associated\_block\_type}!notion\_apilib.data.\_blocks.block.Block@{notion\_apilib.data.\_blocks.block.Block}}
+\doxysubsubsection{\texorpdfstring{get\_associated\_block\_type()}{get\_associated\_block\_type()}}
+{\footnotesize\ttfamily  \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1type___1_1BlockType}{Block\+Type}} notion\+\_\+apilib.\+data.\+\_\+blocks.\+block.\+Block.\+get\+\_\+associated\+\_\+block\+\_\+type (\begin{DoxyParamCaption}\item[{}]{cls }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Retrieves the block type associated with this class.
+
+:return: The associated BlockType enum value.
+:rtype: BlockType
+\end{DoxyVerb}
+ 
+
+Reimplemented in \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1resources___1_1Video_a9d6ba03e446f901e4f73baf7f533fb6f}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+resources\+\_\+.\+Video}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1resources___1_1Pdf_a41d32b5d5ac5e1ff190942ab3a488b3d}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+resources\+\_\+.\+Pdf}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1resources___1_1Image_a1373c892f385549927647b8aaf254b50}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+resources\+\_\+.\+Image}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1resources___1_1File_a20d792fe64e98f5395b14896d26d3dea}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+resources\+\_\+.\+File}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1other___1_1Unsupported_a4a9cf5467df696c1e02a8346e6c22858}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+other\+\_\+.\+Unsupported}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1other___1_1Breadcrumb_a6691091c28162dd98615077c7a311bc8}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+other\+\_\+.\+Breadcrumb}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1other___1_1ColumnList_a6e0f8800d89bc9e9b01af49390bdc4f8}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+other\+\_\+.\+Column\+List}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1other___1_1Divider_ac5e0f32e1c88b9c53e98557ac4abbb1b}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+other\+\_\+.\+Divider}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1link___1_1LinkPreview_ab03d7ad1128092fe1eefd79f0c1cdb62}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+link\+\_\+.\+Link\+Preview}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1link___1_1Embed_a544fd73eab54bab7de9b6961946a10f8}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+link\+\_\+.\+Embed}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1link___1_1Bookmark_a71fcf9cbacf0fc7526dad8a53b5a4a79}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+link\+\_\+.\+Bookmark}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1equation___1_1Equation_af58bdd5fc9310af7e2330b3f9464141d}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+equation\+\_\+.\+Equation}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1code___1_1Code_ae49debdd583b01f4b08a82517f9feee7}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+code\+\_\+.\+Code}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1tables___1_1Column_a22d0e7a3c5815270961ecc62c16ec03b}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+tables\+\_\+.\+Column}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1tables___1_1TableOfContents_a076e5fbc2b92d14e74ea92b9b2ef6b5a}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+tables\+\_\+.\+Table\+Of\+Contents}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1tables___1_1TableRow_af14651950096c4b432a672a70e0d6e47}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+tables\+\_\+.\+Table\+Row}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1tables___1_1Table_a9bc8ff90f314dbfdb4c76dc16e75ae6a}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+tables\+\_\+.\+Table}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1other___1_1SyncedBlock_a551c6dedb2accf9e52ad9a81720a854e}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+other\+\_\+.\+Synced\+Block}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1other___1_1Callout_ae24ee6ebd8092ba27ada5812574bd61f}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+other\+\_\+.\+Callout}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1items___1_1Toggle_a3faa216c1f18f15ca60986b870874654}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+items\+\_\+.\+Toggle}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1items___1_1ToDo_a956d900338bfd18a9fe86927ae9638c8}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+items\+\_\+.\+To\+Do}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1items___1_1Quote_a22115930070eeaa2f00f3aac75b838a1}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+items\+\_\+.\+Quote}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1items___1_1Paragraph_a66166fa24be6412ee078d44f8f3c6bfe}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+items\+\_\+.\+Paragraph}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1items___1_1NumberedListItem_aa67abfd1cdbdcb477110e2372e994585}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+items\+\_\+.\+Numbered\+List\+Item}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1items___1_1BulletedListItem_acd593e572ea235c7817e24e3ecf1ef07}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+items\+\_\+.\+Bulleted\+List\+Item}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1heading___1_1Heading3_a407426ecf6a25b5907bdfeb8146f302f}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+heading\+\_\+.\+Heading3}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1heading___1_1Heading2_ac6ac00cbf982a2340bb75531cbd98555}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+heading\+\_\+.\+Heading2}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1heading___1_1Heading1_af1edd8795ff4baf51a38981f5ea1551e}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+heading\+\_\+.\+Heading1}}, \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1child___1_1ChildPage_ad81868997ca3c07bedd7f9116c5f8dfe}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+child\+\_\+.\+Child\+Page}}, and \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__blocks_1_1data_1_1__children_1_1child___1_1ChildDatabase_aa00105423a90bd2b5409bde41a152c2d}{notion\+\_\+apilib.\+data.\+\_\+blocks.\+data.\+\_\+children.\+child\+\_\+.\+Child\+Database}}.
+
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_a379d9c87588e7787da0fcd6e766a30be}\label{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_a379d9c87588e7787da0fcd6e766a30be}} 
+\index{notion\_apilib.data.\_blocks.block.Block@{notion\_apilib.data.\_blocks.block.Block}!get\_payload\_property\_name@{get\_payload\_property\_name}}
+\index{get\_payload\_property\_name@{get\_payload\_property\_name}!notion\_apilib.data.\_blocks.block.Block@{notion\_apilib.data.\_blocks.block.Block}}
+\doxysubsubsection{\texorpdfstring{get\_payload\_property\_name()}{get\_payload\_property\_name()}}
+{\footnotesize\ttfamily  str notion\+\_\+apilib.\+data.\+\_\+blocks.\+block.\+Block.\+get\+\_\+payload\+\_\+property\+\_\+name (\begin{DoxyParamCaption}\item[{}]{cls }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Retrieves the property name of the block type as a string, which is used in the Notion JSON format.
+Utilizes the get_associated_block_type method to obtain the enum value and converts it to a string.
+
+:return: The property name of the block type as a string.
+:rtype: str
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_a60ae634aacb7d02b9afd56b20a9c2fa8}\label{classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block_a60ae634aacb7d02b9afd56b20a9c2fa8}} 
+\index{notion\_apilib.data.\_blocks.block.Block@{notion\_apilib.data.\_blocks.block.Block}!serialize\_to\_json@{serialize\_to\_json}}
+\index{serialize\_to\_json@{serialize\_to\_json}!notion\_apilib.data.\_blocks.block.Block@{notion\_apilib.data.\_blocks.block.Block}}
+\doxysubsubsection{\texorpdfstring{serialize\_to\_json()}{serialize\_to\_json()}}
+{\footnotesize\ttfamily  dict\mbox{[}str, Any\mbox{]} notion\+\_\+apilib.\+data.\+\_\+blocks.\+block.\+Block.\+serialize\+\_\+to\+\_\+json (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts the block into a JSON payload suitable for creating a block in Notion.
+Certain fields are omitted in the JSON representation, such as:
+    - id
+    - parent
+    - archived
+    - in_trash
+
+:return: The JSON representation of the block.
+:rtype: dict
+\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classnotion__apilib_1_1data_1_1object___1_1Object_ac3540655ce2fdd8e3c9229e180de1884}{notion\+\_\+apilib.\+data.\+object\+\_\+.\+Object}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+notion\+\_\+apilib/data/\+\_\+blocks/block.\+py\end{DoxyCompactItemize}

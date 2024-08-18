@@ -1,0 +1,88 @@
+\hypertarget{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent}{}\doxysection{notion\+\_\+apilib.\+data.\+\_\+structures.\+data.\+parent\+\_\+.\+Parent Class Reference}
+\label{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent}\index{notion\_apilib.data.\_structures.data.parent\_.Parent@{notion\_apilib.data.\_structures.data.parent\_.Parent}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_a7c6f0e2099c35766256d86dbaa1b19c6}{get\+\_\+parent\+\_\+id}} (self)
+\item 
+def \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_acfa05721da19bad8e46e3752e33d9e41}{set\+\_\+parent\+\_\+id}} (self, parents\+\_\+types parent\+\_\+type, Optional\mbox{[}UUID\mbox{]} parent\+\_\+id=None)
+\item 
+def \mbox{\hyperlink{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_af0b1f5f3bc96743897cc058ee9bf6332}{remove\+\_\+ids}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_a9d660bf5d8d836104507c6d91be392e1}\label{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_a9d660bf5d8d836104507c6d91be392e1}} 
+{\bfseries block\+\_\+id}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_ac9389055297ee26d7569a660dfdcf253}\label{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_ac9389055297ee26d7569a660dfdcf253}} 
+{\bfseries page\+\_\+id}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_a5f5da1367a70c7be17fda882a9853594}\label{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_a5f5da1367a70c7be17fda882a9853594}} 
+{\bfseries database\+\_\+id}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_a5a232c0c65535b09616de3957c35e3d7}\label{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_a5a232c0c65535b09616de3957c35e3d7}} 
+{\bfseries workspace}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Represents a parent object in the Notion API.
+
+Attributes
+----------
+type : parents_types
+    The type of the parent object, either 'database_id', 'page_id', 'block_id', or 'workspace'.
+database_id : Optional[UUID]
+    The UUID of the parent database, if any.
+page_id : Optional[UUID]
+    The UUID of the parent page, if any.
+workspace : Optional[Literal[True]]
+    Indicates if the parent is the workspace root object.
+block_id : Optional[UUID]
+    The UUID of the parent block, if any.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_a7c6f0e2099c35766256d86dbaa1b19c6}\label{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_a7c6f0e2099c35766256d86dbaa1b19c6}} 
+\index{notion\_apilib.data.\_structures.data.parent\_.Parent@{notion\_apilib.data.\_structures.data.parent\_.Parent}!get\_parent\_id@{get\_parent\_id}}
+\index{get\_parent\_id@{get\_parent\_id}!notion\_apilib.data.\_structures.data.parent\_.Parent@{notion\_apilib.data.\_structures.data.parent\_.Parent}}
+\doxysubsubsection{\texorpdfstring{get\_parent\_id()}{get\_parent\_id()}}
+{\footnotesize\ttfamily  str notion\+\_\+apilib.\+data.\+\_\+structures.\+data.\+parent\+\_\+.\+Parent.\+get\+\_\+parent\+\_\+id (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get the parent id of the parent object.
+
+Returns
+-------
+str
+    The id of the parent object or 'workspace' if the parent is the root object.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_af0b1f5f3bc96743897cc058ee9bf6332}\label{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_af0b1f5f3bc96743897cc058ee9bf6332}} 
+\index{notion\_apilib.data.\_structures.data.parent\_.Parent@{notion\_apilib.data.\_structures.data.parent\_.Parent}!remove\_ids@{remove\_ids}}
+\index{remove\_ids@{remove\_ids}!notion\_apilib.data.\_structures.data.parent\_.Parent@{notion\_apilib.data.\_structures.data.parent\_.Parent}}
+\doxysubsubsection{\texorpdfstring{remove\_ids()}{remove\_ids()}}
+{\footnotesize\ttfamily def notion\+\_\+apilib.\+data.\+\_\+structures.\+data.\+parent\+\_\+.\+Parent.\+remove\+\_\+ids (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Removes all parent ids.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_acfa05721da19bad8e46e3752e33d9e41}\label{classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent_acfa05721da19bad8e46e3752e33d9e41}} 
+\index{notion\_apilib.data.\_structures.data.parent\_.Parent@{notion\_apilib.data.\_structures.data.parent\_.Parent}!set\_parent\_id@{set\_parent\_id}}
+\index{set\_parent\_id@{set\_parent\_id}!notion\_apilib.data.\_structures.data.parent\_.Parent@{notion\_apilib.data.\_structures.data.parent\_.Parent}}
+\doxysubsubsection{\texorpdfstring{set\_parent\_id()}{set\_parent\_id()}}
+{\footnotesize\ttfamily def notion\+\_\+apilib.\+data.\+\_\+structures.\+data.\+parent\+\_\+.\+Parent.\+set\+\_\+parent\+\_\+id (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{parents\+\_\+types}]{parent\+\_\+type,  }\item[{Optional\mbox{[}UUID\mbox{]} }]{parent\+\_\+id = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sets the parent id of the parent object.
+
+Parameters
+----------
+parent_type : parents_types
+    The type of the parent object.
+parent_id : Optional[UUID]
+    The UUID of the parent object, if any.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+notion\+\_\+apilib/data/\+\_\+structures/data/parent\+\_\+.\+py\end{DoxyCompactItemize}

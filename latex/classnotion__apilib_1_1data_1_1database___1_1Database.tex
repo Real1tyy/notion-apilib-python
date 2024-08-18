@@ -1,0 +1,115 @@
+\hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database}{}\doxysection{notion\+\_\+apilib.\+data.\+database\+\_\+.\+Database Class Reference}
+\label{classnotion__apilib_1_1data_1_1database___1_1Database}\index{notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+list\mbox{[}Database\+Property\mbox{]} \mbox{\hyperlink{classnotion__apilib_1_1data_1_1database___1_1Database_a46eea03edfda00e988119f43edac13b6}{properties}} (self)
+\item 
+dict\mbox{[}str, Any\mbox{]} \mbox{\hyperlink{classnotion__apilib_1_1data_1_1database___1_1Database_a812c1e38725c735129dcb740202af4ec}{serialize\+\_\+to\+\_\+json}} (self)
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_ac518093c3bc7963a240ca44e5c350642}\label{classnotion__apilib_1_1data_1_1database___1_1Database_ac518093c3bc7963a240ca44e5c350642}} 
+None {\bfseries add\+\_\+property} (self, Database\+Property property\+\_\+)
+\item 
+str \mbox{\hyperlink{classnotion__apilib_1_1data_1_1database___1_1Database_a6ae48e102871fc5a663ad06d95a622e3}{title}} (self)
+\item 
+def \mbox{\hyperlink{classnotion__apilib_1_1data_1_1database___1_1Database_a49d52fe1f1faa80253ac157df3f075b6}{title}} (self, str value)
+\item 
+str \mbox{\hyperlink{classnotion__apilib_1_1data_1_1database___1_1Database_a32e2038ed17994f7f2d2cc47bceb31e2}{description}} (self)
+\item 
+def \mbox{\hyperlink{classnotion__apilib_1_1data_1_1database___1_1Database_aab54ad19239fad8bee1dd8af1c2cb213}{description}} (self, str value)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_a259ec94dd7f5f7585ec1dbc3e4b19e4f}\label{classnotion__apilib_1_1data_1_1database___1_1Database_a259ec94dd7f5f7585ec1dbc3e4b19e4f}} 
+{\bfseries Formated\+Text}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_a5ac4cc05da809aeb2a8780290765028c}\label{classnotion__apilib_1_1data_1_1database___1_1Database_a5ac4cc05da809aeb2a8780290765028c}} 
+{\bfseries alias}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_afd034d87213e86d18b24ea32198324e9}\label{classnotion__apilib_1_1data_1_1database___1_1Database_afd034d87213e86d18b24ea32198324e9}} 
+{\bfseries Database\+Properties\+Structure}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_a9f6dd1d7fdab8d8cd3476556ca02b77d}\label{classnotion__apilib_1_1data_1_1database___1_1Database_a9f6dd1d7fdab8d8cd3476556ca02b77d}} 
+{\bfseries default}
+\item 
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_a5696afbaa612d4e97c918390c000403f}\label{classnotion__apilib_1_1data_1_1database___1_1Database_a5696afbaa612d4e97c918390c000403f}} 
+{\bfseries exclude}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_a32e2038ed17994f7f2d2cc47bceb31e2}\label{classnotion__apilib_1_1data_1_1database___1_1Database_a32e2038ed17994f7f2d2cc47bceb31e2}} 
+\index{notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}!description@{description}}
+\index{description@{description}!notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}}
+\doxysubsubsection{\texorpdfstring{description()}{description()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily  str notion\+\_\+apilib.\+data.\+database\+\_\+.\+Database.\+description (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}returns the description of the database
+:return: description of the database in plain text
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_aab54ad19239fad8bee1dd8af1c2cb213}\label{classnotion__apilib_1_1data_1_1database___1_1Database_aab54ad19239fad8bee1dd8af1c2cb213}} 
+\index{notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}!description@{description}}
+\index{description@{description}!notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}}
+\doxysubsubsection{\texorpdfstring{description()}{description()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily def notion\+\_\+apilib.\+data.\+database\+\_\+.\+Database.\+description (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{str}]{value }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}sets the value of the description of the database, the value is expected to be plain text, so any formatting
+will be ignored, if you want specific formatting, you should use the description_structure attribute, also note
+that any previous value or formatting will be overwritten to plain text
+:param value: value to set - plain text
+:return: None
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_a46eea03edfda00e988119f43edac13b6}\label{classnotion__apilib_1_1data_1_1database___1_1Database_a46eea03edfda00e988119f43edac13b6}} 
+\index{notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}!properties@{properties}}
+\index{properties@{properties}!notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}}
+\doxysubsubsection{\texorpdfstring{properties()}{properties()}}
+{\footnotesize\ttfamily  list\mbox{[}Database\+Property\mbox{]} notion\+\_\+apilib.\+data.\+database\+\_\+.\+Database.\+properties (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get the properties of the object.
+:return:
+\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classnotion__apilib_1_1data_1_1object___1_1MajorObject_aa2d58d31d7b11816e435cc03e5d3c5af}{notion\+\_\+apilib.\+data.\+object\+\_\+.\+Major\+Object}}.
+
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_a812c1e38725c735129dcb740202af4ec}\label{classnotion__apilib_1_1data_1_1database___1_1Database_a812c1e38725c735129dcb740202af4ec}} 
+\index{notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}!serialize\_to\_json@{serialize\_to\_json}}
+\index{serialize\_to\_json@{serialize\_to\_json}!notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}}
+\doxysubsubsection{\texorpdfstring{serialize\_to\_json()}{serialize\_to\_json()}}
+{\footnotesize\ttfamily  dict\mbox{[}str, Any\mbox{]} notion\+\_\+apilib.\+data.\+database\+\_\+.\+Database.\+serialize\+\_\+to\+\_\+json (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Serialize the object to a JSON dictionary
+:return: The serialized object
+\end{DoxyVerb}
+ 
+
+Reimplemented from \mbox{\hyperlink{classnotion__apilib_1_1data_1_1object___1_1Object_ac3540655ce2fdd8e3c9229e180de1884}{notion\+\_\+apilib.\+data.\+object\+\_\+.\+Object}}.
+
+\mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_a6ae48e102871fc5a663ad06d95a622e3}\label{classnotion__apilib_1_1data_1_1database___1_1Database_a6ae48e102871fc5a663ad06d95a622e3}} 
+\index{notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}!title@{title}}
+\index{title@{title}!notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}}
+\doxysubsubsection{\texorpdfstring{title()}{title()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily  str notion\+\_\+apilib.\+data.\+database\+\_\+.\+Database.\+title (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}gets the value of the title Page property, note that the value is returned as a plain text, so any formatting
+is ignored, if you want specific formatting, you should use the title_structure attribute
+:return: plain text value of the title
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classnotion__apilib_1_1data_1_1database___1_1Database_a49d52fe1f1faa80253ac157df3f075b6}\label{classnotion__apilib_1_1data_1_1database___1_1Database_a49d52fe1f1faa80253ac157df3f075b6}} 
+\index{notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}!title@{title}}
+\index{title@{title}!notion\_apilib.data.database\_.Database@{notion\_apilib.data.database\_.Database}}
+\doxysubsubsection{\texorpdfstring{title()}{title()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily def notion\+\_\+apilib.\+data.\+database\+\_\+.\+Database.\+title (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{str}]{value }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}sets the value of the title Page property, note that the value is expected to be plain text, so any formatting
+will be ignored, if you want specific formatting, you should use the title_structure attribute, also note
+that any previous value or formatting will be overwritten to plain text
+:param value: value to set - plain text
+:return: None
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+notion\+\_\+apilib/data/database\+\_\+.\+py\end{DoxyCompactItemize}
