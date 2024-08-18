@@ -109,7 +109,13 @@ stack-data = "0.6.3"
 traitlets = "5.14.3"
 yarg = "0.1.9"
 faker = "^27.0.0"
+pylint = "^3.2.6"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.semantic_release]
+version_variable = "notion_apilib/__init__.py:__version__"
+branch = "main"
+upload_to_pypi = true
