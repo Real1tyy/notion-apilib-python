@@ -62,14 +62,7 @@ import notion_apilib.data._blocks.data.structures as block_structures
 
 from ._children.child_ import ChildDatabase, ChildPage
 from ._children.heading_ import Heading1, Heading2, Heading3
-from ._children.items_ import (
-    BulletedListItem,
-    NumberedListItem,
-    Paragraph,
-    Quote,
-    ToDo,
-    Toggle,
-)
+from ._children.items_ import BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle
 from ._children.other_ import Callout, SyncedBlock
 from ._children.tables_ import Column, Table, TableOfContents, TableRow
 from .code_ import Code

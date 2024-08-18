@@ -2,12 +2,7 @@
 import pytest
 
 # First Party
-from notion_apilib.data.properties import (
-    RichTextDatabase,
-    RichTextPage,
-    TitleDatabase,
-    TitlePage,
-)
+from notion_apilib.data.properties import RichTextDatabase, RichTextPage, TitleDatabase, TitlePage
 from tests.__data.__structures.assertions import assert_rich_text_structure
 
 from .assertions import assert_properties_data_is_correct
