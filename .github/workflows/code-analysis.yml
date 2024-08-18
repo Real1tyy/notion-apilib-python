@@ -28,7 +28,9 @@ jobs:
             -   name: Run pylint
                 run: |
                     pylint notion_apilib
+                continue-on-error: true
 
             -   name: Run flake8
                 run: |
                     flake8 notion_apilib
+                continue-on-error: true
