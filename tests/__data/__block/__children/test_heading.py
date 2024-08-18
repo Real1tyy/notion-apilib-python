@@ -29,18 +29,14 @@ def assert_heading_data_is_correct(data, expected_data):
     heading_data = getattr(data, f"{block_type.value}")
     heading_expected_data = expected_data[block_type.value]
 
-    assert_rich_text_structure(
-        heading_data.rich_text, heading_expected_data["rich_text"]
-    )
+    assert_rich_text_structure(heading_data.rich_text, heading_expected_data["rich_text"])
     assert heading_data.color == heading_expected_data["color"]
     assert heading_data.is_toggleable == heading_expected_data["is_toggleable"]
 
 
 @pytest.mark.parametrize("heading_class", [Heading1, Heading2, Heading3])
 def test_heading_structure(heading_block, heading_class):
-    extract_create_assert_structure(
-        heading_block, heading_class, assert_heading_data_is_correct
-    )
+    extract_create_assert_structure(heading_block, heading_class, assert_heading_data_is_correct)
 
 
 @pytest.mark.parametrize("heading_class", [Heading1, Heading2, Heading3])

@@ -29,9 +29,7 @@ def create_callout(
         Callout,
         parent=parent,
         children=children,
-        block_type_specific_params=block_structures.CalloutAttributes(
-            rich_text=rich_text, icon=icon, color=color
-        ),
+        block_type_specific_params=block_structures.CalloutAttributes(rich_text=rich_text, icon=icon, color=color),
     )
 
 
@@ -51,9 +49,7 @@ def create_synced_block(
     return _create_block(
         SyncedBlock,
         parent=parent,
-        block_type_specific_params=block_structures.SyncedBlockAttributes(
-            synced_from=synced_from, children=children
-        ),
+        block_type_specific_params=block_structures.SyncedBlockAttributes(synced_from=synced_from, children=children),
         children=children,
     )
 

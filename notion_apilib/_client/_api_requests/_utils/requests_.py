@@ -48,9 +48,7 @@ class RequestsClient:
     def perform_delete_request(self, url: str) -> Response:
         return self.perform_request(url, requests.delete)
 
-    def perform_request(
-        self, url: str, method: Callable[..., Response], data: Optional[dict] = None
-    ) -> Response:
+    def perform_request(self, url: str, method: Callable[..., Response], data: Optional[dict] = None) -> Response:
         final_url = BASE_URL + url
         response = method(final_url, headers=self.header, json=data)
         return verify_response(response, self.perform_request, url, method, data)

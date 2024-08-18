@@ -13,9 +13,7 @@ from ..data.structures import (
 from ._general import _create_database_property, _create_page_property
 
 
-def create_relation_page(
-    parent: "Page", name: str, relation_ids: list[UUID]
-) -> RelationPage:
+def create_relation_page(parent: "Page", name: str, relation_ids: list[UUID]) -> RelationPage:
     """
     Factory method to create a RelationPage object.
 
@@ -28,9 +26,7 @@ def create_relation_page(
         RelationPage: A new RelationPage object.
     """
     relations = [RelationStructure(id=id_) for id_ in relation_ids]
-    return _create_page_property(
-        RelationPage, parent=parent, name=name, property_specific_params=relations
-    )
+    return _create_page_property(RelationPage, parent=parent, name=name, property_specific_params=relations)
 
 
 def create_relation_database(

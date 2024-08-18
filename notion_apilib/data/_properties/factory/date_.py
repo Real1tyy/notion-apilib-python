@@ -31,9 +31,7 @@ def create_date_page(
         DatePage,
         parent=parent,
         name=name,
-        property_specific_params=DateStructure(
-            end=end, start=start, time_zone=time_zone
-        ),
+        property_specific_params=DateStructure(end=end, start=start, time_zone=time_zone),
     )
 
 
@@ -48,9 +46,7 @@ def create_date_database(parent: "Database", name: str) -> DateDatabase:
     Returns:
         DateDatabase: A new DateDatabase object.
     """
-    return _create_database_property(
-        DateDatabase, parent=parent, name=name, property_specific_params={}
-    )
+    return _create_database_property(DateDatabase, parent=parent, name=name, property_specific_params={})
 
 
 __all__ = ["create_date_page", "create_date_database"]

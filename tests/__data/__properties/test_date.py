@@ -51,9 +51,7 @@ def assert_date_database_is_correct(data, expected_data):
 
 
 def test_date_database_structure(date_database):
-    extract_create_assert_structure(
-        date_database, DateDatabase, assert_date_database_is_correct
-    )
+    extract_create_assert_structure(date_database, DateDatabase, assert_date_database_is_correct)
 
 
 def test_date_page_structure(date_page):

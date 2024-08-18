@@ -32,9 +32,7 @@ def assert_child_data_is_correct(data, expected_data):
 
 @pytest.mark.parametrize("child_class", [ChildPage, ChildDatabase])
 def test_child_structure(child_block, child_class):
-    extract_create_assert_structure(
-        child_block, child_class, assert_child_data_is_correct
-    )
+    extract_create_assert_structure(child_block, child_class, assert_child_data_is_correct)
 
 
 @pytest.mark.parametrize("child_class", [ChildPage, ChildDatabase])

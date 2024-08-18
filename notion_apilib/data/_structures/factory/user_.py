@@ -163,9 +163,7 @@ def create_bot(
     Bot
         A new Bot instance.
     """
-    return Bot(
-        object=object_, id=id_, type=type_, name=name, avatar_url=avatar_url, bot=bot
-    )
+    return Bot(object=object_, id=id_, type=type_, name=name, avatar_url=avatar_url, bot=bot)
 
 
 __all__ = [

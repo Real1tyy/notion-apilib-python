@@ -78,9 +78,7 @@ def create_template_mention_user(request):
 
 
 @pytest.fixture(params=TEMPLATE_MENTION_OPTIONS)
-def create_template_mention(
-    request, create_template_mention_date, create_template_mention_user
-):
+def create_template_mention(request, create_template_mention_date, create_template_mention_user):
     match request.param:
         case "template_mention_date":
             return create_template_mention_date

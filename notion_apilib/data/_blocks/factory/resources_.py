@@ -16,9 +16,7 @@ from ._general import _create_block
 T = TypeVar("T", File, Image, Pdf, Video)
 
 
-def _determine_file_type(
-    external: Optional[External], file: Optional[FileObject]
-) -> file_type:
+def _determine_file_type(external: Optional[External], file: Optional[FileObject]) -> file_type:
     """
     Determine the type of file based on the provided parameters.
 
@@ -66,9 +64,7 @@ def _create_resources_object(
     return _create_block(
         resource,
         parent=parent,
-        block_type_specific_params=ResourcesAttributes(
-            type=_type, external=external, file=file
-        ),
+        block_type_specific_params=ResourcesAttributes(type=_type, external=external, file=file),
     )
 
 

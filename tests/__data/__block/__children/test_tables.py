@@ -70,14 +70,10 @@ def assert_table_data_is_correct(data: Table, expected_data: dict):
 
 def assert_table_row_data_is_correct(data: TableRow, expected_data: dict):
     assert_block_data_is_correct(data, expected_data)
-    assert_rich_text_structure(
-        data.table_row.cells, expected_data["table_row"]["cells"]
-    )
+    assert_rich_text_structure(data.table_row.cells, expected_data["table_row"]["cells"])
 
 
-def assert_table_of_contents_data_is_correct(
-    data: TableOfContents, expected_data: dict
-):
+def assert_table_of_contents_data_is_correct(data: TableOfContents, expected_data: dict):
     assert_block_data_is_correct(data, expected_data)
     assert data.table_of_contents.color == expected_data["table_of_contents"]["color"]
 

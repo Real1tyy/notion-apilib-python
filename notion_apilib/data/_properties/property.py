@@ -68,9 +68,7 @@ class DatabaseProperty(Property, ABC):
     Class representing a database property in the Notion API.
     """
 
-    def create_sort_object(
-        self, direction: Literal["ascending", "descending"]
-    ) -> PropertySort:
+    def create_sort_object(self, direction: Literal["ascending", "descending"]) -> PropertySort:
         """
           Creates a sort object for the property with the specified sort direction.
         :param direction:

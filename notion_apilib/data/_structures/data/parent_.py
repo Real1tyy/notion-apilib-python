@@ -49,9 +49,7 @@ class Parent(BaseModel):
             return self.block_id.hex
         return "workspace"
 
-    def set_parent_id(
-        self, parent_type: parents_types, parent_id: Optional[UUID] = None
-    ):
+    def set_parent_id(self, parent_type: parents_types, parent_id: Optional[UUID] = None):
         """
         Sets the parent id of the parent object.
 

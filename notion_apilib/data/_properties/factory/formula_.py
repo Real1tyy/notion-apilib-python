@@ -35,15 +35,11 @@ def create_formula_page(
         FormulaPage,
         parent=parent,
         name=name,
-        property_specific_params=FormulaStructure(
-            type=type_, number=number, boolean=boolean, date=date, string=string
-        ),
+        property_specific_params=FormulaStructure(type=type_, number=number, boolean=boolean, date=date, string=string),
     )
 
 
-def create_formula_database(
-    parent: "Database", name: str, expression: str
-) -> FormulaDatabase:
+def create_formula_database(parent: "Database", name: str, expression: str) -> FormulaDatabase:
     """
     Factory method to create a FormulaDatabase object.
 
