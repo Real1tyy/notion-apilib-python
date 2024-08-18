@@ -75,6 +75,7 @@ class BlockType(str, Enum):
     VIDEO : str
         Represents a video block.
     """
+
     BOOKMARK = "bookmark"
     BREADCRUMB = "breadcrumb"
     BULLETED_LIST_ITEM = "bulleted_list_item"

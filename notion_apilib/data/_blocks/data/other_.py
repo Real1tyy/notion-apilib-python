@@ -1,4 +1,4 @@
-    # First Party
+# First Party
 from ..block import Block, BlockType
 
 

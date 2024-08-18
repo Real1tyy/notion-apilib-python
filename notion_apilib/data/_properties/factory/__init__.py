@@ -54,7 +54,12 @@ Factory Methods:
 
 from .date_ import create_date_database, create_date_page
 from .formula_ import create_formula_database, create_formula_page
-from .number_ import create_number_database, create_number_page, create_unique_id_database, create_unique_id_page
+from .number_ import (
+    create_number_database,
+    create_number_page,
+    create_unique_id_database,
+    create_unique_id_page,
+)
 from .option_ import (
     create_checkbox_database,
     create_checkbox_page,
@@ -65,7 +70,12 @@ from .option_ import (
     create_status_database,
     create_status_page,
 )
-from .relation_ import create_relation_database, create_relation_page, create_rollup_database, create_rollup_page
+from .relation_ import (
+    create_relation_database,
+    create_relation_page,
+    create_rollup_database,
+    create_rollup_page,
+)
 from .resource_ import (
     create_email_database,
     create_email_page,
@@ -76,7 +86,12 @@ from .resource_ import (
     create_url_database,
     create_url_page,
 )
-from .text_ import create_rich_text_database, create_rich_text_page, create_title_database, create_title_page
+from .text_ import (
+    create_rich_text_database,
+    create_rich_text_page,
+    create_title_database,
+    create_title_page,
+)
 from .time_ import (
     create_created_time_database,
     create_created_time_page,

@@ -2,7 +2,12 @@
 import pytest
 
 # First Party
-from notion_apilib.data.properties import RichTextDatabase, RichTextPage, TitleDatabase, TitlePage
+from notion_apilib.data.properties import (
+    RichTextDatabase,
+    RichTextPage,
+    TitleDatabase,
+    TitlePage,
+)
 from tests.__data.__structures.assertions import assert_rich_text_structure
 
 from .assertions import assert_properties_data_is_correct
@@ -64,24 +69,30 @@ def assert_title_database_is_correct(data, expected_data):
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class, assert_func", [
+    "property_fixture, property_class, assert_func",
+    [
         ("rich_text_page", RichTextPage, assert_rich_text_page_is_correct),
         ("rich_text_database", RichTextDatabase, assert_rich_text_database_is_correct),
         ("title_page", TitlePage, assert_title_page_is_correct),
         ("title_database", TitleDatabase, assert_title_database_is_correct),
-    ]
+    ],
 )
 def test_property_structure(request, property_fixture, property_class, assert_func):
-    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+    extract_create_assert_structure(
+        request.getfixturevalue(property_fixture), property_class, assert_func
+    )
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class", [
+    "property_fixture, property_class",
+    [
         ("rich_text_page", RichTextPage),
         ("rich_text_database", RichTextDatabase),
         ("title_page", TitlePage),
         ("title_database", TitleDatabase),
-    ]
+    ],
 )
 def test_property_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)
+    extract_create_assert_serialization(
+        request.getfixturevalue(property_fixture), property_class
+    )

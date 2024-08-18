@@ -12,10 +12,10 @@ T = TypeVar("T", ChildDatabase, ChildPage)
 
 
 def create_child_block(
-        child_type: Type[T],
-        parent: Parent,
-        title: str,
-        children: Optional[list[Block]] = None,
+    child_type: Type[T],
+    parent: Parent,
+    title: str,
+    children: Optional[list[Block]] = None,
 ) -> T:
     """
     Factory method to create a child block object.
@@ -35,7 +35,7 @@ def create_child_block(
 
 
 def create_child_database(
-        parent: Parent, title: str, children: Optional[list[Block]] = None
+    parent: Parent, title: str, children: Optional[list[Block]] = None
 ) -> ChildDatabase:
     """
     Factory method to create a ChildDatabase object.
@@ -49,7 +49,7 @@ def create_child_database(
 
 
 def create_child_page(
-        parent: Parent, title: str, children: Optional[list[Block]] = None
+    parent: Parent, title: str, children: Optional[list[Block]] = None
 ) -> ChildPage:
     """
     Factory method to create a ChildPage object.

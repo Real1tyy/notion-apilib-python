@@ -6,7 +6,7 @@ from ._general import _create_database_property, _create_page_property
 
 
 def create_rich_text_page(
-        parent: "Page", name: str, rich_text: list[RichText]
+    parent: "Page", name: str, rich_text: list[RichText]
 ) -> RichTextPage:
     """
     Factory method to create a RichTextPage object.
@@ -25,7 +25,7 @@ def create_rich_text_page(
 
 
 def create_rich_text_database(
-        parent: "Database", name: str, rich_text: list[RichText]
+    parent: "Database", name: str, rich_text: list[RichText]
 ) -> RichTextDatabase:
     """
     Factory method to create a RichTextDatabase object.

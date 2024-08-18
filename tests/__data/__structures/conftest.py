@@ -53,7 +53,7 @@ def create_extensive_parent_data(request):
 @pytest.fixture()
 def create_user_data(request):
     return {
-        'object': 'user',
+        "object": "user",
         "id": USER_ID,
         "type": "person",
         "name": USER_NAME,
@@ -64,7 +64,7 @@ def create_user_data(request):
 @pytest.fixture(params=USER_TYPES)
 def create_extensive_user_data(request, create_href):
     return {
-        'object': 'user',
+        "object": "user",
         "id": USER_ID,
         "type": request.param,
         "name": USER_NAME,
@@ -74,10 +74,7 @@ def create_extensive_user_data(request, create_href):
 
 @pytest.fixture
 def create_emoji() -> dict:
-    return {
-        "type": "emoji",
-        "emoji": EMOJI_EMOJI
-    }
+    return {"type": "emoji", "emoji": EMOJI_EMOJI}
 
 
 @pytest.fixture
@@ -101,7 +98,7 @@ def create_resource() -> dict:
         "type": "external",
         "external": {
             "url": ICON_URL,
-        }
+        },
     }
 
 

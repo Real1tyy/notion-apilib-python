@@ -2,8 +2,9 @@
 from typing import Any
 
 
-def remove_forbidden_properties_from_data(data: dict[str, Any], properties_to_remove: set[str]) \
-        -> dict[str, Any]:
+def remove_forbidden_properties_from_data(
+    data: dict[str, Any], properties_to_remove: set[str]
+) -> dict[str, Any]:
     """
     Remove forbidden properties from the data dictionary before serialization as some properties like created_time,
     last_edited_time cannot be passed back to the Notion API.

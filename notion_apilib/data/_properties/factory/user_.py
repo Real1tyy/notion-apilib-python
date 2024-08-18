@@ -1,12 +1,19 @@
 # First Party
 from notion_apilib.data.structures import User
 
-from ..data import CreatedByDatabase, CreatedByPage, LastEditedByDatabase, LastEditedByPage, PeopleDatabase, PeoplePage
+from ..data import (
+    CreatedByDatabase,
+    CreatedByPage,
+    LastEditedByDatabase,
+    LastEditedByPage,
+    PeopleDatabase,
+    PeoplePage,
+)
 from ._general import _create_database_property, _create_page_property
 
 
 def create_created_by_page(
-        parent: "Page", name: str, created_by: User
+    parent: "Page", name: str, created_by: User
 ) -> CreatedByPage:
     """
     Factory method to create a CreatedByPage object.
@@ -41,7 +48,7 @@ def create_created_by_database(parent: "Database", name: str) -> CreatedByDataba
 
 
 def create_last_edited_by_page(
-        parent: "Page", name: str, last_edited_by: User
+    parent: "Page", name: str, last_edited_by: User
 ) -> LastEditedByPage:
     """
     Factory method to create a LastEditedByPage object.
@@ -63,7 +70,7 @@ def create_last_edited_by_page(
 
 
 def create_last_edited_by_database(
-        parent: "Database", name: str
+    parent: "Database", name: str
 ) -> LastEditedByDatabase:
     """
     Factory method to create a LastEditedByDatabase object.

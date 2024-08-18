@@ -10,11 +10,11 @@ from .._general import _create_block
 
 
 def create_callout(
-        parent: Parent,
-        rich_text: list[RichText],
-        icon: Emoji,
-        color: str,
-        children: list["Block"] = None,
+    parent: Parent,
+    rich_text: list[RichText],
+    icon: Emoji,
+    color: str,
+    children: list["Block"] = None,
 ) -> Callout:
     """
     Factory method to create Callout object
@@ -36,9 +36,9 @@ def create_callout(
 
 
 def create_synced_block(
-        parent: Parent,
-        synced_from: Optional[block_structures.SyncedFrom] = None,
-        children: Optional[list[Block]] = None,
+    parent: Parent,
+    synced_from: Optional[block_structures.SyncedFrom] = None,
+    children: Optional[list[Block]] = None,
 ) -> SyncedBlock:
     """
     Factory method to create a SyncedBlock object.

@@ -59,7 +59,7 @@ class NotionPageProvider:
         return self.get_page_children(page)
 
     def retrieve_page_property_item(
-            self, page_id: str, property_id: str, query_params: Optional[str] = None
+        self, page_id: str, property_id: str, query_params: Optional[str] = None
     ) -> dict[str, Any]:
         """
         Retrieves a specific property item from a page in the Notion API.

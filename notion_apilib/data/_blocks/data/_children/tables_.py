@@ -17,6 +17,7 @@ class TableAttributes(BaseModel):
     :param has_row_header: Whether the table has a row header.
     :param table_width: The width of the table.
     """
+
     has_column_header: bool
     has_row_header: bool
     table_width: int
@@ -28,6 +29,7 @@ class Table(Block):
 
     :param table: Attributes for the table _blocks.
     """
+
     table: TableAttributes
 
     @classmethod
@@ -41,6 +43,7 @@ class TableRowAttributes(BaseModel):
 
     :param cells: List of rich text elements representing the cells.
     """
+
     cells: list[RichText]
 
 
@@ -50,6 +53,7 @@ class TableRow(Block):
 
     :param table_row: Attributes for the table row _blocks.
     """
+
     table_row: TableRowAttributes
 
     @classmethod
@@ -63,6 +67,7 @@ class TableOfContentsAttributes(BaseModel):
 
     :param color: Color of the table of contents text.
     """
+
     color: str
 
 
@@ -72,6 +77,7 @@ class TableOfContents(Block):
 
     :param table_of_contents: Attributes for the table of contents _blocks.
     """
+
     table_of_contents: TableOfContentsAttributes
 
     @classmethod
@@ -89,4 +95,4 @@ class Column(Block):
         return BlockType.COLUMN
 
 
-__all__ = ['Table', 'TableRow', 'TableOfContents', 'Column']
+__all__ = ["Table", "TableRow", "TableOfContents", "Column"]

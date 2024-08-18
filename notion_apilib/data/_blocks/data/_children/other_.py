@@ -22,6 +22,7 @@ class CalloutAttributes(BaseModel):
     :param color: The color of the callout.
     :type color: str
     """
+
     rich_text: list[RichText]
     icon: Emoji
     color: str
@@ -34,6 +35,7 @@ class Callout(Block):
     :param callout: Attributes for the callout block.
     :type callout: CalloutAttributes
     """
+
     callout: CalloutAttributes
 
     @classmethod
@@ -48,6 +50,7 @@ class SyncedFrom(BaseModel):
     :param block_id: The UUID of the source block.
     :type block_id: UUID
     """
+
     block_id: UUID
 
 
@@ -60,6 +63,7 @@ class SyncedBlockAttributes(BaseModel):
     :param children: List of child _blocks (default is an empty list).
     :type children: list[Block]
     """
+
     synced_from: Optional[SyncedFrom]
     children: list[Block] = Field(default_factory=list, exclude=True)
 
@@ -71,6 +75,7 @@ class SyncedBlock(Block):
     :param synced_block: Attributes for the synced block.
     :type synced_block: SyncedBlockAttributes
     """
+
     synced_block: SyncedBlockAttributes
 
     @classmethod
@@ -78,4 +83,4 @@ class SyncedBlock(Block):
         return BlockType.SYNCED_BLOCK
 
 
-__all__ = ['Callout', 'SyncedBlock']
+__all__ = ["Callout", "SyncedBlock"]

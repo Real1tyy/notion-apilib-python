@@ -6,7 +6,12 @@ from uuid import UUID
 import pytest
 
 # First Party
-from notion_apilib.data.properties import RelationDatabase, RelationPage, RollupDatabase, RollupPage
+from notion_apilib.data.properties import (
+    RelationDatabase,
+    RelationPage,
+    RollupDatabase,
+    RollupPage,
+)
 
 from .assertions import assert_properties_data_is_correct
 from .constants import *
@@ -110,10 +115,14 @@ def assert_relation_database_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
     assert data.relation.database_id == expected_data["relation"]["database_id"]
     assert data.relation.type == expected_data["relation"]["type"]
-    assert data.relation.dual_property.synced_property_id == expected_data["relation"]["dual_property"][
-        "synced_property_id"]
-    assert data.relation.dual_property.synced_property_name == expected_data["relation"]["dual_property"][
-        "synced_property_name"]
+    assert (
+        data.relation.dual_property.synced_property_id
+        == expected_data["relation"]["dual_property"]["synced_property_id"]
+    )
+    assert (
+        data.relation.dual_property.synced_property_name
+        == expected_data["relation"]["dual_property"]["synced_property_name"]
+    )
 
 
 def assert_rollup_page_is_correct(data, expected_data):
@@ -134,37 +143,56 @@ def assert_rollup_page_is_correct(data, expected_data):
 
 def assert_rollup_database_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
-    assert data.rollup.relation_property_id == expected_data["rollup"]["relation_property_id"]
-    assert data.rollup.relation_property_name == expected_data["rollup"]["relation_property_name"]
-    assert data.rollup.rollup_property_name == expected_data["rollup"]["rollup_property_name"]
-    assert data.rollup.rollup_property_id == expected_data["rollup"]["rollup_property_id"]
+    assert (
+        data.rollup.relation_property_id
+        == expected_data["rollup"]["relation_property_id"]
+    )
+    assert (
+        data.rollup.relation_property_name
+        == expected_data["rollup"]["relation_property_name"]
+    )
+    assert (
+        data.rollup.rollup_property_name
+        == expected_data["rollup"]["rollup_property_name"]
+    )
+    assert (
+        data.rollup.rollup_property_id == expected_data["rollup"]["rollup_property_id"]
+    )
     assert data.rollup.function == expected_data["rollup"]["function"]
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class, assert_func", [
+    "property_fixture, property_class, assert_func",
+    [
         ("relation_page", RelationPage, assert_relation_page_is_correct),
         ("relation_database", RelationDatabase, assert_relation_database_is_correct),
         ("rollup_database", RollupDatabase, assert_rollup_database_is_correct),
-    ]
+    ],
 )
 def test_property_structure(request, property_fixture, property_class, assert_func):
-    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+    extract_create_assert_structure(
+        request.getfixturevalue(property_fixture), property_class, assert_func
+    )
 
 
 def test_rollup_page_structure(rollup_page):
-    extract_create_assert_structure(rollup_page, RollupPage, assert_rollup_page_is_correct)
+    extract_create_assert_structure(
+        rollup_page, RollupPage, assert_rollup_page_is_correct
+    )
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class", [
+    "property_fixture, property_class",
+    [
         ("relation_page", RelationPage),
         ("relation_database", RelationDatabase),
         ("rollup_database", RollupDatabase),
-    ]
+    ],
 )
 def test_property_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)
+    extract_create_assert_serialization(
+        request.getfixturevalue(property_fixture), property_class
+    )
 
 
 def test_rollup_page_serialization(rollup_page):

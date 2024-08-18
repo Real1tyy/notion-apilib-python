@@ -61,7 +61,12 @@ Factory Methods:
 """
 
 from ._general import Filter, FilterStructure
-from .date_ import DateFilter, create_concrete_date_filter, create_date_filter_is_empty, create_relative_date_filter
+from .date_ import (
+    DateFilter,
+    create_concrete_date_filter,
+    create_date_filter_is_empty,
+    create_relative_date_filter,
+)
 from .formula_ import (
     FormulaFilter,
     create_formula_checkbox_filter,
@@ -101,7 +106,11 @@ from .relation_ import (
     create_rollup_filter,
 )
 from .resources_ import FilesFilter, create_files_filter_is_empty
-from .text_ import RichTextFilter, create_rich_text_filter, create_rich_text_filter_is_empty
+from .text_ import (
+    RichTextFilter,
+    create_rich_text_filter,
+    create_rich_text_filter_is_empty,
+)
 from .time_ import TimestampFilter, create_timestamp_filter
 from .user_ import (
     PeopleFilter,

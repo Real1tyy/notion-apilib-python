@@ -12,7 +12,7 @@ T = TypeVar("T", Heading1, Heading2, Heading3)
 
 
 def create_headings_attributes(
-        rich_text: list[RichText], color: str, is_toggleable: bool
+    rich_text: list[RichText], color: str, is_toggleable: bool
 ) -> block_structures.HeadingsAttributes:
     """
     Factory method to create a HeadingsAttributes object.
@@ -28,12 +28,12 @@ def create_headings_attributes(
 
 
 def create_heading(
-        heading_type: Type[T],
-        parent: Parent,
-        rich_text: list[RichText],
-        color: str,
-        is_toggleable: bool,
-        children: Optional[list[Block]] = None,
+    heading_type: Type[T],
+    parent: Parent,
+    rich_text: list[RichText],
+    color: str,
+    is_toggleable: bool,
+    children: Optional[list[Block]] = None,
 ) -> T:
     """
     Factory method to create a heading object.
@@ -57,11 +57,11 @@ def create_heading(
 
 
 def create_basic_heading(
-        heading_type: Type[T],
-        parent: Parent,
-        text: str,
-        is_toggleable: bool,
-        children: Optional[list[Block]] = None,
+    heading_type: Type[T],
+    parent: Parent,
+    text: str,
+    is_toggleable: bool,
+    children: Optional[list[Block]] = None,
 ) -> T:
     """
     Factory method to create a basic heading object.
@@ -84,10 +84,10 @@ def create_basic_heading(
 
 
 def create_basic_heading1(
-        parent: Parent,
-        text: str,
-        is_toggleable: bool,
-        children: Optional[list[Block]] = None,
+    parent: Parent,
+    text: str,
+    is_toggleable: bool,
+    children: Optional[list[Block]] = None,
 ) -> Heading1:
     """
     Factory method to create a basic Heading1 object.
@@ -102,10 +102,10 @@ def create_basic_heading1(
 
 
 def create_basic_heading2(
-        parent: Parent,
-        text: str,
-        is_toggleable: bool,
-        children: Optional[list[Block]] = None,
+    parent: Parent,
+    text: str,
+    is_toggleable: bool,
+    children: Optional[list[Block]] = None,
 ) -> Heading2:
     """
     Factory method to create a basic Heading2 object.
@@ -120,10 +120,10 @@ def create_basic_heading2(
 
 
 def create_basic_heading3(
-        parent: Parent,
-        text: str,
-        is_toggleable: bool,
-        children: Optional[list[Block]] = None,
+    parent: Parent,
+    text: str,
+    is_toggleable: bool,
+    children: Optional[list[Block]] = None,
 ) -> Heading3:
     """
     Factory method to create a basic Heading3 object.
@@ -138,11 +138,11 @@ def create_basic_heading3(
 
 
 def create_heading1(
-        parent: Parent,
-        rich_text: list[RichText],
-        color: str,
-        is_toggleable: bool,
-        children: Optional[list[Block]] = None,
+    parent: Parent,
+    rich_text: list[RichText],
+    color: str,
+    is_toggleable: bool,
+    children: Optional[list[Block]] = None,
 ) -> Heading1:
     """
     Factory method to create a Heading1 object.
@@ -158,11 +158,11 @@ def create_heading1(
 
 
 def create_heading2(
-        parent: Parent,
-        rich_text: list[RichText],
-        color: str,
-        is_toggleable: bool,
-        children: Optional[list[Block]] = None,
+    parent: Parent,
+    rich_text: list[RichText],
+    color: str,
+    is_toggleable: bool,
+    children: Optional[list[Block]] = None,
 ) -> Heading2:
     """
     Factory method to create a Heading2 object.
@@ -178,11 +178,11 @@ def create_heading2(
 
 
 def create_heading3(
-        parent: Parent,
-        rich_text: list[RichText],
-        color: str,
-        is_toggleable: bool,
-        children: Optional[list[Block]] = None,
+    parent: Parent,
+    rich_text: list[RichText],
+    color: str,
+    is_toggleable: bool,
+    children: Optional[list[Block]] = None,
 ) -> Heading3:
     """
     Factory method to create a Heading3 object.

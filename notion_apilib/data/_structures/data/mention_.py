@@ -16,6 +16,7 @@ class DatabaseMention(BaseModel):
     id : UUID
         The ID of the mentioned database.
     """
+
     id: UUID
 
 
@@ -30,6 +31,7 @@ class DateMention(BaseModel):
     end : Optional[datetime]
         The end date and time, if any.
     """
+
     start: datetime
     end: Optional[datetime] = None
 
@@ -43,6 +45,7 @@ class LinkPreviewMention(BaseModel):
     url : str
         The URL of the link preview.
     """
+
     url: str
 
 
@@ -55,6 +58,7 @@ class PageMention(BaseModel):
     id : UUID
         The ID of the mentioned page.
     """
+
     id: UUID
 
 
@@ -69,6 +73,7 @@ class TemplateMentionDate(BaseModel):
     template_mention_date : str
         The template mention date string.
     """
+
     template_mention_date: str
 
 
@@ -83,6 +88,7 @@ class TemplateMentionUser(BaseModel):
     template_mention_user : str
         The template mention user string.
     """
+
     template_mention_user: str
 
 
@@ -99,6 +105,7 @@ class TemplateMention(BaseModel):
     template_mention_user : Optional[TemplateMentionUser]
         The template mention user object, if any.
     """
+
     type: str
     template_mention_date: Optional[str] = None
     template_mention_user: Optional[str] = None
@@ -115,6 +122,7 @@ class UserMention(BaseModel):
     id : UUID
         The ID of the mentioned user.
     """
+
     object: str
     id: UUID
 
@@ -140,6 +148,7 @@ class Mention(BaseModel):
     user : Optional[UserMention]
         The user mention object, if any.
     """
+
     type: str
     database: Optional[DatabaseMention] = None
     date: Optional[DateMention] = None
@@ -149,5 +158,14 @@ class Mention(BaseModel):
     user: Optional[UserMention] = None
 
 
-__all__ = ['Mention', 'UserMention', 'TemplateMention', 'TemplateMentionUser', 'TemplateMentionDate',
-           'LinkPreviewMention', 'DateMention', 'DatabaseMention', 'PageMention']
+__all__ = [
+    "Mention",
+    "UserMention",
+    "TemplateMention",
+    "TemplateMentionUser",
+    "TemplateMentionDate",
+    "LinkPreviewMention",
+    "DateMention",
+    "DatabaseMention",
+    "PageMention",
+]

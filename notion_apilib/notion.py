@@ -2,7 +2,11 @@
 from dependency_injector import containers, providers
 
 # First Party
-from notion_apilib._client import NotionBlockProvider, NotionDatabaseProvider, NotionPageProvider
+from notion_apilib._client import (
+    NotionBlockProvider,
+    NotionDatabaseProvider,
+    NotionPageProvider,
+)
 from notion_apilib._client._api_requests import (
     NotionAPIBlocksClient,
     NotionAPIDatabasesClient,

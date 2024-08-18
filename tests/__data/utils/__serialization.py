@@ -24,7 +24,10 @@ def map_data(data: T, value_transform: Callable[[Any], Any]) -> T:
 
 
 def filter_data(
-        data: T, key_predicate: Callable[[Any], bool] = None, value_predicate: Callable[[Any], bool] = None) -> T:
+    data: T,
+    key_predicate: Callable[[Any], bool] = None,
+    value_predicate: Callable[[Any], bool] = None,
+) -> T:
     """
     Recursively filter out items from a dictionary or list based on key or value predicates.
 
@@ -75,7 +78,7 @@ def remove_children_keys(data: T) -> T:
     :param data: The data to clean.
     :return: The cleaned data with no 'children' keys.
     """
-    return filter_data(data, key_predicate=lambda key: key == 'children')
+    return filter_data(data, key_predicate=lambda key: key == "children")
 
 
 def transform_uuid_to_string(data: T) -> T:

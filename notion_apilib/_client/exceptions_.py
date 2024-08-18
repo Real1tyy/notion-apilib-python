@@ -11,5 +11,6 @@ class ResponseError(Exception):
         status_code (int): The HTTP status code from the response.
         message (str): The error message from the Notion API response.
     """
+
     status_code: int
     message: str

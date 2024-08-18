@@ -8,7 +8,12 @@ from ..data import (
     StatusDatabase,
     StatusPage,
 )
-from ..data.structures import Group, OptionPage, OptionStructurePage, StatusDatabaseStructure
+from ..data.structures import (
+    Group,
+    OptionPage,
+    OptionStructurePage,
+    StatusDatabaseStructure,
+)
 from ._general import _create_database_property, _create_page_property
 
 

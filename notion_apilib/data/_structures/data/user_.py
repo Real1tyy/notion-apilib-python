@@ -23,9 +23,10 @@ class User(BaseModel):
     avatar_url : Optional[str]
         The URL of the user's avatar. Defaults to None.
     """
-    object: Literal['user']
+
+    object: Literal["user"]
     id: UUID
-    type: Optional[Literal['person', 'bot']] = None
+    type: Optional[Literal["person", "bot"]] = None
     name: Optional[str] = None
     avatar_url: Optional[str] = None
 
@@ -39,6 +40,7 @@ class PeopleStructure(BaseModel):
     email : str
         The email of the person.
     """
+
     email: str
 
 
@@ -51,6 +53,7 @@ class People(User):
     person : PeopleStructure
         The person structure containing additional details.
     """
+
     person: PeopleStructure
 
 
@@ -63,7 +66,8 @@ class OwnerStructure(BaseModel):
     type : Literal['user', 'workspace']
         The type of the owner, either 'user' or 'workspace'.
     """
-    type: Literal['user', 'workspace']
+
+    type: Literal["user", "workspace"]
 
 
 class BotStructure(BaseModel):
@@ -77,6 +81,7 @@ class BotStructure(BaseModel):
     workspace_name : str
         The name of the workspace the bot belongs to.
     """
+
     owner: OwnerStructure
     workspace_name: str
 
@@ -90,7 +95,8 @@ class Bot(User):
     bot : BotStructure
         The bot structure containing additional details.
     """
+
     bot: BotStructure
 
 
-__all__ = ['Bot', 'User', 'People', 'PeopleStructure', 'OwnerStructure', 'BotStructure']
+__all__ = ["Bot", "User", "People", "PeopleStructure", "OwnerStructure", "BotStructure"]

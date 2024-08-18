@@ -18,6 +18,7 @@ class CodeAttributes(BaseModel):
     :param language: The programming language of the code.
     :type language: str
     """
+
     caption: list[RichText]
     rich_text: list[RichText]
     language: str
@@ -30,6 +31,7 @@ class Code(Block):
     :param code: Attributes for the code block.
     :type code: CodeAttributes
     """
+
     code: CodeAttributes
 
     @classmethod

@@ -4,10 +4,16 @@ from typing import Callable, Type
 # First Party
 from notion_apilib.data.blocks import Block
 
-from .assertions import assert_serialization_to_json, create_block_object, extract_block_data
+from .assertions import (
+    assert_serialization_to_json,
+    create_block_object,
+    extract_block_data,
+)
 
 
-def extract_create_assert_structure(data_provider, block_class: Type[Block], assert_structure_func: Callable):
+def extract_create_assert_structure(
+    data_provider, block_class: Type[Block], assert_structure_func: Callable
+):
     data = extract_block_data(data_provider, block_class)
     block = create_block_object(data, block_class)
     assert_structure_func(block, data)

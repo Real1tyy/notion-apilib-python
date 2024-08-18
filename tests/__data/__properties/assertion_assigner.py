@@ -45,7 +45,10 @@ from notion_apilib.data.properties import (
 )
 
 from .test_date import assert_date_database_is_correct, assert_date_page_is_correct
-from .test_formula import assert_formula_database_is_correct, assert_formula_page_is_correct
+from .test_formula import (
+    assert_formula_database_is_correct,
+    assert_formula_page_is_correct,
+)
 from .test_number import (
     assert_number_database_is_correct,
     assert_number_page_is_correct,

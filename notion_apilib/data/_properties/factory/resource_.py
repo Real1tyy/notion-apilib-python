@@ -48,7 +48,7 @@ def create_email_database(parent: "Database", name: str) -> EmailDatabase:
 
 
 def create_files_page(
-        parent: "Page", name: str, files: list[ResourcesAttributes]
+    parent: "Page", name: str, files: list[ResourcesAttributes]
 ) -> FilesPage:
     """
     Factory method to create a FilesPage object.
@@ -83,7 +83,7 @@ def create_files_database(parent: "Database", name: str) -> FilesDatabase:
 
 
 def create_phone_number_page(
-        parent: "Page", name: str, phone_number: str
+    parent: "Page", name: str, phone_number: str
 ) -> PhoneNumberPage:
     """
     Factory method to create a PhoneNumberPage object.

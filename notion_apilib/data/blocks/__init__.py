@@ -79,6 +79,7 @@ Note:
 
 # Other
 from .._blocks.block import Block, BlockType
+
 # Importing data models
 from .._blocks.data import (
     Bookmark,

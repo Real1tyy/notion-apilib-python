@@ -18,6 +18,7 @@ class Items(BaseModel):
     :param children: List of child _blocks (default is an empty list).
     :param rich_text: List of rich text elements.
     """
+
     color: str
     children: list[Block] = Field(default_factory=list, exclude=True)
     rich_text: list[RichText]
@@ -29,6 +30,7 @@ class BulletedListItem(Block):
 
     :param bulleted_list_item: Attributes for the bulleted list item.
     """
+
     bulleted_list_item: Items
 
     @classmethod
@@ -42,6 +44,7 @@ class NumberedListItem(Block):
 
     :param numbered_list_item: Attributes for the numbered list item.
     """
+
     numbered_list_item: Items
 
     @classmethod
@@ -55,6 +58,7 @@ class Paragraph(Block):
 
     :param paragraph: Attributes for the paragraph.
     """
+
     paragraph: Items
 
     @classmethod
@@ -68,6 +72,7 @@ class Quote(Block):
 
     :param quote: Attributes for the quote.
     """
+
     quote: Items
 
     @classmethod
@@ -81,6 +86,7 @@ class ToDoAttributes(Items):
 
     :param checked: Whether the todo item is checked.
     """
+
     checked: Optional[bool]
 
 
@@ -90,6 +96,7 @@ class ToDo(Block):
 
     :param to_do: Attributes for the to-do item.
     """
+
     to_do: ToDoAttributes
 
     @classmethod
@@ -103,6 +110,7 @@ class Toggle(Block):
 
     :param toggle: Attributes for the toggle item.
     """
+
     toggle: Items
 
     @classmethod
@@ -110,4 +118,11 @@ class Toggle(Block):
         return BlockType.TOGGLE
 
 
-__all__ = ['BulletedListItem', 'NumberedListItem', 'Paragraph', 'Quote', 'ToDo', 'Toggle']
+__all__ = [
+    "BulletedListItem",
+    "NumberedListItem",
+    "Paragraph",
+    "Quote",
+    "ToDo",
+    "Toggle",
+]
