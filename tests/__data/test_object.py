@@ -21,5 +21,5 @@ class ObjectForTesting(MajorObject):
 
 
 def test_extensively_object(extensive_major_object_data):
-    object = ObjectForTesting(**extensive_major_object_data)
-    assert_object_data_is_correct(object, extensive_major_object_data)
+    object_ = ObjectForTesting(**extensive_major_object_data)
+    assert_object_data_is_correct(object_, extensive_major_object_data)

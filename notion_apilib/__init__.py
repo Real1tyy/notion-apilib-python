@@ -63,6 +63,8 @@ from notion_apilib.notion import NotionApi
 
 from ._client import NotionBlockProvider, NotionDatabaseProvider, NotionPageProvider, ResponseError
 
+__version__ = '0.0.1a'
+
 __all__ = [
     "NotionApi",
     "NotionBlockProvider",
