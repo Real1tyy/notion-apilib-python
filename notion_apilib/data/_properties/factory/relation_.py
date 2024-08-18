@@ -4,12 +4,7 @@ from typing import Any, Literal, Optional
 from uuid import UUID
 
 from ..data import RelationDatabase, RelationPage, RollupDatabase, RollupPage
-from ..data.structures import (
-    RelationDatabaseStructure,
-    RelationStructure,
-    RollupDatabaseStructure,
-    RollupStructure,
-)
+from ..data.structures import RelationDatabaseStructure, RelationStructure, RollupDatabaseStructure, RollupStructure
 from ._general import _create_database_property, _create_page_property
 
 
