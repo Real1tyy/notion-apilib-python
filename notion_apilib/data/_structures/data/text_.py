@@ -5,7 +5,6 @@ from typing import Any, Optional
 from pydantic import BaseModel, model_serializer, model_validator
 
 # First Party
-import notion_apilib.data._structures.factory as factory
 from notion_apilib.data import BasicConfiguration
 
 from .mention_ import Mention
@@ -164,7 +163,8 @@ class FormatedText(BasicConfiguration):
         :param value: value to set - plain text
         :return: None
         """
-        self.rich_text = [factory.create_basic_rich_text(value)]
+        from notion_apilib.data._structures.factory import create_basic_rich_text
+        self.rich_text = [create_basic_rich_text(value)]
 
     def __len__(self):
         return len(self.rich_text)

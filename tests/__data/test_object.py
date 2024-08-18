@@ -6,7 +6,7 @@ from notion_apilib.data.object_ import MajorObject
 from tests.__data.assertions import assert_object_data_is_correct
 
 
-class TestObject(MajorObject):
+class ObjectForTesting(MajorObject):
 
     def properties(self):
         # just for testing
@@ -21,5 +21,5 @@ class TestObject(MajorObject):
 
 
 def test_extensively_object(extensive_major_object_data):
-    object = TestObject(**extensive_major_object_data)
+    object = ObjectForTesting(**extensive_major_object_data)
     assert_object_data_is_correct(object, extensive_major_object_data)
