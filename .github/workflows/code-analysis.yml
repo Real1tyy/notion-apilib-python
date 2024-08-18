@@ -23,9 +23,14 @@ jobs:
             -   name: Install dependencies
                 run: |
                     python -m pip install --upgrade pip
-                    pip install pylint
+                    pip install pylint mypy
 
             -   name: Run pylint
                 run: |
                     pylint --max-line-length=120 notion_apilib
+                continue-on-error: true
+
+            -   name: Run mypy
+                run: |
+                    mypy notion_apilib
                 continue-on-error: true
