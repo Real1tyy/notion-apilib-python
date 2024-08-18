@@ -55,7 +55,12 @@ Note:
     requirements.
 """
 
-from .file_ import create_external, create_file_attributes, create_file_object, create_resources_attributes
+from .file_ import (
+    create_external,
+    create_file_attributes,
+    create_file_object,
+    create_resources_attributes,
+)
 from .icon_ import create_emoji
 from .mention_ import (
     create_database_mention,

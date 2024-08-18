@@ -14,6 +14,7 @@ class ChildAttributes(BaseModel):
     :param title: The title of the child.
     :type title: str
     """
+
     title: str
 
 
@@ -24,6 +25,7 @@ class ChildDatabase(Block):
     :param child_database: The attributes of the child database.
     :type child_database: ChildAttributes
     """
+
     child_database: ChildAttributes
 
     @classmethod
@@ -38,6 +40,7 @@ class ChildPage(Block):
     :param child_page: The attributes of the child page.
     :type child_page: ChildAttributes
     """
+
     child_page: ChildAttributes
 
     @classmethod

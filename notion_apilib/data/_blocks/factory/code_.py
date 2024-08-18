@@ -6,7 +6,7 @@ from ._general import _create_block
 
 
 def create_code(
-        parent: Parent, caption: list[RichText], rich_text: list[RichText], language: str
+    parent: Parent, caption: list[RichText], rich_text: list[RichText], language: str
 ) -> Code:
     """
     Factory method to create Code object

@@ -17,6 +17,7 @@ class HeadingsAttributes(BaseModel):
     :param color: Color of the heading text.
     :param is_toggleable: Whether the heading is toggleable.
     """
+
     rich_text: list[RichText]
     color: str
     is_toggleable: bool
@@ -28,6 +29,7 @@ class Heading1(Block):
 
     :param heading_1: Attributes for the heading 1 block.
     """
+
     heading_1: HeadingsAttributes
 
     @classmethod
@@ -41,6 +43,7 @@ class Heading2(Block):
 
     :param heading_2: Attributes for the heading 2 _blocks.
     """
+
     heading_2: HeadingsAttributes
 
     @classmethod
@@ -54,6 +57,7 @@ class Heading3(Block):
 
     :param heading_3: Attributes for the heading 3 _blocks.
     """
+
     heading_3: HeadingsAttributes
 
     @classmethod

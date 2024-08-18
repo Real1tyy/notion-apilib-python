@@ -61,9 +61,14 @@ This package is an all-in-one solution for developers looking to integrate with 
 # First Party
 from notion_apilib.notion import NotionApi
 
-from ._client import NotionBlockProvider, NotionDatabaseProvider, NotionPageProvider, ResponseError
+from ._client import (
+    NotionBlockProvider,
+    NotionDatabaseProvider,
+    NotionPageProvider,
+    ResponseError,
+)
 
-__version__ = '0.0.1a'
+__version__ = "0.0.1a"
 
 __all__ = [
     "NotionApi",

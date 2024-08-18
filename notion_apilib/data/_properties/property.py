@@ -69,7 +69,7 @@ class DatabaseProperty(Property, ABC):
     """
 
     def create_sort_object(
-            self, direction: Literal["ascending", "descending"]
+        self, direction: Literal["ascending", "descending"]
     ) -> PropertySort:
         """
           Creates a sort object for the property with the specified sort direction.

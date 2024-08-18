@@ -1,11 +1,12 @@
 name: Code Analysis
 
 on:
-    workflow_run:
-        workflows: ["Code Formatting"]
-        types:
-            - completed
-
+    push:
+        branches-ignore:
+            - gh-pages
+    pull_request:
+        branches-ignore:
+            - gh-pages
 
 jobs:
     lint:

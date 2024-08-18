@@ -12,7 +12,7 @@ T = TypeVar("T")
 
 
 def _handle_pagination(
-        result: T, response: Response, method_to_call: Callable[..., T], **kwargs: Any
+    result: T, response: Response, method_to_call: Callable[..., T], **kwargs: Any
 ) -> T:
     """
     Handles paginated API responses by recursively retrieving data from subsequent pages.
@@ -48,7 +48,7 @@ def _get_child_id_from_json(child: dict) -> str:
 
 
 def _create_children_json_payload(
-        children_blocks: list[Block], after_block_id: str
+    children_blocks: list[Block], after_block_id: str
 ) -> dict:
     children = dict()
     children["children"] = [child.serialize_to_json() for child in children_blocks]
@@ -63,9 +63,9 @@ def _parse_and_serialize_result(response: dict) -> list[Block]:
 
 
 def _prepare_query_data(
-        next_cursor: Optional[str] = None,
-        sort: Optional[list[Sort]] = None,
-        filter: Optional[QueryFilter] = None,
+    next_cursor: Optional[str] = None,
+    sort: Optional[list[Sort]] = None,
+    filter: Optional[QueryFilter] = None,
 ) -> dict[str, Any]:
     data = dict()
     if next_cursor:

@@ -331,8 +331,16 @@ from notion_apilib.data._properties.filter import (
     create_status_filter_is_empty,
     create_timestamp_filter,
 )
-from notion_apilib.data._properties.property import DatabaseProperty, PageProperty, Property, PropertyType
-from notion_apilib.data._properties.property_factory import deserialize_database_property, deserialize_page_property
+from notion_apilib.data._properties.property import (
+    DatabaseProperty,
+    PageProperty,
+    Property,
+    PropertyType,
+)
+from notion_apilib.data._properties.property_factory import (
+    deserialize_database_property,
+    deserialize_page_property,
+)
 from notion_apilib.data._properties.sort_ import (
     PropertySort,
     Sort,

@@ -133,6 +133,7 @@ class FormatedText(BasicConfiguration):
     rich_text : list[RichText]
         The rich text content.
     """
+
     rich_text: list[RichText]
 
     @model_validator(mode="before")
@@ -164,6 +165,7 @@ class FormatedText(BasicConfiguration):
         :return: None
         """
         from notion_apilib.data._structures.factory import create_basic_rich_text
+
         self.rich_text = [create_basic_rich_text(value)]
 
     def __len__(self):
@@ -173,4 +175,11 @@ class FormatedText(BasicConfiguration):
         return iter(self.rich_text)
 
 
-__all__ = ["RichText", "Text", "Annotations", "Link", "EquationStructure", "FormatedText"]
+__all__ = [
+    "RichText",
+    "Text",
+    "Annotations",
+    "Link",
+    "EquationStructure",
+    "FormatedText",
+]

@@ -10,10 +10,10 @@ T = TypeVar("T", bound=Block)
 
 
 def _create_block(
-        cls: Type[T],
-        parent: Parent,
-        block_type_specific_params: Optional[Any] = None,
-        children: list[Block] = None,
+    cls: Type[T],
+    parent: Parent,
+    block_type_specific_params: Optional[Any] = None,
+    children: list[Block] = None,
 ) -> T:
     """
     Helper function to create block objects with common parameters pre-filled.

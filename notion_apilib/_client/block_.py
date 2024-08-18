@@ -43,7 +43,7 @@ class NotionBlockProvider:
         return self.append_block_children(block.parent.get_parent_id(), [block])
 
     def append_block_children(
-            self, object_id: str, children_blocks: list[Block], after_block_id: str = ""
+        self, object_id: str, children_blocks: list[Block], after_block_id: str = ""
     ) -> Block:
         """
         Appends children blocks to an existing block in the Notion API. By default, appends the children at the end
@@ -165,11 +165,11 @@ class NotionBlockProvider:
         )
 
     def _retrieve_children_paginated(
-            self,
-            id_: UUID,
-            next_cursor: str,
-            children: list[Block],
-            recursively: bool = True,
+        self,
+        id_: UUID,
+        next_cursor: str,
+        children: list[Block],
+        recursively: bool = True,
     ) -> list[Block]:
         """
         Helper function to handle paginated retrieval of children blocks.

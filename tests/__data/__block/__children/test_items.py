@@ -2,11 +2,22 @@
 import pytest
 
 # First Party
-from notion_apilib.data.blocks import BlockType, BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle
+from notion_apilib.data.blocks import (
+    BlockType,
+    BulletedListItem,
+    NumberedListItem,
+    Paragraph,
+    Quote,
+    ToDo,
+    Toggle,
+)
 from tests.__data.__block.assertions import assert_block_data_is_correct
 from tests.__data.__structures.assertions import assert_rich_text_structure
 
-from ..helper import extract_create_assert_serialization, extract_create_assert_structure
+from ..helper import (
+    extract_create_assert_serialization,
+    extract_create_assert_structure,
+)
 
 # Constants
 IS_CHECKED = True
@@ -50,14 +61,15 @@ def assert_todo_data_is_correct(data: ToDo, expected_data):
 
 
 @pytest.mark.parametrize(
-    "block_fixture, block_class, assert_func", [
+    "block_fixture, block_class, assert_func",
+    [
         ("item_block", BulletedListItem, assert_item_data_is_correct),
         ("item_block", NumberedListItem, assert_item_data_is_correct),
         ("item_block", Paragraph, assert_item_data_is_correct),
         ("item_block", Quote, assert_item_data_is_correct),
         ("item_block", Toggle, assert_item_data_is_correct),
         ("todo_block", ToDo, assert_todo_data_is_correct),
-    ]
+    ],
 )
 def test_block_structure(request, block_fixture, block_class, assert_func):
     block_data = request.getfixturevalue(block_fixture)
@@ -65,14 +77,15 @@ def test_block_structure(request, block_fixture, block_class, assert_func):
 
 
 @pytest.mark.parametrize(
-    "block_fixture, block_class", [
+    "block_fixture, block_class",
+    [
         ("item_block", BulletedListItem),
         ("item_block", NumberedListItem),
         ("item_block", Paragraph),
         ("item_block", Quote),
         ("item_block", Toggle),
         ("todo_block", ToDo),
-    ]
+    ],
 )
 def test_block_serialization(request, block_fixture, block_class):
     block_data = request.getfixturevalue(block_fixture)

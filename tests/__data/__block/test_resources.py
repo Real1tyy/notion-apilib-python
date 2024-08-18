@@ -7,8 +7,14 @@ import pytest
 # First Party
 from notion_apilib.data.blocks import File, Image, Pdf, Video
 from tests.__data.__block.assertions import assert_block_data_is_correct
-from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
-from tests.__data.__structures.assertions import assert_resources_structure, assert_rich_text_structure
+from tests.__data.__block.helper import (
+    extract_create_assert_serialization,
+    extract_create_assert_structure,
+)
+from tests.__data.__structures.assertions import (
+    assert_resources_structure,
+    assert_rich_text_structure,
+)
 from tests.__data.__structures.conftest import create_rich_text
 
 # Constants
@@ -30,8 +36,8 @@ def resources_block(request, block_data, create_resource):
 def file_block(request, resources_block, create_rich_text):
     def create_file_attributes(block_type) -> dict:
         data = resources_block(block_type)
-        data['file']['caption'] = create_rich_text
-        data['file']['name'] = FILE_NAME
+        data["file"]["caption"] = create_rich_text
+        data["file"]["name"] = FILE_NAME
         return data
 
     return create_file_attributes
@@ -56,12 +62,13 @@ def assert_resources_data_is_correct(data, expected_data: dict):
 
 
 @pytest.mark.parametrize(
-    "block_fixture, block_class, assert_func", [
+    "block_fixture, block_class, assert_func",
+    [
         ("resources_block", Image, assert_resources_data_is_correct),
         ("resources_block", Pdf, assert_resources_data_is_correct),
         ("resources_block", Video, assert_resources_data_is_correct),
         ("file_block", File, assert_file_data_is_correct),
-    ]
+    ],
 )
 def test_block_structure(request, block_fixture, block_class, assert_func):
     block_data = request.getfixturevalue(block_fixture)
@@ -69,12 +76,13 @@ def test_block_structure(request, block_fixture, block_class, assert_func):
 
 
 @pytest.mark.parametrize(
-    "block_fixture, block_class", [
+    "block_fixture, block_class",
+    [
         ("resources_block", Image),
         ("resources_block", Pdf),
         ("resources_block", Video),
         ("file_block", File),
-    ]
+    ],
 )
 def test_block_serialization(request, block_fixture, block_class):
     block_data = request.getfixturevalue(block_fixture)

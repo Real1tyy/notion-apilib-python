@@ -22,7 +22,9 @@ from tests.__data.constants import *
 
 
 @pytest.fixture(params=OBJECT_TYPES)
-def extensive_object_data(request, create_extensive_parent_data, create_extensive_user_data):
+def extensive_object_data(
+    request, create_extensive_parent_data, create_extensive_user_data
+):
     return {
         "object": request.param,
         "id": OBJECT_ID,
@@ -32,7 +34,7 @@ def extensive_object_data(request, create_extensive_parent_data, create_extensiv
         "created_by": create_extensive_user_data,
         "last_edited_by": create_extensive_user_data,
         "archived": False,
-        "in_trash": False
+        "in_trash": False,
     }
 
 
@@ -48,7 +50,7 @@ def object_data(create_parent_data, create_user_data):
             "created_by": create_user_data,
             "last_edited_by": create_user_data,
             "archived": False,
-            "in_trash": False
+            "in_trash": False,
         }
 
     return return_object_data

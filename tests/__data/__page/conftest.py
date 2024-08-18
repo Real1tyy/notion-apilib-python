@@ -6,7 +6,12 @@ from notion_apilib.data import Page
 
 from ..__properties.conftest import property_data
 from ..__properties.test_date import DatePage, date_page
-from ..__properties.test_number import NumberPage, UniqueIdPage, number_page, unique_id_page
+from ..__properties.test_number import (
+    NumberPage,
+    UniqueIdPage,
+    number_page,
+    unique_id_page,
+)
 from ..__properties.test_text import TitlePage, title_page
 
 
@@ -26,7 +31,7 @@ def page_properties(date_page, unique_id_page, number_page, title_page):
 
 @pytest.fixture
 def create_page(major_object_data, page_properties):
-    data = major_object_data('page')
+    data = major_object_data("page")
     data["properties"] = page_properties
     return data
 

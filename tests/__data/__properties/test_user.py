@@ -98,28 +98,46 @@ def assert_people_database_is_correct(data, expected_data):
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class, assert_func", [
+    "property_fixture, property_class, assert_func",
+    [
         ("created_by_page", CreatedByPage, assert_created_by_page_is_correct),
-        ("created_by_database", CreatedByDatabase, assert_created_by_database_is_correct),
-        ("last_edited_by_page", LastEditedByPage, assert_last_edited_by_page_is_correct),
-        ("last_edited_by_database", LastEditedByDatabase, assert_last_edited_by_database_is_correct),
+        (
+            "created_by_database",
+            CreatedByDatabase,
+            assert_created_by_database_is_correct,
+        ),
+        (
+            "last_edited_by_page",
+            LastEditedByPage,
+            assert_last_edited_by_page_is_correct,
+        ),
+        (
+            "last_edited_by_database",
+            LastEditedByDatabase,
+            assert_last_edited_by_database_is_correct,
+        ),
         ("people_page", PeoplePage, assert_people_page_is_correct),
         ("people_database", PeopleDatabase, assert_people_database_is_correct),
-    ]
+    ],
 )
 def test_property_structure(request, property_fixture, property_class, assert_func):
-    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+    extract_create_assert_structure(
+        request.getfixturevalue(property_fixture), property_class, assert_func
+    )
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class", [
+    "property_fixture, property_class",
+    [
         ("created_by_page", CreatedByPage),
         ("created_by_database", CreatedByDatabase),
         ("last_edited_by_page", LastEditedByPage),
         ("last_edited_by_database", LastEditedByDatabase),
         ("people_page", PeoplePage),
         ("people_database", PeopleDatabase),
-    ]
+    ],
 )
 def test_property_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)
+    extract_create_assert_serialization(
+        request.getfixturevalue(property_fixture), property_class
+    )

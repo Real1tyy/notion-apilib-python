@@ -73,24 +73,42 @@ def assert_last_edited_time_database_is_correct(data, expected_data):
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class, assert_func", [
+    "property_fixture, property_class, assert_func",
+    [
         ("created_time_page", CreatedTimePage, assert_created_time_page_is_correct),
-        ("created_time_database", CreatedTimeDatabase, assert_created_time_database_is_correct),
-        ("last_edited_time_page", LastEditedTimePage, assert_last_edited_time_page_is_correct),
-        ("last_edited_time_database", LastEditedTimeDatabase, assert_last_edited_time_database_is_correct),
-    ]
+        (
+            "created_time_database",
+            CreatedTimeDatabase,
+            assert_created_time_database_is_correct,
+        ),
+        (
+            "last_edited_time_page",
+            LastEditedTimePage,
+            assert_last_edited_time_page_is_correct,
+        ),
+        (
+            "last_edited_time_database",
+            LastEditedTimeDatabase,
+            assert_last_edited_time_database_is_correct,
+        ),
+    ],
 )
 def test_property_structure(request, property_fixture, property_class, assert_func):
-    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+    extract_create_assert_structure(
+        request.getfixturevalue(property_fixture), property_class, assert_func
+    )
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class", [
+    "property_fixture, property_class",
+    [
         ("created_time_page", CreatedTimePage),
         ("created_time_database", CreatedTimeDatabase),
         ("last_edited_time_page", LastEditedTimePage),
         ("last_edited_time_database", LastEditedTimeDatabase),
-    ]
+    ],
 )
 def test_property_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)
+    extract_create_assert_serialization(
+        request.getfixturevalue(property_fixture), property_class
+    )

@@ -51,6 +51,7 @@ class PropertyType(str, Enum):
     STATUS : str
         Represents a status property.
     """
+
     TITLE = "title"
     RICH_TEXT = "rich_text"
     NUMBER = "number"

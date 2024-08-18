@@ -135,23 +135,31 @@ def assert_url_database_is_correct(data, expected_data):
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class, assert_func", [
+    "property_fixture, property_class, assert_func",
+    [
         ("email_page", EmailPage, assert_email_page_is_correct),
         ("email_database", EmailDatabase, assert_email_database_is_correct),
         ("files_page", FilesPage, assert_files_page_is_correct),
         ("files_database", FilesDatabase, assert_files_database_is_correct),
         ("phone_number_page", PhoneNumberPage, assert_phone_number_page_is_correct),
-        ("phone_number_database", PhoneNumberDatabase, assert_phone_number_database_is_correct),
+        (
+            "phone_number_database",
+            PhoneNumberDatabase,
+            assert_phone_number_database_is_correct,
+        ),
         ("url_page", UrlPage, assert_url_page_is_correct),
         ("url_database", UrlDatabase, assert_url_database_is_correct),
-    ]
+    ],
 )
 def test_property_structure(request, property_fixture, property_class, assert_func):
-    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+    extract_create_assert_structure(
+        request.getfixturevalue(property_fixture), property_class, assert_func
+    )
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class", [
+    "property_fixture, property_class",
+    [
         ("email_page", EmailPage),
         ("email_database", EmailDatabase),
         ("files_page", FilesPage),
@@ -160,7 +168,9 @@ def test_property_structure(request, property_fixture, property_class, assert_fu
         ("phone_number_database", PhoneNumberDatabase),
         ("url_page", UrlPage),
         ("url_database", UrlDatabase),
-    ]
+    ],
 )
 def test_property_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)
+    extract_create_assert_serialization(
+        request.getfixturevalue(property_fixture), property_class
+    )

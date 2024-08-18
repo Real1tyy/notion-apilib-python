@@ -18,7 +18,11 @@ from notion_apilib.data.properties import (
 )
 
 from ..utils.__serialization import transform_dictionary
-from .assertions import assert_properties_data_is_correct, create_property_object, extract_property_data
+from .assertions import (
+    assert_properties_data_is_correct,
+    create_property_object,
+    extract_property_data,
+)
 from .helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants for Checkbox Properties
@@ -237,9 +241,9 @@ def transform_options_groups_data(data, change_function: Callable):
         ("checkbox_database", CheckboxDatabase, assert_checkbox_database_is_correct),
         ("multi_select_page", MultiSelectPage, assert_multi_select_page_is_correct),
         (
-                "multi_select_database",
-                MultiSelectDatabase,
-                assert_multi_select_database_is_correct,
+            "multi_select_database",
+            MultiSelectDatabase,
+            assert_multi_select_database_is_correct,
         ),
         ("select_page", SelectPage, assert_select_page_is_correct),
         ("select_database", SelectDatabase, assert_select_database_is_correct),

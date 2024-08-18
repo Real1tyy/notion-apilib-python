@@ -13,6 +13,7 @@ class File(Block):
     :param file: Attributes for the file block.
     :type file: FileAttributes
     """
+
     file: FileAttributes
 
     @classmethod
@@ -27,6 +28,7 @@ class Image(Block):
     :param image: Attributes for the image block.
     :type image: ResourcesAttributes
     """
+
     image: ResourcesAttributes
 
     @classmethod
@@ -41,6 +43,7 @@ class Pdf(Block):
     :param pdf: Attributes for the PDF block.
     :type pdf: ResourcesAttributes
     """
+
     pdf: ResourcesAttributes
 
     @classmethod
@@ -55,6 +58,7 @@ class Video(Block):
     :param video: Attributes for the video block.
     :type video: ResourcesAttributes
     """
+
     video: ResourcesAttributes
 
     @classmethod

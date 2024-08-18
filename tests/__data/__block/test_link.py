@@ -4,7 +4,10 @@ import pytest
 # First Party
 from notion_apilib.data.blocks import Bookmark, LinkPreview
 from tests.__data.__block.assertions import assert_block_data_is_correct
-from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
+from tests.__data.__block.helper import (
+    extract_create_assert_serialization,
+    extract_create_assert_structure,
+)
 from tests.__data.__structures.assertions import assert_rich_text_structure
 from tests.__data.__structures.conftest import create_rich_text
 
@@ -53,10 +56,11 @@ def assert_embed_or_link_preview_data_is_correct(data, expected_data: dict):
 
 
 @pytest.mark.parametrize(
-    "block_fixture, block_class, assert_func", [
+    "block_fixture, block_class, assert_func",
+    [
         ("bookmark_block", Bookmark, assert_bookmark_data_is_correct),
         ("link_block", LinkPreview, assert_embed_or_link_preview_data_is_correct),
-    ]
+    ],
 )
 def test_block_structure(request, block_fixture, block_class, assert_func):
     block_data = request.getfixturevalue(block_fixture)
@@ -64,10 +68,11 @@ def test_block_structure(request, block_fixture, block_class, assert_func):
 
 
 @pytest.mark.parametrize(
-    "block_fixture, block_class", [
+    "block_fixture, block_class",
+    [
         ("bookmark_block", Bookmark),
         ("link_block", LinkPreview),
-    ]
+    ],
 )
 def test_block_serialization(request, block_fixture, block_class):
     block_data = request.getfixturevalue(block_fixture)

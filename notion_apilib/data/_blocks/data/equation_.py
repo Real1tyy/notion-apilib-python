@@ -11,6 +11,7 @@ class EquationAttributes(BaseModel):
     :param expression: The mathematical expression of the equation.
     :type expression: str
     """
+
     expression: str
 
 
@@ -21,6 +22,7 @@ class Equation(Block):
     :param equation: Attributes for the equation block.
     :type equation: EquationAttributes
     """
+
     equation: EquationAttributes
 
     @classmethod

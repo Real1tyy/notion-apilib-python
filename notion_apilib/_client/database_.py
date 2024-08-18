@@ -37,10 +37,10 @@ class NotionDatabaseProvider:
         return deserialize_database(response.json())
 
     def query_database(
-            self,
-            database: Database,
-            filter_: Optional[QueryFilter] = None,
-            sort: Optional[list[Sort]] = None,
+        self,
+        database: Database,
+        filter_: Optional[QueryFilter] = None,
+        sort: Optional[list[Sort]] = None,
     ) -> Database:
         """
         Queries a Notion database and retrieves its pages based on optional filters and sorting.
@@ -71,11 +71,11 @@ class NotionDatabaseProvider:
         )
 
     def _query_paginated_database(
-            self,
-            database: Database,
-            next_cursor: str,
-            filter_: Optional[QueryFilter] = None,
-            sort: dict[str, Any] = None,
+        self,
+        database: Database,
+        next_cursor: str,
+        filter_: Optional[QueryFilter] = None,
+        sort: dict[str, Any] = None,
     ) -> Database:
         """
         Handles paginated queries to a Notion database.
@@ -146,6 +146,7 @@ class NotionDatabaseProvider:
         data = database.serialize_to_json()
         response = self.notion_client.update_database(database.id.hex, data)
         return deserialize_database(response.json())
+
 
 # how to retrieve the latest results from a Notion database
 # {

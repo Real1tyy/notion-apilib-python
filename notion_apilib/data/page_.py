@@ -29,7 +29,13 @@ class Page(MajorObject):
         :return: The serialized page j.
         """
         data = self.json_dump({"id", "archived", "children"})
-        keys_to_check = {"rollup", "formula", "last_edited_time", "created_time", "unique_id"}
+        keys_to_check = {
+            "rollup",
+            "formula",
+            "last_edited_time",
+            "created_time",
+            "unique_id",
+        }
         return remove_forbidden_properties_from_data(data, keys_to_check)
 
     def add_property(self, property_: PageProperty) -> None:

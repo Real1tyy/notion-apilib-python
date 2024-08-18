@@ -59,20 +59,26 @@ def assert_formula_database_is_correct(data, expected_data):
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class, assert_func", [
+    "property_fixture, property_class, assert_func",
+    [
         ("formula_database", FormulaDatabase, assert_formula_database_is_correct),
         ("formula_page", FormulaPage, assert_formula_page_is_correct),
-    ]
+    ],
 )
 def test_formula_structure(request, property_fixture, property_class, assert_func):
-    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
+    extract_create_assert_structure(
+        request.getfixturevalue(property_fixture), property_class, assert_func
+    )
 
 
 @pytest.mark.parametrize(
-    "property_fixture, property_class", [
+    "property_fixture, property_class",
+    [
         ("formula_database", FormulaDatabase),
         ("formula_page", FormulaPage),
-    ]
+    ],
 )
 def test_formula_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)
+    extract_create_assert_serialization(
+        request.getfixturevalue(property_fixture), property_class
+    )

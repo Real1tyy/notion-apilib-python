@@ -16,6 +16,7 @@ class BookmarkAttributes(BaseModel):
     :param caption: A list of RichText objects representing the caption of the bookmark.
     :type caption: list[RichText]
     """
+
     url: str
     caption: list[RichText]
 
@@ -27,6 +28,7 @@ class Bookmark(Block):
     :param bookmark: Attributes for the bookmark block.
     :type bookmark: BookmarkAttributes
     """
+
     bookmark: BookmarkAttributes
 
     @classmethod
@@ -41,6 +43,7 @@ class EmbedAttributes(BaseModel):
     :param url: The URL of the embedded content.
     :type url: str
     """
+
     url: str
 
 
@@ -51,6 +54,7 @@ class Embed(Block):
     :param embed: Attributes for the embed block.
     :type embed: EmbedAttributes
     """
+
     embed: EmbedAttributes
 
     @classmethod
@@ -65,6 +69,7 @@ class LinkPreviewAttributes(BaseModel):
     :param url: The URL of the link to preview.
     :type url: str
     """
+
     url: str
 
 
@@ -75,6 +80,7 @@ class LinkPreview(Block):
     :param link_preview: Attributes for the link preview block.
     :type link_preview: LinkPreviewAttributes
     """
+
     link_preview: LinkPreviewAttributes
 
     @classmethod

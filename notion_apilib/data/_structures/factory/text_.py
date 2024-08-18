@@ -63,12 +63,12 @@ def create_text(content: str, link: Optional[data.Link] = None) -> data.Text:
 
 
 def create_annotations(
-        bold: bool,
-        italic: bool,
-        strikethrough: bool,
-        underline: bool,
-        code: bool,
-        color: str,
+    bold: bool,
+    italic: bool,
+    strikethrough: bool,
+    underline: bool,
+    code: bool,
+    color: str,
 ) -> data.Annotations:
     """
     Factory method to create an Annotations object.
@@ -104,13 +104,13 @@ def create_annotations(
 
 
 def create_rich_text(
-        type_: str,
-        annotations: data.Annotations,
-        plain_text: str,
-        text: Optional[data.Text] = None,
-        mention: Optional[data.Mention] = None,
-        equation: Optional['Equation'] = None,
-        href: Optional[str] = None,
+    type_: str,
+    annotations: data.Annotations,
+    plain_text: str,
+    text: Optional[data.Text] = None,
+    mention: Optional[data.Mention] = None,
+    equation: Optional["Equation"] = None,
+    href: Optional[str] = None,
 ) -> data.RichText:
     """
     Factory method to create a RichText object.
