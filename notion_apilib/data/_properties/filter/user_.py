@@ -24,14 +24,10 @@ def create_people_filter_contains(property_name: str, contains: str) -> PeopleFi
     Returns:
         PeopleFilter: The constructed PeopleFilter object with the specified property and filter criteria.
     """
-    return PeopleFilter(
-        property=property_name, people=FilterStructure(contains=contains)
-    )
+    return PeopleFilter(property=property_name, people=FilterStructure(contains=contains))
 
 
-def create_people_filter_does_not_contain(
-    property_name: str, does_not_contain: str
-) -> PeopleFilter:
+def create_people_filter_does_not_contain(property_name: str, does_not_contain: str) -> PeopleFilter:
     """
     Factory function to create a PeopleFilter object that checks if the people property does not contain a specific UUID.
 
@@ -60,12 +56,8 @@ def create_people_filter_is_empty(property_name: str, is_empty: bool) -> PeopleF
         PeopleFilter: The constructed PeopleFilter object with the specified property and filter criteria.
     """
     if is_empty:
-        return PeopleFilter(
-            property=property_name, people=FilterStructure(is_empty=True)
-        )
-    return PeopleFilter(
-        property=property_name, people=FilterStructure(is_not_empty=True)
-    )
+        return PeopleFilter(property=property_name, people=FilterStructure(is_empty=True))
+    return PeopleFilter(property=property_name, people=FilterStructure(is_not_empty=True))
 
 
 __all__ = [

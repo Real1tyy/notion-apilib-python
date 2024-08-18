@@ -17,9 +17,7 @@ from .constants import *
 
 
 @pytest.fixture
-def database_properties(
-    date_database, unique_id_database, number_database, title_database
-):
+def database_properties(date_database, unique_id_database, number_database, title_database):
     date_data = date_database(DateDatabase.get_associated_property_type())
     unique_id_data = unique_id_database(UniqueIdDatabase.get_associated_property_type())
     number_data = number_database(NumberDatabase.get_associated_property_type())

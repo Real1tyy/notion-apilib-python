@@ -39,9 +39,7 @@ def create_checkbox_filter(property_name: str, equals: bool) -> CheckboxFilter:
     Returns:
         CheckboxFilter: The constructed CheckboxFilter object with the specified property and filter criteria.
     """
-    return CheckboxFilter(
-        property=property_name, checkbox=CheckboxFilterStructure(equals=equals)
-    )
+    return CheckboxFilter(property=property_name, checkbox=CheckboxFilterStructure(equals=equals))
 
 
 class MultiSelectFilter(Filter):
@@ -56,9 +54,7 @@ class MultiSelectFilter(Filter):
     multi_select: FilterStructure
 
 
-def create_multi_select_filter_contains(
-    property_name: str, contains: str
-) -> MultiSelectFilter:
+def create_multi_select_filter_contains(property_name: str, contains: str) -> MultiSelectFilter:
     """
     Factory function to create a MultiSelectFilter object.
 
@@ -69,14 +65,10 @@ def create_multi_select_filter_contains(
     Returns:
         MultiSelectFilter: The constructed MultiSelectFilter object with the specified property and filter criteria.
     """
-    return MultiSelectFilter(
-        property=property_name, multi_select=FilterStructure(contains=contains)
-    )
+    return MultiSelectFilter(property=property_name, multi_select=FilterStructure(contains=contains))
 
 
-def create_multi_select_filter_does_not_contains(
-    property_name: str, does_not_contain: str
-) -> MultiSelectFilter:
+def create_multi_select_filter_does_not_contains(property_name: str, does_not_contain: str) -> MultiSelectFilter:
     """
     Factory function to create a MultiSelectFilter object.
 
@@ -93,9 +85,7 @@ def create_multi_select_filter_does_not_contains(
     )
 
 
-def create_multi_select_filter_is_empty(
-    property_name: str, is_empty: bool
-) -> MultiSelectFilter:
+def create_multi_select_filter_is_empty(property_name: str, is_empty: bool) -> MultiSelectFilter:
     """
     Factory function to create a MultiSelectFilter object.
 
@@ -106,12 +96,8 @@ def create_multi_select_filter_is_empty(
         MultiSelectFilter: The constructed MultiSelectFilter object with the specified property and filter criteria.
     """
     if is_empty:
-        return MultiSelectFilter(
-            property=property_name, multi_select=FilterStructure(is_empty=True)
-        )
-    return MultiSelectFilter(
-        property=property_name, multi_select=FilterStructure(is_not_empty=True)
-    )
+        return MultiSelectFilter(property=property_name, multi_select=FilterStructure(is_empty=True))
+    return MultiSelectFilter(property=property_name, multi_select=FilterStructure(is_not_empty=True))
 
 
 class SelectFilter(Filter):
@@ -140,9 +126,7 @@ def create_select_filter_equals(property_name: str, equals: str) -> SelectFilter
     return SelectFilter(property=property_name, select=FilterStructure(equals=equals))
 
 
-def create_select_filter_does_not_equal(
-    property_name: str, does_not_equal: str
-) -> SelectFilter:
+def create_select_filter_does_not_equal(property_name: str, does_not_equal: str) -> SelectFilter:
     """
     Factory function to create a SelectFilter object that checks if the select property does not equal a specific value.
 
@@ -153,9 +137,7 @@ def create_select_filter_does_not_equal(
     Returns:
         SelectFilter: The constructed SelectFilter object with the specified property and filter criteria.
     """
-    return SelectFilter(
-        property=property_name, select=FilterStructure(does_not_equal=does_not_equal)
-    )
+    return SelectFilter(property=property_name, select=FilterStructure(does_not_equal=does_not_equal))
 
 
 def create_select_filter_is_empty(property_name: str, is_empty: bool) -> SelectFilter:
@@ -170,12 +152,8 @@ def create_select_filter_is_empty(property_name: str, is_empty: bool) -> SelectF
         SelectFilter: The constructed SelectFilter object with the specified property and filter criteria.
     """
     if is_empty:
-        return SelectFilter(
-            property=property_name, select=FilterStructure(is_empty=True)
-        )
-    return SelectFilter(
-        property=property_name, select=FilterStructure(is_not_empty=True)
-    )
+        return SelectFilter(property=property_name, select=FilterStructure(is_empty=True))
+    return SelectFilter(property=property_name, select=FilterStructure(is_not_empty=True))
 
 
 class StatusFilter(Filter):
@@ -204,9 +182,7 @@ def create_status_filter_equals(property_name: str, equals: str) -> StatusFilter
     return StatusFilter(property=property_name, status=FilterStructure(equals=equals))
 
 
-def create_status_filter_does_not_equal(
-    property_name: str, does_not_equal: str
-) -> StatusFilter:
+def create_status_filter_does_not_equal(property_name: str, does_not_equal: str) -> StatusFilter:
     """
     Factory function to create a StatusFilter object that checks if the status property does not equal a specific value.
 
@@ -217,9 +193,7 @@ def create_status_filter_does_not_equal(
     Returns:
         StatusFilter: The constructed StatusFilter object with the specified property and filter criteria.
     """
-    return StatusFilter(
-        property=property_name, status=FilterStructure(does_not_equal=does_not_equal)
-    )
+    return StatusFilter(property=property_name, status=FilterStructure(does_not_equal=does_not_equal))
 
 
 def create_status_filter_is_empty(property_name: str, is_empty: bool) -> StatusFilter:
@@ -234,12 +208,8 @@ def create_status_filter_is_empty(property_name: str, is_empty: bool) -> StatusF
         StatusFilter: The constructed StatusFilter object with the specified property and filter criteria.
     """
     if is_empty:
-        return StatusFilter(
-            property=property_name, status=FilterStructure(is_empty=True)
-        )
-    return StatusFilter(
-        property=property_name, status=FilterStructure(is_not_empty=True)
-    )
+        return StatusFilter(property=property_name, status=FilterStructure(is_empty=True))
+    return StatusFilter(property=property_name, status=FilterStructure(is_not_empty=True))
 
 
 __all__ = [

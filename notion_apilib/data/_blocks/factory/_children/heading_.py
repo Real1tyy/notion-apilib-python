@@ -22,9 +22,7 @@ def create_headings_attributes(
     :param is_toggleable: Whether the heading is toggleable.
     :return: A new HeadingsAttributes instance.
     """
-    return block_structures.HeadingsAttributes(
-        rich_text=rich_text, color=color, is_toggleable=is_toggleable
-    )
+    return block_structures.HeadingsAttributes(rich_text=rich_text, color=color, is_toggleable=is_toggleable)
 
 
 def create_heading(
@@ -50,9 +48,7 @@ def create_heading(
         heading_type,
         parent=parent,
         children=children,
-        block_type_specific_params=create_headings_attributes(
-            rich_text, color, is_toggleable
-        ),
+        block_type_specific_params=create_headings_attributes(rich_text, color, is_toggleable),
     )
 
 

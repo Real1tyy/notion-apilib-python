@@ -152,9 +152,7 @@ def assert_url_database_is_correct(data, expected_data):
     ],
 )
 def test_property_structure(request, property_fixture, property_class, assert_func):
-    extract_create_assert_structure(
-        request.getfixturevalue(property_fixture), property_class, assert_func
-    )
+    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
 
 
 @pytest.mark.parametrize(
@@ -171,6 +169,4 @@ def test_property_structure(request, property_fixture, property_class, assert_fu
     ],
 )
 def test_property_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(
-        request.getfixturevalue(property_fixture), property_class
-    )
+    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)

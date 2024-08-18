@@ -88,9 +88,7 @@ def create_page_mention(id_: UUID) -> PageMention:
     return PageMention(id=id_)
 
 
-def create_template_mention_date(
-    type_: str, template_mention_date: str
-) -> TemplateMentionDate:
+def create_template_mention_date(type_: str, template_mention_date: str) -> TemplateMentionDate:
     """
     Factory method to create a TemplateMentionDate.
 
@@ -109,9 +107,7 @@ def create_template_mention_date(
     return TemplateMentionDate(type=type_, template_mention_date=template_mention_date)
 
 
-def create_template_mention_user(
-    type_: str, template_mention_user: str
-) -> TemplateMentionUser:
+def create_template_mention_user(type_: str, template_mention_user: str) -> TemplateMentionUser:
     """
     Factory method to create a TemplateMentionUser.
 

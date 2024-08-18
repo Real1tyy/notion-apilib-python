@@ -46,9 +46,7 @@ def assert_callout_data_is_correct(data: Callout, expected_data: dict):
     assert_block_data_is_correct(data, expected_data)
     callout_data = data.callout
     expected_callout_data = expected_data["callout"]
-    assert_rich_text_structure(
-        callout_data.rich_text, expected_callout_data["rich_text"]
-    )
+    assert_rich_text_structure(callout_data.rich_text, expected_callout_data["rich_text"])
     assert_icon_structure(callout_data.icon, expected_callout_data["icon"])
     assert callout_data.color == expected_callout_data["color"]
 
@@ -59,10 +57,7 @@ def assert_synced_block_data_is_correct(data: SyncedBlock, expected_data: dict):
     expected_synced_block_data = expected_data["synced_block"]
 
     if synced_block_data.synced_from is not None:
-        assert (
-            synced_block_data.synced_from.block_id
-            == expected_synced_block_data["synced_from"]["block_id"]
-        )
+        assert synced_block_data.synced_from.block_id == expected_synced_block_data["synced_from"]["block_id"]
     assert synced_block_data.children == expected_synced_block_data["children"]
 
 

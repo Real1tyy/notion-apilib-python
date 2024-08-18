@@ -5,9 +5,7 @@ from ..data import Code, block_structures
 from ._general import _create_block
 
 
-def create_code(
-    parent: Parent, caption: list[RichText], rich_text: list[RichText], language: str
-) -> Code:
+def create_code(parent: Parent, caption: list[RichText], rich_text: list[RichText], language: str) -> Code:
     """
     Factory method to create Code object
     :param parent: parent object

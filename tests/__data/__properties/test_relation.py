@@ -143,21 +143,10 @@ def assert_rollup_page_is_correct(data, expected_data):
 
 def assert_rollup_database_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
-    assert (
-        data.rollup.relation_property_id
-        == expected_data["rollup"]["relation_property_id"]
-    )
-    assert (
-        data.rollup.relation_property_name
-        == expected_data["rollup"]["relation_property_name"]
-    )
-    assert (
-        data.rollup.rollup_property_name
-        == expected_data["rollup"]["rollup_property_name"]
-    )
-    assert (
-        data.rollup.rollup_property_id == expected_data["rollup"]["rollup_property_id"]
-    )
+    assert data.rollup.relation_property_id == expected_data["rollup"]["relation_property_id"]
+    assert data.rollup.relation_property_name == expected_data["rollup"]["relation_property_name"]
+    assert data.rollup.rollup_property_name == expected_data["rollup"]["rollup_property_name"]
+    assert data.rollup.rollup_property_id == expected_data["rollup"]["rollup_property_id"]
     assert data.rollup.function == expected_data["rollup"]["function"]
 
 
@@ -170,15 +159,11 @@ def assert_rollup_database_is_correct(data, expected_data):
     ],
 )
 def test_property_structure(request, property_fixture, property_class, assert_func):
-    extract_create_assert_structure(
-        request.getfixturevalue(property_fixture), property_class, assert_func
-    )
+    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
 
 
 def test_rollup_page_structure(rollup_page):
-    extract_create_assert_structure(
-        rollup_page, RollupPage, assert_rollup_page_is_correct
-    )
+    extract_create_assert_structure(rollup_page, RollupPage, assert_rollup_page_is_correct)
 
 
 @pytest.mark.parametrize(
@@ -190,9 +175,7 @@ def test_rollup_page_structure(rollup_page):
     ],
 )
 def test_property_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(
-        request.getfixturevalue(property_fixture), property_class
-    )
+    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)
 
 
 def test_rollup_page_serialization(rollup_page):

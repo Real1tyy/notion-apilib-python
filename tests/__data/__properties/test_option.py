@@ -172,9 +172,7 @@ def assert_group_structure_is_correct(groups, expected_groups):
 
 def assert_multi_select_page_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
-    assert_option_structure_is_correct(
-        data.multi_select.options, expected_data["multi_select"]["options"]
-    )
+    assert_option_structure_is_correct(data.multi_select.options, expected_data["multi_select"]["options"])
 
 
 def assert_multi_select_database_is_correct(data, expected_data):
@@ -188,9 +186,7 @@ def assert_select_page_is_correct(data, expected_data):
 
 def assert_select_database_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
-    assert_option_structure_is_correct(
-        data.select.options, expected_data["select"]["options"]
-    )
+    assert_option_structure_is_correct(data.select.options, expected_data["select"]["options"])
 
 
 def assert_status_page_is_correct(data, expected_data):
@@ -200,12 +196,8 @@ def assert_status_page_is_correct(data, expected_data):
 
 def assert_status_database_is_correct(data, expected_data):
     assert_properties_data_is_correct(data, expected_data)
-    assert_option_structure_is_correct(
-        data.status.options, expected_data["status"]["options"]
-    )
-    assert_group_structure_is_correct(
-        data.status.groups, expected_data["status"]["groups"]
-    )
+    assert_option_structure_is_correct(data.status.options, expected_data["status"]["options"])
+    assert_group_structure_is_correct(data.status.groups, expected_data["status"]["groups"])
 
 
 def transform_page_option(option: dict) -> dict:
@@ -252,18 +244,14 @@ def transform_options_groups_data(data, change_function: Callable):
     ],
 )
 def test_property_structure(request, property_fixture, property_class, assert_func):
-    extract_create_assert_structure(
-        request.getfixturevalue(property_fixture), property_class, assert_func
-    )
+    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
 
 
 def serialization_options_tester(data_provider, property_class, transform_option):
     data = extract_property_data(data_provider, property_class)
     property_ = create_property_object(data, property_class)
     json = property_.serialize_to_json()
-    property_data = transform_options_groups_data(
-        data[property_class.get_payload_property_name()], transform_option
-    )
+    property_data = transform_options_groups_data(data[property_class.get_payload_property_name()], transform_option)
     assert json[property_class.get_payload_property_name()] == property_data
 
 
@@ -276,9 +264,7 @@ def serialization_options_tester(data_provider, property_class, transform_option
     ],
 )
 def test_page_serialization(request, property_fixture, property_class):
-    serialization_options_tester(
-        request.getfixturevalue(property_fixture), property_class, transform_page_option
-    )
+    serialization_options_tester(request.getfixturevalue(property_fixture), property_class, transform_page_option)
 
 
 @pytest.mark.parametrize(
@@ -305,6 +291,4 @@ def test_database_serialization(request, property_fixture, property_class):
     ],
 )
 def test_checkbox_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(
-        request.getfixturevalue(property_fixture), property_class
-    )
+    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)

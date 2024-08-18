@@ -29,9 +29,7 @@ def create_checkbox_page(parent: "Page", name: str, checkbox: bool) -> CheckboxP
     Returns:
         CheckboxPage: A new CheckboxPage object.
     """
-    return _create_page_property(
-        CheckboxPage, parent=parent, name=name, property_specific_params=checkbox
-    )
+    return _create_page_property(CheckboxPage, parent=parent, name=name, property_specific_params=checkbox)
 
 
 def create_checkbox_database(parent: "Database", name: str) -> CheckboxDatabase:
@@ -45,14 +43,10 @@ def create_checkbox_database(parent: "Database", name: str) -> CheckboxDatabase:
     Returns:
         CheckboxDatabase: A new CheckboxDatabase object.
     """
-    return _create_database_property(
-        CheckboxDatabase, parent=parent, name=name, property_specific_params={}
-    )
+    return _create_database_property(CheckboxDatabase, parent=parent, name=name, property_specific_params={})
 
 
-def create_multi_select_page(
-    parent: "Page", name: str, options: list[OptionPage]
-) -> MultiSelectPage:
+def create_multi_select_page(parent: "Page", name: str, options: list[OptionPage]) -> MultiSelectPage:
     """
     Factory method to create a MultiSelectPage object.
 
@@ -73,9 +67,7 @@ def create_multi_select_page(
     )
 
 
-def create_multi_select_database(
-    parent: "Database", name: str, options: list[OptionPage]
-) -> MultiSelectDatabase:
+def create_multi_select_database(parent: "Database", name: str, options: list[OptionPage]) -> MultiSelectDatabase:
     """
     Factory method to create a MultiSelectDatabase object.
 
@@ -108,14 +100,10 @@ def create_select_page(parent: "Page", name: str, option: OptionPage) -> SelectP
     Returns:
         SelectPage: A new SelectPage object.
     """
-    return _create_page_property(
-        SelectPage, parent=parent, name=name, property_specific_params=option
-    )
+    return _create_page_property(SelectPage, parent=parent, name=name, property_specific_params=option)
 
 
-def create_select_database(
-    parent: "Database", name: str, options: list[OptionPage]
-) -> SelectDatabase:
+def create_select_database(parent: "Database", name: str, options: list[OptionPage]) -> SelectDatabase:
     """
     Factory method to create a SelectDatabase object.
 
@@ -147,9 +135,7 @@ def create_status_page(parent: "Page", name: str, status: OptionPage) -> StatusP
     Returns:
         StatusPage: A new StatusPage object.
     """
-    return _create_page_property(
-        StatusPage, parent=parent, name=name, property_specific_params=status
-    )
+    return _create_page_property(StatusPage, parent=parent, name=name, property_specific_params=status)
 
 
 def create_status_database(

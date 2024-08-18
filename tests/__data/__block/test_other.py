@@ -33,9 +33,7 @@ def assert_empty_block_data_is_correct(data: Block, expected_data: dict):
 
 @pytest.mark.parametrize("block_class", [Divider, ColumnList, Breadcrumb, Unsupported])
 def test_empty_block_structure(empty_block, block_class):
-    extract_create_assert_structure(
-        empty_block, block_class, assert_empty_block_data_is_correct
-    )
+    extract_create_assert_structure(empty_block, block_class, assert_empty_block_data_is_correct)
 
 
 @pytest.mark.parametrize("block_class", [Divider, ColumnList, Breadcrumb, Unsupported])

@@ -13,9 +13,7 @@ class NotionAPIBlocksClient:
     requests_provider: RequestsClient
 
     def append_block_children(self, block_id: str, data: dict) -> Response:
-        return self.requests_provider.perform_patch_request(
-            f"blocks/{block_id}/children", data
-        )
+        return self.requests_provider.perform_patch_request(f"blocks/{block_id}/children", data)
 
     def retrieve_block(self, block_id: str) -> Response:
         return self.requests_provider.perform_get_request(f"blocks/{block_id}")

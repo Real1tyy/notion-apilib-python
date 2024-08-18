@@ -36,9 +36,7 @@ class BasicConfiguration(
         printing out purposes
         :return:
         """
-        return json.dumps(
-            self.model_dump(mode="json", exclude_none=True, by_alias=True), indent=4
-        )
+        return json.dumps(self.model_dump(mode="json", exclude_none=True, by_alias=True), indent=4)
 
 
 class ExtraConfiguration(BasicConfiguration, ABC, extra="allow"):

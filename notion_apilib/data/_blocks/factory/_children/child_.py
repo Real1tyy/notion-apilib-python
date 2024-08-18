@@ -34,9 +34,7 @@ def create_child_block(
     )
 
 
-def create_child_database(
-    parent: Parent, title: str, children: Optional[list[Block]] = None
-) -> ChildDatabase:
+def create_child_database(parent: Parent, title: str, children: Optional[list[Block]] = None) -> ChildDatabase:
     """
     Factory method to create a ChildDatabase object.
 
@@ -48,9 +46,7 @@ def create_child_database(
     return create_child_block(ChildDatabase, parent, title, children)
 
 
-def create_child_page(
-    parent: Parent, title: str, children: Optional[list[Block]] = None
-) -> ChildPage:
+def create_child_page(parent: Parent, title: str, children: Optional[list[Block]] = None) -> ChildPage:
     """
     Factory method to create a ChildPage object.
 

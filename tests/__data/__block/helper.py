@@ -11,9 +11,7 @@ from .assertions import (
 )
 
 
-def extract_create_assert_structure(
-    data_provider, block_class: Type[Block], assert_structure_func: Callable
-):
+def extract_create_assert_structure(data_provider, block_class: Type[Block], assert_structure_func: Callable):
     data = extract_block_data(data_provider, block_class)
     block = create_block_object(data, block_class)
     assert_structure_func(block, data)
