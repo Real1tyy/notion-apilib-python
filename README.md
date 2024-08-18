@@ -45,10 +45,11 @@ page = page_provider.retrieve_page("your_page_id")
 
 ## Documentation
 
-[Usage Examples](examples) \
-[Changelog](CHANGELOG.md)
+[Doxygen Documentation](https://real1tyy.github.io/notion-apilib-python/) \
+[Usage Examples](docs/examples) \
+[Changelog](docs/CHANGELOG.md)
 
-### Modules
+### Main Package Modules Breakdown
 
 #### notion-apilib:
 

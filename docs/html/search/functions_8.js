@@ -1,7 +1,0 @@
-var searchData=
-[
-  ['serialize_5fto_5fjson_447',['serialize_to_json',['../classnotion__apilib_1_1data_1_1__blocks_1_1block_1_1Block.html#a60ae634aacb7d02b9afd56b20a9c2fa8',1,'notion_apilib.data._blocks.block.Block.serialize_to_json()'],['../classnotion__apilib_1_1data_1_1__properties_1_1sort___1_1Sort.html#a19eff6ef607035493d1a1f5e6f74d9b2',1,'notion_apilib.data._properties.sort_.Sort.serialize_to_json()'],['../classnotion__apilib_1_1data_1_1database___1_1Database.html#a812c1e38725c735129dcb740202af4ec',1,'notion_apilib.data.database_.Database.serialize_to_json()'],['../classnotion__apilib_1_1data_1_1object___1_1Object.html#ac3540655ce2fdd8e3c9229e180de1884',1,'notion_apilib.data.object_.Object.serialize_to_json()'],['../classnotion__apilib_1_1data_1_1page___1_1Page.html#a00b32d1a1564581606036858c343bdb6',1,'notion_apilib.data.page_.Page.serialize_to_json()']]],
-  ['set_5fblock_5fchildren_448',['set_block_children',['../classnotion__apilib_1_1__client_1_1block___1_1NotionBlockProvider.html#a424a7035f2135b1efdf4b237bfc960ae',1,'notion_apilib::_client::block_::NotionBlockProvider']]],
-  ['set_5fpage_5fchildren_449',['set_page_children',['../classnotion__apilib_1_1__client_1_1page___1_1NotionPageProvider.html#a3fa6bf756d8a18efd55f38914568ef9b',1,'notion_apilib::_client::page_::NotionPageProvider']]],
-  ['set_5fparent_5fid_450',['set_parent_id',['../classnotion__apilib_1_1data_1_1__structures_1_1data_1_1parent___1_1Parent.html#acfa05721da19bad8e46e3752e33d9e41',1,'notion_apilib::data::_structures::data::parent_::Parent']]]
-];
