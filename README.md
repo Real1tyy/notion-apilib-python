@@ -45,7 +45,7 @@ page = page_provider.retrieve_page("your_page_id")
 
 ## Documentation
 
-[Usage Examples](docs/examples) \
+[Usage Examples](examples) \
 [Changelog](CHANGELOG.md)
 
 ### Modules
