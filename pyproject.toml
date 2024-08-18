@@ -115,6 +115,11 @@ pylint = "^3.2.6"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.poetry.scripts]
+format = "scripts:format_code"
+lint = "scripts:lint_code"
+
+
 [tool.semantic_release]
 version_variable = "notion_apilib/__init__.py:__version__"
 branch = "main"
