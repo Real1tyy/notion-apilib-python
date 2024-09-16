@@ -7,8 +7,8 @@ from pydantic import BaseModel, model_serializer, model_validator
 # First Party
 from notion_apilib.data import BasicConfiguration
 
-from .mention_ import Mention
 from ..._util import check_if_exactly_one_not_none_val
+from .mention_ import Mention
 
 
 class Link(BaseModel):
@@ -129,9 +129,7 @@ class RichText(BasicConfiguration):
     def parse_properties(cls, v: Any):
         properties = [v.text, v.mention, v.equation]
         if check_if_exactly_one_not_none_val(properties):
-            raise ValueError(
-                f"Only one of the values from: {properties} can be provided."
-            )
+            raise ValueError(f"Only one of the values from: {properties} can be provided.")
         return v
 
 

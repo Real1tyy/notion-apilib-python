@@ -4,10 +4,7 @@ import pytest
 # First Party
 from notion_apilib.data.blocks import ChildDatabase, ChildPage
 from tests.__data.__block.assertions import assert_block_data_is_correct
-from tests.__data.__block.helper import (
-    extract_create_assert_serialization,
-    extract_create_assert_structure,
-)
+from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
 
 TITLE = "BEST TITLE"
 
@@ -32,9 +29,7 @@ def assert_child_data_is_correct(data, expected_data):
 
 @pytest.mark.parametrize("child_class", [ChildPage, ChildDatabase])
 def test_child_structure(child_block, child_class):
-    extract_create_assert_structure(
-        child_block, child_class, assert_child_data_is_correct
-    )
+    extract_create_assert_structure(child_block, child_class, assert_child_data_is_correct)
 
 
 @pytest.mark.parametrize("child_class", [ChildPage, ChildDatabase])

@@ -107,9 +107,7 @@ def create_file_attributes(
     ValueError
         If neither external nor file is provided.
     """
-    return FileAttributes(
-        type=type_, caption=caption, name=name, external=external, file=file
-    )
+    return FileAttributes(type=type_, caption=caption, name=name, external=external, file=file)
 
 
 __all__ = [

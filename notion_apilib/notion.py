@@ -2,11 +2,7 @@
 from dependency_injector import containers, providers
 
 # First Party
-from notion_apilib._client import (
-    NotionBlockProvider,
-    NotionDatabaseProvider,
-    NotionPageProvider,
-)
+from notion_apilib._client import NotionBlockProvider, NotionDatabaseProvider, NotionPageProvider
 from notion_apilib._client._api_requests import (
     NotionAPIBlocksClient,
     NotionAPIDatabasesClient,
@@ -19,9 +15,7 @@ from notion_apilib._client._api_requests import (
 class Container(containers.DeclarativeContainer):
     config = providers.Configuration()
 
-    _header_provider: NotionHeaderProvider = providers.Singleton(
-        NotionHeaderProvider, config.api_key
-    )
+    _header_provider: NotionHeaderProvider = providers.Singleton(NotionHeaderProvider, config.api_key)
 
     _requests_client: RequestsClient = providers.Singleton(
         RequestsClient,

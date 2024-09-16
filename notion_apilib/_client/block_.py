@@ -42,9 +42,7 @@ class NotionBlockProvider:
         """
         return self.append_block_children(block.parent.get_parent_id(), [block])
 
-    def append_block_children(
-            self, object_id: str, children_blocks: list[Block], after_block_id: str = ""
-    ) -> Block:
+    def append_block_children(self, object_id: str, children_blocks: list[Block], after_block_id: str = "") -> Block:
         """
         Appends children blocks to an existing block in the Notion API. By default, appends the children at the end
         of the children block list or after the id of the block specified in the after_block_id parameter. The id of
@@ -151,10 +149,7 @@ class NotionBlockProvider:
         """
         response = self.notion_client.retrieve_block_children(id_.hex, {})
         children_data = _get_children_from_json(response)
-        new_children = [
-            self.retrieve_block(_get_child_id_from_json(child), recursively)
-            for child in children_data
-        ]
+        new_children = [self.retrieve_block(_get_child_id_from_json(child), recursively) for child in children_data]
         return _handle_pagination(
             new_children,
             response,
@@ -165,11 +160,11 @@ class NotionBlockProvider:
         )
 
     def _retrieve_children_paginated(
-            self,
-            id_: UUID,
-            next_cursor: str,
-            children: list[Block],
-            recursively: bool = True,
+        self,
+        id_: UUID,
+        next_cursor: str,
+        children: list[Block],
+        recursively: bool = True,
     ) -> list[Block]:
         """
         Helper function to handle paginated retrieval of children blocks.
@@ -190,12 +185,7 @@ class NotionBlockProvider:
         data = {"start_cursor": next_cursor}
         response = self.notion_client.retrieve_block_children(id_.hex, data)
         children_data = _get_children_from_json(response)
-        children.extend(
-            [
-                self.retrieve_block(_get_child_id_from_json(child), recursively)
-                for child in children_data
-            ]
-        )
+        children.extend([self.retrieve_block(_get_child_id_from_json(child), recursively) for child in children_data])
         return _handle_pagination(
             children,
             response,

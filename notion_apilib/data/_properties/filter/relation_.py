@@ -16,9 +16,7 @@ class RelationFilter(Filter):
     relation: FilterStructure
 
 
-def create_relation_filter_contains(
-        property_name: str, contains: str
-) -> RelationFilter:
+def create_relation_filter_contains(property_name: str, contains: str) -> RelationFilter:
     """
     Factory function to create a RelationFilter object that checks if the relation property contains a specific UUID.
 
@@ -29,14 +27,10 @@ def create_relation_filter_contains(
     Returns:
         RelationFilter: The constructed RelationFilter object with the specified property and filter criteria.
     """
-    return RelationFilter(
-        property=property_name, relation=FilterStructure(contains=contains)
-    )
+    return RelationFilter(property=property_name, relation=FilterStructure(contains=contains))
 
 
-def create_relation_filter_does_not_contain(
-        property_name: str, does_not_contain: str
-) -> RelationFilter:
+def create_relation_filter_does_not_contain(property_name: str, does_not_contain: str) -> RelationFilter:
     """
     Factory function to create a RelationFilter object that checks if the relation property does not contain a specific UUID.
 
@@ -53,9 +47,7 @@ def create_relation_filter_does_not_contain(
     )
 
 
-def create_relation_filter_is_empty(
-        property_name: str, is_empty: bool
-) -> RelationFilter:
+def create_relation_filter_is_empty(property_name: str, is_empty: bool) -> RelationFilter:
     """
     Factory function to create a RelationFilter object that checks if the relation property is empty or not.
 
@@ -67,12 +59,8 @@ def create_relation_filter_is_empty(
         RelationFilter: The constructed RelationFilter object with the specified property and filter criteria.
     """
     if is_empty:
-        return RelationFilter(
-            property=property_name, relation=FilterStructure(is_empty=True)
-        )
-    return RelationFilter(
-        property=property_name, relation=FilterStructure(is_not_empty=True)
-    )
+        return RelationFilter(property=property_name, relation=FilterStructure(is_empty=True))
+    return RelationFilter(property=property_name, relation=FilterStructure(is_not_empty=True))
 
 
 class RollupFilter(Filter):
@@ -88,7 +76,7 @@ class RollupFilter(Filter):
 
 
 def create_rollup_filter(
-        property_name: str, filter_type: Literal["any", "every", "none"], criteria: Filter
+    property_name: str, filter_type: Literal["any", "every", "none"], criteria: Filter
 ) -> RollupFilter:
     """
     Factory function to create a RollupFilter object for array rollup values.

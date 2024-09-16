@@ -8,13 +8,13 @@ from ._general import _create_database_property, _create_page_property
 
 
 def create_formula_page(
-        parent: "Page",
-        name: str,
-        type_: Literal["boolean", "date", "number", "string"],
-        number: Optional[float] = None,
-        boolean: Optional[bool] = None,
-        date: Optional[datetime] = None,
-        string: Optional[str] = None,
+    parent: "Page",
+    name: str,
+    type_: Literal["boolean", "date", "number", "string"],
+    number: Optional[float] = None,
+    boolean: Optional[bool] = None,
+    date: Optional[datetime] = None,
+    string: Optional[str] = None,
 ) -> FormulaPage:
     """
     Factory method to create a FormulaPage object.
@@ -35,15 +35,11 @@ def create_formula_page(
         FormulaPage,
         parent=parent,
         name=name,
-        property_specific_params=FormulaStructure(
-            type=type_, number=number, boolean=boolean, date=date, string=string
-        ),
+        property_specific_params=FormulaStructure(type=type_, number=number, boolean=boolean, date=date, string=string),
     )
 
 
-def create_formula_database(
-        parent: "Database", name: str, expression: str
-) -> FormulaDatabase:
+def create_formula_database(parent: "Database", name: str, expression: str) -> FormulaDatabase:
     """
     Factory method to create a FormulaDatabase object.
 

@@ -1,12 +1,12 @@
 # Standard Library
-from typing import Literal, Optional, Any
+from typing import Any, Literal, Optional
 from uuid import UUID
 
 # Third Party
 from pydantic import BaseModel, model_validator
 
-from ..types_ import parents_types
 from ..._util import check_if_exactly_one_not_none_val
+from ..types_ import parents_types
 
 
 class Parent(BaseModel):
@@ -38,9 +38,7 @@ class Parent(BaseModel):
     def parse_properties(cls, v: Any):
         properties = [v.database_id, v.page_id, v.block_id, v.workspace]
         if check_if_exactly_one_not_none_val(properties):
-            raise ValueError(
-                f"Only one of the values from: {properties} can be provided."
-            )
+            raise ValueError(f"Only one of the values from: {properties} can be provided.")
         return v
 
     def get_parent_id(self) -> str:
@@ -60,9 +58,7 @@ class Parent(BaseModel):
             return self.block_id.hex
         return "workspace"
 
-    def set_parent_id(
-            self, parent_type: parents_types, parent_id: Optional[UUID] = None
-    ):
+    def set_parent_id(self, parent_type: parents_types, parent_id: Optional[UUID] = None):
         """
         Sets the parent id of the parent object.
 

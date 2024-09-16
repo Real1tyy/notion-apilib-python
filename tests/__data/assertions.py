@@ -1,10 +1,6 @@
 # First Party
 from notion_apilib.data.object_ import MajorObject, Object
-from tests.__data.__structures.assertions import (
-    assert_icon_structure,
-    assert_parent_structure,
-    assert_user_structure,
-)
+from tests.__data.__structures.assertions import assert_icon_structure, assert_parent_structure, assert_user_structure
 
 
 def assert_object_data_is_correct(data: Object, expected_data: dict):

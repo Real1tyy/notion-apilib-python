@@ -4,10 +4,7 @@ import pytest
 # First Party
 from notion_apilib.data.blocks import Equation
 from tests.__data.__block.assertions import assert_block_data_is_correct
-from tests.__data.__block.helper import (
-    extract_create_assert_serialization,
-    extract_create_assert_structure,
-)
+from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants
 EQUATION_EXPRESSION = "E = mc^2"
@@ -34,9 +31,7 @@ def assert_equation_data_is_correct(data: Equation, expected_data: dict):
 
 
 def test_block_structure(equation_block):
-    extract_create_assert_structure(
-        equation_block, Equation, assert_equation_data_is_correct
-    )
+    extract_create_assert_structure(equation_block, Equation, assert_equation_data_is_correct)
 
 
 def test_block_serialization(equation_block):

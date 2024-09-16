@@ -1,6 +1,6 @@
 # Standard Library
 from datetime import datetime
-from typing import Optional, Any
+from typing import Any, Optional
 
 # Third Party
 from pydantic import BaseModel, model_validator
@@ -8,8 +8,8 @@ from pydantic import BaseModel, model_validator
 # First Party
 import notion_apilib.data._structures.data.text_ as text
 
-from ..types_ import file_type
 from ..._util import check_if_exactly_one_not_none_val
+from ..types_ import file_type
 
 
 class FileObject(BaseModel):
@@ -64,9 +64,7 @@ class ResourcesAttributes(BaseModel, arbitrary_types_allowed=True):
     def parse_properties(cls, v: Any):
         properties = [v.external, v.file]
         if check_if_exactly_one_not_none_val(properties):
-            raise ValueError(
-                f"Only one of the values from: {properties} can be provided."
-            )
+            raise ValueError(f"Only one of the values from: {properties} can be provided.")
         return v
 
 

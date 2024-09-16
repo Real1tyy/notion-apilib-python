@@ -2,22 +2,11 @@
 import pytest
 
 # First Party
-from notion_apilib.data.blocks import (
-    BlockType,
-    BulletedListItem,
-    NumberedListItem,
-    Paragraph,
-    Quote,
-    ToDo,
-    Toggle,
-)
+from notion_apilib.data.blocks import BlockType, BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle
 from tests.__data.__block.assertions import assert_block_data_is_correct
 from tests.__data.__structures.assertions import assert_rich_text_structure
 
-from ..helper import (
-    extract_create_assert_serialization,
-    extract_create_assert_structure,
-)
+from ..helper import extract_create_assert_serialization, extract_create_assert_structure
 
 # Constants
 IS_CHECKED = True

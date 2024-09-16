@@ -1,20 +1,11 @@
 # First Party
 from notion_apilib.data.structures import User
 
-from ..data import (
-    CreatedByDatabase,
-    CreatedByPage,
-    LastEditedByDatabase,
-    LastEditedByPage,
-    PeopleDatabase,
-    PeoplePage,
-)
+from ..data import CreatedByDatabase, CreatedByPage, LastEditedByDatabase, LastEditedByPage, PeopleDatabase, PeoplePage
 from ._general import _create_database_property, _create_page_property
 
 
-def create_created_by_page(
-        parent: "Page", name: str, created_by: User
-) -> CreatedByPage:
+def create_created_by_page(parent: "Page", name: str, created_by: User) -> CreatedByPage:
     """
     Factory method to create a CreatedByPage object.
 
@@ -26,9 +17,7 @@ def create_created_by_page(
     Returns:
         CreatedByPage: A new CreatedByPage object.
     """
-    return _create_page_property(
-        CreatedByPage, parent=parent, name=name, property_specific_params=created_by
-    )
+    return _create_page_property(CreatedByPage, parent=parent, name=name, property_specific_params=created_by)
 
 
 def create_created_by_database(parent: "Database", name: str) -> CreatedByDatabase:
@@ -42,14 +31,10 @@ def create_created_by_database(parent: "Database", name: str) -> CreatedByDataba
     Returns:
         CreatedByDatabase: A new CreatedByDatabase object.
     """
-    return _create_database_property(
-        CreatedByDatabase, parent=parent, name=name, property_specific_params={}
-    )
+    return _create_database_property(CreatedByDatabase, parent=parent, name=name, property_specific_params={})
 
 
-def create_last_edited_by_page(
-        parent: "Page", name: str, last_edited_by: User
-) -> LastEditedByPage:
+def create_last_edited_by_page(parent: "Page", name: str, last_edited_by: User) -> LastEditedByPage:
     """
     Factory method to create a LastEditedByPage object.
 
@@ -69,9 +54,7 @@ def create_last_edited_by_page(
     )
 
 
-def create_last_edited_by_database(
-        parent: "Database", name: str
-) -> LastEditedByDatabase:
+def create_last_edited_by_database(parent: "Database", name: str) -> LastEditedByDatabase:
     """
     Factory method to create a LastEditedByDatabase object.
 
@@ -82,9 +65,7 @@ def create_last_edited_by_database(
     Returns:
         LastEditedByDatabase: A new LastEditedByDatabase object.
     """
-    return _create_database_property(
-        LastEditedByDatabase, parent=parent, name=name, property_specific_params={}
-    )
+    return _create_database_property(LastEditedByDatabase, parent=parent, name=name, property_specific_params={})
 
 
 def create_people_page(parent: "Page", name: str, people: list[User]) -> PeoplePage:
@@ -99,9 +80,7 @@ def create_people_page(parent: "Page", name: str, people: list[User]) -> PeopleP
     Returns:
         PeoplePage: A new PeoplePage object.
     """
-    return _create_page_property(
-        PeoplePage, parent=parent, name=name, property_specific_params=people
-    )
+    return _create_page_property(PeoplePage, parent=parent, name=name, property_specific_params=people)
 
 
 def create_people_database(parent: "Database", name: str) -> PeopleDatabase:
@@ -115,9 +94,7 @@ def create_people_database(parent: "Database", name: str) -> PeopleDatabase:
     Returns:
         PeopleDatabase: A new PeopleDatabase object.
     """
-    return _create_database_property(
-        PeopleDatabase, parent=parent, name=name, property_specific_params={}
-    )
+    return _create_database_property(PeopleDatabase, parent=parent, name=name, property_specific_params={})
 
 
 __all__ = [

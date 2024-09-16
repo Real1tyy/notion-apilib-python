@@ -2,12 +2,7 @@
 import pytest
 
 # First Party
-from notion_apilib.data.properties import (
-    NumberDatabase,
-    NumberPage,
-    UniqueIdDatabase,
-    UniqueIdPage,
-)
+from notion_apilib.data.properties import NumberDatabase, NumberPage, UniqueIdDatabase, UniqueIdPage
 
 from .assertions import assert_properties_data_is_correct
 from .helper import extract_create_assert_serialization, extract_create_assert_structure
@@ -94,18 +89,12 @@ def assert_unique_id_database_is_correct(data, expected_data):
         ("number_database", NumberDatabase, assert_number_database_is_correct),
     ],
 )
-def test_number_property_structure(
-        request, property_fixture, property_class, assert_func
-):
-    extract_create_assert_structure(
-        request.getfixturevalue(property_fixture), property_class, assert_func
-    )
+def test_number_property_structure(request, property_fixture, property_class, assert_func):
+    extract_create_assert_structure(request.getfixturevalue(property_fixture), property_class, assert_func)
 
 
 def test_unique_id_page_structure(unique_id_page):
-    extract_create_assert_structure(
-        unique_id_page, UniqueIdPage, assert_unique_id_page_is_correct
-    )
+    extract_create_assert_structure(unique_id_page, UniqueIdPage, assert_unique_id_page_is_correct)
 
 
 def test_unique_id_page_serialization(unique_id_page):
@@ -120,15 +109,11 @@ def test_unique_id_page_serialization(unique_id_page):
     ],
 )
 def test_number_property_serialization(request, property_fixture, property_class):
-    extract_create_assert_serialization(
-        request.getfixturevalue(property_fixture), property_class
-    )
+    extract_create_assert_serialization(request.getfixturevalue(property_fixture), property_class)
 
 
 def test_unique_id_database_structure(unique_id_database):
-    extract_create_assert_structure(
-        unique_id_database, UniqueIdDatabase, assert_unique_id_database_is_correct
-    )
+    extract_create_assert_structure(unique_id_database, UniqueIdDatabase, assert_unique_id_database_is_correct)
 
 
 def test_unique_id_database_serialization(unique_id_database):

@@ -26,9 +26,7 @@ def create_email_page(parent: "Page", name: str, email: str) -> EmailPage:
     Returns:
         EmailPage: A new EmailPage object.
     """
-    return _create_page_property(
-        EmailPage, parent=parent, name=name, property_specific_params=email
-    )
+    return _create_page_property(EmailPage, parent=parent, name=name, property_specific_params=email)
 
 
 def create_email_database(parent: "Database", name: str) -> EmailDatabase:
@@ -42,14 +40,10 @@ def create_email_database(parent: "Database", name: str) -> EmailDatabase:
     Returns:
         EmailDatabase: A new EmailDatabase object.
     """
-    return _create_database_property(
-        EmailDatabase, parent=parent, name=name, property_specific_params={}
-    )
+    return _create_database_property(EmailDatabase, parent=parent, name=name, property_specific_params={})
 
 
-def create_files_page(
-        parent: "Page", name: str, files: list[ResourcesAttributes]
-) -> FilesPage:
+def create_files_page(parent: "Page", name: str, files: list[ResourcesAttributes]) -> FilesPage:
     """
     Factory method to create a FilesPage object.
 
@@ -61,9 +55,7 @@ def create_files_page(
     Returns:
         FilesPage: A new FilesPage object.
     """
-    return _create_page_property(
-        FilesPage, parent=parent, name=name, property_specific_params=files
-    )
+    return _create_page_property(FilesPage, parent=parent, name=name, property_specific_params=files)
 
 
 def create_files_database(parent: "Database", name: str) -> FilesDatabase:
@@ -77,14 +69,10 @@ def create_files_database(parent: "Database", name: str) -> FilesDatabase:
     Returns:
         FilesDatabase: A new FilesDatabase object.
     """
-    return _create_database_property(
-        FilesDatabase, parent=parent, name=name, property_specific_params={}
-    )
+    return _create_database_property(FilesDatabase, parent=parent, name=name, property_specific_params={})
 
 
-def create_phone_number_page(
-        parent: "Page", name: str, phone_number: str
-) -> PhoneNumberPage:
+def create_phone_number_page(parent: "Page", name: str, phone_number: str) -> PhoneNumberPage:
     """
     Factory method to create a PhoneNumberPage object.
 
@@ -96,9 +84,7 @@ def create_phone_number_page(
     Returns:
         PhoneNumberPage: A new PhoneNumberPage object.
     """
-    return _create_page_property(
-        PhoneNumberPage, parent=parent, name=name, property_specific_params=phone_number
-    )
+    return _create_page_property(PhoneNumberPage, parent=parent, name=name, property_specific_params=phone_number)
 
 
 def create_phone_number_database(parent: "Database", name: str) -> PhoneNumberDatabase:
@@ -112,9 +98,7 @@ def create_phone_number_database(parent: "Database", name: str) -> PhoneNumberDa
     Returns:
         PhoneNumberDatabase: A new PhoneNumberDatabase object.
     """
-    return _create_database_property(
-        PhoneNumberDatabase, parent=parent, name=name, property_specific_params={}
-    )
+    return _create_database_property(PhoneNumberDatabase, parent=parent, name=name, property_specific_params={})
 
 
 def create_url_page(parent: "Page", name: str, url: str) -> UrlPage:
@@ -129,9 +113,7 @@ def create_url_page(parent: "Page", name: str, url: str) -> UrlPage:
     Returns:
         UrlPage: A new UrlPage object.
     """
-    return _create_page_property(
-        UrlPage, parent=parent, name=name, property_specific_params=url
-    )
+    return _create_page_property(UrlPage, parent=parent, name=name, property_specific_params=url)
 
 
 def create_url_database(parent: "Database", name: str) -> UrlDatabase:
@@ -145,9 +127,7 @@ def create_url_database(parent: "Database", name: str) -> UrlDatabase:
     Returns:
         UrlDatabase: A new UrlDatabase object.
     """
-    return _create_database_property(
-        UrlDatabase, parent=parent, name=name, property_specific_params={}
-    )
+    return _create_database_property(UrlDatabase, parent=parent, name=name, property_specific_params={})
 
 
 __all__ = [

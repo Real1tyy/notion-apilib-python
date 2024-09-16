@@ -16,9 +16,7 @@ class RichTextFilter(Filter):
     rich_text: FilterStructure
 
 
-def create_rich_text_filter_is_empty(
-        property_name: str, is_empty: bool
-) -> RichTextFilter:
+def create_rich_text_filter_is_empty(property_name: str, is_empty: bool) -> RichTextFilter:
     """
     Creates a DateFilter that returns entries where the date property is empty.
 
@@ -29,25 +27,21 @@ def create_rich_text_filter_is_empty(
         DateFilter: The constructed DateFilter object.
     """
     if is_empty:
-        return RichTextFilter(
-            property=property_name, date=FilterStructure(is_empty=True)
-        )
-    return RichTextFilter(
-        property=property_name, date=FilterStructure(is_not_empty=True)
-    )
+        return RichTextFilter(property=property_name, date=FilterStructure(is_empty=True))
+    return RichTextFilter(property=property_name, date=FilterStructure(is_not_empty=True))
 
 
 def create_rich_text_filter(
-        property_name: str,
-        filter_type: Literal[
-            "contains",
-            "does_not_contain",
-            "does_not_equal",
-            "ends_with",
-            "equals",
-            "starts_with",
-        ],
-        text_value: str,
+    property_name: str,
+    filter_type: Literal[
+        "contains",
+        "does_not_contain",
+        "does_not_equal",
+        "ends_with",
+        "equals",
+        "starts_with",
+    ],
+    text_value: str,
 ) -> RichTextFilter:
     """
     Factory function to create a RichTextFilter object based on the provided filter type and text value.
