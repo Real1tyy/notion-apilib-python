@@ -1,10 +1,11 @@
 # Standard Library
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Any
 from uuid import UUID
 
 # Third Party
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
+from notion_apilib.data._util import check_if_exactly_one_not_none_val
 
 
 class DatabaseMention(BaseModel):
@@ -110,6 +111,14 @@ class TemplateMention(BaseModel):
     template_mention_date: Optional[str] = None
     template_mention_user: Optional[str] = None
 
+    @classmethod
+    @model_validator(mode="after")
+    def parse_properties(cls, v: Any):
+        properties = [v.template_mention_date, v.template_mention_user]
+        if check_if_exactly_one_not_none_val(properties):
+            raise ValueError(f"Only one of the values from: {properties} can be provided.")
+        return v
+
 
 class UserMention(BaseModel):
     """
@@ -156,6 +165,14 @@ class Mention(BaseModel):
     page: Optional[PageMention] = None
     template_mention: Optional[TemplateMention] = None
     user: Optional[UserMention] = None
+
+    @classmethod
+    @model_validator(mode="after")
+    def parse_properties(cls, v: Any):
+        properties = [v.database, v.date, v.link_preview, v.page, v.template_mention, v.user]
+        if check_if_exactly_one_not_none_val(properties):
+            raise ValueError(f"Only one of the values from: {properties} can be provided.")
+        return v
 
 
 __all__ = [

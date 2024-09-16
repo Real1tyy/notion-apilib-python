@@ -1,9 +1,9 @@
 # Standard Library
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Any
 
 # Third Party
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
 
 # First Party
 import notion_apilib.data._structures.data.text_ as text
@@ -57,6 +57,15 @@ class ResourcesAttributes(BaseModel, arbitrary_types_allowed=True):
     type: file_type
     external: Optional[External] = None
     file: Optional[FileObject] = None
+
+    @classmethod
+    @model_validator(mode="after")
+    def parse_properties(cls, v: Any):
+        if v.external is None and v.file is None:
+            raise ValueError("Either 'external' or 'file' must be provided.")
+        if v.external is not None and v.file is not None:
+            raise ValueError("Only one of 'external' or 'file' can be provided.")
+        return v
 
 
 class FileAttributes(ResourcesAttributes):

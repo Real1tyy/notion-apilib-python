@@ -1,11 +1,12 @@
 # Standard Library
-from typing import Literal, Optional
+from typing import Literal, Optional, Any
 from uuid import UUID
 
 # Third Party
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
 
 from ..types_ import parents_types
+from ..._util import check_if_exactly_one_not_none_val
 
 
 class Parent(BaseModel):
@@ -32,6 +33,16 @@ class Parent(BaseModel):
     workspace: Optional[Literal[True]] = None
     block_id: Optional[UUID] = None
 
+    @classmethod
+    @model_validator(mode="after")
+    def parse_properties(cls, v: Any):
+        properties = [v.database_id, v.page_id, v.block_id, v.workspace]
+        if check_if_exactly_one_not_none_val(properties):
+            raise ValueError(
+                f"Only one of the values from: {properties} can be provided."
+            )
+        return v
+
     def get_parent_id(self) -> str:
         """
         Get the parent id of the parent object.
@@ -49,7 +60,9 @@ class Parent(BaseModel):
             return self.block_id.hex
         return "workspace"
 
-    def set_parent_id(self, parent_type: parents_types, parent_id: Optional[UUID] = None):
+    def set_parent_id(
+            self, parent_type: parents_types, parent_id: Optional[UUID] = None
+    ):
         """
         Sets the parent id of the parent object.
 
@@ -60,7 +73,7 @@ class Parent(BaseModel):
         parent_id : Optional[UUID]
             The UUID of the parent object, if any.
         """
-        self.remove_ids()
+        self.reset_values()
         match parent_type:
             case "block_id":
                 self.block_id = parent_id
@@ -71,13 +84,14 @@ class Parent(BaseModel):
             case _:
                 self.workspace = True
 
-    def remove_ids(self):
+    def reset_values(self):
         """
         Removes all parent ids.
         """
         self.database_id = None
         self.page_id = None
         self.block_id = None
+        self.workspace = None
 
 
 __all__ = ["Parent"]
