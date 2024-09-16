@@ -2,7 +2,13 @@
 from typing import Optional, Type, TypeVar
 
 # First Party
-from notion_apilib.data.structures import External, FileObject, Parent, ResourcesAttributes, file_type
+from notion_apilib.data.structures import (
+    External,
+    FileObject,
+    Parent,
+    ResourcesAttributes,
+    file_type,
+)
 
 from ..data import File, Image, Pdf, Video
 from ._general import _create_block
@@ -10,7 +16,9 @@ from ._general import _create_block
 T = TypeVar("T", File, Image, Pdf, Video)
 
 
-def _determine_file_type(external: Optional[External], file: Optional[FileObject]) -> file_type:
+def _determine_file_type(
+        external: Optional[External], file: Optional[FileObject]
+) -> file_type:
     """
     Determine the type of file based on the provided parameters.
 
@@ -40,10 +48,10 @@ def _determine_file_type(external: Optional[External], file: Optional[FileObject
 
 
 def _create_resources_object(
-    resource: Type[T],
-    parent: Parent,
-    external: Optional[External] = None,
-    file: Optional[FileObject] = None,
+        resource: Type[T],
+        parent: Parent,
+        external: Optional[External] = None,
+        file: Optional[FileObject] = None,
 ) -> T:
     """
     Factory method to create Resources object
@@ -58,14 +66,16 @@ def _create_resources_object(
     return _create_block(
         resource,
         parent=parent,
-        block_type_specific_params=ResourcesAttributes(type=_type, external=external, file=file),
+        block_type_specific_params=ResourcesAttributes(
+            type=_type, external=external, file=file
+        ),
     )
 
 
 def create_file(
-    parent: Parent,
-    external: Optional[External] = None,
-    file: Optional[FileObject] = None,
+        parent: Parent,
+        external: Optional[External] = None,
+        file: Optional[FileObject] = None,
 ) -> File:
     """
     Factory method to create a File object.
@@ -79,9 +89,9 @@ def create_file(
 
 
 def create_image(
-    parent: Parent,
-    external: Optional[External] = None,
-    file: Optional[FileObject] = None,
+        parent: Parent,
+        external: Optional[External] = None,
+        file: Optional[FileObject] = None,
 ) -> Image:
     """
     Factory method to create an Image object.
@@ -95,9 +105,9 @@ def create_image(
 
 
 def create_pdf(
-    parent: Parent,
-    external: Optional[External] = None,
-    file: Optional[FileObject] = None,
+        parent: Parent,
+        external: Optional[External] = None,
+        file: Optional[FileObject] = None,
 ) -> Pdf:
     """
     Factory method to create a Pdf object.
@@ -111,9 +121,9 @@ def create_pdf(
 
 
 def create_video(
-    parent: Parent,
-    external: Optional[External] = None,
-    file: Optional[FileObject] = None,
+        parent: Parent,
+        external: Optional[External] = None,
+        file: Optional[FileObject] = None,
 ) -> Video:
     """
     Factory method to create a Video object.

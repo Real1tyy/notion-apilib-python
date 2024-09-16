@@ -4,7 +4,10 @@ import pytest
 # First Party
 from notion_apilib.data.blocks import Column, Table, TableOfContents, TableRow
 from tests.__data.__block.assertions import assert_block_data_is_correct
-from tests.__data.__block.helper import extract_create_assert_serialization, extract_create_assert_structure
+from tests.__data.__block.helper import (
+    extract_create_assert_serialization,
+    extract_create_assert_structure,
+)
 from tests.__data.__structures.assertions import assert_rich_text_structure
 
 # Constants
@@ -67,10 +70,14 @@ def assert_table_data_is_correct(data: Table, expected_data: dict):
 
 def assert_table_row_data_is_correct(data: TableRow, expected_data: dict):
     assert_block_data_is_correct(data, expected_data)
-    assert_rich_text_structure(data.table_row.cells, expected_data["table_row"]["cells"])
+    assert_rich_text_structure(
+        data.table_row.cells, expected_data["table_row"]["cells"]
+    )
 
 
-def assert_table_of_contents_data_is_correct(data: TableOfContents, expected_data: dict):
+def assert_table_of_contents_data_is_correct(
+        data: TableOfContents, expected_data: dict
+):
     assert_block_data_is_correct(data, expected_data)
     assert data.table_of_contents.color == expected_data["table_of_contents"]["color"]
 
@@ -85,9 +92,9 @@ def assert_column_data_is_correct(data: Column, expected_data: dict):
         ("table_block", Table, assert_table_data_is_correct),
         ("table_row_block", TableRow, assert_table_row_data_is_correct),
         (
-            "table_of_contents_block",
-            TableOfContents,
-            assert_table_of_contents_data_is_correct,
+                "table_of_contents_block",
+                TableOfContents,
+                assert_table_of_contents_data_is_correct,
         ),
         ("column_block", Column, assert_column_data_is_correct),
     ],

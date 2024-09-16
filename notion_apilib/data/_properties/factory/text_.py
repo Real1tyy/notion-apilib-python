@@ -5,7 +5,9 @@ from ..data import RichTextDatabase, RichTextPage, TitleDatabase, TitlePage
 from ._general import _create_database_property, _create_page_property
 
 
-def create_rich_text_page(parent: "Page", name: str, rich_text: list[RichText]) -> RichTextPage:
+def create_rich_text_page(
+        parent: "Page", name: str, rich_text: list[RichText]
+) -> RichTextPage:
     """
     Factory method to create a RichTextPage object.
 
@@ -17,10 +19,14 @@ def create_rich_text_page(parent: "Page", name: str, rich_text: list[RichText]) 
     Returns:
         RichTextPage: A new RichTextPage object.
     """
-    return _create_page_property(RichTextPage, parent=parent, name=name, property_specific_params=rich_text)
+    return _create_page_property(
+        RichTextPage, parent=parent, name=name, property_specific_params=rich_text
+    )
 
 
-def create_rich_text_database(parent: "Database", name: str, rich_text: list[RichText]) -> RichTextDatabase:
+def create_rich_text_database(
+        parent: "Database", name: str, rich_text: list[RichText]
+) -> RichTextDatabase:
     """
     Factory method to create a RichTextDatabase object.
 
@@ -32,7 +38,9 @@ def create_rich_text_database(parent: "Database", name: str, rich_text: list[Ric
     Returns:
         RichTextPage: A new RichTextDatabase object.
     """
-    return _create_database_property(RichTextDatabase, parent=parent, name=name, property_specific_params=rich_text)
+    return _create_database_property(
+        RichTextDatabase, parent=parent, name=name, property_specific_params=rich_text
+    )
 
 
 def create_title_page(parent: "Page", name: str, title: list[RichText]) -> TitlePage:
@@ -47,7 +55,9 @@ def create_title_page(parent: "Page", name: str, title: list[RichText]) -> Title
     Returns:
         TitlePage: A new TitlePage object.
     """
-    return _create_page_property(TitlePage, parent=parent, name=name, property_specific_params=title)
+    return _create_page_property(
+        TitlePage, parent=parent, name=name, property_specific_params=title
+    )
 
 
 def create_title_database(parent: "Database", name: str) -> TitleDatabase:
@@ -61,7 +71,9 @@ def create_title_database(parent: "Database", name: str) -> TitleDatabase:
     Returns:
         TitleDatabase: A new TitleDatabase object.
     """
-    return _create_database_property(TitleDatabase, parent=parent, name=name, property_specific_params={})
+    return _create_database_property(
+        TitleDatabase, parent=parent, name=name, property_specific_params={}
+    )
 
 
 __all__ = [

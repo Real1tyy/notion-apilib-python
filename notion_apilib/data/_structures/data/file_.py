@@ -9,6 +9,7 @@ from pydantic import BaseModel, model_validator
 import notion_apilib.data._structures.data.text_ as text
 
 from ..types_ import file_type
+from ..._util import check_if_exactly_one_not_none_val
 
 
 class FileObject(BaseModel):
@@ -61,10 +62,11 @@ class ResourcesAttributes(BaseModel, arbitrary_types_allowed=True):
     @classmethod
     @model_validator(mode="after")
     def parse_properties(cls, v: Any):
-        if v.external is None and v.file is None:
-            raise ValueError("Either 'external' or 'file' must be provided.")
-        if v.external is not None and v.file is not None:
-            raise ValueError("Only one of 'external' or 'file' can be provided.")
+        properties = [v.external, v.file]
+        if check_if_exactly_one_not_none_val(properties):
+            raise ValueError(
+                f"Only one of the values from: {properties} can be provided."
+            )
         return v
 
 

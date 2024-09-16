@@ -25,8 +25,12 @@ def create_number_filter_is_empty(property_name: str, is_empty: bool) -> NumberF
         NumberFilter: The constructed NumberFilter object.
     """
     if is_empty:
-        return NumberFilter(property=property_name, number=FilterStructure(is_empty=True))
-    return NumberFilter(property=property_name, number=FilterStructure(is_not_empty=True))
+        return NumberFilter(
+            property=property_name, number=FilterStructure(is_empty=True)
+        )
+    return NumberFilter(
+        property=property_name, number=FilterStructure(is_not_empty=True)
+    )
 
 
 def create_concrete_number_filter(

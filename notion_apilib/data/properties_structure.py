@@ -78,7 +78,9 @@ class PagePropertiesStructure(PropertiesStructure[PageProperty]):
 class DatabasePropertiesStructure(PropertiesStructure[DatabaseProperty]):
     @model_validator(mode="before")
     def parse_properties(cls, v: Any):
-        return parse_properties_structure(v, deserialize_database_property, TitleDatabase)
+        return parse_properties_structure(
+            v, deserialize_database_property, TitleDatabase
+        )
 
 
 def parse_properties_structure(

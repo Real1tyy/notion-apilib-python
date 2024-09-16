@@ -16,7 +16,9 @@ def create_bookmark(parent: Parent, url: str, caption: list[RichText]) -> Bookma
     return _create_block(
         Bookmark,
         parent=parent,
-        block_type_specific_params=block_structures.BookmarkAttributes(caption=caption, url=url),
+        block_type_specific_params=block_structures.BookmarkAttributes(
+            caption=caption, url=url
+        ),
     )
 
 

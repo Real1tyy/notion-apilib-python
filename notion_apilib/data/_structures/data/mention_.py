@@ -116,7 +116,9 @@ class TemplateMention(BaseModel):
     def parse_properties(cls, v: Any):
         properties = [v.template_mention_date, v.template_mention_user]
         if check_if_exactly_one_not_none_val(properties):
-            raise ValueError(f"Only one of the values from: {properties} can be provided.")
+            raise ValueError(
+                f"Only one of the values from: {properties} can be provided."
+            )
         return v
 
 
@@ -169,9 +171,18 @@ class Mention(BaseModel):
     @classmethod
     @model_validator(mode="after")
     def parse_properties(cls, v: Any):
-        properties = [v.database, v.date, v.link_preview, v.page, v.template_mention, v.user]
+        properties = [
+            v.database,
+            v.date,
+            v.link_preview,
+            v.page,
+            v.template_mention,
+            v.user,
+        ]
         if check_if_exactly_one_not_none_val(properties):
-            raise ValueError(f"Only one of the values from: {properties} can be provided.")
+            raise ValueError(
+                f"Only one of the values from: {properties} can be provided."
+            )
         return v
 
 

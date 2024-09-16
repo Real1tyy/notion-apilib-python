@@ -49,7 +49,9 @@ class AndFilter(QueryFilter):
     def add_nested_filter_object(self, nested_filter: "OrFilter"):
         filter_object = self.get_nested_filter_object()
         if filter_object:
-            filter_object.get_current_filters().extend(nested_filter.get_current_filters())
+            filter_object.get_current_filters().extend(
+                nested_filter.get_current_filters()
+            )
             return
         self.and_filter.append(nested_filter)
 
@@ -75,7 +77,9 @@ class OrFilter(QueryFilter):
     def add_nested_filter_object(self, nested_filter: "OrFilter"):
         filter_object = self.get_nested_filter_object()
         if filter_object:
-            filter_object.get_current_filters().extend(nested_filter.get_current_filters())
+            filter_object.get_current_filters().extend(
+                nested_filter.get_current_filters()
+            )
             return
         self.or_filter.append(nested_filter)
 

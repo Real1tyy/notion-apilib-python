@@ -9,13 +9,21 @@ def assert_text_structure(text, expected_text: dict):
     assert text.link.url == expected_text["link"]["url"]
 
 
-def assert_template_mention_structure(template_mention, expected_template_mention: dict):
+def assert_template_mention_structure(
+        template_mention, expected_template_mention: dict
+):
     assert template_mention.type == expected_template_mention["type"]
     match template_mention.type:
         case "template_mention_date":
-            assert template_mention.template_mention_date == expected_template_mention["template_mention_date"]
+            assert (
+                    template_mention.template_mention_date
+                    == expected_template_mention["template_mention_date"]
+            )
         case "template_mention_user":
-            assert template_mention.template_mention_user == expected_template_mention["template_mention_user"]
+            assert (
+                    template_mention.template_mention_user
+                    == expected_template_mention["template_mention_user"]
+            )
 
 
 def assert_mention_structure(mention, expected_mention: dict):
@@ -31,7 +39,9 @@ def assert_mention_structure(mention, expected_mention: dict):
         case "page":
             assert mention.page.id == expected_mention["page"]["id"]
         case "template_mention":
-            assert_template_mention_structure(mention.template_mention, expected_mention["template_mention"])
+            assert_template_mention_structure(
+                mention.template_mention, expected_mention["template_mention"]
+            )
 
 
 def assert_equation_structure(equation, expected_equation: dict):
@@ -41,8 +51,14 @@ def assert_equation_structure(equation, expected_equation: dict):
 def assert_rich_text_value(rich_text, expected_rich_text: dict):
     assert rich_text.annotations.bold == expected_rich_text["annotations"]["bold"]
     assert rich_text.annotations.italic == expected_rich_text["annotations"]["italic"]
-    assert rich_text.annotations.strikethrough == expected_rich_text["annotations"]["strikethrough"]
-    assert rich_text.annotations.underline == expected_rich_text["annotations"]["underline"]
+    assert (
+            rich_text.annotations.strikethrough
+            == expected_rich_text["annotations"]["strikethrough"]
+    )
+    assert (
+            rich_text.annotations.underline
+            == expected_rich_text["annotations"]["underline"]
+    )
     assert rich_text.annotations.code == expected_rich_text["annotations"]["code"]
     assert rich_text.annotations.color == expected_rich_text["annotations"]["color"]
     assert rich_text.plain_text == expected_rich_text["plain_text"]
@@ -55,7 +71,9 @@ def assert_rich_text_value(rich_text, expected_rich_text: dict):
         case "mention":
             assert_mention_structure(rich_text.mention, expected_rich_text["mention"])
         case "equation":
-            assert_equation_structure(rich_text.equation, expected_rich_text["equation"])
+            assert_equation_structure(
+                rich_text.equation, expected_rich_text["equation"]
+            )
 
 
 def assert_icon_structure(icon, expected_icon: dict):
@@ -63,7 +81,9 @@ def assert_icon_structure(icon, expected_icon: dict):
     match icon.type:
         case "file_type":
             assert icon.file_type.url == expected_icon["file_type"]["url"]
-            assert icon.file_type.expiry_time == expected_icon["file_type"]["expiry_time"]
+            assert (
+                    icon.file_type.expiry_time == expected_icon["file_type"]["expiry_time"]
+            )
         case "external":
             assert icon.external.url == expected_icon["external"]["url"]
 
@@ -92,4 +112,6 @@ def assert_resources_structure(resources, expected_resources: dict):
             assert resources.external.url == expected_resources["external"]["url"]
         case "file":
             assert resources.file.url == expected_resources["file"]["url"]
-            assert resources.file.expiry_time == expected_resources["file"]["expiry_time"]
+            assert (
+                    resources.file.expiry_time == expected_resources["file"]["expiry_time"]
+            )

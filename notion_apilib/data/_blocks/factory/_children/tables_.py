@@ -10,11 +10,11 @@ from .._general import _create_block
 
 
 def create_table(
-    parent: Parent,
-    has_column_header: bool,
-    has_row_header: bool,
-    table_width: int,
-    children: Optional[list[Block]] = None,
+        parent: Parent,
+        has_column_header: bool,
+        has_row_header: bool,
+        table_width: int,
+        children: Optional[list[Block]] = None,
 ) -> Table:
     """
     Factory method to create a Table object.
@@ -38,7 +38,9 @@ def create_table(
     )
 
 
-def create_table_row(parent: Parent, cells: list[RichText], children: Optional[list[Block]] = None) -> TableRow:
+def create_table_row(
+        parent: Parent, cells: list[RichText], children: Optional[list[Block]] = None
+) -> TableRow:
     """
     Factory method to create a TableRow object.
 
@@ -55,7 +57,9 @@ def create_table_row(parent: Parent, cells: list[RichText], children: Optional[l
     )
 
 
-def create_table_of_contents(parent: Parent, color: str, children: Optional[list[Block]] = None) -> TableOfContents:
+def create_table_of_contents(
+        parent: Parent, color: str, children: Optional[list[Block]] = None
+) -> TableOfContents:
     """
     Factory method to create a TableOfContents object.
 
@@ -67,7 +71,9 @@ def create_table_of_contents(parent: Parent, color: str, children: Optional[list
     return _create_block(
         TableOfContents,
         parent=parent,
-        block_type_specific_params=block_structures.TableOfContentsAttributes(color=color),
+        block_type_specific_params=block_structures.TableOfContentsAttributes(
+            color=color
+        ),
         children=children,
     )
 

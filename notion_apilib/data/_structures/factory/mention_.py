@@ -88,7 +88,9 @@ def create_page_mention(id_: UUID) -> PageMention:
     return PageMention(id=id_)
 
 
-def create_template_mention_date(type_: str, template_mention_date: str) -> TemplateMentionDate:
+def create_template_mention_date(
+        type_: str, template_mention_date: str
+) -> TemplateMentionDate:
     """
     Factory method to create a TemplateMentionDate.
 
@@ -107,7 +109,9 @@ def create_template_mention_date(type_: str, template_mention_date: str) -> Temp
     return TemplateMentionDate(type=type_, template_mention_date=template_mention_date)
 
 
-def create_template_mention_user(type_: str, template_mention_user: str) -> TemplateMentionUser:
+def create_template_mention_user(
+        type_: str, template_mention_user: str
+) -> TemplateMentionUser:
     """
     Factory method to create a TemplateMentionUser.
 
@@ -127,9 +131,9 @@ def create_template_mention_user(type_: str, template_mention_user: str) -> Temp
 
 
 def create_template_mention(
-    type_: str,
-    template_mention_date: Optional[TemplateMentionDate] = None,
-    template_mention_user: Optional[TemplateMentionUser] = None,
+        type_: str,
+        template_mention_date: Optional[TemplateMentionDate] = None,
+        template_mention_user: Optional[TemplateMentionUser] = None,
 ) -> TemplateMention:
     """
     Factory method to create a TemplateMention.
@@ -175,13 +179,13 @@ def create_user_mention(object_: str, id_: UUID) -> UserMention:
 
 
 def create_mention(
-    type_: str,
-    database: Optional[DatabaseMention] = None,
-    date: Optional[DateMention] = None,
-    link_preview: Optional[LinkPreviewMention] = None,
-    page: Optional[PageMention] = None,
-    template_mention: Optional[TemplateMention] = None,
-    user: Optional[UserMention] = None,
+        type_: str,
+        database: Optional[DatabaseMention] = None,
+        date: Optional[DateMention] = None,
+        link_preview: Optional[LinkPreviewMention] = None,
+        page: Optional[PageMention] = None,
+        template_mention: Optional[TemplateMention] = None,
+        user: Optional[UserMention] = None,
 ) -> Mention:
     """
     Factory method to create a Mention.

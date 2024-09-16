@@ -4,11 +4,18 @@ from typing import Any, Literal, Optional
 from uuid import UUID
 
 from ..data import RelationDatabase, RelationPage, RollupDatabase, RollupPage
-from ..data.structures import RelationDatabaseStructure, RelationStructure, RollupDatabaseStructure, RollupStructure
+from ..data.structures import (
+    RelationDatabaseStructure,
+    RelationStructure,
+    RollupDatabaseStructure,
+    RollupStructure,
+)
 from ._general import _create_database_property, _create_page_property
 
 
-def create_relation_page(parent: "Page", name: str, relation_ids: list[UUID]) -> RelationPage:
+def create_relation_page(
+        parent: "Page", name: str, relation_ids: list[UUID]
+) -> RelationPage:
     """
     Factory method to create a RelationPage object.
 
@@ -21,15 +28,17 @@ def create_relation_page(parent: "Page", name: str, relation_ids: list[UUID]) ->
         RelationPage: A new RelationPage object.
     """
     relations = [RelationStructure(id=id_) for id_ in relation_ids]
-    return _create_page_property(RelationPage, parent=parent, name=name, property_specific_params=relations)
+    return _create_page_property(
+        RelationPage, parent=parent, name=name, property_specific_params=relations
+    )
 
 
 def create_relation_database(
-    parent: "Database",
-    name: str,
-    database_id: UUID,
-    synced_property_id: Optional[str] = None,
-    synced_property_name: Optional[str] = None,
+        parent: "Database",
+        name: str,
+        database_id: UUID,
+        synced_property_id: Optional[str] = None,
+        synced_property_name: Optional[str] = None,
 ) -> RelationDatabase:
     """
     Factory method to create a RelationDatabase object.
@@ -68,15 +77,15 @@ def create_relation_database(
 
 
 def create_rollup_page(
-    parent: "Page",
-    name: str,
-    type_: Literal["array", "date", "number", "incomplete", "unsupported"],
-    function: str,
-    array: Optional[list[Any]] = None,
-    date: Optional[datetime] = None,
-    number: Optional[float] = None,
-    incomplete: Optional[Any] = None,
-    unsupported: Optional[Any] = None,
+        parent: "Page",
+        name: str,
+        type_: Literal["array", "date", "number", "incomplete", "unsupported"],
+        function: str,
+        array: Optional[list[Any]] = None,
+        date: Optional[datetime] = None,
+        number: Optional[float] = None,
+        incomplete: Optional[Any] = None,
+        unsupported: Optional[Any] = None,
 ) -> RollupPage:
     """
     Factory method to create a RollupPage object.
@@ -112,13 +121,13 @@ def create_rollup_page(
 
 
 def create_rollup_database(
-    parent: "Database",
-    name: str,
-    relation_property_id: str,
-    relation_property_name: str,
-    rollup_property_name: str,
-    rollup_property_id: str,
-    function: str,
+        parent: "Database",
+        name: str,
+        relation_property_id: str,
+        relation_property_name: str,
+        rollup_property_name: str,
+        rollup_property_id: str,
+        function: str,
 ) -> RollupDatabase:
     """
     Factory method to create a RollupDatabase object.

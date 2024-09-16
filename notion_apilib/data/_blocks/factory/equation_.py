@@ -15,7 +15,9 @@ def create_equation(parent: Parent, expression: str) -> Equation:
     return _create_block(
         Equation,
         parent=parent,
-        block_type_specific_params=block_structures.EquationAttributes(expression=expression),
+        block_type_specific_params=block_structures.EquationAttributes(
+            expression=expression
+        ),
     )
 
 

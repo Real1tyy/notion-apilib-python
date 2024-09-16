@@ -33,7 +33,9 @@ class NotionPageProvider:
             ValueError: If the deserialization of the response fails due to an invalid schema.
             ResponseException: If the Notion API returns an error status code.
         """
-        data = page.model_dump(mode="json", exclude_none=True, exclude={"id", "archived", "in_trash"})
+        data = page.model_dump(
+            mode="json", exclude_none=True, exclude={"id", "archived", "in_trash"}
+        )
         result = self.notion_client.create_page(data)
         return deserialize_page(result.json())
 
@@ -73,7 +75,9 @@ class NotionPageProvider:
         Raises:
             ResponseException: If the Notion API returns an error status code.
         """
-        return self.notion_client.retrieve_page_property_item(page_id, property_id, query_params).json()
+        return self.notion_client.retrieve_page_property_item(
+            page_id, property_id, query_params
+        ).json()
 
     def update_page(self, page: Page) -> Page:
         """
@@ -141,5 +145,7 @@ class NotionPageProvider:
         """
         page = self.retrieve_page(page.id.hex)
         [self.block_provider.delete_block(child) for child in page.children]
-        page.children = self.block_provider.append_block_children(page.id.hex, page.children)
+        page.children = self.block_provider.append_block_children(
+            page.id.hex, page.children
+        )
         return page

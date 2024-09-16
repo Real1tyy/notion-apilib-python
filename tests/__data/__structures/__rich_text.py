@@ -78,7 +78,9 @@ def create_template_mention_user(request):
 
 
 @pytest.fixture(params=TEMPLATE_MENTION_OPTIONS)
-def create_template_mention(request, create_template_mention_date, create_template_mention_user):
+def create_template_mention(
+        request, create_template_mention_date, create_template_mention_user
+):
     match request.param:
         case "template_mention_date":
             return create_template_mention_date
@@ -96,13 +98,13 @@ def create_user_mention(request):
 
 @pytest.fixture(params=MENTION_TYPES)
 def create_extensive_mention(
-    request,
-    create_database_mention,
-    create_date_mention,
-    create_link_preview_mention,
-    create_page_mention,
-    create_template_mention,
-    create_user_mention,
+        request,
+        create_database_mention,
+        create_date_mention,
+        create_link_preview_mention,
+        create_page_mention,
+        create_template_mention,
+        create_user_mention,
 ) -> dict:
     basic_data = {
         "type": request.param,
@@ -145,7 +147,7 @@ def create_rich_text(create_text) -> list[dict]:
 
 @pytest.fixture(params=RICH_TEXT_TYPE)
 def create_extensive_rich_text(
-    request, create_text, create_equation, create_extensive_mention, create_href
+        request, create_text, create_equation, create_extensive_mention, create_href
 ) -> list[dict]:
     basic_data = {
         "type": request.param,

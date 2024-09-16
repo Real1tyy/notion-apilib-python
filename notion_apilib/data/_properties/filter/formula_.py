@@ -17,7 +17,9 @@ class FormulaFilter(Filter):
     formula: FilterStructure
 
 
-def create_formula_checkbox_filter(property_name: str, checkbox_filter: "CheckboxFilter") -> FormulaFilter:
+def create_formula_checkbox_filter(
+        property_name: str, checkbox_filter: "CheckboxFilter"
+) -> FormulaFilter:
     """
     Factory function to create a FormulaFilter object with a checkbox condition.
 
@@ -30,10 +32,14 @@ def create_formula_checkbox_filter(property_name: str, checkbox_filter: "Checkbo
     """
     data = checkbox_filter.serialize_to_json()
     checkbox = data.pop("checkbox")
-    return FormulaFilter(property=property_name, formula=FilterStructure(checkbox=checkbox))
+    return FormulaFilter(
+        property=property_name, formula=FilterStructure(checkbox=checkbox)
+    )
 
 
-def create_formula_date_filter(property_name: str, date_filter: DateFilter) -> FormulaFilter:
+def create_formula_date_filter(
+        property_name: str, date_filter: DateFilter
+) -> FormulaFilter:
     """
     Factory function to create a FormulaFilter object with a date condition.
 
@@ -49,7 +55,9 @@ def create_formula_date_filter(property_name: str, date_filter: DateFilter) -> F
     return FormulaFilter(property=property_name, formula=FilterStructure(date=date))
 
 
-def create_formula_number_filter(property_name: str, number_filter: NumberFilter) -> FormulaFilter:
+def create_formula_number_filter(
+        property_name: str, number_filter: NumberFilter
+) -> FormulaFilter:
     """
     Factory function to create a FormulaFilter object with a number condition.
 
@@ -65,7 +73,9 @@ def create_formula_number_filter(property_name: str, number_filter: NumberFilter
     return FormulaFilter(property=property_name, formula=FilterStructure(number=number))
 
 
-def create_formula_string_filter(property_name: str, string_filter: RichTextFilter) -> FormulaFilter:
+def create_formula_string_filter(
+        property_name: str, string_filter: RichTextFilter
+) -> FormulaFilter:
     """
     Factory function to create a FormulaFilter object with a string condition.
 
@@ -78,7 +88,9 @@ def create_formula_string_filter(property_name: str, string_filter: RichTextFilt
     """
     data = string_filter.serialize_to_json()
     rich_text = data.pop("rich_text")
-    return FormulaFilter(property=property_name, formula=FilterStructure(string=rich_text))
+    return FormulaFilter(
+        property=property_name, formula=FilterStructure(string=rich_text)
+    )
 
 
 __all__ = [

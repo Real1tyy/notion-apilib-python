@@ -71,9 +71,6 @@ def create_resources_attributes(
     ValueError
         If neither external nor file is provided.
     """
-    if external is None and file is None:
-        raise ValueError("Either external or file should be provided")
-
     return ResourcesAttributes(type=type_, external=external, file=file)
 
 
@@ -110,10 +107,9 @@ def create_file_attributes(
     ValueError
         If neither external nor file is provided.
     """
-    if external is None and file is None:
-        raise ValueError("Either external or file should be provided")
-
-    return FileAttributes(type=type_, caption=caption, name=name, external=external, file=file)
+    return FileAttributes(
+        type=type_, caption=caption, name=name, external=external, file=file
+    )
 
 
 __all__ = [

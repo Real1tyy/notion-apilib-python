@@ -5,14 +5,22 @@ from typing import Optional, Type, TypeVar
 from notion_apilib.data.structures import Parent, RichText, create_basic_rich_text
 
 from ...block import Block
-from ...data import BulletedListItem, NumberedListItem, Paragraph, Quote, ToDo, Toggle, block_structures
+from ...data import (
+    BulletedListItem,
+    NumberedListItem,
+    Paragraph,
+    Quote,
+    ToDo,
+    Toggle,
+    block_structures,
+)
 from .._general import _create_block
 
 T = TypeVar("T", BulletedListItem, NumberedListItem, Paragraph, Quote, Toggle)
 
 
 def _create_items_attribute(
-    rich_text: list[RichText], color: str, children: Optional[list[Block]] = None
+        rich_text: list[RichText], color: str, children: Optional[list[Block]] = None
 ) -> block_structures.Items:
     """
     Factory method to create an Items object.
@@ -26,11 +34,11 @@ def _create_items_attribute(
 
 
 def _create_item(
-    item_type: Type[T],
-    parent: Parent,
-    color: str,
-    rich_text: list[RichText],
-    children: Optional[list[Block]] = None,
+        item_type: Type[T],
+        parent: Parent,
+        color: str,
+        rich_text: list[RichText],
+        children: Optional[list[Block]] = None,
 ) -> T:
     """
     Factory method to create an item block object.
@@ -51,7 +59,7 @@ def _create_item(
 
 
 def create_bulleted_list_item(
-    parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None
+        parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None
 ) -> BulletedListItem:
     """
     Factory method to create a BulletedListItem object.
@@ -66,7 +74,7 @@ def create_bulleted_list_item(
 
 
 def create_numbered_list_item(
-    parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None
+        parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None
 ) -> NumberedListItem:
     """
     Factory method to create a NumberedListItem object.
@@ -80,7 +88,9 @@ def create_numbered_list_item(
     return _create_item(NumberedListItem, parent, color, rich_text, children)
 
 
-def create_basic_paragraph(parent: Parent, text: str, children: list[Block] = None) -> Paragraph:
+def create_basic_paragraph(
+        parent: Parent, text: str, children: list[Block] = None
+) -> Paragraph:
     """
     Factory method to create a basic Paragraph object.
 
@@ -89,10 +99,14 @@ def create_basic_paragraph(parent: Parent, text: str, children: list[Block] = No
     :param children: List of child blocks (optional).
     :return: A new Paragraph object.
     """
-    return _create_item(Paragraph, parent, "default", [create_basic_rich_text(text)], children)
+    return _create_item(
+        Paragraph, parent, "default", [create_basic_rich_text(text)], children
+    )
 
 
-def create_paragraph(parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None) -> Paragraph:
+def create_paragraph(
+        parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None
+) -> Paragraph:
     """
     Factory method to create a Paragraph object.
 
@@ -105,7 +119,9 @@ def create_paragraph(parent: Parent, color: str, rich_text: list[RichText], chil
     return _create_item(Paragraph, parent, color, rich_text, children)
 
 
-def create_quote(parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None) -> Quote:
+def create_quote(
+        parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None
+) -> Quote:
     """
     Factory method to create a Quote object.
 
@@ -118,7 +134,9 @@ def create_quote(parent: Parent, color: str, rich_text: list[RichText], children
     return _create_item(Quote, parent, color, rich_text, children)
 
 
-def create_toggle(parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None) -> Toggle:
+def create_toggle(
+        parent: Parent, color: str, rich_text: list[RichText], children: list[Block] = None
+) -> Toggle:
     """
     Factory method to create a Toggle object.
 
@@ -132,11 +150,11 @@ def create_toggle(parent: Parent, color: str, rich_text: list[RichText], childre
 
 
 def create_to_do(
-    parent: Parent,
-    color: str,
-    rich_text: list[RichText],
-    checked: Optional[bool] = None,
-    children: list[Block] = None,
+        parent: Parent,
+        color: str,
+        rich_text: list[RichText],
+        checked: Optional[bool] = None,
+        children: list[Block] = None,
 ) -> ToDo:
     """
     Factory method to create a ToDo object.
@@ -161,7 +179,9 @@ def create_to_do(
     )
 
 
-def _create_basic_item(item_type: Type[T], parent: Parent, text: str, children: list[Block] = None) -> T:
+def _create_basic_item(
+        item_type: Type[T], parent: Parent, text: str, children: list[Block] = None
+) -> T:
     """
     Factory method to create an item block object.
 
@@ -171,10 +191,14 @@ def _create_basic_item(item_type: Type[T], parent: Parent, text: str, children: 
     :param children: List of child blocks (optional).
     :return: A new item block object of the specified type.
     """
-    return _create_item(item_type, parent, "default", [create_basic_rich_text(text)], children)
+    return _create_item(
+        item_type, parent, "default", [create_basic_rich_text(text)], children
+    )
 
 
-def create_basic_bulleted_list_item(parent: Parent, text: str, children: list[Block] = None) -> BulletedListItem:
+def create_basic_bulleted_list_item(
+        parent: Parent, text: str, children: list[Block] = None
+) -> BulletedListItem:
     """
     Factory method to create a basic BulletedListItem object.
 
@@ -186,7 +210,9 @@ def create_basic_bulleted_list_item(parent: Parent, text: str, children: list[Bl
     return _create_basic_item(BulletedListItem, parent, text, children)
 
 
-def create_basic_numbered_list_item(parent: Parent, text: str, children: list[Block] = None) -> NumberedListItem:
+def create_basic_numbered_list_item(
+        parent: Parent, text: str, children: list[Block] = None
+) -> NumberedListItem:
     """
     Factory method to create a basic NumberedListItem object.
 
@@ -198,7 +224,9 @@ def create_basic_numbered_list_item(parent: Parent, text: str, children: list[Bl
     return _create_basic_item(NumberedListItem, parent, text, children)
 
 
-def create_basic_quote(parent: Parent, text: str, children: list[Block] = None) -> Quote:
+def create_basic_quote(
+        parent: Parent, text: str, children: list[Block] = None
+) -> Quote:
     """
     Factory method to create a basic Quote object.
 
@@ -210,7 +238,9 @@ def create_basic_quote(parent: Parent, text: str, children: list[Block] = None) 
     return _create_basic_item(Quote, parent, text, children)
 
 
-def create_basic_toggle(parent: Parent, text: str, children: list[Block] = None) -> Toggle:
+def create_basic_toggle(
+        parent: Parent, text: str, children: list[Block] = None
+) -> Toggle:
     """
     Factory method to create a basic Toggle object.
 
@@ -223,10 +253,10 @@ def create_basic_toggle(parent: Parent, text: str, children: list[Block] = None)
 
 
 def create_basic_to_do(
-    parent: Parent,
-    text: str,
-    checked: Optional[bool] = None,
-    children: list[Block] = None,
+        parent: Parent,
+        text: str,
+        checked: Optional[bool] = None,
+        children: list[Block] = None,
 ) -> ToDo:
     """
     Factory method to create a basic ToDo object.
@@ -237,7 +267,9 @@ def create_basic_to_do(
     :param children: List of child blocks (optional).
     :return: A new ToDo object.
     """
-    return create_to_do(parent, "default", [create_basic_rich_text(text)], checked, children)
+    return create_to_do(
+        parent, "default", [create_basic_rich_text(text)], checked, children
+    )
 
 
 __all__ = [

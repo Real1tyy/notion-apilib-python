@@ -18,10 +18,14 @@ def create_number_page(parent: "Page", name: str, number: float) -> NumberPage:
     Returns:
         NumberPage: A new NumberPage object.
     """
-    return _create_page_property(NumberPage, parent=parent, name=name, property_specific_params=number)
+    return _create_page_property(
+        NumberPage, parent=parent, name=name, property_specific_params=number
+    )
 
 
-def create_number_database(parent: "Database", name: str, format_: str) -> NumberDatabase:
+def create_number_database(
+        parent: "Database", name: str, format_: str
+) -> NumberDatabase:
     """
     Factory method to create a NumberDatabase object.
 
@@ -41,7 +45,9 @@ def create_number_database(parent: "Database", name: str, format_: str) -> Numbe
     )
 
 
-def create_unique_id_page(parent: "Page", name: str, number: float, prefix: Optional[str] = None) -> UniqueIdPage:
+def create_unique_id_page(
+        parent: "Page", name: str, number: float, prefix: Optional[str] = None
+) -> UniqueIdPage:
     """
     Factory method to create a UniqueIdPage object.
 
@@ -73,7 +79,9 @@ def create_unique_id_database(parent: "Database", name: str) -> UniqueIdDatabase
     Returns:
         UniqueIdDatabase: A new UniqueIdDatabase object.
     """
-    return _create_database_property(UniqueIdDatabase, parent=parent, name=name, property_specific_params={})
+    return _create_database_property(
+        UniqueIdDatabase, parent=parent, name=name, property_specific_params={}
+    )
 
 
 __all__ = [
